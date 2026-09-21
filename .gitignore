@@ -1,0 +1,11 @@
+# Build output (Netlify will generate this automatically via `npm run build`)
+dist/
+
+# Dependencies
+node_modules/
+
+# OS and logs
+.DS_Store
+*.log
+npm-debug.log*
+.system_generated/

@@ -1,0 +1,14 @@
+{
+  "name": "wiki-game",
+  "version": "1.0.0",
+  "description": "Personal Gaming Wiki - Auto build & deploy for AI-generated guides",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node dev.js",
+    "start": "node dev.js"
+  },
+  "keywords": ["wiki", "game-guide", "gaming", "ai-guides", "netlify"],
+  "author": "",
+  "license": "MIT"
+}
