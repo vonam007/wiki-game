@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Pokémon FireRed — Team Roadmap</title>
+<meta name="game" content="Pokémon FireRed">
+<meta name="description" content="Roadmap xây dựng đội hình Kanto chi tiết cho người mới chơi: Charizard, Nidoking, Alakazam, Snorlax, Lapras, Jolteon vượt 8 Gym và Elite Four kèm checklist tự lưu.">
+<style>
+:root{
+  --bg:#0f1015; --panel:#191b23; --panel2:#222531; --line:#343846;
+  --text:#f5f7fb; --muted:#aeb5c5; --red:#ef5350; --red2:#b71c1c;
+  --gold:#ffd166; --green:#71d99e; --blue:#6db8ff; --purple:#b39ddb;
+  --electric:#ffe35a; --ice:#8fe8f2; --shadow:0 12px 30px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 20% 0,#25191b 0,transparent 35%),var(--bg);
+  color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+button,input{font:inherit}
+a{color:#8fc7ff}
+.wrap{max-width:1180px;margin:auto;padding:24px}
+.hero{border:1px solid var(--line);background:linear-gradient(135deg,#241719,#171922 55%,#151821);
+  border-radius:24px;padding:28px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:210px;height:210px;border-radius:50%;right:-70px;top:-70px;
+  border:32px solid rgba(239,83,80,.09);box-shadow:inset 0 0 0 2px rgba(255,255,255,.03)}
+.eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:800}
+h1{font-size:clamp(2rem,5vw,4rem);line-height:1;margin:.35rem 0 .8rem}
+.subtitle{max-width:760px;color:var(--muted);font-size:1.03rem}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.tag{border:1px solid var(--line);background:#14161d;border-radius:999px;padding:6px 10px;color:#dce1ec;font-size:.86rem}
+.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px}
+.progress-shell{height:10px;background:#101218;border-radius:999px;overflow:hidden;flex:1;min-width:220px;border:1px solid #292d38}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--red),var(--gold));transition:.25s}
+#progressText{font-size:.86rem;color:var(--muted);min-width:95px}
+.reset{background:transparent;color:#ffaaa7;border:1px solid #6d3636;border-radius:10px;padding:8px 12px;cursor:pointer}
+.reset:hover{background:#321c1d}
+.quick-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:18px 0 4px}
+.slot{background:#15171e;border:1px solid var(--line);border-radius:16px;padding:13px;min-height:104px}
+.slot b{display:block;margin-bottom:4px}.slot small{color:var(--muted)}
+.slot .role{display:inline-block;margin-top:8px;font-size:.72rem;border-radius:7px;padding:3px 6px;background:#232735;color:#dbe2ef}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:18px 0 10px;position:sticky;top:0;z-index:20;
+ background:linear-gradient(var(--bg) 82%,transparent);scrollbar-width:thin}
+.tab{white-space:nowrap;border:1px solid var(--line);background:#171920;color:#cdd3df;padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:750}
+.tab.active{background:linear-gradient(180deg,#d94744,#a82322);color:white;border-color:#ff6863}
+.panel{display:none}.panel.active{display:block}
+.section-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin:16px 0}
+.section-head h2{font-size:2rem;margin:0}.section-head p{margin:.25rem 0;color:var(--muted);max-width:730px}
+.badge{border:1px solid var(--line);padding:8px 10px;border-radius:12px;background:#171920;color:var(--gold);font-weight:800}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{background:linear-gradient(180deg,var(--panel),#16181f);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.16)}
+.card h3{margin:0 0 10px;font-size:1.08rem}.card h4{margin:14px 0 6px}
+.muted{color:var(--muted)}.tiny{font-size:.82rem;color:var(--muted)}
+.alert{border-left:4px solid var(--gold);background:#282417;padding:12px 14px;border-radius:10px;margin:12px 0}
+.danger{border-left-color:#ff6b68;background:#2a191b}.good{border-left-color:var(--green);background:#17261e}
+.timeline{position:relative;margin-left:4px}.timeline:before{content:"";position:absolute;left:12px;top:8px;bottom:8px;width:2px;background:#3a3e4a}
+.step{position:relative;padding:0 0 17px 38px}.step:last-child{padding-bottom:0}.dot{position:absolute;left:5px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--red);border:3px solid #31191a}
+.step strong{color:#fff}.step span{color:var(--muted);font-size:.9rem}
+.checklist{display:grid;gap:8px}
+.check{display:flex;gap:10px;align-items:flex-start;background:#13151b;border:1px solid #2d303b;padding:10px 11px;border-radius:11px;cursor:pointer}
+.check:hover{border-color:#505668}.check input{margin-top:4px;accent-color:var(--red)}
+.check.done{opacity:.58}.check.done .ct{text-decoration:line-through}
+.moves{display:flex;flex-wrap:wrap;gap:8px}.move{padding:6px 9px;border-radius:9px;border:1px solid #3a3f4c;background:#15171e;font-weight:750;font-size:.86rem}
+.fire{border-color:#73403c;color:#ff9b84}.flying{border-color:#665f8a;color:#c8c1ff}.ground{border-color:#756036;color:#e7c36d}
+.bug{border-color:#4d662f;color:#b9df71}.normal{border-color:#595d69;color:#e2e5eb}.ghost{border-color:#584773;color:#c9a9ff}
+.psychic{border-color:#783b61;color:#ff9bd1}.electric{border-color:#796b22;color:#ffe46a}.water{border-color:#315d82;color:#8fcaff}
+.ice{border-color:#39747c;color:#9aebf0}.fight{border-color:#7c3c37;color:#f7a199}.dark{border-color:#45414c;color:#bcb6c8}
+.statline{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.pill{font-size:.8rem;background:#252834;border:1px solid #393d49;border-radius:999px;padding:4px 8px}
+.stage{display:grid;grid-template-columns:90px 1fr;gap:12px;padding:11px 0;border-bottom:1px dashed #353944}.stage:last-child{border-bottom:0}
+.stage b{color:var(--gold)}
+.gym-list{display:grid;gap:10px}.gym{border:1px solid var(--line);border-radius:16px;background:#171920;overflow:hidden}
+.gym-btn{width:100%;text-align:left;border:0;background:transparent;color:var(--text);padding:15px 16px;display:flex;justify-content:space-between;gap:12px;cursor:pointer}
+.gym-btn:hover{background:#1e212a}.gym-btn strong{font-size:1rem}.gym-btn small{color:var(--muted)}
+.gym-body{display:none;padding:0 16px 16px}.gym.open .gym-body{display:block}.chev{transition:.2s}.gym.open .chev{transform:rotate(180deg)}
+.teamline{font-size:.9rem;background:#12141a;border:1px solid #2a2d37;border-radius:10px;padding:9px 10px;margin:8px 0}
+.counter{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0}.counter span{background:#20232c;border:1px solid #373b47;border-radius:8px;padding:5px 8px;font-size:.83rem}
+.switcher{display:inline-flex;background:#111319;border:1px solid var(--line);border-radius:12px;padding:4px;gap:4px}
+.switcher button{border:0;background:transparent;color:#bfc6d4;border-radius:8px;padding:7px 11px;cursor:pointer;font-weight:800}
+.switcher button.active{background:#343947;color:#fff}
+.choice{display:none}.choice.active{display:block}
+.legend{font-size:.84rem;color:var(--muted);margin-top:10px}
+.footer{margin:34px 0 12px;padding:18px;border-top:1px solid var(--line);color:#9199aa;font-size:.84rem}
+kbd{font-family:inherit;background:#242733;border:1px solid #3c414f;border-bottom-width:2px;padding:1px 6px;border-radius:6px}
+@media(max-width:900px){.quick-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:720px){.wrap{padding:14px}.hero{padding:20px}.grid-2{grid-template-columns:1fr}.quick-grid{grid-template-columns:repeat(2,1fr)}.section-head{flex-direction:column}.tabs{top:0}}
+@media(max-width:430px){.quick-grid{grid-template-columns:1fr}.stage{grid-template-columns:1fr}}
+
+.beginner-note{background:linear-gradient(180deg,#1e2430,#171b23);border:1px solid #3a4558;border-radius:16px;padding:14px 16px;margin:12px 0}
+.beginner-note b{color:#ffe08a}
+.move-plan{display:grid;gap:8px}
+.move-row{display:grid;grid-template-columns:minmax(145px,.75fr) minmax(165px,.9fr) 1.6fr;gap:10px;align-items:start;
+  padding:11px 12px;border:1px solid #303542;background:#13161d;border-radius:12px}
+.move-row .when{font-weight:850;color:#fff}
+.move-row .action{font-weight:800}
+.keep{color:#83e2a9}.skip{color:#ffb0a7}.maybe{color:#ffd982}
+.where{display:block;color:#9fb1c9;font-size:.82rem;margin-top:4px}
+.simple-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.simple-table th,.simple-table td{border-bottom:1px solid #333844;padding:10px 8px;vertical-align:top;text-align:left}
+.simple-table th{color:#ffd166}
+.gloss{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.gloss>div{border:1px solid #303542;background:#14171e;border-radius:12px;padding:11px}
+.newbie-badge{display:inline-block;font-size:.72rem;font-weight:850;padding:3px 7px;border-radius:999px;background:#25352d;color:#92eab6;border:1px solid #3c6550;margin-left:5px}
+@media(max-width:720px){
+  .move-row{grid-template-columns:1fr}
+  .gloss{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<div class="eyebrow">FireRed • Gen III • Hướng dẫn đội hình cho người mới</div>
+<h1>Roadmap đội hình Kanto 🔥</h1>
+<p class="subtitle">Đội hình: <b>Charizard · Nidoking · Kadabra/Alakazam · Snorlax · Lapras · Pikachu/Jolteon</b>. Bản này viết cho <b>người chơi lần đầu</b>: mỗi mốc học chiêu đều cố gắng nói rõ nên giữ, bỏ hay quên chiêu nào; TM/HM quan trọng cũng có chỉ đường lấy ở đâu.</p>
+<div class="tags">
+<span class="tag">☑ Checklist tự lưu</span><span class="tag">🧠 Gen III mechanics</span>
+<span class="tag">🏟 8 Gym + Elite Four</span><span class="tag">⚡ Pikachu/Jolteon toggle</span>
+</div>
+<div class="controls">
+<div class="progress-shell"><div class="progress-bar" id="progressBar"></div></div>
+<span id="progressText">0% hoàn tất</span>
+<button class="reset" id="resetBtn">Reset checklist</button>
+</div>
+<div class="quick-grid">
+<div class="slot"><b>🔥 Charizard</b><small>Starter • con đánh chính, dùng lâu dài</small><span class="role">Fire / Fly</span></div>
+<div class="slot"><b>👑 Nidoking</b><small>Route 3 • học được nhiều chiêu để trị nhiều hệ</small><span class="role">Ground / physical</span></div>
+<div class="slot"><b>🔮 Alakazam</b><small>Route 24/25 • đánh hệ Tâm Linh cực mạnh</small><span class="role">Psychic</span></div>
+<div class="slot"><b>💤 Snorlax</b><small>Route 12/16 • chịu đòn tốt, đánh tay mạnh</small><span class="role">Normal / trị Tâm Linh &amp; Ma</span></div>
+<div class="slot"><b>🌊 Lapras</b><small>Silph Co. • boss killer</small><span class="role">Surf / Ice</span></div>
+<div class="slot"><b>⚡ Electric</b><small>Pikachu sớm / Jolteon late</small><span class="role">nhanh, trị Nước / Bay</span></div>
+</div>
+</header>
+<nav aria-label="Team tabs" class="tabs"><button class="tab active" data-tab="beginner">📘 Mới chơi</button>
+<button class="tab" data-tab="charizard">Charizard</button>
+<button class="tab" data-tab="nidoking">Nidoking</button>
+<button class="tab" data-tab="alakazam">Kadabra / Alakazam</button>
+<button class="tab" data-tab="snorlax">Snorlax</button>
+<button class="tab" data-tab="lapras">Lapras</button>
+<button class="tab" data-tab="electric">Pikachu / Jolteon</button>
+<button class="tab" data-tab="gyms">🏟 Gym &amp; League</button>
+</nav>
+<main><section class="panel active" id="beginner">
+<div class="section-head">
+<div>
+<h2>📘 Đọc 2 phút trước khi chơi</h2>
+<p>Phần này dành cho người mới chơi Pokémon lần đầu. Không cần nhớ hết — chỉ cần mở lại khi game hỏi học chiêu hoặc khi bí đường.</p>
+</div>
+<div class="badge">Người mới bắt đầu</div>
+</div>
+<div class="grid-2">
+<div class="card">
+<h3>1) Mỗi Pokémon chỉ giữ được 4 chiêu</h3>
+<p>Khi đã đủ 4 chiêu mà Pokémon muốn học chiêu mới, game sẽ hỏi bạn có muốn <b>quên 1 chiêu cũ</b> hay không.</p>
+<div class="beginner-note">
+<b>Trong từng tab bên dưới tui đã ghi sẵn:</b><br/>
+        “HỌC” → nên nhận chiêu mới.<br/>
+        “QUÊN …” → chọn chiêu cũ này để xóa.<br/>
+        “BỎ QUA” → cứ từ chối học, không sao cả.
+      </div>
+<p class="tiny">Không phải chiêu mới nào cũng mạnh hơn. Nhiều chiêu chỉ làm giảm chỉ số hoặc có độ chính xác thấp nên người mới có thể bỏ qua cho dễ chơi.</p>
+</div>
+<div class="card">
+<h3>2) TM và HM là gì?</h3>
+<p><b>TM</b> là đĩa dạy chiêu. Trong FireRed, dùng một TM thì món TM đó sẽ mất; tuy nhiên một số TM có thể mua lại ở cửa hàng hoặc Game Corner.</p>
+<p><b>HM</b> cũng dạy chiêu nhưng dùng được nhiều lần. Đổi lại, Pokémon <b>không thể tự quên chiêu HM theo cách bình thường</b>.</p>
+<div class="alert danger"><b>Lỡ dạy HM sai?</b> Tới <b>Fuchsia City</b>, vào căn nhà sát Pokémon Center và nói chuyện với <b>Move Deleter</b>. Ông này xóa được cả chiêu HM.</div>
+</div>
+<div class="card" style="grid-column:1/-1">
+<h3>3) HM quan trọng lấy ở đâu?</h3>
+<table class="simple-table">
+<tr><th>HM</th><th>Lấy ở đâu?</th><th>Nên dạy cho ai?</th><th>Ghi chú</th></tr>
+<tr><td><b>HM01 Cut</b></td><td>S.S. Anne — giúp thuyền trưởng hết say sóng.</td><td><b>Tốt nhất Pokémon phụ</b></td><td>Cần Cascade Badge để dùng ngoài trận. Nếu được, đừng chiếm 1 ô chiêu của 6 con chính.</td></tr>
+<tr><td><b>HM02 Fly</b></td><td>Route 16, phía tây Celadon. Chặt cây nhỏ rồi vào căn nhà phía tây bắc, cô gái trong nhà cho.</td><td><b>Charizard</b></td><td>Cực tiện để bay về các thành phố đã tới.</td></tr>
+<tr><td><b>HM03 Surf</b></td><td>Safari Zone — đi tới Secret House ở khu sâu bên trong.</td><td><b>Lapras</b></td><td>Chiêu đánh Nước rất mạnh, dùng lâu dài.</td></tr>
+<tr><td><b>HM04 Strength</b></td><td>Nhặt <b>Gold Teeth</b> trong Safari Zone rồi đem trả cho Warden ở Fuchsia City.</td><td><b>Snorlax</b> nếu chỉ chơi đúng 6 con</td><td>Dùng đẩy đá. Chiêu này đánh cũng ổn.</td></tr>
+<tr><td><b>HM05 Flash</b></td><td>Route 2 — Oak's Aide cho khi Pokédex đã ghi nhận <b>10 loài đã bắt</b>.</td><td><b>Pokémon phụ</b></td><td>Chủ yếu dùng cho Rock Tunnel; không bắt buộc nếu bạn biết đường.</td></tr>
+</table>
+<div class="legend">Để phá đảo phần cốt truyện Kanto, Cut · Surf · Strength là ba HM quan trọng nhất. Fly và Flash chủ yếu giúp đi lại dễ hơn.</div>
+</div>
+<div class="card" style="grid-column:1/-1">
+<h3>4) TM quan trọng cho đội này — đi đâu lấy?</h3>
+<table class="simple-table">
+<tr><th>TM</th><th>Vị trí</th><th>Dùng cho</th></tr>
+<tr><td><b>TM28 Dig</b></td><td>Cerulean City — đánh Team Rocket Grunt sau căn nhà bị phá. Sau này mua lại ở Celadon Dept. Store giá $2,000.</td><td>Nidoking, rất ngon trước Lt. Surge.</td></tr>
+<tr><td><b>TM31 Brick Break</b></td><td>S.S. Anne 1F. Sau này mua lại Celadon Dept. Store giá $3,000.</td><td>Nidoking hoặc Charizard.</td></tr>
+<tr><td><b>TM24 Thunderbolt</b></td><td>Celadon Game Corner — 4,000 Coins.</td><td>Jolteon. Pikachu thì tự học ở Lv26 nên khỏi mua.</td></tr>
+<tr><td><b>TM30 Shadow Ball</b></td><td>Celadon Game Corner — 4,500 Coins.</td><td>Snorlax.</td></tr>
+<tr><td><b>TM29 Psychic</b></td><td>Saffron City, căn nhà của Mr. Psychic ở phía đông nam thành phố.</td><td>Không bắt buộc: Kadabra/Alakazam tự học Psychic Lv36.</td></tr>
+<tr><td><b>TM04 Calm Mind</b></td><td>Đánh thắng Sabrina ở Saffron Gym.</td><td>Kadabra/Alakazam.</td></tr>
+<tr><td><b>TM26 Earthquake</b></td><td>Đánh thắng Giovanni ở Gym 8, Viridian City.</td><td>Nidoking.</td></tr>
+<tr><td><b>TM13 Ice Beam</b></td><td>Celadon Game Corner — 4,000 Coins.</td><td>Không cần mua cho Lapras: nó tự học ở Lv31.</td></tr>
+<tr><td><b>TM35 Flamethrower</b></td><td>Celadon Game Corner — 4,000 Coins.</td><td>Không cần mua cho Charizard: nó tự học ở Lv34.</td></tr>
+</table>
+</div>
+<div class="card">
+<h3>5) Nên chia HM thế nào cho đội này?</h3>
+<div class="stage"><b>Charizard</b><span>Fly</span></div>
+<div class="stage"><b>Lapras</b><span>Surf</span></div>
+<div class="stage"><b>Snorlax</b><span>Strength nếu bạn không muốn mang Pokémon phụ.</span></div>
+<div class="stage"><b>Pokémon phụ</b><span>Cut và Flash. Bắt tạm một con để mang HM là chuyện rất bình thường.</span></div>
+</div>
+<div class="card">
+<h3>6) Mấy chữ dễ gây rối</h3>
+<div class="gloss">
+<div><b>“Cùng hệ”</b><br/><span class="tiny">Ví dụ Charizard dùng chiêu Lửa. Thường đây là chiêu chính nên giữ.</span></div>
+<div><b>“Khắc hệ”</b><br/><span class="tiny">Ví dụ Điện đánh Nước mạnh hơn bình thường; Nước đánh Lửa mạnh hơn.</span></div>
+<div><b>“Đòn đánh tay”</b><br/><span class="tiny">Dùng chỉ số Attack. Snorlax và Nidoking khá hợp kiểu này.</span></div>
+<div><b>“Đòn đặc biệt”</b><br/><span class="tiny">Dùng Special Attack. Alakazam, Jolteon và Lapras rất hợp.</span></div>
+</div>
+<div class="beginner-note">FireRed là game đời cũ: loại “đánh tay/đặc biệt” được quyết định theo <b>hệ của chiêu</b>. Bạn không cần học thuộc — các gợi ý trong file đã tính chuyện đó sẵn.</div>
+</div>
+</div>
+</section>
+<section class="panel" id="charizard">
+<div class="section-head"><div><h2>🔥 Charizard</h2><p>Starter gánh early game hơi cực nhưng về mid-game trở thành máy dọn Grass/Bug và tiện Fly.</p></div><div class="badge">Charmander → 16 → Charmeleon → 36 → Charizard</div></div>
+<div class="grid-2">
+<div class="card"><h3>Tiến hoá &amp; mốc chiêu</h3><div class="timeline">
+<div class="step"><i class="dot"></i><strong>Lv 5 — Charmander</strong><br/><span>Starter ở Pallet Town.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 7 — Ember</strong><br/><span>chiêu cùng hệ đầu tiên, dùng farm Viridian Forest.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 13 — Metal Claw</strong><br/><span>Mốc quan trọng nhất trước Brock: Steel đánh Rock siêu hiệu quả.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 16 — Charmeleon</strong><br/><span>Chỉ số tăng mạnh, giữ Metal Claw + Ember.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 34 — Flamethrower</strong><br/><span>Chiêu Fire ổn định để đi tới cuối game; không cần mua TM35.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 36 — Charizard + Wing Attack</strong><br/><span>Tiến hoá và có Flying chiêu cùng hệ tốt. Sau đó có thể dùng Fly để tiện di chuyển.</span></div>
+</div></div>
+<div class="card"><h3>Checklist nên làm</h3><div class="checklist">
+<label class="check"><input data-key="zard-metal" type="checkbox"/><span class="ct"><b>Train tới Lv13 trước Brock</b><br/><span class="tiny">Metal Claw giúp trận đầu đỡ khổ rõ rệt.</span></span></label>
+<label class="check"><input data-key="zard-flame" type="checkbox"/><span class="ct"><b>Giữ slot cho Flamethrower Lv34</b><br/><span class="tiny">Đừng tiêu 4,000 Game Corner Coins mua TM35 nếu không cần.</span></span></label>
+<label class="check"><input data-key="zard-fly" type="checkbox"/><span class="ct"><b>Lấy HM02 Fly ở Route 16</b><br/><span class="tiny">Sau Thunder Badge có thể dùng ngoài battle.</span></span></label>
+<label class="check"><input data-key="zard-36" type="checkbox"/><span class="ct"><b>Charizard Lv36</b><br/><span class="tiny">Wing Attack là mốc mốc mạnh lên rõ rệt lớn.</span></span></label>
+</div></div>
+<div class="card"><h3>Moveset story cuối game</h3><div class="moves">
+<span class="move fire">Flamethrower</span><span class="move flying">Fly / Wing Attack</span><span class="move fight">Brick Break</span><span class="move normal">Slash / filler</span>
+</div><div class="alert good"><b>Vai trò:</b> xử Erika cực dễ, dọn Bug/Grass, hỗ trợ Bruno bằng Flying. Đừng đem ra tank Rock/Water/Electric.</div></div>
+<div class="card"><h3>Mẹo theo giai đoạn</h3>
+<div class="stage"><b>Early</b><span>Farm Lv13 trước Brock. Misty là kèo đấu xấu — để Pikachu xử nếu bắt được.</span></div>
+<div class="stage"><b>Mid</b><span>Erika gần như free win. Sau Lv34, Flamethrower là nút bấm mặc định khi không bị khắc hệ.</span></div>
+<div class="stage"><b>Late</b><span>Cẩn thận Rock Slide/Rock Tomb. Champion có Blastoise vì bạn chọn Charmander — để slot Electric lo.</span></div>
+</div>
+<div class="card" style="grid-column:1/-1">
+<h3>🧩 Khi game hỏi học chiêu mới — chọn gì?</h3>
+<div class="move-plan">
+<div class="move-row"><span class="when">Lv20 SmokeScreen</span><span class="action keep">✅ HỌC</span><span>Quên <b>Growl</b>. SmokeScreen làm đối thủ đánh hụt nhiều hơn, dễ dùng hơn Growl.</span></div>
+<div class="move-row"><span class="when">Lv27 Scary Face</span><span class="action skip">⏭ BỎ QUA</span><span>Không cần thiết cho cốt truyện. Giữ chỗ cho các chiêu đánh.</span></div>
+<div class="move-row"><span class="when">Lv34 Flamethrower</span><span class="action keep">✅ HỌC</span><span>Quên <b>Ember</b>. Đây là bản nâng cấp mạnh hơn rất nhiều của Ember.</span></div>
+<div class="move-row"><span class="when">Lv36 Wing Attack</span><span class="action keep">✅ HỌC</span><span>Quên <b>Scratch</b> nếu còn. Wing Attack mạnh và có ích hơn.</span></div>
+<div class="move-row"><span class="when">HM02 Fly</span><span class="action keep">✅ HỌC</span><span>Quên <b>Metal Claw</b> sau khi đã qua Brock. <span class="where">📍 Route 16, phía tây Celadon; cần Cut để tới căn nhà có cô gái cho HM.</span></span></div>
+<div class="move-row"><span class="when">Lv44 Slash</span><span class="action maybe">👍 CÓ THỂ HỌC</span><span>Quên <b>SmokeScreen</b> nếu muốn đánh đơn giản hơn. Nếu thích giữ chiêu làm đối thủ hụt thì có thể bỏ qua Slash.</span></div>
+</div>
+</div></div>
+</section>
+<section class="panel" id="nidoking">
+<div class="section-head"><div><h2>👑 Nidoking</h2><p>Con “dao đa năng” của team: vào đội rất sớm, học Dig/Earthquake, có Megahorn để trị Psychic.</p></div><div class="badge">Nidoran♂ → 16 → Nidorino → Moon Stone → Nidoking</div></div>
+<div class="grid-2">
+<div class="card"><h3>Lộ trình tối ưu</h3><div class="timeline">
+<div class="step"><i class="dot"></i><strong>Route 3 — bắt Nidoran♂</strong><br/><span>Có ngay sau Brock.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 12 — Double Kick</strong><br/><span>Coverage Fighting hữu ích đầu game.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 16 — Nidorino</strong><br/><span>Tiến hoá tự nhiên.</span></div>
+<div class="step"><i class="dot"></i><strong>Moon Stone — Nidoking</strong><br/><span>Lấy ở Mt. Moon. Có thể tiến hoá ngay sau Lv16 để ăn chỉ số sớm.</span></div>
+<div class="step"><i class="dot"></i><strong>TM28 Dig — Cerulean</strong><br/><span>Ground chiêu cùng hệ cực mạnh cho Lt. Surge; TM28 cũng mua lại được ở Celadon Dept. Store.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 22 — Thrash</strong><br/><span>Sức mạnh lớn ở mid-game; dùng khi chấp nhận bị lock/confuse.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 43 — Megahorn</strong><br/><span>Bug vật lý 120 BP, cực đáng giá cho Sabrina/Exeggutor.</span></div>
+<div class="step"><i class="dot"></i><strong>TM26 Earthquake — sau Giovanni</strong><br/><span>Thay Dig cho Victory Road + Elite Four.</span></div>
+</div></div>
+<div class="card"><h3>Checklist</h3><div class="checklist">
+<label class="check"><input data-key="nido-catch" type="checkbox"/><span class="ct">Bắt Nidoran♂ ở Route 3</span></label>
+<label class="check"><input data-key="nido-moon" type="checkbox"/><span class="ct">Nhặt Moon Stone ở Mt. Moon</span></label>
+<label class="check"><input data-key="nido-dig" type="checkbox"/><span class="ct">Dạy Dig trước Lt. Surge</span></label>
+<label class="check"><input data-key="nido-mega" type="checkbox"/><span class="ct">Giữ slot để nhận Megahorn Lv43</span></label>
+<label class="check"><input data-key="nido-eq" type="checkbox"/><span class="ct">Dạy Earthquake sau Gym 8</span></label>
+</div>
+<div class="alert"><b>TM quản lý:</b> Brick Break có thể mua lại ở Celadon Dept. Store, nên cho Nidoking dùng thoải mái nếu cần chiêu phụ để trị hệ khác.</div></div>
+<div class="card"><h3>Moveset story cuối game</h3><div class="moves">
+<span class="move ground">Earthquake</span><span class="move bug">Megahorn</span><span class="move fight">Brick Break</span><span class="move normal">Strength / Thrash</span>
+</div><p class="muted">Nếu dư tiền Game Corner, có thể dùng Ice Beam/Thunderbolt làm chiêu phụ để trị hệ khác; nhưng trong team này Lapras + Electric đã đảm nhiệm tốt.</p></div>
+<div class="card"><h3>Mẹo theo giai đoạn</h3>
+<div class="stage"><b>Early</b><span>Cho Nidoran ăn EXP ở Mt. Moon. Sau khi lên Nidoking, stat jump giúp team cân hơn hẳn.</span></div>
+<div class="stage"><b>Mid</b><span>Dig gần như solo Lt. Surge. Tránh để Nidoking tank Psychic của Sabrina.</span></div>
+<div class="stage"><b>Late</b><span>Megahorn là nút “xử Psychic/Grass”; Earthquake là nút “xử Poison/Fire/Rock”.</span></div>
+</div>
+<div class="card" style="grid-column:1/-1">
+<h3>🧩 Khi game hỏi học chiêu mới — chọn gì?</h3>
+<div class="move-plan">
+<div class="move-row"><span class="when">Lv12 Double Kick</span><span class="action keep">✅ HỌC</span><span>Nếu đã đủ 4 chiêu thì quên <b>Leer</b>. Double Kick hữu dụng hơn nhiều.</span></div>
+<div class="move-row"><span class="when">TM28 Dig</span><span class="action keep">✅ HỌC</span><span>Quên <b>Focus Energy</b> hoặc Leer nếu còn. <span class="where">📍 Cerulean: đánh Rocket Grunt sau căn nhà bị phá. Có thể mua lại ở Celadon Dept. Store $2,000.</span></span></div>
+<div class="move-row"><span class="when">Lv22 Thrash</span><span class="action keep">✅ HỌC</span><span>Quên <b>Peck</b> hoặc Focus Energy. Thrash đánh rất đau, nhưng dùng xong có thể bị rối.</span></div>
+<div class="move-row"><span class="when">TM31 Brick Break</span><span class="action maybe">👍 NÊN HỌC</span><span>Quên <b>Double Kick</b> — cùng mục đích nhưng Brick Break mạnh hơn. <span class="where">📍 S.S. Anne 1F; mua lại ở Celadon Dept. Store $3,000.</span></span></div>
+<div class="move-row"><span class="when">Lv43 Megahorn</span><span class="action keep">✅ HỌC</span><span>Quên <b>Peck</b> hoặc chiêu yếu nhất còn lại. Chiêu này rất hữu ích khi gặp Pokémon hệ Tâm Linh.</span></div>
+<div class="move-row"><span class="when">TM26 Earthquake</span><span class="action keep">✅ HỌC</span><span>Quên <b>Dig</b>. Earthquake làm cùng việc nhưng mạnh hơn và đánh ngay trong một lượt. <span class="where">📍 Nhận sau khi thắng Giovanni ở Gym 8.</span></span></div>
+</div>
+</div></div>
+</section>
+<section class="panel" id="alakazam">
+<div class="section-head"><div><h2>🔮 Kadabra / Alakazam</h2><p>Special sweeper nhanh và mỏng. Nếu không trade được, Kadabra vẫn đủ mạnh để clear story.</p></div><div class="badge">Abra → 16 → Kadabra → trade → Alakazam</div></div>
+<div class="grid-2">
+<div class="card"><h3>Bắt &amp; tiến hoá</h3><div class="timeline">
+<div class="step"><i class="dot"></i><strong>Route 24/25 — bắt Abra</strong><br/><span>Abra thường chỉ có Teleport: quăng Poké Ball ngay hoặc dùng status nếu có cách nhanh hơn nó.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 16 — Kadabra + Confusion</strong><br/><span>Mốc mạnh lên rõ rệt ngay khi tiến hoá.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 21 — Psybeam</strong><br/><span>Upgrade ổn định cho Confusion.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 25 — Recover</strong><br/><span>Cho phép đánh dài hơi hơn dù Defense thấp.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 36 — Psychic</strong><br/><span>Không cần đốt TM29 nếu kiên nhẫn train tới 36.</span></div>
+<div class="step"><i class="dot"></i><strong>Trade Kadabra → Alakazam</strong><br/><span>Trade bất cứ lúc nào sau khi thành Kadabra; moveset level-up vẫn dùng được.</span></div>
+</div></div>
+<div class="card"><h3>Checklist</h3><div class="checklist">
+<label class="check"><input data-key="abra-catch" type="checkbox"/><span class="ct">Bắt Abra Route 24/25</span></label>
+<label class="check"><input data-key="abra-16" type="checkbox"/><span class="ct">Train Abra tới Lv16</span></label>
+<label class="check"><input data-key="abra-recover" type="checkbox"/><span class="ct">Lấy Recover Lv25</span></label>
+<label class="check"><input data-key="abra-psychic" type="checkbox"/><span class="ct">Học Psychic Lv36</span></label>
+<label class="check"><input data-key="abra-trade" type="checkbox"/><span class="ct">Trade thành Alakazam (nếu có thể)</span></label>
+</div>
+<div class="alert danger"><b>Đừng phí Shadow Ball cho Alakazam.</b> Ở Gen III, Ghost là physical; Alakazam Attack thấp. Shadow Ball hợp Snorlax hơn rất nhiều.</div></div>
+<div class="card"><h3>Moveset story cuối game</h3><div class="moves">
+<span class="move psychic">Psychic</span><span class="move normal">Recover</span><span class="move psychic">Calm Mind</span><span class="move electric">Shock Wave / filler</span>
+</div><p class="muted">Calm Mind nhận sau Sabrina. Shock Wave là TM34 từ Lt. Surge, dùng nếu chưa tiêu cho ai khác.</p></div>
+<div class="card"><h3>Mẹo theo giai đoạn</h3>
+<div class="stage"><b>Early</b><span>Abra yếu trước Lv16: switch-train hoặc Exp. Share khi có.</span></div>
+<div class="stage"><b>Mid</b><span>Kadabra quét Koga rất tốt bằng Psychic chiêu cùng hệ; chỉ cần tránh các đòn physical mạnh.</span></div>
+<div class="stage"><b>Late</b><span>Psychic + Calm Mind phá Bruno/Agatha (vì Ghost của Agatha đồng thời là Poison). Luôn ưu tiên speed-kill thay vì tank.</span></div>
+</div>
+<div class="card" style="grid-column:1/-1">
+<h3>🧩 Khi game hỏi học chiêu mới — chọn gì?</h3>
+<div class="move-plan">
+<div class="move-row"><span class="when">Lv16 Confusion</span><span class="action keep">✅ HỌC</span><span>Abra gần như chỉ có Teleport, nên cứ học. Từ đây Kadabra bắt đầu đánh rất khỏe.</span></div>
+<div class="move-row"><span class="when">Lv18 Disable</span><span class="action skip">⏭ CÓ THỂ BỎ</span><span>Người mới không cần dùng chiêu này; ưu tiên chiêu gây sát thương.</span></div>
+<div class="move-row"><span class="when">Lv21 Psybeam</span><span class="action keep">✅ HỌC</span><span>Quên <b>Confusion</b>. Psybeam là bản mạnh hơn.</span></div>
+<div class="move-row"><span class="when">Lv23 Reflect</span><span class="action maybe">👍 TÙY</span><span>Có thể học nếu muốn đỡ đòn đánh tay tốt hơn; nếu thấy rối thì bỏ qua.</span></div>
+<div class="move-row"><span class="when">Lv25 Recover</span><span class="action keep">✅ HỌC</span><span>Quên <b>Teleport</b> nếu còn. Recover tự hồi máu rất hữu ích.</span></div>
+<div class="move-row"><span class="when">Lv30 Future Sight</span><span class="action skip">⏭ BỎ QUA</span><span>Chậm và khó dùng hơn Psybeam/Psychic trong cốt truyện.</span></div>
+<div class="move-row"><span class="when">Lv33 Role Play</span><span class="action skip">⏭ BỎ QUA</span><span>Không cần cho lần chơi đầu.</span></div>
+<div class="move-row"><span class="when">Lv36 Psychic</span><span class="action keep">✅ HỌC</span><span>Quên <b>Psybeam</b>. Đây sẽ là chiêu đánh chính tới cuối game.</span></div>
+<div class="move-row"><span class="when">TM04 Calm Mind</span><span class="action maybe">👍 NÊN HỌC</span><span>Quên Reflect/Disable hoặc chiêu phụ bạn ít dùng. <span class="where">📍 Nhận khi thắng Sabrina ở Saffron Gym.</span></span></div>
+</div>
+<div class="beginner-note"><b>Không muốn chờ Lv36?</b> TM29 Psychic nằm ở nhà Mr. Psychic phía đông nam Saffron City. Nhưng chờ Lv36 sẽ tiết kiệm TM.</div>
+</div></div>
+</section>
+<section class="panel" id="snorlax">
+<div class="section-head"><div><h2>💤 Snorlax</h2><p>Tank đặc biệt, damage vật lý lớn, và là câu trả lời an toàn cho nhiều Psychic/Ghost nhờ Shadow Ball.</p></div><div class="badge">Route 12 / 16 • Lv30</div></div>
+<div class="grid-2">
+<div class="card"><h3>Nhận &amp; mốc chiêu</h3><div class="timeline">
+<div class="step"><i class="dot"></i><strong>Lấy Poké Flute</strong><br/><span>Sau Pokémon Tower/Lavender và cứu Mr. Fuji.</span></div>
+<div class="step"><i class="dot"></i><strong>Đánh thức Snorlax Lv30</strong><br/><span>Có 2 con: Route 12 và Route 16. Save trước khi bắt.</span></div>
+<div class="step"><i class="dot"></i><strong>Bộ chiêu khi bắt</strong><br/><span>Headbutt · Yawn · Rest · Snore.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 33 — Body Slam</strong><br/><span>chiêu cùng hệ chính: mạnh, chính xác, có thể paralysis.</span></div>
+<div class="step"><i class="dot"></i><strong>TM30 — Shadow Ball</strong><br/><span>Game Corner 4,500 Coins. Trong Gen III là physical theo type Ghost → cực hợp Attack của Snorlax.</span></div>
+</div></div>
+<div class="card"><h3>Checklist</h3><div class="checklist">
+<label class="check"><input data-key="lax-flute" type="checkbox"/><span class="ct">Lấy Poké Flute</span></label>
+<label class="check"><input data-key="lax-catch" type="checkbox"/><span class="ct">Save và bắt Snorlax Lv30</span></label>
+<label class="check"><input data-key="lax-body" type="checkbox"/><span class="ct">Học Body Slam Lv33</span></label>
+<label class="check"><input data-key="lax-shadow" type="checkbox"/><span class="ct">Mua TM30 Shadow Ball ở Game Corner</span></label>
+</div>
+<div class="alert good"><b>Kèo ngon:</b> Sabrina/Agatha. Snorlax chịu đòn đặc biệt tốt; Shadow Ball đánh Psychic/Ghost bằng Attack cao.</div></div>
+<div class="card"><h3>Moveset story cuối game</h3><div class="moves">
+<span class="move normal">Body Slam</span><span class="move ghost">Shadow Ball</span><span class="move psychic">Rest</span><span class="move normal">Strength / Yawn</span>
+</div><p class="muted">Nếu muốn đơn giản: Body Slam + Shadow Ball + Strength + Rest là bộ “bấm là chạy”, không cần chuẩn bị nhiều lượt.</p></div>
+<div class="card"><h3>Mẹo sử dụng</h3>
+<div class="stage"><b>Catch</b><span>Yawn + HP pool lớn khiến trận bắt dễ kéo dài; mang nhiều Great/Ultra Ball và status.</span></div>
+<div class="stage"><b>Mid</b><span>Cho vào trước Pokémon thiên về đòn đặc biệt. Đừng đem Snorlax ăn Fighting move.</span></div>
+<div class="stage"><b>Late</b><span>Body Slam không bị khắc hệ rất ổn; Shadow Ball ưu tiên Alakazam/Gengar/Exeggutor.</span></div>
+</div>
+<div class="card" style="grid-column:1/-1">
+<h3>🧩 Khi game hỏi học chiêu mới — chọn gì?</h3>
+<div class="move-plan">
+<div class="move-row"><span class="when">Lv33 Body Slam</span><span class="action keep">✅ HỌC</span><span>Quên <b>Headbutt</b>. Body Slam mạnh hơn và còn có thể làm đối thủ bị tê.</span></div>
+<div class="move-row"><span class="when">TM30 Shadow Ball</span><span class="action keep">✅ HỌC</span><span>Quên <b>Snore</b>. Đây là chiêu rất tốt để đánh Sabrina và Agatha. <span class="where">📍 Celadon Game Corner — 4,500 Coins.</span></span></div>
+<div class="move-row"><span class="when">HM04 Strength</span><span class="action maybe">👍 HỌC NẾU CẦN</span><span>Nếu bạn chỉ mang đúng 6 con này, cho Snorlax học và quên <b>Yawn</b>. <span class="where">📍 Trả Gold Teeth cho Safari Zone Warden ở Fuchsia.</span></span></div>
+<div class="move-row"><span class="when">Lv37 Sleep Talk</span><span class="action maybe">TÙY</span><span>Nếu <b>không</b> dùng Strength trên Snorlax, có thể học Sleep Talk và quên Yawn để kết hợp với Rest. Nếu đã có Strength thì cứ bỏ qua.</span></div>
+<div class="move-row"><span class="when">Lv41+ các chiêu sau</span><span class="action skip">⏭ THƯỜNG BỎ QUA</span><span>Block/Covet/Rollout không cần thiết cho bộ chiêu đơn giản này.</span></div>
+</div>
+</div></div>
+</section>
+<section class="panel" id="lapras">
+<div class="section-head"><div><h2>🌊 Lapras</h2><p>Gift Pokémon cực hợp đội này: Surf user, Ice Beam tự học, bulk tốt — chuẩn bị riêng cho Blaine, Giovanni và Lance.</p></div><div class="badge">Silph Co. • Gift Lv25</div></div>
+<div class="grid-2">
+<div class="card"><h3>Lộ trình</h3><div class="timeline">
+<div class="step"><i class="dot"></i><strong>Silph Co. 7F — nhận Lapras Lv25</strong><br/><span>Nhận sau khi đánh Rival trong Silph Co.</span></div>
+<div class="step"><i class="dot"></i><strong>Moves khi nhận</strong><br/><span>Body Slam · Confuse Ray · Perish Song + move còn lại theo bộ gift.</span></div>
+<div class="step"><i class="dot"></i><strong>HM03 Surf</strong><br/><span>Nhặt trong Safari Zone Secret House. Đây là chiêu cùng hệ Water chính.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 31 — Ice Beam</strong><br/><span>Tự học, nên không cần mua TM13 cho Lapras.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 49 — Hydro Pump (tuỳ chọn)</strong><br/><span>Damage cao nhưng accuracy 80; Surf thường đáng tin cậy hơn.</span></div>
+</div></div>
+<div class="card"><h3>Checklist</h3><div class="checklist">
+<label class="check"><input data-key="lapras-gift" type="checkbox"/><span class="ct">Nhận Lapras Lv25 ở Silph Co.</span></label>
+<label class="check"><input data-key="lapras-surf" type="checkbox"/><span class="ct">Dạy HM03 Surf</span></label>
+<label class="check"><input data-key="lapras-31" type="checkbox"/><span class="ct">Train tới Lv31 lấy Ice Beam</span></label>
+<label class="check"><input data-key="lapras-lance" type="checkbox"/><span class="ct">Đưa Lapras lên khoảng Lv50–55 trước Elite Four</span></label>
+</div>
+<div class="alert"><b>Tiết kiệm TM:</b> TM13 Ice Beam ở Game Corner giá 4,000 Coins, nhưng Lapras học tự nhiên ở Lv31. Giữ tiền cho Shadow Ball/Thunderbolt.</div></div>
+<div class="card"><h3>Moveset story cuối game</h3><div class="moves">
+<span class="move water">Surf</span><span class="move ice">Ice Beam</span><span class="move normal">Body Slam</span><span class="move ghost">Confuse Ray</span>
+</div><p class="muted">Đây là bộ rất “dễ dùng khi đi cốt truyện”: hai chiêu cùng hệ chuẩn + utility + physical không bị khắc hệ.</p></div>
+<div class="card"><h3>Mẹo theo boss</h3>
+<div class="stage"><b>Blaine</b><span>Surf quét cả gym.</span></div>
+<div class="stage"><b>Giovanni</b><span>Surf/Ice Beam đều tuyệt; cẩn thận Rock move từ Rhyhorn.</span></div>
+<div class="stage"><b>Lance</b><span>Ice Beam là MVP trước Dragonair/Dragonite. Electric slot xử Gyarados mở màn.</span></div>
+</div>
+<div class="card" style="grid-column:1/-1">
+<h3>🧩 Khi game hỏi học chiêu mới — chọn gì?</h3>
+<div class="move-plan">
+<div class="move-row"><span class="when">HM03 Surf</span><span class="action keep">✅ HỌC NGAY</span><span>Quên <b>Mist</b>. Surf vừa dùng đi trên nước vừa là chiêu đánh chính cực tốt. <span class="where">📍 Safari Zone Secret House.</span></span></div>
+<div class="move-row"><span class="when">Lv31 Ice Beam</span><span class="action keep">✅ HỌC</span><span>Quên <b>Perish Song</b>. Ice Beam cực quan trọng khi đánh rồng của Lance.</span></div>
+<div class="move-row"><span class="when">Lv37 Rain Dance</span><span class="action skip">⏭ BỎ QUA</span><span>Không cần chuẩn bị nhiều lượt thời tiết cho lần chơi đầu.</span></div>
+<div class="move-row"><span class="when">Lv43 Safeguard</span><span class="action skip">⏭ BỎ QUA</span><span>Không cần thiết cho cốt truyện.</span></div>
+<div class="move-row"><span class="when">Lv49 Hydro Pump</span><span class="action skip">⏭ KHUYÊN BỎ QUA</span><span>Mạnh hơn Surf nhưng dễ đánh hụt. Surf ổn định hơn và còn là HM nên cứ giữ.</span></div>
+</div>
+<div class="beginner-note"><b>Đừng mua TM13 Ice Beam chỉ để cho Lapras.</b> Nó tự học Ice Beam ở Lv31, tiết kiệm được 4,000 Game Corner Coins.</div>
+</div></div>
+</section>
+<section class="panel" id="electric">
+<div class="section-head"><div><h2>⚡ Pikachu / Jolteon</h2><p>Pikachu cho lợi thế rất sớm; Jolteon là lựa chọn mạnh và ổn định hơn cho late game. Có thể chơi Pikachu đầu game rồi chuyển slot sang Jolteon.</p></div>
+<div class="switcher"><button class="choice-btn active" data-choice="pika">Pikachu</button><button class="choice-btn" data-choice="jolt">Jolteon</button></div>
+</div>
+<div class="choice active" id="choice-pika"><div class="grid-2">
+<div class="card"><h3>Pikachu — lộ trình</h3><div class="timeline">
+<div class="step"><i class="dot"></i><strong>Viridian Forest — bắt Pikachu</strong><br/><span>Tỉ lệ không cao, nhưng đáng công nếu muốn Misty dễ hơn.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 8 — Thunder Wave</strong><br/><span>nhanh, trị Nước / Bay cực tiện khi bắt Pokémon/boss.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 11 — Quick Attack</strong><br/><span>Priority dọn mục tiêu còn ít HP.</span></div>
+<div class="step"><i class="dot"></i><strong>Lv 26 — Thunderbolt</strong><br/><span>Không cần mua TM24 nếu giữ Pikachu tới mốc này.</span></div>
+</div></div>
+<div class="card"><h3>Checklist Pikachu</h3><div class="checklist">
+<label class="check"><input data-key="pika-catch" type="checkbox"/><span class="ct">Bắt Pikachu ở Viridian Forest</span></label>
+<label class="check"><input data-key="pika-misty" type="checkbox"/><span class="ct">Train đủ dùng cho Misty</span></label>
+<label class="check"><input data-key="pika-26" type="checkbox"/><span class="ct">Học Thunderbolt Lv26</span></label>
+</div><div class="alert danger"><b>Điểm yếu:</b> Pikachu rất mỏng. Late game cần chơi theo kiểu vào trước mục tiêu chậm hơn và KO nhanh.</div></div>
+<div class="card"><h3>Moveset</h3><div class="moves"><span class="move electric">Thunderbolt</span><span class="move electric">Thunder Wave</span><span class="move normal">Quick Attack</span><span class="move normal">Double Team / filler</span></div></div>
+<div class="card"><h3>Khi nào nên đổi?</h3><p>Nếu tới Celadon bạn bắt đầu thấy Pikachu quá dễ nằm, đổi slot sang Jolteon là nâng cấp rất tự nhiên: nhanh hơn, bulk tốt hơn và Special Attack cao hơn.</p></div>
+<div class="card" style="grid-column:1/-1">
+<h3>🧩 Pikachu — khi game hỏi học chiêu mới</h3>
+<div class="move-plan">
+<div class="move-row"><span class="when">Lv8 Thunder Wave</span><span class="action keep">✅ HỌC</span><span>Làm đối thủ bị tê, rất tiện khi đánh boss hoặc bắt Pokémon.</span></div>
+<div class="move-row"><span class="when">Lv11 Quick Attack</span><span class="action keep">✅ HỌC</span><span>Nếu đủ 4 chiêu, quên <b>Growl</b> trước.</span></div>
+<div class="move-row"><span class="when">Lv15 Double Team</span><span class="action skip">⏭ TÙY / CÓ THỂ BỎ</span><span>Không cần nếu muốn chơi đơn giản.</span></div>
+<div class="move-row"><span class="when">Lv20 Slam</span><span class="action skip">⏭ KHUYÊN BỎ</span><span>Slam mạnh nhưng hay hụt; Quick Attack dễ dùng hơn.</span></div>
+<div class="move-row"><span class="when">Lv26 Thunderbolt</span><span class="action keep">✅ HỌC</span><span>Quên <b>ThunderShock</b>. Đây là nâng cấp trực tiếp và là chiêu chính tới cuối game.</span></div>
+</div>
+</div><div class="card" style="grid-column:1/-1">
+<h3>🧩 Jolteon — đường dễ nhất cho người mới</h3>
+<div class="move-plan">
+<div class="move-row"><span class="when">Nhận Eevee Lv25</span><span class="action maybe">⏳ CHƯA TIẾN HÓA</span><span>Nếu không ngại train thêm 5 level, giữ Eevee tới Lv30.</span></div>
+<div class="move-row"><span class="when">Eevee Lv30 Bite</span><span class="action keep">✅ HỌC</span><span>Quên <b>Growl/Tail Whip</b> hoặc chiêu hỗ trợ bạn ít dùng nhất.</span></div>
+<div class="move-row"><span class="when">Thunder Stone</span><span class="action keep">⚡ TIẾN HÓA</span><span>Dùng đá để Eevee → Jolteon. <span class="where">📍 Mua Thunder Stone ở Celadon Dept. Store.</span></span></div>
+<div class="move-row"><span class="when">TM24 Thunderbolt</span><span class="action keep">✅ HỌC</span><span>Quên <b>Tackle</b> hoặc chiêu yếu còn lại. <span class="where">📍 Celadon Game Corner — 4,000 Coins.</span></span></div>
+<div class="move-row"><span class="when">Lv42 Thunder Wave</span><span class="action maybe">👍 NÊN HỌC</span><span>Quên một chiêu hỗ trợ yếu như Sand-Attack nếu còn.</span></div>
+</div>
+<div class="beginner-note"><b>Không muốn train Eevee tới 30?</b> Bạn có thể tiến hóa Jolteon ngay ở Lv25 rồi dạy Thunderbolt luôn. Bite chỉ là phần thưởng thêm, không bắt buộc.</div>
+</div></div></div>
+<div class="choice" id="choice-jolt"><div class="grid-2">
+<div class="card"><h3>Jolteon — lộ trình khuyên dùng</h3><div class="timeline">
+<div class="step"><i class="dot"></i><strong>Celadon — nhận Eevee Lv25</strong><br/><span>Lấy ở Celadon Condominiums/Mansion bằng lối phía sau.</span></div>
+<div class="step"><i class="dot"></i><strong>Phương án A: evolve ngay</strong><br/><span>Dùng Thunder Stone rồi mua TM24 Thunderbolt ở Game Corner. Nhanh, mạnh, ít grind.</span></div>
+<div class="step"><i class="dot"></i><strong>Phương án B: Eevee Lv30 → Bite</strong><br/><span>Bite là Dark và trong Gen III là special — hợp Special Attack của Jolteon. Sau đó mới dùng Thunder Stone.</span></div>
+<div class="step"><i class="dot"></i><strong>TM24 Thunderbolt — 4,000 Coins</strong><br/><span>Chiêu chính cho Jolteon; cực hữu dụng ở Lorelei, Lance's Gyarados và Champion's Blastoise.</span></div>
+</div></div>
+<div class="card"><h3>Checklist Jolteon</h3><div class="checklist">
+<label class="check"><input data-key="jolt-eevee" type="checkbox"/><span class="ct">Nhận Eevee Lv25 ở Celadon</span></label>
+<label class="check"><input data-key="jolt-bite" type="checkbox"/><span class="ct">Tuỳ chọn: train Eevee Lv30 để lấy Bite</span></label>
+<label class="check"><input data-key="jolt-stone" type="checkbox"/><span class="ct">Mua Thunder Stone ở Celadon Dept. Store</span></label>
+<label class="check"><input data-key="jolt-tbolt" type="checkbox"/><span class="ct">Mua TM24 Thunderbolt 4,000 Coins</span></label>
+</div><div class="alert good"><b>Khuyên chọn cho endgame:</b> Jolteon. Đây là slot đáp án trực tiếp cho Lorelei + Gyarados của Lance + Blastoise Lv63 của Champion.</div></div>
+<div class="card"><h3>Moveset</h3><div class="moves"><span class="move electric">Thunderbolt</span><span class="move dark">Bite (nếu chờ Eevee 30)</span><span class="move electric">Thunder Wave</span><span class="move normal">Quick Attack / filler</span></div></div>
+<div class="card"><h3>Pikachu vs Jolteon</h3>
+<div class="stage"><b>Pikachu</b><span>Đến sớm, cứu trận Misty, tự học Thunderbolt Lv26, nhưng late game khá giấy.</span></div>
+<div class="stage"><b>Jolteon</b><span>Đến muộn hơn ở Celadon nhưng là lựa chọn ổn hơn cho Elite Four và Champion.</span></div>
+</div>
+</div></div>
+</section>
+<section class="panel" id="gyms">
+<div class="section-head"><div><h2>🏟 Bí quyết qua 8 Gym + League</h2><p>Level của Gym Leader theo FireRed/LeafGreen. Bấm từng mục để mở chiến thuật dành riêng cho đội hình này.</p></div><div class="badge">Khuyên E4: team khoảng Lv50–55</div></div>
+<div class="grid-2">
+<div class="card" style="grid-column:1/-1">
+<h3>Gen III cheat sheet — cực quan trọng</h3>
+<p class="muted">FireRed chưa có physical/special split theo move. Các type <b>Physical</b>: Normal, Fighting, Flying, Poison, Ground, Rock, Bug, Ghost, Steel.
+      Các type <b>Special</b>: Fire, Water, Electric, Grass, Ice, Psychic, Dragon, Dark.</p>
+<div class="alert">Hệ quả: <b>Shadow Ball → physical</b> nên hợp Snorlax; <b>Bite → special</b> nên hợp Jolteon hơn Attack thấp của nó.</div>
+</div>
+<div class="card" style="grid-column:1/-1"><div class="gym-list">
+<article class="gym open"><button class="gym-btn"><span><strong>#1 Brock — Rock</strong><br/><small>Geodude Lv12 · Onix Lv14</small></span><span class="chev">⌄</span></button>
+<div class="gym-body"><div class="counter"><span>⭐ Charmeleon/Charmander Lv13+</span><span>Metal Claw</span></div>
+<p><b>Kế hoạch:</b> train Charmander tới Lv13 để có Metal Claw. Ember bị Rock resist, Scratch cũng không đẹp. Giữ Potion và dùng Metal Claw liên tục; Onix damage không quá khủng nếu bạn ngang level.</p>
+<label class="check"><input data-key="gym1" type="checkbox"/><span class="ct">Boulder Badge — Brock</span></label></div></article>
+<article class="gym"><button class="gym-btn"><span><strong>#2 Misty — Water</strong><br/><small>Staryu Lv18 · Starmie Lv21</small></span><span class="chev">⌄</span></button>
+<div class="gym-body"><div class="counter"><span>⭐ Pikachu</span><span>ThunderShock</span><span>Thunder Wave</span></div>
+<p><b>Kế hoạch:</b> nếu đã bắt Pikachu ở Viridian Forest, đây là lý do. Paralysis Starmie rồi spam Electric. Charmeleon nên ngồi bench vì Water Pulse rất đau.</p>
+<p class="tiny">Nếu không dùng Pikachu: có thể bắt Oddish trên Route 24/25 trong FireRed làm quân tạm, nhưng không cần giữ lâu.</p>
+<label class="check"><input data-key="gym2" type="checkbox"/><span class="ct">Cascade Badge — Misty</span></label></div></article>
+<article class="gym"><button class="gym-btn"><span><strong>#3 Lt. Surge — Electric</strong><br/><small>Voltorb Lv21 · Pikachu Lv18 · Raichu Lv24</small></span><span class="chev">⌄</span></button>
+<div class="gym-body"><div class="counter"><span>⭐ Nidoking</span><span>TM28 Dig</span><span>Ground immunity</span></div>
+<p><b>Kế hoạch:</b> dạy Nidoking Dig sau vụ Rocket ở Cerulean. Ground vừa miễn nhiễm Electric vừa super-effective; đây là một trong những gym dễ nhất với roster này.</p>
+<label class="check"><input data-key="gym3" type="checkbox"/><span class="ct">Thunder Badge — Lt. Surge</span></label></div></article>
+<article class="gym"><button class="gym-btn"><span><strong>#4 Erika — Grass</strong><br/><small>Victreebel Lv29 · Tangela Lv24 · Vileplume Lv29</small></span><span class="chev">⌄</span></button>
+<div class="gym-body"><div class="counter"><span>⭐ Charmeleon</span><span>Fire chiêu cùng hệ</span><span>Kadabra phương án phụ</span></div>
+<p><b>Kế hoạch:</b> Charmeleon làm việc chính. Nếu bị status khó chịu, dùng Kadabra đánh Poison subtyping của Victreebel/Vileplume bằng Psychic move.</p>
+<label class="check"><input data-key="gym4" type="checkbox"/><span class="ct">Rainbow Badge — Erika</span></label></div></article>
+<article class="gym"><button class="gym-btn"><span><strong>#5 Koga — Poison</strong><br/><small>Koffing Lv37 · Koffing Lv37 · Muk Lv39 · Weezing Lv43</small></span><span class="chev">⌄</span></button>
+<div class="gym-body"><div class="counter"><span>⭐ Kadabra/Alakazam</span><span>Psychic</span><span>Recover</span></div>
+<p><b>Kế hoạch:</b> đây là sân khấu của Kadabra/Alakazam. Psychic chiêu cùng hệ super-effective. Nếu chưa Lv36, Psybeam vẫn dùng được nhưng nên nâng level vì Weezing Lv43 khá cao.</p>
+<label class="check"><input data-key="gym5" type="checkbox"/><span class="ct">Soul Badge — Koga</span></label></div></article>
+<article class="gym"><button class="gym-btn"><span><strong>#6 Sabrina — Psychic</strong><br/><small>Kadabra Lv38 · Mr. Mime Lv37 · Venomoth Lv38 · Alakazam Lv43</small></span><span class="chev">⌄</span></button>
+<div class="gym-body"><div class="counter"><span>⭐ Snorlax</span><span>Shadow Ball</span><span>⭐ Nidoking Lv43 Megahorn</span></div>
+<p><b>Kế hoạch:</b> mua TM30 Shadow Ball cho Snorlax nếu có thể; Snorlax khả năng chịu đòn đặc biệt tốt và Shadow Ball là physical trong Gen III. Nidoking có Megahorn Lv43 cũng là đòn kết liễu Psychic rất mạnh, nhưng đừng để Nidoking ăn Psychic trước.</p>
+<label class="check"><input data-key="gym6" type="checkbox"/><span class="ct">Marsh Badge — Sabrina</span></label></div></article>
+<article class="gym"><button class="gym-btn"><span><strong>#7 Blaine — Fire</strong><br/><small>Growlithe Lv42 · Ponyta Lv40 · Rapidash Lv42 · Arcanine Lv47</small></span><span class="chev">⌄</span></button>
+<div class="gym-body"><div class="counter"><span>⭐ Lapras</span><span>Surf</span><span>Nidoking Ground phương án phụ</span></div>
+<p><b>Kế hoạch:</b> Surf của Lapras là đáp án sạch nhất. Nidoking với Dig/Earthquake cũng tốt, nhưng Lapras ít rủi ro hơn trước Fire.</p>
+<label class="check"><input data-key="gym7" type="checkbox"/><span class="ct">Volcano Badge — Blaine</span></label></div></article>
+<article class="gym"><button class="gym-btn"><span><strong>#8 Giovanni — Ground</strong><br/><small>Rhyhorn Lv45 · Dugtrio Lv42 · Nidoqueen Lv44 · Nidoking Lv45 · Rhyhorn Lv50</small></span><span class="chev">⌄</span></button>
+<div class="gym-body"><div class="counter"><span>⭐ Lapras</span><span>Surf</span><span>Ice Beam</span></div>
+<p><b>Kế hoạch:</b> Lapras quét phần lớn team bằng Surf. Rhyhorn nhận Water x4. Sau chiến thắng, TM26 Earthquake nên dành cho Nidoking.</p>
+<label class="check"><input data-key="gym8" type="checkbox"/><span class="ct">Earth Badge — Giovanni</span></label></div></article>
+</div></div>
+<div class="card"><h3>Elite Four — kèo đấu nhanh</h3>
+<div class="stage"><b>Lorelei</b><span><b>Jolteon/Pikachu Thunderbolt</b> xử Dewgong/Cloyster/Slowbro/Lapras. Charizard tránh Ice/Water.</span></div>
+<div class="stage"><b>Bruno</b><span><b>Alakazam Psychic</b> xử Fighting; <b>Lapras Surf</b> xử 2 Onix.</span></div>
+<div class="stage"><b>Agatha</b><span><b>Alakazam Psychic</b> vì phần lớn Ghost team cũng Poison; <b>Snorlax Shadow Ball</b> là phương án an toàn.</span></div>
+<div class="stage"><b>Lance</b><span><b>Electric</b> xử Gyarados mở màn; <b>Lapras Ice Beam</b> xử Dragonair/Dragonite. Surf/Ice Beam xử Aerodactyl tuỳ HP.</span></div>
+</div>
+<div class="card"><h3>Champion Blue — vì bạn chọn Charmander</h3>
+<div class="teamline">Pidgeot Lv59 · Alakazam Lv57 · Rhydon Lv59 · Arcanine Lv59 · Exeggutor Lv61 · <b>Blastoise Lv63</b></div>
+<div class="stage"><b>Pidgeot</b><span>Jolteon/Pikachu → Thunderbolt.</span></div>
+<div class="stage"><b>Alakazam</b><span>Snorlax → Shadow Ball. Đừng cố mirror bằng Alakazam nếu level thấp hơn.</span></div>
+<div class="stage"><b>Rhydon</b><span>Lapras → Surf (x4 weakness).</span></div>
+<div class="stage"><b>Arcanine</b><span>Lapras Surf hoặc Nidoking Earthquake.</span></div>
+<div class="stage"><b>Exeggutor</b><span>Charizard Flamethrower hoặc Nidoking Megahorn.</span></div>
+<div class="stage"><b>Blastoise</b><span>Jolteon/Pikachu Thunderbolt. Giữ Electric slot sống tới cuối trận.</span></div>
+<label class="check" style="margin-top:12px"><input data-key="champion" type="checkbox"/><span class="ct"><b>Champion — clear Kanto League</b></span></label>
+</div>
+<div class="card" style="grid-column:1/-1"><h3>Danh sách TM/HM “đừng dùng nhầm”</h3>
+<div class="grid-2">
+<div><b>TM26 Earthquake</b><p class="tiny">Nhận sau Giovanni. Ưu tiên Nidoking.</p></div>
+<div><b>TM30 Shadow Ball</b><p class="tiny">Game Corner 4,500 Coins. Ưu tiên Snorlax.</p></div>
+<div><b>TM24 Thunderbolt</b><p class="tiny">Game Corner 4,000 Coins. Cần cho Jolteon; Pikachu tự học Lv26.</p></div>
+<div><b>TM13 Ice Beam</b><p class="tiny">Game Corner 4,000 Coins. Lapras tự học Lv31 → không cần mua cho nó.</p></div>
+<div><b>TM35 Flamethrower</b><p class="tiny">Game Corner 4,000 Coins. Charizard tự học Lv34 → tiết kiệm.</p></div>
+<div><b>TM31 Brick Break</b><p class="tiny">Có ở S.S. Anne và mua lại Celadon Dept. Store → dùng thoải mái.</p></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer"><b>Nguồn đối chiếu:</b> Pokémon Database (learnset Gen III, TM FireRed/LeafGreen) và Bulbapedia (HM, Move Deleter, vị trí các vật phẩm).<br/>Trang này cố ý ưu tiên cách chơi <b>dễ hiểu, ít phải suy nghĩ</b> cho lần chơi đầu hơn là tối ưu thi đấu.</footer>
+</div>
+<script>
+const STORAGE = "firered-team-roadmap-v1";
+
+function saveState(){
+  const state = {};
+  document.querySelectorAll('input[type="checkbox"][data-key]').forEach(cb => state[cb.dataset.key] = cb.checked);
+  localStorage.setItem(STORAGE, JSON.stringify(state));
+  updateProgress();
+}
+function loadState(){
+  let state = {};
+  try { state = JSON.parse(localStorage.getItem(STORAGE) || "{}"); } catch(e){}
+  document.querySelectorAll('input[type="checkbox"][data-key]').forEach(cb => {
+    cb.checked = !!state[cb.dataset.key];
+    cb.closest('.check')?.classList.toggle('done', cb.checked);
+  });
+  updateProgress();
+}
+function updateProgress(){
+  const boxes=[...document.querySelectorAll('input[type="checkbox"][data-key]')];
+  const done=boxes.filter(x=>x.checked).length;
+  const pct=boxes.length ? Math.round(done/boxes.length*100) : 0;
+  document.getElementById('progressBar').style.width=pct+"%";
+  document.getElementById('progressText').textContent=pct+"% hoàn tất";
+}
+document.querySelectorAll('input[type="checkbox"][data-key]').forEach(cb=>{
+  cb.addEventListener('change', ()=>{
+    cb.closest('.check')?.classList.toggle('done', cb.checked);
+    saveState();
+  });
+});
+
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+    window.scrollTo({top:document.querySelector('.tabs').offsetTop-4, behavior:'smooth'});
+  });
+});
+
+document.querySelectorAll('.gym-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>btn.closest('.gym').classList.toggle('open'));
+});
+
+document.querySelectorAll('.choice-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.choice-btn').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.choice').forEach(x=>x.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('choice-'+btn.dataset.choice).classList.add('active');
+  });
+});
+
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+  if(confirm('Reset toàn bộ checklist?')){
+    localStorage.removeItem(STORAGE);
+    document.querySelectorAll('input[type="checkbox"][data-key]').forEach(cb=>{
+      cb.checked=false; cb.closest('.check')?.classList.remove('done');
+    });
+    updateProgress();
+  }
+});
+
+loadState();
+</script>
+</body>
+</html>

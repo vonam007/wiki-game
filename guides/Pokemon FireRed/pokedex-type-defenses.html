@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FireRed / LeafGreen Pokédex — Type Defenses</title>
+<meta name="game" content="Pokémon FireRed">
+<meta name="description" content="Tra cứu Type Defenses 151 Pokémon Kanto Gen III. Bảng khắc hệ, tra cứu nhanh điểm yếu/kháng sát thương và bộ lọc chiêu thức theo hệ đòn tấn công.">
+<style>
+:root {
+  --bg:#f4f6f8; --panel:#fff; --text:#1f2937; --muted:#6b7280; --line:#d9dee5;
+  --shadow:0 8px 28px rgba(22,33,52,.12); --accent:#e53935; --accent2:#3b82f6;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text); background:
+  radial-gradient(circle at 10% 0%, rgba(229,57,53,.09), transparent 28rem),
+  radial-gradient(circle at 95% 8%, rgba(59,130,246,.08), transparent 25rem),
+  var(--bg);
+}
+header {
+  position:sticky; top:0; z-index:20; backdrop-filter:blur(14px);
+  background:rgba(244,246,248,.90); border-bottom:1px solid rgba(217,222,229,.8);
+}
+.wrap { max-width:1500px; margin:auto; padding:16px 20px; }
+.topbar { display:flex; align-items:center; gap:16px; justify-content:space-between; }
+.brand h1 { font-size:clamp(20px,2.2vw,32px); margin:0; letter-spacing:-.03em; }
+.brand p { margin:4px 0 0; color:var(--muted); font-size:13px; }
+.pokeball {
+  width:44px;height:44px;border-radius:50%;flex:0 0 auto;border:4px solid #222;background:
+  linear-gradient(#e53935 0 44%,#222 44% 56%,#fff 56%);
+  position:relative; box-shadow:var(--shadow);
+}
+.pokeball:after {
+  content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:white;border:4px solid #222;
+  left:50%;top:50%;transform:translate(-50%,-50%);
+}
+.controls {
+  display:grid; grid-template-columns:minmax(220px,2fr) repeat(3,minmax(145px,1fr)); gap:10px; margin-top:14px;
+}
+.control {
+  background:white;border:1px solid var(--line);border-radius:12px;padding:10px 12px;
+  display:flex;align-items:center;gap:8px;min-width:0;
+}
+.control input,.control select {
+  width:100%;border:0;outline:0;background:transparent;color:var(--text);font:inherit;min-width:0;
+}
+main.wrap { padding-top:18px; }
+.status { color:var(--muted);font-size:13px;margin:2px 0 14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap; }
+.grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px; }
+.card {
+  position:relative;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;
+  min-height:250px;overflow:hidden;box-shadow:0 2px 7px rgba(20,30,45,.04);
+  transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease; cursor:pointer;
+}
+.card:hover,.card:focus-visible { transform:translateY(-3px);box-shadow:var(--shadow);border-color:#b9c2ce;outline:none; }
+.card .num { position:absolute;top:12px;left:13px;color:#9aa2ad;font-size:12px;font-weight:800;letter-spacing:.05em; }
+.match {
+  position:absolute;top:10px;right:10px;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:900;
+  background:#eef2f7;color:#566171;border:1px solid #dde3eb;
+}
+.match[data-v="4"],.match[data-v="2"] { background:#fee2e2;color:#991b1b;border-color:#fecaca; }
+.match[data-v="0.5"],.match[data-v="0.25"] { background:#dcfce7;color:#166534;border-color:#bbf7d0; }
+.match[data-v="0"] { background:#e5e7eb;color:#374151;border-color:#d1d5db; }
+.spritebox { height:155px;display:grid;place-items:center;padding-top:10px; }
+.spritebox img {
+  width:132px;height:132px;object-fit:contain;image-rendering:pixelated;
+  filter:drop-shadow(0 8px 8px rgba(20,30,40,.14));
+}
+.name { text-align:center;font-weight:900;font-size:17px;margin-top:2px; }
+.types { display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:8px; }
+.type {
+  --c:#777; color:white;background:var(--c);padding:4px 9px;border-radius:999px;font-size:11px;font-weight:900;
+  text-transform:uppercase;letter-spacing:.04em;text-shadow:0 1px 1px rgba(0,0,0,.18);
+}
+.type-Normal{--c:#92999f} .type-Fire{--c:#ee6b2f} .type-Water{--c:#4d90d5} .type-Electric{--c:#f2c94c;color:#443b12;text-shadow:none}
+.type-Grass{--c:#63b65d} .type-Ice{--c:#74cfc0;color:#18443d;text-shadow:none} .type-Fighting{--c:#ce416b}
+.type-Poison{--c:#aa6bc8} .type-Ground{--c:#d97845} .type-Flying{--c:#8fa9de} .type-Psychic{--c:#fa7179}
+.type-Bug{--c:#91c12f;color:#26370b;text-shadow:none} .type-Rock{--c:#c5b78c;color:#3a3423;text-shadow:none} .type-Ghost{--c:#5269ad}
+.type-Dragon{--c:#0b6dc3} .type-Dark{--c:#5a5366} .type-Steel{--c:#5a8ea2}
+.tip {
+  position:fixed;z-index:1000;width:min(570px,calc(100vw - 24px));background:#101828;color:white;border-radius:18px;
+  padding:16px;box-shadow:0 24px 60px rgba(0,0,0,.28);pointer-events:none;opacity:0;transform:translateY(6px);
+  transition:opacity .12s ease,transform .12s ease;left:12px;top:12px;
+}
+.tip.show { opacity:1;transform:translateY(0); }
+.tiphead { display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px; }
+.tiptitle { font-weight:950;font-size:18px; } .tipsub { color:#b8c2d1;font-size:12px;margin-top:2px; }
+.defgrid { display:grid;grid-template-columns:repeat(6,1fr);gap:6px; }
+.defcell { background:#1f2937;border:1px solid #344054;border-radius:10px;padding:7px 5px;text-align:center; }
+.defcell .dt { font-size:10px;color:#c7d0dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+.defcell .dv { font-size:14px;font-weight:950;margin-top:2px; }
+.defcell.weak { background:#4a1f23;border-color:#7f3038; } .defcell.resist { background:#163b2b;border-color:#246344; }
+.defcell.immune { background:#30343b;border-color:#4b5563; } .defcell.superweak { box-shadow:inset 0 0 0 1px #ff6b6b; }
+.legend { display:flex;gap:10px;flex-wrap:wrap;color:#c7d0dc;font-size:11px;margin-top:10px; }
+dialog {
+  width:min(620px,calc(100vw - 24px));border:0;border-radius:20px;padding:0;background:#101828;color:white;
+  box-shadow:0 28px 80px rgba(0,0,0,.35);
+}
+dialog::backdrop { background:rgba(15,23,42,.55);backdrop-filter:blur(4px); }
+.dialoginner { padding:18px; } .closebtn { border:0;background:#273244;color:white;border-radius:10px;padding:8px 11px;cursor:pointer;font-weight:800; }
+footer { color:var(--muted);font-size:12px;line-height:1.6;padding:28px 20px 40px;text-align:center;max-width:1000px;margin:auto; }
+footer a { color:#4b68a6; }
+.empty { display:none;text-align:center;padding:60px 20px;color:var(--muted); }
+@media (max-width:800px) {
+  .controls { grid-template-columns:1fr 1fr; }
+  .control.search { grid-column:1/-1; }
+  .grid { grid-template-columns:repeat(2,minmax(0,1fr));gap:10px; }
+  .card { min-height:220px;padding:10px; } .spritebox { height:135px; } .spritebox img { width:116px;height:116px; }
+  .defgrid { grid-template-columns:repeat(3,1fr); } .tip { display:none!important; }
+}
+@media (max-width:430px) {
+  .wrap { padding-left:12px;padding-right:12px; }
+  .controls { grid-template-columns:1fr; } .control.search { grid-column:auto; }
+  .card { min-height:205px; } .spritebox { height:122px; } .spritebox img { width:108px;height:108px; }
+  .name { font-size:15px; } .type { font-size:9px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <h1>FireRed / LeafGreen Pokédex</h1>
+        <p>Hover để xem Type defenses • Gen III chart • 151 Pokémon Kanto</p>
+      </div>
+      <div class="pokeball" aria-hidden="true"></div>
+    </div>
+    <div class="controls">
+      <label class="control search">🔎 <input id="search" placeholder="Tìm tên hoặc số, ví dụ: Gengar / 094"></label>
+      <label class="control">Pokémon type
+        <select id="typeFilter"><option value="">Tất cả</option></select>
+      </label>
+      <label class="control">Đòn hệ
+        <select id="attackFilter"><option value="">Không chọn</option></select>
+      </label>
+      <label class="control">Hiệu quả
+        <select id="effectFilter" disabled>
+          <option value="">Tất cả</option>
+          <option value="4">4× (siêu yếu)</option><option value="2">2× (yếu)</option>
+          <option value="1">1× (bình thường)</option><option value="0.5">½× (kháng)</option>
+          <option value="0.25">¼× (kháng mạnh)</option><option value="0">0× (miễn nhiễm)</option>
+        </select>
+      </label>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="status"><span id="count"></span><span>Tip: chọn “Đòn hệ” để hiện hệ số ngay trên mọi card.</span></div>
+  <div id="grid" class="grid"></div>
+  <div id="empty" class="empty">Không có Pokémon phù hợp bộ lọc.</div>
+</main>
+
+<div id="tip" class="tip" role="tooltip"></div>
+
+<dialog id="detailDialog">
+  <div class="dialoginner">
+    <div id="dialogContent"></div>
+    <div style="text-align:right;margin-top:14px"><button class="closebtn" onclick="detailDialog.close()">Đóng</button></div>
+  </div>
+</dialog>
+
+<footer>
+  Dữ liệu danh sách Pokémon/type được đối chiếu theo Pokémon Database FireRed/LeafGreen Kanto Pokédex.
+  Type effectiveness dùng chart Gen III (Gen 2–5 rules: chưa có Fairy; Steel kháng Ghost và Dark).
+  Sprite tải từ kho PokeAPI khi mở file, nên cần Internet để hiện ảnh. Type defenses chỉ tính theo hệ, không áp dụng Ability
+  (ví dụ Levitate / Flash Fire / Water Absorb). Pokémon và hình ảnh Pokémon thuộc Nintendo / Game Freak.
+</footer>
+
+<script>
+const POKEMON = [{"id": 1, "name": "Bulbasaur", "types": ["Grass", "Poison"]}, {"id": 2, "name": "Ivysaur", "types": ["Grass", "Poison"]}, {"id": 3, "name": "Venusaur", "types": ["Grass", "Poison"]}, {"id": 4, "name": "Charmander", "types": ["Fire"]}, {"id": 5, "name": "Charmeleon", "types": ["Fire"]}, {"id": 6, "name": "Charizard", "types": ["Fire", "Flying"]}, {"id": 7, "name": "Squirtle", "types": ["Water"]}, {"id": 8, "name": "Wartortle", "types": ["Water"]}, {"id": 9, "name": "Blastoise", "types": ["Water"]}, {"id": 10, "name": "Caterpie", "types": ["Bug"]}, {"id": 11, "name": "Metapod", "types": ["Bug"]}, {"id": 12, "name": "Butterfree", "types": ["Bug", "Flying"]}, {"id": 13, "name": "Weedle", "types": ["Bug", "Poison"]}, {"id": 14, "name": "Kakuna", "types": ["Bug", "Poison"]}, {"id": 15, "name": "Beedrill", "types": ["Bug", "Poison"]}, {"id": 16, "name": "Pidgey", "types": ["Normal", "Flying"]}, {"id": 17, "name": "Pidgeotto", "types": ["Normal", "Flying"]}, {"id": 18, "name": "Pidgeot", "types": ["Normal", "Flying"]}, {"id": 19, "name": "Rattata", "types": ["Normal"]}, {"id": 20, "name": "Raticate", "types": ["Normal"]}, {"id": 21, "name": "Spearow", "types": ["Normal", "Flying"]}, {"id": 22, "name": "Fearow", "types": ["Normal", "Flying"]}, {"id": 23, "name": "Ekans", "types": ["Poison"]}, {"id": 24, "name": "Arbok", "types": ["Poison"]}, {"id": 25, "name": "Pikachu", "types": ["Electric"]}, {"id": 26, "name": "Raichu", "types": ["Electric"]}, {"id": 27, "name": "Sandshrew", "types": ["Ground"]}, {"id": 28, "name": "Sandslash", "types": ["Ground"]}, {"id": 29, "name": "Nidoran♀", "types": ["Poison"]}, {"id": 30, "name": "Nidorina", "types": ["Poison"]}, {"id": 31, "name": "Nidoqueen", "types": ["Poison", "Ground"]}, {"id": 32, "name": "Nidoran♂", "types": ["Poison"]}, {"id": 33, "name": "Nidorino", "types": ["Poison"]}, {"id": 34, "name": "Nidoking", "types": ["Poison", "Ground"]}, {"id": 35, "name": "Clefairy", "types": ["Normal"]}, {"id": 36, "name": "Clefable", "types": ["Normal"]}, {"id": 37, "name": "Vulpix", "types": ["Fire"]}, {"id": 38, "name": "Ninetales", "types": ["Fire"]}, {"id": 39, "name": "Jigglypuff", "types": ["Normal"]}, {"id": 40, "name": "Wigglytuff", "types": ["Normal"]}, {"id": 41, "name": "Zubat", "types": ["Poison", "Flying"]}, {"id": 42, "name": "Golbat", "types": ["Poison", "Flying"]}, {"id": 43, "name": "Oddish", "types": ["Grass", "Poison"]}, {"id": 44, "name": "Gloom", "types": ["Grass", "Poison"]}, {"id": 45, "name": "Vileplume", "types": ["Grass", "Poison"]}, {"id": 46, "name": "Paras", "types": ["Bug", "Grass"]}, {"id": 47, "name": "Parasect", "types": ["Bug", "Grass"]}, {"id": 48, "name": "Venonat", "types": ["Bug", "Poison"]}, {"id": 49, "name": "Venomoth", "types": ["Bug", "Poison"]}, {"id": 50, "name": "Diglett", "types": ["Ground"]}, {"id": 51, "name": "Dugtrio", "types": ["Ground"]}, {"id": 52, "name": "Meowth", "types": ["Normal"]}, {"id": 53, "name": "Persian", "types": ["Normal"]}, {"id": 54, "name": "Psyduck", "types": ["Water"]}, {"id": 55, "name": "Golduck", "types": ["Water"]}, {"id": 56, "name": "Mankey", "types": ["Fighting"]}, {"id": 57, "name": "Primeape", "types": ["Fighting"]}, {"id": 58, "name": "Growlithe", "types": ["Fire"]}, {"id": 59, "name": "Arcanine", "types": ["Fire"]}, {"id": 60, "name": "Poliwag", "types": ["Water"]}, {"id": 61, "name": "Poliwhirl", "types": ["Water"]}, {"id": 62, "name": "Poliwrath", "types": ["Water", "Fighting"]}, {"id": 63, "name": "Abra", "types": ["Psychic"]}, {"id": 64, "name": "Kadabra", "types": ["Psychic"]}, {"id": 65, "name": "Alakazam", "types": ["Psychic"]}, {"id": 66, "name": "Machop", "types": ["Fighting"]}, {"id": 67, "name": "Machoke", "types": ["Fighting"]}, {"id": 68, "name": "Machamp", "types": ["Fighting"]}, {"id": 69, "name": "Bellsprout", "types": ["Grass", "Poison"]}, {"id": 70, "name": "Weepinbell", "types": ["Grass", "Poison"]}, {"id": 71, "name": "Victreebel", "types": ["Grass", "Poison"]}, {"id": 72, "name": "Tentacool", "types": ["Water", "Poison"]}, {"id": 73, "name": "Tentacruel", "types": ["Water", "Poison"]}, {"id": 74, "name": "Geodude", "types": ["Rock", "Ground"]}, {"id": 75, "name": "Graveler", "types": ["Rock", "Ground"]}, {"id": 76, "name": "Golem", "types": ["Rock", "Ground"]}, {"id": 77, "name": "Ponyta", "types": ["Fire"]}, {"id": 78, "name": "Rapidash", "types": ["Fire"]}, {"id": 79, "name": "Slowpoke", "types": ["Water", "Psychic"]}, {"id": 80, "name": "Slowbro", "types": ["Water", "Psychic"]}, {"id": 81, "name": "Magnemite", "types": ["Electric", "Steel"]}, {"id": 82, "name": "Magneton", "types": ["Electric", "Steel"]}, {"id": 83, "name": "Farfetch'd", "types": ["Normal", "Flying"]}, {"id": 84, "name": "Doduo", "types": ["Normal", "Flying"]}, {"id": 85, "name": "Dodrio", "types": ["Normal", "Flying"]}, {"id": 86, "name": "Seel", "types": ["Water"]}, {"id": 87, "name": "Dewgong", "types": ["Water", "Ice"]}, {"id": 88, "name": "Grimer", "types": ["Poison"]}, {"id": 89, "name": "Muk", "types": ["Poison"]}, {"id": 90, "name": "Shellder", "types": ["Water"]}, {"id": 91, "name": "Cloyster", "types": ["Water", "Ice"]}, {"id": 92, "name": "Gastly", "types": ["Ghost", "Poison"]}, {"id": 93, "name": "Haunter", "types": ["Ghost", "Poison"]}, {"id": 94, "name": "Gengar", "types": ["Ghost", "Poison"]}, {"id": 95, "name": "Onix", "types": ["Rock", "Ground"]}, {"id": 96, "name": "Drowzee", "types": ["Psychic"]}, {"id": 97, "name": "Hypno", "types": ["Psychic"]}, {"id": 98, "name": "Krabby", "types": ["Water"]}, {"id": 99, "name": "Kingler", "types": ["Water"]}, {"id": 100, "name": "Voltorb", "types": ["Electric"]}, {"id": 101, "name": "Electrode", "types": ["Electric"]}, {"id": 102, "name": "Exeggcute", "types": ["Grass", "Psychic"]}, {"id": 103, "name": "Exeggutor", "types": ["Grass", "Psychic"]}, {"id": 104, "name": "Cubone", "types": ["Ground"]}, {"id": 105, "name": "Marowak", "types": ["Ground"]}, {"id": 106, "name": "Hitmonlee", "types": ["Fighting"]}, {"id": 107, "name": "Hitmonchan", "types": ["Fighting"]}, {"id": 108, "name": "Lickitung", "types": ["Normal"]}, {"id": 109, "name": "Koffing", "types": ["Poison"]}, {"id": 110, "name": "Weezing", "types": ["Poison"]}, {"id": 111, "name": "Rhyhorn", "types": ["Ground", "Rock"]}, {"id": 112, "name": "Rhydon", "types": ["Ground", "Rock"]}, {"id": 113, "name": "Chansey", "types": ["Normal"]}, {"id": 114, "name": "Tangela", "types": ["Grass"]}, {"id": 115, "name": "Kangaskhan", "types": ["Normal"]}, {"id": 116, "name": "Horsea", "types": ["Water"]}, {"id": 117, "name": "Seadra", "types": ["Water"]}, {"id": 118, "name": "Goldeen", "types": ["Water"]}, {"id": 119, "name": "Seaking", "types": ["Water"]}, {"id": 120, "name": "Staryu", "types": ["Water"]}, {"id": 121, "name": "Starmie", "types": ["Water", "Psychic"]}, {"id": 122, "name": "Mr. Mime", "types": ["Psychic"]}, {"id": 123, "name": "Scyther", "types": ["Bug", "Flying"]}, {"id": 124, "name": "Jynx", "types": ["Ice", "Psychic"]}, {"id": 125, "name": "Electabuzz", "types": ["Electric"]}, {"id": 126, "name": "Magmar", "types": ["Fire"]}, {"id": 127, "name": "Pinsir", "types": ["Bug"]}, {"id": 128, "name": "Tauros", "types": ["Normal"]}, {"id": 129, "name": "Magikarp", "types": ["Water"]}, {"id": 130, "name": "Gyarados", "types": ["Water", "Flying"]}, {"id": 131, "name": "Lapras", "types": ["Water", "Ice"]}, {"id": 132, "name": "Ditto", "types": ["Normal"]}, {"id": 133, "name": "Eevee", "types": ["Normal"]}, {"id": 134, "name": "Vaporeon", "types": ["Water"]}, {"id": 135, "name": "Jolteon", "types": ["Electric"]}, {"id": 136, "name": "Flareon", "types": ["Fire"]}, {"id": 137, "name": "Porygon", "types": ["Normal"]}, {"id": 138, "name": "Omanyte", "types": ["Rock", "Water"]}, {"id": 139, "name": "Omastar", "types": ["Rock", "Water"]}, {"id": 140, "name": "Kabuto", "types": ["Rock", "Water"]}, {"id": 141, "name": "Kabutops", "types": ["Rock", "Water"]}, {"id": 142, "name": "Aerodactyl", "types": ["Rock", "Flying"]}, {"id": 143, "name": "Snorlax", "types": ["Normal"]}, {"id": 144, "name": "Articuno", "types": ["Ice", "Flying"]}, {"id": 145, "name": "Zapdos", "types": ["Electric", "Flying"]}, {"id": 146, "name": "Moltres", "types": ["Fire", "Flying"]}, {"id": 147, "name": "Dratini", "types": ["Dragon"]}, {"id": 148, "name": "Dragonair", "types": ["Dragon"]}, {"id": 149, "name": "Dragonite", "types": ["Dragon", "Flying"]}, {"id": 150, "name": "Mewtwo", "types": ["Psychic"]}, {"id": 151, "name": "Mew", "types": ["Psychic"]}];
+const TYPES = ["Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel"];
+const CHART = {"Normal": {"Normal": 1, "Fire": 1, "Water": 1, "Electric": 1, "Grass": 1, "Ice": 1, "Fighting": 1, "Poison": 1, "Ground": 1, "Flying": 1, "Psychic": 1, "Bug": 1, "Rock": 0.5, "Ghost": 0, "Dragon": 1, "Dark": 1, "Steel": 0.5}, "Fire": {"Normal": 1, "Fire": 0.5, "Water": 0.5, "Electric": 1, "Grass": 2, "Ice": 2, "Fighting": 1, "Poison": 1, "Ground": 1, "Flying": 1, "Psychic": 1, "Bug": 2, "Rock": 0.5, "Ghost": 1, "Dragon": 0.5, "Dark": 1, "Steel": 2}, "Water": {"Normal": 1, "Fire": 2, "Water": 0.5, "Electric": 1, "Grass": 0.5, "Ice": 1, "Fighting": 1, "Poison": 1, "Ground": 2, "Flying": 1, "Psychic": 1, "Bug": 1, "Rock": 2, "Ghost": 1, "Dragon": 0.5, "Dark": 1, "Steel": 1}, "Electric": {"Normal": 1, "Fire": 1, "Water": 2, "Electric": 0.5, "Grass": 0.5, "Ice": 1, "Fighting": 1, "Poison": 1, "Ground": 0, "Flying": 2, "Psychic": 1, "Bug": 1, "Rock": 1, "Ghost": 1, "Dragon": 0.5, "Dark": 1, "Steel": 1}, "Grass": {"Normal": 1, "Fire": 0.5, "Water": 2, "Electric": 1, "Grass": 0.5, "Ice": 1, "Fighting": 1, "Poison": 0.5, "Ground": 2, "Flying": 0.5, "Psychic": 1, "Bug": 0.5, "Rock": 2, "Ghost": 1, "Dragon": 0.5, "Dark": 1, "Steel": 0.5}, "Ice": {"Normal": 1, "Fire": 0.5, "Water": 0.5, "Electric": 1, "Grass": 2, "Ice": 0.5, "Fighting": 1, "Poison": 1, "Ground": 2, "Flying": 2, "Psychic": 1, "Bug": 1, "Rock": 1, "Ghost": 1, "Dragon": 2, "Dark": 1, "Steel": 0.5}, "Fighting": {"Normal": 2, "Fire": 1, "Water": 1, "Electric": 1, "Grass": 1, "Ice": 2, "Fighting": 1, "Poison": 0.5, "Ground": 1, "Flying": 0.5, "Psychic": 0.5, "Bug": 0.5, "Rock": 2, "Ghost": 0, "Dragon": 1, "Dark": 2, "Steel": 2}, "Poison": {"Normal": 1, "Fire": 1, "Water": 1, "Electric": 1, "Grass": 2, "Ice": 1, "Fighting": 1, "Poison": 0.5, "Ground": 0.5, "Flying": 1, "Psychic": 1, "Bug": 1, "Rock": 0.5, "Ghost": 0.5, "Dragon": 1, "Dark": 1, "Steel": 0}, "Ground": {"Normal": 1, "Fire": 2, "Water": 1, "Electric": 2, "Grass": 0.5, "Ice": 1, "Fighting": 1, "Poison": 2, "Ground": 1, "Flying": 0, "Psychic": 1, "Bug": 0.5, "Rock": 2, "Ghost": 1, "Dragon": 1, "Dark": 1, "Steel": 2}, "Flying": {"Normal": 1, "Fire": 1, "Water": 1, "Electric": 0.5, "Grass": 2, "Ice": 1, "Fighting": 2, "Poison": 1, "Ground": 1, "Flying": 1, "Psychic": 1, "Bug": 2, "Rock": 0.5, "Ghost": 1, "Dragon": 1, "Dark": 1, "Steel": 0.5}, "Psychic": {"Normal": 1, "Fire": 1, "Water": 1, "Electric": 1, "Grass": 1, "Ice": 1, "Fighting": 2, "Poison": 2, "Ground": 1, "Flying": 1, "Psychic": 0.5, "Bug": 1, "Rock": 1, "Ghost": 1, "Dragon": 1, "Dark": 0, "Steel": 0.5}, "Bug": {"Normal": 1, "Fire": 0.5, "Water": 1, "Electric": 1, "Grass": 2, "Ice": 1, "Fighting": 0.5, "Poison": 0.5, "Ground": 1, "Flying": 0.5, "Psychic": 2, "Bug": 1, "Rock": 1, "Ghost": 0.5, "Dragon": 1, "Dark": 2, "Steel": 0.5}, "Rock": {"Normal": 1, "Fire": 2, "Water": 1, "Electric": 1, "Grass": 1, "Ice": 2, "Fighting": 0.5, "Poison": 1, "Ground": 0.5, "Flying": 2, "Psychic": 1, "Bug": 2, "Rock": 1, "Ghost": 1, "Dragon": 1, "Dark": 1, "Steel": 0.5}, "Ghost": {"Normal": 0, "Fire": 1, "Water": 1, "Electric": 1, "Grass": 1, "Ice": 1, "Fighting": 1, "Poison": 1, "Ground": 1, "Flying": 1, "Psychic": 2, "Bug": 1, "Rock": 1, "Ghost": 2, "Dragon": 1, "Dark": 0.5, "Steel": 0.5}, "Dragon": {"Normal": 1, "Fire": 1, "Water": 1, "Electric": 1, "Grass": 1, "Ice": 1, "Fighting": 1, "Poison": 1, "Ground": 1, "Flying": 1, "Psychic": 1, "Bug": 1, "Rock": 1, "Ghost": 1, "Dragon": 2, "Dark": 1, "Steel": 0.5}, "Dark": {"Normal": 1, "Fire": 1, "Water": 1, "Electric": 1, "Grass": 1, "Ice": 1, "Fighting": 0.5, "Poison": 1, "Ground": 1, "Flying": 1, "Psychic": 2, "Bug": 1, "Rock": 1, "Ghost": 2, "Dragon": 1, "Dark": 0.5, "Steel": 0.5}, "Steel": {"Normal": 1, "Fire": 0.5, "Water": 0.5, "Electric": 0.5, "Grass": 1, "Ice": 2, "Fighting": 1, "Poison": 1, "Ground": 1, "Flying": 1, "Psychic": 1, "Bug": 1, "Rock": 2, "Ghost": 1, "Dragon": 1, "Dark": 1, "Steel": 0.5}};
+const SHORT = {Normal:"NOR",Fire:"FIR",Water:"WAT",Electric:"ELE",Grass:"GRA",Ice:"ICE",Fighting:"FIG",Poison:"POI",Ground:"GRO",Flying:"FLY",Psychic:"PSY",Bug:"BUG",Rock:"ROC",Ghost:"GHO",Dragon:"DRA",Dark:"DAR",Steel:"STE"};
+const TYPE_VI = {Normal:"Thường",Fire:"Lửa",Water:"Nước",Electric:"Điện",Grass:"Cỏ",Ice:"Băng",Fighting:"Giác đấu",Poison:"Độc",Ground:"Đất",Flying:"Bay",Psychic:"Tâm linh",Bug:"Côn trùng",Rock:"Đá",Ghost:"Ma",Dragon:"Rồng",Dark:"Bóng tối",Steel:"Thép"};
+const grid = document.getElementById('grid'), tip = document.getElementById('tip');
+const search = document.getElementById('search'), typeFilter = document.getElementById('typeFilter');
+const attackFilter = document.getElementById('attackFilter'), effectFilter = document.getElementById('effectFilter');
+const count = document.getElementById('count'), empty = document.getElementById('empty');
+const detailDialog = document.getElementById('detailDialog'), dialogContent=document.getElementById('dialogContent');
+
+function fmt(v) { return v===0?"0×":v===.25?"¼×":v===.5?"½×":v+"×"; }
+function mult(p, attack) { return p.types.reduce((m,t)=>m*CHART[attack][t],1); }
+function classFor(v) { return v===0?"immune":v<1?"resist":v>1?(v===4?"weak superweak":"weak"):""; }
+function slugName(p) { return p.name.toLowerCase().replace("♀","-f").replace("♂","-m").replace(/[^a-z0-9-]/g,""); }
+function spriteUrl(p) {
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/${p.id}.png`;
+}
+function fallbackArt(img,p) {
+  img.onerror=null;
+  img.style.imageRendering='auto';
+  img.src=`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`;
+}
+function detailsHTML(p) {
+  const cells=TYPES.map(t=>{ const v=mult(p,t); return `<div class="defcell ${classFor(v)}"><div class="dt" title="${t}">${SHORT[t]}</div><div class="dv">${fmt(v)}</div></div>`; }).join("");
+  return `<div class="tiphead"><div><div class="tiptitle">#${String(p.id).padStart(3,"0")} ${p.name}</div>
+    <div class="tipsub">${p.types.join(" / ")} • sát thương nhận vào theo hệ đòn tấn công</div></div></div>
+    <div class="defgrid">${cells}</div>
+    <div class="legend"><span>🔴 2× / 4×: yếu</span><span>🟢 ½× / ¼×: kháng</span><span>⚫ 0×: miễn nhiễm</span></div>`;
+}
+function cardHTML(p) {
+  const selected=attackFilter.value, v=selected?mult(p,selected):null;
+  return `<article class="card" tabindex="0" data-id="${p.id}">
+    <div class="num">#${String(p.id).padStart(3,"0")}</div>
+    ${selected?`<div class="match" data-v="${v}">vs ${SHORT[selected]} ${fmt(v)}</div>`:""}
+    <div class="spritebox"><img loading="lazy" alt="${p.name}" src="${spriteUrl(p)}" onerror='fallbackArt(this, POKEMON[${p.id-1}])'></div>
+    <div class="name">${p.name}</div><div class="types">${p.types.map(t=>`<span class="type type-${t}">${t}</span>`).join("")}</div>
+  </article>`;
+}
+function render() {
+  const q=search.value.trim().toLowerCase(), tf=typeFilter.value, atk=attackFilter.value, eff=effectFilter.value;
+  let list=POKEMON.filter(p=>{
+    const hit=!q || p.name.toLowerCase().includes(q) || String(p.id).padStart(3,"0").includes(q.replace("#",""));
+    if(!hit) return false;
+    if(tf && !p.types.includes(tf)) return false;
+    if(atk && eff!=="" && String(mult(p,atk))!==eff) return false;
+    return true;
+  });
+  grid.innerHTML=list.map(cardHTML).join("");
+  count.textContent=`Hiển thị ${list.length} / 151 Pokémon`;
+  empty.style.display=list.length?"none":"block";
+  bindCards();
+}
+function showTip(card,p,e) {
+  tip.innerHTML=detailsHTML(p); tip.classList.add("show");
+  moveTip(e);
+}
+function moveTip(e) {
+  if(!e) return;
+  const gap=16, w=tip.offsetWidth||570, h=tip.offsetHeight||300;
+  let x=e.clientX+gap, y=e.clientY+gap;
+  if(x+w>innerWidth-8) x=e.clientX-w-gap;
+  if(y+h>innerHeight-8) y=e.clientY-h-gap;
+  tip.style.left=Math.max(8,x)+"px"; tip.style.top=Math.max(8,y)+"px";
+}
+function bindCards() {
+  document.querySelectorAll(".card").forEach(card=>{
+    const p=POKEMON[Number(card.dataset.id)-1];
+    card.addEventListener("mouseenter",e=>showTip(card,p,e));
+    card.addEventListener("mousemove",moveTip);
+    card.addEventListener("mouseleave",()=>tip.classList.remove("show"));
+    card.addEventListener("focus",()=>{ tip.innerHTML=detailsHTML(p); tip.style.left="12px";tip.style.top="12px";tip.classList.add("show"); });
+    card.addEventListener("blur",()=>tip.classList.remove("show"));
+    card.addEventListener("click",()=>{ dialogContent.innerHTML=detailsHTML(p); detailDialog.showModal(); });
+  });
+}
+TYPES.forEach(t=>{
+  typeFilter.insertAdjacentHTML("beforeend",`<option value="${t}">${TYPE_VI[t]} (${t})</option>`);
+  attackFilter.insertAdjacentHTML("beforeend",`<option value="${t}">${TYPE_VI[t]} (${t})</option>`);
+});
+search.addEventListener("input",render); typeFilter.addEventListener("change",render);
+attackFilter.addEventListener("change",()=>{ effectFilter.disabled=!attackFilter.value; if(!attackFilter.value)effectFilter.value=""; render(); });
+effectFilter.addEventListener("change",render);
+detailDialog.addEventListener("click",e=>{ if(e.target===detailDialog)detailDialog.close(); });
+render();
+</script>
+</body>
+</html>

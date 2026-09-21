@@ -196,9 +196,13 @@ function build() {
   console.log('🚀 [Wiki-Game] Bắt đầu quá trình build...');
   const startTime = Date.now();
 
-  // 1. Ensure directories
+  // 1. Ensure directories and clean stale guides in dist
   ensureDir(GUIDES_DIR);
   ensureDir(DIST_DIR);
+  const distGuidesDir = path.join(DIST_DIR, 'guides');
+  if (fs.existsSync(distGuidesDir)) {
+    fs.rmSync(distGuidesDir, { recursive: true, force: true });
+  }
 
   // 2. Copy static assets and components to dist
   copyDir(path.join(SRC_DIR, 'assets'), path.join(DIST_DIR, 'assets'));
