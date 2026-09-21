@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Aniimo – Roster 9 Con Xoay Trainer Đi Story Chuẩn Nhất</title>
+<meta name="game" content="Aniimo">
+<meta name="description" content="Chi tiết roster 9 Aniimo xoay vòng đánh Trainer & Story hiệu quả: Helion, Glacy, Panpanta, Inferlupa... Công cụ chọn team 4 con counter từng hệ nhanh chóng.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #070d19;
+  --bg-surface: #0c1527;
+  --card: #101c32;
+  --card-hover: #152440;
+  --card-border: rgba(56, 189, 248, 0.14);
+  --text: #f0f6fc;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-glow: rgba(56, 189, 248, 0.25);
+  --gold: #fbbf24;
+  --ok: #34d399;
+  --warn: #fb923c;
+  --danger: #f87171;
+  --purple: #c084fc;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  background: radial-gradient(circle at 18% -5%, #18325a 0%, #0c162b 30%, #070d19 100%);
+  min-height: 100vh;
+}
+
+a { color: var(--accent); text-decoration: none; transition: color 0.15s; }
+a:hover { color: #bae6fd; text-decoration: underline; }
+
+.wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+}
+
+/* Hero Header */
+.hero {
+  padding: 12px 0 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.24);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 4.2vw, 48px);
+  line-height: 1.15;
+  margin: 0 0 12px;
+  letter-spacing: -0.025em;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffffff 30%, #93c5fd 80%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lead {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 960px;
+  margin: 0;
+  line-height: 1.65;
+}
+
+.lead b { color: #f1f5f9; }
+
+.notice {
+  background: linear-gradient(135deg, rgba(14, 25, 48, 0.9), rgba(10, 18, 36, 0.9));
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-left: 4px solid var(--accent);
+  padding: 14px 18px;
+  border-radius: 14px;
+  margin: 20px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #cbd5e1;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.notice b { color: #fff; }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 24px;
+}
+
+.chip {
+  background: rgba(18, 29, 50, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: #e2e8f0;
+  font-size: 12.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.chip:hover {
+  background: rgba(30, 48, 80, 0.9);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.chip.core-chip {
+  border-color: rgba(52, 211, 153, 0.4);
+  background: rgba(16, 45, 35, 0.85);
+  color: #a7f3d0;
+}
+
+/* Matchup Interactive Panel */
+.matchup-panel {
+  position: sticky;
+  top: 60px; /* Offset for <wiki-nav-hud> */
+  z-index: 50;
+  margin: 24px 0 32px;
+  padding: 20px 22px;
+  background: rgba(12, 21, 38, 0.92);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.matchup-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.matchup-head h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.matchup-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.type-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.type-btn {
+  appearance: none;
+  border: 1px solid rgba(71, 85, 105, 0.4);
+  background: rgba(21, 34, 58, 0.8);
+  color: #e2e8f0;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.type-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: rgba(30, 48, 80, 0.9);
+  color: #fff;
+}
+
+.type-btn.active {
+  background: linear-gradient(135deg, #38bdf8, #0284c7);
+  color: #041324;
+  border-color: #7dd3fc;
+  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.4);
+  transform: translateY(-1px);
+  font-weight: 850;
+}
+
+.btn-reset {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  color: #94a3b8;
+  font-size: 12.5px;
+  padding: 6px 12px;
+}
+.btn-reset:hover {
+  color: #f1f5f9;
+  border-color: #64748b;
+}
+
+.team-result {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.team-box, .why-box {
+  background: rgba(7, 14, 27, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.team-box b, .why-box b {
+  display: block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+
+.team-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.team-pill {
+  background: linear-gradient(135deg, rgba(28, 51, 84, 0.9), rgba(15, 30, 54, 0.9));
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 13.5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.form-note {
+  margin-top: 10px;
+  color: #fed7aa;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#teamWhy {
+  font-size: 13.5px;
+  color: #cbd5e1;
+  line-height: 1.55;
+}
+
+/* Sections */
+.section {
+  margin-top: 48px;
+}
+
+.section h2 {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0 0 8px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-sub {
+  color: var(--muted);
+  font-size: 14.5px;
+  margin: 0 0 20px;
+}
+
+/* Grid & Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  background: linear-gradient(180deg, #131f37 0%, #0e172a 100%);
+  border: 1px solid rgba(71, 85, 105, 0.35);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease, opacity 0.25s ease, filter 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+.card.dimmed {
+  opacity: 0.32;
+  filter: grayscale(0.55);
+  transform: scale(0.985);
+}
+
+.card.recommended {
+  opacity: 1;
+  filter: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.35), 0 18px 45px rgba(0, 0, 0, 0.6);
+  transform: translateY(-4px);
+}
+
+.pick-badge {
+  display: none;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 5;
+  background: linear-gradient(135deg, #38bdf8, #0284c7);
+  color: #031322;
+  border: 1px solid #fff;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 11.5px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+.card.recommended .pick-badge { display: block; }
+
+.art {
+  height: 250px;
+  background: radial-gradient(circle at 50% 65%, #1e355c 0%, #0a1426 75%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.art:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to top, rgba(14, 23, 42, 0.8), transparent);
+  pointer-events: none;
+}
+
+.art:after {
+  content: 'Wiki Official';
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  color: #94a3b8;
+  font-size: 10.5px;
+  font-weight: 700;
+  background: rgba(7, 16, 26, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3px 8px;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+
+.art img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 20px rgba(0, 0, 0, 0.65));
+  transition: transform 0.3s ease;
+}
+
+.card:hover .art img {
+  transform: scale(1.05);
+}
+
+.body {
+  padding: 18px;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.title h3 {
+  font-size: 21px;
+  font-weight: 850;
+  margin: 0;
+  color: #fff;
+}
+
+.no {
+  color: var(--muted);
+  font-weight: 800;
+  font-size: 13px;
+  font-family: monospace;
+}
+
+/* Badges & Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 14px;
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: rgba(38, 56, 90, 0.8);
+  border: 1px solid rgba(58, 82, 126, 0.7);
+  color: #e2e8f0;
+}
+
+/* Elemental colors */
+.tag.elem-holy { background: rgba(245, 158, 11, 0.16); color: #fde047; border-color: rgba(245, 158, 11, 0.4); }
+.tag.elem-water { background: rgba(56, 189, 248, 0.16); color: #38bdf8; border-color: rgba(56, 189, 248, 0.4); }
+.tag.elem-fire { background: rgba(239, 68, 68, 0.16); color: #f87171; border-color: rgba(239, 68, 68, 0.4); }
+.tag.elem-grass { background: rgba(34, 197, 94, 0.16); color: #4ade80; border-color: rgba(34, 197, 94, 0.4); }
+.tag.elem-ice { background: rgba(6, 182, 212, 0.16); color: #67e8f9; border-color: rgba(6, 182, 212, 0.4); }
+.tag.elem-electric { background: rgba(234, 179, 8, 0.16); color: #facc15; border-color: rgba(234, 179, 8, 0.4); }
+.tag.elem-dark { background: rgba(168, 85, 247, 0.16); color: #c084fc; border-color: rgba(168, 85, 247, 0.4); }
+.tag.elem-wind { background: rgba(20, 184, 166, 0.16); color: #2dd4bf; border-color: rgba(20, 184, 166, 0.4); }
+.tag.elem-earth { background: rgba(217, 119, 6, 0.16); color: #fbbf24; border-color: rgba(217, 119, 6, 0.4); }
+
+/* Roles */
+.tag.role-dps { background: rgba(225, 29, 72, 0.2); color: #fda4af; border-color: rgba(225, 29, 72, 0.5); }
+.tag.role-heal { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border-color: rgba(16, 185, 129, 0.5); }
+.tag.role-break { background: rgba(245, 158, 11, 0.2); color: #fcd34d; border-color: rgba(245, 158, 11, 0.5); }
+.tag.role-support { background: rgba(99, 102, 241, 0.2); color: #a5b4fc; border-color: rgba(99, 102, 241, 0.5); }
+.tag.role-regen { background: rgba(139, 92, 246, 0.2); color: #d8b4fe; border-color: rgba(139, 92, 246, 0.5); }
+
+.tag.form-tag { background: rgba(77, 60, 29, 0.7); color: #fef08a; border-color: rgba(161, 98, 7, 0.5); }
+.tag.core-tag { background: rgba(23, 70, 52, 0.8); color: #6ee7b7; border-color: rgba(52, 211, 153, 0.6); font-weight: 900; }
+
+/* Info Rows inside card */
+.rows {
+  display: grid;
+  gap: 8px;
+}
+
+.row {
+  padding: 9px 12px;
+  background: rgba(10, 18, 34, 0.7);
+  border-radius: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #cbd5e1;
+}
+
+.row-label {
+  color: var(--accent);
+  font-weight: 800;
+  margin-right: 4px;
+}
+
+.row b { color: #f1f5f9; }
+.k { color: #7dd3fc; font-weight: 750; }
+.small { color: var(--muted); font-size: 12.5px; }
+
+.source {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.route {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.node {
+  padding: 2px 7px;
+  border-radius: 7px;
+  background: rgba(24, 37, 65, 0.85);
+  border: 1px solid rgba(51, 77, 120, 0.6);
+  font-size: 12px;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.arr {
+  color: #64748b;
+  font-weight: 900;
+  font-size: 11px;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: rgba(12, 21, 38, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+th, td {
+  text-align: left;
+  padding: 13px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  vertical-align: middle;
+}
+
+th {
+  background: rgba(22, 36, 62, 0.9);
+  color: #e2e8f0;
+  font-size: 13.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+tr:last-child td { border-bottom: 0; }
+tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+.core { color: var(--ok); font-weight: 800; }
+.star { color: var(--gold); letter-spacing: 2px; }
+
+/* Form Legend */
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+.legend .box {
+  padding: 14px 16px;
+  background: rgba(12, 22, 40, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.14);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+}
+
+.legend .box b {
+  display: block;
+  font-size: 14.5px;
+  color: #f1f5f9;
+  margin-bottom: 4px;
+}
+
+.footer {
+  margin-top: 48px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 20px;
+}
+
+@media (max-width: 820px) {
+  .matchup-panel { position: relative; top: auto; }
+  .team-result { grid-template-columns: 1fr; }
+  .type-btn { padding: 7px 11px; font-size: 13px; }
+  .art { height: 210px; }
+  th, td { padding: 10px 12px; font-size: 13px; }
+  .hide-mobile { display: none; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div class="eyebrow">🎮 Aniimo Strategy Guide</div>
+    <h1>Roster Aniimo 9 Con Để Xoay Trainer</h1>
+    <p class="lead">Bản thiết kế tối ưu xoay quanh <b>Helion + Glacy Prismana</b>, gạt Sherro khỏi core và bổ sung <b>Panpanta</b> + <b>Grizbo</b>. Mục tiêu giúp vượt qua mọi Trainer và Story mượt mà: đầy đủ DPS / Heal / BREAK / Support / Regen mà <b>không bị áp lực phải cày level cả 9 con</b>.</p>
+  </header>
+
+  <div class="notice">
+    <b>📖 Nguồn đối chiếu:</b> Hệ, Role, Stat, Form, Habitat, Trait và Cây tiến hoá được trích xuất trực tiếp từ <b>Aniimo Wiki / Aniidex chính thức</b>. Phần “chọn form nào” và “đội 4 con đối đầu hệ X” là giải pháp chiến thuật tối ưu thời gian chơi, tránh lãng phí tài nguyên grind.
+  </div>
+
+  <div class="chips">
+    <span class="chip core-chip">⚔️ Core: Helion</span>
+    <span class="chip core-chip">💧 Core: Glacy Prismana</span>
+    <span class="chip core-chip">🛡️ Water BREAK: Panpanta</span>
+    <span class="chip core-chip">🔥 Fire/Dark BREAK: Inferlupa</span>
+    <span class="chip">🌿 Grass/Electric DPS: Thornblade</span>
+    <span class="chip">⚡ Support: Turbo</span>
+    <span class="chip">❄️ Ice BREAK: Geoclaw</span>
+    <span class="chip">🔮 REGEN: Hexxin</span>
+    <span class="chip">🪨 Earth/Rock DPS: Grizbo</span>
+  </div>
+
+  <!-- Interactive Matchup Selector -->
+  <section class="matchup-panel" aria-label="Chọn hệ đối thủ">
+    <div class="matchup-head">
+      <div>
+        <h2>⚔️ Chọn hệ Trainer đang gặp</h2>
+        <p>Bấm chọn một hệ bên dưới để hệ thống tự động highlight 4 Aniimo tối ưu nhất nên đem theo.</p>
+      </div>
+      <button class="type-btn btn-reset" id="resetTeam" type="button">🔄 Hiện cả roster (9 con)</button>
+    </div>
+
+    <div class="type-picker" id="typePicker">
+      <button class="type-btn active" data-matchup="default" type="button">🌐 Không biết trước</button>
+      <button class="type-btn" data-matchup="water" type="button">💧 Nước</button>
+      <button class="type-btn" data-matchup="fire" type="button">🔥 Lửa</button>
+      <button class="type-btn" data-matchup="grass" type="button">🌿 Cỏ</button>
+      <button class="type-btn" data-matchup="ice" type="button">❄️ Băng</button>
+      <button class="type-btn" data-matchup="electric" type="button">⚡ Điện</button>
+      <button class="type-btn" data-matchup="earth" type="button">🪨 Đất / Earth</button>
+      <button class="type-btn" data-matchup="wind" type="button">🌪️ Gió</button>
+      <button class="type-btn" data-matchup="dark" type="button">🌑 Bóng tối</button>
+      <button class="type-btn" data-matchup="holy" type="button">✨ Thánh</button>
+      <button class="type-btn" data-matchup="boss" type="button">👑 Boss / Trận dài</button>
+    </div>
+
+    <div class="team-result">
+      <div class="team-box">
+        <b>⭐ 4 Con Đề Xuất</b>
+        <div class="team-pills" id="teamPills"></div>
+        <div class="form-note" id="formNote"></div>
+      </div>
+      <div class="why-box">
+        <b>💡 Cách Đánh Nhanh</b>
+        <div id="teamWhy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. Danh sách 9 Aniimo -->
+  <section class="section">
+    <h2>1) Danh sách 9 Aniimo trong Roster</h2>
+    <p class="section-sub">4 con đầu là nhóm nòng cốt (Core) cần tập trung level và tài nguyên; 5 con sau là linh hoạt (Flex) để khắc chế triệt để từng Trainer.</p>
+    
+    <div class="grid">
+
+      <!-- Helion -->
+      <article class="card" data-aniimo="helion">
+        <span class="pick-badge">NÊN MANG</span>
+        <div class="art">
+          <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10361.png" alt="Helion">
+        </div>
+        <div class="body">
+          <div class="title"><h3>Helion</h3><span class="no">#99998</span></div>
+          <div class="tags">
+            <span class="tag elem-holy">Thánh</span>
+            <span class="tag role-dps">DPS</span>
+            <span class="tag form-tag">Basic</span>
+            <span class="tag core-tag">CORE</span>
+          </div>
+          <div class="rows">
+            <div class="row"><span class="row-label">🎯 Vai trò:</span>Carry vật lý cận chiến; con cưng "khi chưa biết địch chơi gì cứ mang". ATK 116, tổng stat 514.</div>
+            <div class="row"><span class="row-label">🧬 Tiến hoá:</span>Aniidex không có cây tiến hoá thông thường; Ultimate biến đổi trong combat chứ không cần farm nhánh tiến hoá.</div>
+            <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Basic</span> — hiện wiki chỉ có 1 form duy nhất.</div>
+            <div class="row"><span class="row-label">📍 Xuất hiện:</span>Starter / nhiệm vụ đặc biệt; official wiki không ghi habitat hoang dã.</div>
+            <div class="row"><span class="row-label">💡 Lưu ý:</span>Trait <b>Ân Huệ Thái Dương</b> tăng +30% final damage khi không đánh bằng nguyên tố tương khắc — cực kỳ hoàn hảo cho vai trò carry trung tính.</div>
+          </div>
+          <div class="source"><a href="https://wiki.aniimo.com/vi/item/99998/basic-form" target="_blank" rel="noopener">Official Aniidex – Helion ↗</a></div>
+        </div>
+      </article>
+
+      <!-- Glacy -->
+      <article class="card" data-aniimo="glacy">
+        <span class="pick-badge">NÊN MANG</span>
+        <div class="art">
+          <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png" alt="Glacy Prismana">
+        </div>
+        <div class="body">
+          <div class="title"><h3>Glacy</h3><span class="no">#015</span></div>
+          <div class="tags">
+            <span class="tag elem-holy">Thánh</span>
+            <span class="tag elem-water">Nước</span>
+            <span class="tag role-heal">Heal</span>
+            <span class="tag form-tag">Prismana ★</span>
+            <span class="tag core-tag">CORE</span>
+          </div>
+          <div class="rows">
+            <div class="row"><span class="row-label">🎯 Vai trò:</span>Healer chính + buff toàn diện; HP 120, M.DEF 110. Luôn khóa slot ở các trận Trainer khó hoặc Boss.</div>
+            <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Skippy</span><span class="arr">→</span><span class="node">Pranky</span><span class="arr">→</span><span class="node">Glacy</span></span></div>
+            <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Prismana</span> — hệ Thánh/Nước; bảo toàn Heal và bổ sung coverage Thánh rất giá trị cho team.</div>
+            <div class="row"><span class="row-label">📍 Xuất hiện:</span><span class="k">Driftwise Meadow</span> (cho dạng Prismana); Sea of Flowers form ở Sea of Flowers.</div>
+            <div class="row"><span class="row-label">💡 Lưu ý:</span>Water Spirit giảm tiêu hao EP khi đứng trong địa hình nước. Không cần dồn đồ DPS; giá trị cốt lõi là giữ team sống sót và buff.</div>
+          </div>
+          <div class="source"><a href="https://wiki.aniimo.com/item/015/prismana-form" target="_blank" rel="noopener">Official Aniidex – Glacy Prismana ↗</a></div>
+        </div>
+      </article>
+
+      <!-- Panpanta -->
+      <article class="card" data-aniimo="panpanta">
+        <span class="pick-badge">NÊN MANG</span>
+        <div class="art">
+          <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017402.png" alt="Panpanta Prismana">
+        </div>
+        <div class="body">
+          <div class="title"><h3>Panpanta</h3><span class="no">#052</span></div>
+          <div class="tags">
+            <span class="tag elem-water">Nước</span>
+            <span class="tag role-break">BREAK</span>
+            <span class="tag form-tag">Prismana ★</span>
+            <span class="tag core-tag">CORE</span>
+          </div>
+          <div class="rows">
+            <div class="row"><span class="row-label">🎯 Vai trò:</span>Water BREAK siêu trâu, tổng stat 545; BREAK 100, HP 104, M.DEF 106.</div>
+            <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Susuta</span><span class="arr">→</span><span class="node">Popota</span><span class="arr">→</span><span class="node">Panpanta</span></span> <span class="small">(nhánh Nova Piopiota)</span></div>
+            <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Prismana nếu có</span>. Dạng Basic vẫn giữ nguyên bộ role/stat Water BREAK nên hoàn toàn dùng tốt nếu chưa farm được Prismana.</div>
+            <div class="row"><span class="row-label">📍 Xuất hiện:</span><span class="k">Echoback Landing</span>.</div>
+            <div class="row"><span class="row-label">💡 Lưu ý:</span>Hydro Roll thi triển gần nước tăng <b>30% BREAK Efficiency</b> trong 15s; trait Appeal còn tăng 30% BREAK nếu trong team có họ hàng Susuta khác giới.</div>
+          </div>
+          <div class="source"><a href="https://wiki.aniimo.com/item/052/prismana-form" target="_blank" rel="noopener">Official Aniidex – Panpanta Prismana ↗</a></div>
+        </div>
+      </article>
+
+      <!-- Inferlupa -->
+      <article class="card" data-aniimo="inferlupa">
+        <span class="pick-badge">NÊN MANG</span>
+        <div class="art">
+          <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005503.png" alt="Inferlupa Prismana">
+        </div>
+        <div class="body">
+          <div class="title"><h3>Inferlupa</h3><span class="no">#004</span></div>
+          <div class="tags">
+            <span class="tag elem-fire">Lửa</span>
+            <span class="tag elem-dark">Bóng tối</span>
+            <span class="tag role-break">BREAK</span>
+            <span class="tag form-tag">Prismana</span>
+            <span class="tag core-tag">CORE</span>
+          </div>
+          <div class="rows">
+            <div class="row"><span class="row-label">🎯 Vai trò:</span>Breaker Lửa / Bóng tối số một; chỉ số BREAK 108, tổng stat 541.</div>
+            <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Emberpup</span><span class="arr">→</span><span class="node">Flameruff</span><span class="arr">→</span><span class="node">Inferlupa</span></span> <span class="small">(nhánh Nova: Scorchhowl)</span></div>
+            <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Prismana nếu có</span>; nhưng bản Basic vẫn cực mạnh thiên về Fire/Dark BREAK, không cần gượng ép farm sớm.</div>
+            <div class="row"><span class="row-label">📍 Xuất hiện:</span>Trang wiki chính thức không ghi habitat; cách chuẩn nhất là thuần hoá từ <b>Flameruff</b> rồi tiến hoá lên.</div>
+            <div class="row"><span class="row-label">💡 Lưu ý:</span>Sau 8 đòn đánh cơ bản sẽ kích hoạt <b>Full Energy</b> để cường hoá chiêu thức kế. Tránh xả skill lớn khi chưa tích stack.</div>
+          </div>
+          <div class="source"><a href="https://wiki.aniimo.com/item/004/prismana-form" target="_blank" rel="noopener">Official Aniidex – Inferlupa Prismana ↗</a></div>
+        </div>
+      </article>
+
+      <!-- Thornblade -->
+      <article class="card" data-aniimo="thornblade">
+        <span class="pick-badge">NÊN MANG</span>
+        <div class="art">
+          <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032301.png" alt="Thornblade Thunderstorm">
+        </div>
+        <div class="body">
+          <div class="title"><h3>Thornblade</h3><span class="no">#034</span></div>
+          <div class="tags">
+            <span class="tag elem-grass">Cỏ</span>
+            <span class="tag elem-electric">Điện</span>
+            <span class="tag role-dps">DPS</span>
+            <span class="tag form-tag">Thunderstorm ★</span>
+          </div>
+          <div class="rows">
+            <div class="row"><span class="row-label">🎯 Vai trò:</span>DPS Cỏ hạng nặng, ATK 121; dạng Thunderstorm ghép thêm hệ Điện giúp phủ 2 nhánh khắc chế cực ngon.</div>
+            <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Budsquire</span><span class="arr">→</span><span class="node">Thornblade</span></span> <span class="small">(cùng họ với Melloblum)</span></div>
+            <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Thunderstorm (Cỏ / Điện)</span> — độ bao phủ nguyên tố vượt trội hoàn toàn so với Basic/Towerwood khi đi gặp Trainer.</div>
+            <div class="row"><span class="row-label">📍 Xuất hiện:</span><span class="k">Sea of Flowers</span> (cho dạng Thunderstorm); dạng Towerwood tìm thấy ở Rosetower Woods.</div>
+            <div class="row"><span class="row-label">💡 Lưu ý:</span>Tích luỹ <b>Sword Dance</b> bằng skill trước rồi basic attack để hưởng tối đa bonus; có thế thủ giảm 20% sát thương và phản kích.</div>
+          </div>
+          <div class="source"><a href="https://wiki.aniimo.com/item/034/thunderstorm-form" target="_blank" rel="noopener">Official Aniidex – Thornblade Thunderstorm ↗</a></div>
+        </div>
+      </article>
+
+      <!-- Turbo -->
+      <article class="card" data-aniimo="turbo">
+        <span class="pick-badge">NÊN MANG</span>
+        <div class="art">
+          <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026202.png" alt="Turbo Prismana">
+        </div>
+        <div class="body">
+          <div class="title"><h3>Turbo</h3><span class="no">#018</span></div>
+          <div class="tags">
+            <span class="tag elem-dark">Bóng tối</span>
+            <span class="tag elem-wind">Gió</span>
+            <span class="tag role-support">Support</span>
+            <span class="tag form-tag">Prismana ★</span>
+          </div>
+          <div class="rows">
+            <div class="row"><span class="row-label">🎯 Vai trò:</span>Hỗ trợ gia tăng sát thương đội hình + hiệu quả BREAK; cực kỳ đắc lực trước các Trainer trâu bò hoặc Boss.</div>
+            <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Nimbi</span><span class="arr">→</span><span class="node">Turbo</span></span> <span class="small">(nhánh Gamma khác: Dreaple)</span></div>
+            <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Prismana (Bóng tối / Gió)</span> để vừa support vừa bổ trợ Dark coverage. Nếu chỉ thuần hỗ trợ thì Cloudmist cũng rất tốt.</div>
+            <div class="row"><span class="row-label">📍 Xuất hiện:</span><span class="k">Nimbus Fields (Thảo Nguyên Trên Mây)</span>.</div>
+            <div class="row"><span class="row-label">💡 Lưu ý:</span>Đánh 4 đòn đánh thường để kích hoạt trạng thái <b>Shrouded in Mist</b>, sau đó mới dùng skill buff để đạt hiệu lực tăng cường tối đa.</div>
+          </div>
+          <div class="source"><a href="https://wiki.aniimo.com/vi/item/10003926" target="_blank" rel="noopener">Official Aniidex – Turbo Prismana ↗</a></div>
+        </div>
+      </article>
+
+      <!-- Geoclaw -->
+      <article class="card" data-aniimo="geoclaw">
+        <span class="pick-badge">NÊN MANG</span>
+        <div class="art">
+          <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10163.png" alt="Geoclaw">
+        </div>
+        <div class="body">
+          <div class="title"><h3>Geoclaw</h3><span class="no">#025</span></div>
+          <div class="tags">
+            <span class="tag elem-ice">Băng</span>
+            <span class="tag role-break">BREAK</span>
+            <span class="tag form-tag">Basic</span>
+          </div>
+          <div class="rows">
+            <div class="row"><span class="row-label">🎯 Vai trò:</span>Phá chướng ngại hệ Băng (Ice BREAK) + hiệu ứng khống chế; dùng khi matchup của Inferlupa hoặc Panpanta bị bất lợi.</div>
+            <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Budclaw</span><span class="arr">→</span><span class="node">Geoclaw</span></span> <span class="small">(nhánh Gamma khác: Shrubclaw)</span></div>
+            <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Basic</span> — Aniidex hiện tại chỉ có 1 form chính này.</div>
+            <div class="row"><span class="row-label">📍 Xuất hiện:</span>Trang chính thức không ghi habitat trực tiếp; cách an toàn nhất là bắt <b>Budclaw</b> và tiến hoá lên.</div>
+            <div class="row"><span class="row-label">💡 Lưu ý:</span>Đòn đánh thường tích luỹ Ice debuff; khi đạt đủ điểm cộng dồn sẽ gia tăng đột biến khả năng làm choáng và phá giáp đối thủ.</div>
+          </div>
+          <div class="source"><a href="https://wiki.aniimo.com/vi" target="_blank" rel="noopener">Official Aniidex – Geoclaw #025 ↗</a></div>
+        </div>
+      </article>
+
+      <!-- Hexxin -->
+      <article class="card" data-aniimo="hexxin">
+        <span class="pick-badge">NÊN MANG</span>
+        <div class="art">
+          <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020301.png" alt="Hexxin Mountain">
+        </div>
+        <div class="body">
+          <div class="title"><h3>Hexxin</h3><span class="no">#021</span></div>
+          <div class="tags">
+            <span class="tag elem-dark">Bóng tối</span>
+            <span class="tag elem-grass">Cỏ</span>
+            <span class="tag role-regen">REGEN</span>
+            <span class="tag form-tag">Mountain ★</span>
+          </div>
+          <div class="rows">
+            <div class="row"><span class="row-label">🎯 Vai trò:</span>Hồi phục năng lượng EP + bộ tiện ích khoá chiêu trong trận chiến dài; REGEN 115, HP 115.</div>
+            <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Hummin</span><span class="arr">→</span><span class="node">Hexxin</span></span> <span class="small">(nhánh Gamma: Tuckin)</span></div>
+            <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Mountain (Bóng tối / Cỏ)</span> cho đa dụng utility, bổ sung skill Earth và độ phủ hệ Cỏ.</div>
+            <div class="row"><span class="row-label">📍 Xuất hiện:</span><span class="k">Sea of Flowers</span> và <span class="k">Berylline Causeway</span>.</div>
+            <div class="row"><span class="row-label">💡 Lưu ý:</span>Curse giúp đòn đánh thường hệ Dark tự hồi EP; kit kỹ năng còn giảm shield/heal và gây hiệu ứng khống chế cực mạnh lên Boss.</div>
+          </div>
+          <div class="source"><a href="https://wiki.aniimo.com/item/021/mountain-form" target="_blank" rel="noopener">Official Aniidex – Hexxin Mountain ↗</a></div>
+        </div>
+      </article>
+
+      <!-- Grizbo -->
+      <article class="card" data-aniimo="grizbo">
+        <span class="pick-badge">NÊN MANG</span>
+        <div class="art">
+          <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10503.png" alt="Grizbo Basic">
+        </div>
+        <div class="body">
+          <div class="title"><h3>Grizbo</h3><span class="no">#069</span></div>
+          <div class="tags">
+            <span class="tag elem-earth">Đá / Earth attacks</span>
+            <span class="tag role-dps">DPS</span>
+            <span class="tag form-tag">Basic ★</span>
+          </div>
+          <div class="rows">
+            <div class="row"><span class="row-label">🎯 Vai trò:</span>DPS hệ Đất/Đá hàng đầu; chỉ số ATK cực khủng <b>124</b>. Cần dùng khi team đòi hỏi sát thương kết liễu thực sự chứ không chỉ BREAK.</div>
+            <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Cubbo</span><span class="arr">→</span><span class="node">Grizbo</span></span></div>
+            <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Basic để tiết kiệm tài nguyên</span>. Bản Prismana đổi thành Bóng tối + Đá nhưng đội hình đã có thừa Dark; nếu có sẵn Prismana thì vẫn dùng tốt.</div>
+            <div class="row"><span class="row-label">📍 Xuất hiện:</span><span class="k">Rosetower Woods</span>.</div>
+            <div class="row"><span class="row-label">💡 Lưu ý:</span>Tích điểm Rage; khi chạm mốc 100 bước vào trạng thái <b>Enraged</b>, tăng tốc độ đánh, sát thương chiêu và hồi phục EP.</div>
+          </div>
+          <div class="source"><a href="https://wiki.aniimo.com/item/069/basic-form" target="_blank" rel="noopener">Official Aniidex – Grizbo ↗</a> · <a href="https://wiki.aniimo.com/item/069/prismana-form" target="_blank" rel="noopener">Prismana form ↗</a></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 2. Đội 4 con đề xuất -->
+  <section class="section">
+    <h2>2) Đội Hình 4 Con Khắc Chế Theo Từng Hệ Trainer</h2>
+    <p class="section-sub">Bảng đối chiếu nhanh khi bạn sắp bước vào khu vực hoặc gặp Trainer chuyên một hệ cụ thể.</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 25%;">Trainer Thiên Hệ</th>
+          <th style="width: 38%;">Đội 4 Con Đề Xuất</th>
+          <th class="hide-mobile">Ý Đồ Chiến Thuật</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>🌐 Không rõ / Đi map</strong></td>
+          <td><span class="core">Helion · Glacy · Panpanta · Inferlupa</span></td>
+          <td class="hide-mobile">Carry + Heal + Water BREAK + Fire/Dark BREAK; bộ khung an toàn số 1, gần như không cần thay đổi.</td>
+        </tr>
+        <tr>
+          <td><strong>💧 Nước</strong></td>
+          <td><b>Thornblade</b> · Helion · Glacy · Turbo</td>
+          <td class="hide-mobile">Thornblade Thunderstorm làm mũi sát thương chính; Turbo buff dồn nổ dame & phá vỡ giáp.</td>
+        </tr>
+        <tr>
+          <td><strong>🔥 Lửa</strong></td>
+          <td><b>Panpanta</b> · Glacy · Helion · Geoclaw</td>
+          <td class="hide-mobile">Dồn áp lực Water core; Geoclaw hỗ trợ khống chế và BREAK phụ nếu Panpanta cần giãn cách hồi chiêu.</td>
+        </tr>
+        <tr>
+          <td><strong>🌿 Cỏ</strong></td>
+          <td><b>Inferlupa</b> · Helion · Turbo · Glacy</td>
+          <td class="hide-mobile">Inferlupa tạo áp lực thiêu đốt Fire/Dark và dồn BREAK; Turbo gia tăng tốc độ burst sát thương.</td>
+        </tr>
+        <tr>
+          <td><strong>❄️ Băng</strong></td>
+          <td><b>Inferlupa</b> · Helion · Glacy · Turbo</td>
+          <td class="hide-mobile">Tận dụng sát thương Lửa của Inferlupa làm trọng tâm càn quét, bộ hỗ trợ bọc lót an toàn.</td>
+        </tr>
+        <tr>
+          <td><strong>⚡ Điện</strong></td>
+          <td><b>Grizbo</b> · Helion · Glacy · Inferlupa</td>
+          <td class="hide-mobile">Grizbo dùng đòn đánh hệ Đất làm mũi nhọn tiêu diệt; 3 vị trí còn lại duy trì độ ổn định đội hình.</td>
+        </tr>
+        <tr>
+          <td><strong>🪨 Đất / Earth</strong></td>
+          <td><b>Thornblade</b> · <b>Panpanta</b> · Glacy · Helion</td>
+          <td class="hide-mobile">Cỏ + Nước là 2 mũi nhọn dập tắt Đất hoàn hảo; Helion dọn dẹp các mục tiêu phụ trung tính.</td>
+        </tr>
+        <tr>
+          <td><strong>🌪️ Gió</strong></td>
+          <td>Helion · <b>Thornblade</b> · Glacy · Panpanta</td>
+          <td class="hide-mobile">Helion & Glacy sở hữu hệ Thánh; Thornblade Thunderstorm bổ sung sát thương Điện dứt điểm hệ Gió.</td>
+        </tr>
+        <tr>
+          <td><strong>🌑 Bóng tối</strong></td>
+          <td><b>Helion</b> · <b>Glacy</b> · Panpanta · Turbo</td>
+          <td class="hide-mobile">Trục Thánh Helion + Glacy phản đòn cực rát; Panpanta lo phá giáp; Turbo hỗ trợ buff.</td>
+        </tr>
+        <tr>
+          <td><strong>✨ Thánh</strong></td>
+          <td><b>Inferlupa</b> · <b>Turbo</b> · <b>Hexxin</b> · Glacy</td>
+          <td class="hide-mobile">Dồn tối đa các vị trí hệ Dark / Utility quấy rối, giữ Glacy duy trì mạch sống cho toàn đội.</td>
+        </tr>
+        <tr>
+          <td><strong>👑 Boss / Trận dài</strong></td>
+          <td>Helion · Glacy · Panpanta · <b>Hexxin</b></td>
+          <td class="hide-mobile">Carry + Healer + Breaker + Regen nạp EP lâu dài. Nếu boss đòi hỏi burst BREAK nhanh hơn, đổi Hexxin sang Inferlupa.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 3. Cách nuôi đỡ cày chay -->
+  <section class="section">
+    <h2>3) Chiến Lược Phân Bổ Tài Nguyên — Tránh Cày Chay</h2>
+    <p class="section-sub">Tuyệt đối không dồn tài nguyên chia đều cho cả 9 con. Hãy phân bổ theo từng bậc ưu tiên sau:</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 22%;">Mức Ưu Tiên</th>
+          <th style="width: 38%;">Aniimo</th>
+          <th>Chiến Thuật Nuôi Dưỡng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="star">★★★★★</span> <strong style="color:var(--ok)">Nòng Cốt</strong></td>
+          <td><b>Helion · Glacy · Panpanta · Inferlupa</b></td>
+          <td>Giữ sát level câu chuyện (Story). Đây là bộ tứ mặc định vượt map khi chưa rõ hệ của đối thủ.</td>
+        </tr>
+        <tr>
+          <td><span class="star">★★★★☆</span> <strong style="color:var(--gold)">Khắc Chế</strong></td>
+          <td><b>Thornblade · Grizbo</b></td>
+          <td>Hai mũi nhọn DPS counter then chốt; có thể kém nhóm Core 2-3 level nhưng cần nâng đều kỹ năng.</td>
+        </tr>
+        <tr>
+          <td><span class="star">★★★☆☆</span> <strong style="color:var(--accent)">Hỗ Trợ</strong></td>
+          <td><b>Turbo · Geoclaw · Hexxin</b></td>
+          <td>Nhóm linh hoạt tiện ích. Không cần ngang level với Core; chỉ cần đủ sống và thi triển đúng bộ skill buff / regen.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="notice">
+      <b>💡 Lời khuyên vàng:</b> Roster 9 con phát huy sức mạnh cao nhất khi bạn có <b>4 trụ cột cứng</b> gánh 80% trận đấu, và chỉ lấy tài nguyên thừa bù cho 1-2 con counter trực diện từng khu vực. Tránh tình trạng biến thành 9 con cùng thiếu hụt tài nguyên!
+    </div>
+  </section>
+
+  <!-- 4. Form nên nhắm -->
+  <section class="section">
+    <h2>4) Dạng Form Tối Ưu Nên Nhắm Đến</h2>
+    <div class="legend">
+      <div class="box">
+        <b>Glacy → Prismana</b>
+        <span class="small">Ưu tiên cao nhất. Hệ Thánh / Nước kết hợp Healer tạo nên mảnh ghép hoàn hảo nhất cho roster.</span>
+      </div>
+      <div class="box">
+        <b>Panpanta → Prismana</b>
+        <span class="small">Không bắt buộc về mặt chỉ số; bản Basic vẫn làm nhiệm vụ Water BREAK cực kỳ xuất sắc.</span>
+      </div>
+      <div class="box">
+        <b>Inferlupa → Prismana</b>
+        <span class="small">Có thì dùng; không cần ép farm sớm nếu bản Basic của bạn đã được đầu tư cấp độ từ trước.</span>
+      </div>
+      <div class="box">
+        <b>Thornblade → Thunderstorm</b>
+        <span class="small">Ưu tiên rất cao vì kết hợp Cỏ + Điện mở rộng vùng phủ khắc chế cực kỳ ấn tượng.</span>
+      </div>
+      <div class="box">
+        <b>Turbo → Prismana</b>
+        <span class="small">Bóng tối + Gió: vừa buff vừa phủ thêm hệ Dark. Dạng Cloudmist cũng là lựa chọn thuần support tốt.</span>
+      </div>
+      <div class="box">
+        <b>Hexxin → Mountain</b>
+        <span class="small">Bóng tối + Cỏ: bộ tiện ích hỗ trợ kéo dài trận đánh cực kỳ an toàn.</span>
+      </div>
+      <div class="box">
+        <b>Grizbo → Basic</b>
+        <span class="small">Tiết kiệm farm. Bản Prismana có Dark + Rock nhưng đội hình đã đủ Dark từ các vị trí khác.</span>
+      </div>
+      <div class="box">
+        <b>Helion / Geoclaw</b>
+        <span class="small">Sử dụng ngay dạng chuẩn theo Aniidex; không mất công săn tìm các biến thể form khác.</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    Cập nhật dữ liệu năm 2026. Nguồn chính thức: <b>wiki.aniimo.com</b> (Aniimo Wiki / Aniidex). Hình ảnh được tải từ CDN chính thức của Aniimo, vui lòng giữ kết nối Internet để hiển thị ảnh.
+  </footer>
+</main>
+
+<script>
+const matchupData = {
+  default: {
+    team: ['helion', 'glacy', 'panpanta', 'inferlupa'],
+    why: 'Đội mặc định ít phải suy nghĩ nhất: Helion carry, Glacy hồi phục, Panpanta lo Water BREAK và Inferlupa gánh Fire/Dark BREAK.',
+    note: 'Giữ 4 con này sát level story nhất có thể để giảm thiểu cày cuốc.'
+  },
+  water: {
+    team: ['thornblade', 'helion', 'glacy', 'turbo'],
+    why: 'Thornblade Thunderstorm là mũi nhọn sát thương chính; Helion xử lý các mục tiêu trung tính, Turbo buff nhịp nổ sát thương / BREAK, Glacy giữ máu an toàn.',
+    note: 'Ưu tiên tối đa cho Thornblade dạng Thunderstorm (Cỏ + Điện).'
+  },
+  fire: {
+    team: ['panpanta', 'glacy', 'helion', 'geoclaw'],
+    why: 'Dồn toàn lực cho Water core Panpanta + Glacy. Helion giữ nhịp carry ổn định; Geoclaw phụ trách phá giáp & khống chế băng giá.',
+    note: 'Panpanta bản Basic hay Prismana đều thực hiện hoàn hảo nhiệm vụ.'
+  },
+  grass: {
+    team: ['inferlupa', 'helion', 'turbo', 'glacy'],
+    why: 'Inferlupa áp đảo bằng sát thương Lửa/Dark và dồn BREAK; Turbo đẩy cao tốc độ dứt điểm; Glacy hồi phục; Helion dọn dẹp phần còn lại.',
+    note: 'Không cần gượng ép lên Inferlupa Prismana nếu bản Basic đang out-level.'
+  },
+  ice: {
+    team: ['inferlupa', 'helion', 'glacy', 'turbo'],
+    why: 'Sát thương Lửa từ Inferlupa là trọng tâm càn quét. Helion làm carry phụ trợ; Turbo buff sát thương và Glacy bảo đảm lượng máu.',
+    note: 'Lựa chọn đội hình an toàn hàng đầu khi gặp chuỗi quái/Trainer hệ Băng.'
+  },
+  electric: {
+    team: ['grizbo', 'helion', 'glacy', 'inferlupa'],
+    why: 'Grizbo sở hữu đòn đánh Đất với ATK vượt trội để đè bẹp hệ Điện. 3 vị trí còn lại bảo đảm trọn vẹn carry / heal / BREAK.',
+    note: 'Grizbo bản Basic là hoàn toàn đủ lực; không cần mất công săn Prismana.'
+  },
+  earth: {
+    team: ['thornblade', 'panpanta', 'glacy', 'helion'],
+    why: 'Tận dụng hoàn hảo hai mũi nhọn Cỏ + Nước. Panpanta lo BREAK, Thornblade gây sát thương chính, Glacy giữ máu, Helion dọn dẹp tàn cuộc.',
+    note: 'Matchup thể hiện rõ nhất giá trị phối hợp của Thornblade + Panpanta.'
+  },
+  wind: {
+    team: ['helion', 'thornblade', 'glacy', 'panpanta'],
+    why: 'Helion và Glacy mang đến sát thương Thánh, Thornblade Thunderstorm bổ sung đòn Điện, Panpanta duy trì áp lực BREAK.',
+    note: 'Nếu gặp Trainer quá trâu, có thể hoán đổi Panpanta sang Turbo để buff.'
+  },
+  dark: {
+    team: ['helion', 'glacy', 'panpanta', 'turbo'],
+    why: 'Giữ vững trục Thánh Helion + Glacy gây sát thương vượt trội, Panpanta phá vỡ phòng ngự và Turbo gia tăng sức mạnh toàn đội.',
+    note: 'Nếu thấy thiếu sát thương dứt điểm, có thể đổi Turbo lấy Thornblade.'
+  },
+  holy: {
+    team: ['inferlupa', 'turbo', 'hexxin', 'glacy'],
+    why: 'Tập trung tối đa các vị trí mang hệ Bóng tối và tiện ích khoá chiêu, đồng thời giữ Glacy để đội hình không bị sụp đổ.',
+    note: 'Hexxin chỉ cần đủ lượng máu sinh tồn để quấy rối, không cần ngang level Core.'
+  },
+  boss: {
+    team: ['helion', 'glacy', 'panpanta', 'hexxin'],
+    why: 'Bộ khung cân bằng tuyệt đối: Carry + Healer + Breaker + Nạp EP hồi phục cho trận đấu kéo dài. Nếu boss cần dồn BREAK nhanh, đổi Hexxin sang Inferlupa.',
+    note: 'Đội hình dồn nổ sát thương Boss nhanh: Helion · Glacy · Panpanta · Inferlupa.'
+  }
+};
+
+const displayNames = {
+  helion: 'Helion',
+  glacy: 'Glacy Prismana',
+  panpanta: 'Panpanta',
+  inferlupa: 'Inferlupa',
+  thornblade: 'Thornblade Thunderstorm',
+  turbo: 'Turbo Prismana',
+  geoclaw: 'Geoclaw',
+  hexxin: 'Hexxin Mountain',
+  grizbo: 'Grizbo'
+};
+
+const cards = [...document.querySelectorAll('.card[data-aniimo]')];
+const buttons = [...document.querySelectorAll('[data-matchup]')];
+const pills = document.getElementById('teamPills');
+const why = document.getElementById('teamWhy');
+const note = document.getElementById('formNote');
+
+function applyMatchup(key) {
+  const data = matchupData[key];
+  if (!data) return;
+  const chosen = new Set(data.team);
+  
+  cards.forEach(card => {
+    const on = chosen.has(card.dataset.aniimo);
+    card.classList.toggle('recommended', on);
+    card.classList.toggle('dimmed', !on);
+    const badge = card.querySelector('.pick-badge');
+    if (on) {
+      badge.textContent = `TOP ${data.team.indexOf(card.dataset.aniimo) + 1}`;
+    }
+  });
+
+  buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.matchup === key));
+  pills.innerHTML = data.team.map(x => `<span class="team-pill">${displayNames[x]}</span>`).join('');
+  why.textContent = data.why;
+  note.innerHTML = `💡 <b>Ghi chú:</b> ${data.note}`;
+}
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => applyMatchup(btn.dataset.matchup));
+});
+
+document.getElementById('resetTeam').addEventListener('click', () => {
+  cards.forEach(card => {
+    card.classList.remove('recommended', 'dimmed');
+    const badge = card.querySelector('.pick-badge');
+    if (badge) badge.textContent = 'NÊN MANG';
+  });
+  buttons.forEach(btn => btn.classList.remove('active'));
+  pills.innerHTML = '<span class="small" style="color: #94a3b8;">Đang hiển thị toàn bộ 9 con trong roster. Hãy chọn một hệ phía trên để nhận đề xuất.</span>';
+  why.textContent = 'Chọn một hệ nguyên tố phía trên để xem ngay chiến thuật và đội hình 4 con tối ưu.';
+  note.innerHTML = '';
+});
+
+// Initial selection
+applyMatchup('default');
+</script>
+</body>
+</html>
