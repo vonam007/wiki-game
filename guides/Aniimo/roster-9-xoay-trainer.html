@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Aniimo – Roster 9 Con Xoay Trainer Đi Story Chuẩn Nhất</title>
+<title>Aniimo – Cẩm Nang 5 Đội Hình Synergy Nguyên Tố (Meta Roster)</title>
 <meta name="game" content="Aniimo">
-<meta name="description" content="Chi tiết roster Aniimo xoay vòng đánh Trainer & Story: Helion, Glacy, Infergon (Fire DPS), Inferlupa (Fire BREAK)... Công cụ chọn team 4 con counter đơn hệ & song hệ theo GameWith.">
+<meta name="description" content="Chi tiết 5 đội hình synergy nguyên tố tối thượng trong Aniimo: Fire (Infergon), Water (Sherro), Dark (Stellarys), Electric (Fenmane), Grass (Thornblade). Công cụ tính toán counter đơn & song hệ theo GameWith.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -1615,8 +1615,39 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
 }
 
 .drawer-profile {
-  padding: 20px 20px 14px;
+  padding: 16px 20px 14px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.drawer-profile-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.drawer-avatar-wrap {
+  width: 62px;
+  height: 62px;
+  flex-shrink: 0;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(15, 23, 42, 0.95) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.drawer-avatar-img {
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7));
+}
+
+.drawer-meta-col {
+  flex: 1;
+  min-width: 0;
 }
 
 .drawer-name-row {
@@ -1860,26 +1891,21 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
 <body>
 <main class="wrap">
   <header class="hero">
-    <div class="eyebrow">🎮 Aniimo Strategy Guide</div>
-    <h1>Roster Aniimo 9 Con Để Xoay Trainer</h1>
-    <p class="lead">Bản thiết kế tối ưu xoay quanh <b>Helion + Glacy Prismana</b>, gạt Sherro khỏi core và bổ sung <b>Panpanta</b> + <b>Grizbo</b>. Mục tiêu giúp vượt qua mọi Trainer và Story mượt mà: đầy đủ DPS / Heal / BREAK / Support / Regen mà <b>không bị áp lực phải cày level cả 9 con</b>.</p>
+    <div class="eyebrow">🎮 Aniimo Strategy Guide · Meta Synergy Teams</div>
+    <h1>Cẩm Nang 5 Đội Hình Synergy Nguyên Tố (17 Aniimo)</h1>
+    <p class="lead">Bản thiết kế chiến thuật chuyên sâu chuyển hẳn từ roster cơ bản sang <b>5 Đội Hình Synergy Nguyên Tố</b>: <b>Hỏa</b> (Infergon), <b>Thủy</b> (Sherro), <b>Ám</b> (Stellarys), <b>Lôi</b> (Fenmane) và <b>Thảo</b> (Thornblade Thunderstorm). Mỗi đội hình sở hữu bộ tứ tối ưu: <b>1 Main DPS · 1 Breaker · 1 Buff Đặc Hệ · 1 Sustain/Healer</b>, dập tắt mọi Trainer, phụ bản và Boss câu chuyện.</p>
   </header>
 
   <div class="notice">
-    <b>📖 Nguồn đối chiếu:</b> Hệ, Role, Stat, Form, Habitat, Trait và Cây tiến hoá được trích xuất trực tiếp từ <b>Aniimo Wiki / Aniidex chính thức</b>. Phần “chọn form nào” và “đội 4 con đối đầu hệ X” là giải pháp chiến thuật tối ưu thời gian chơi, tránh lãng phí tài nguyên grind.
+    <b>📖 Nguồn đối chiếu:</b> Toàn bộ Hệ, Role, Stat 6 trục, Form và Trait được trích xuất trực tiếp từ <b>Aniimo Wiki / Aniidex</b> và công cụ <b>AniimoTools</b>. Tính toán khắc chế đơn & song hệ chuẩn hóa theo ma trận tương khắc <b>GameWith</b>.
   </div>
 
   <div class="chips">
-    <span class="chip core-chip">⚔️ Core: Helion</span>
-    <span class="chip core-chip">💧 Core: Glacy Prismana</span>
-    <span class="chip core-chip">🛡️ Water BREAK: Panpanta</span>
-    <span class="chip core-chip" style="background: rgba(60, 20, 20, 0.85); border-color: rgba(239, 68, 68, 0.5); color: #fca5a5;">🔥 Fire DPS: Infergon</span>
-    <span class="chip core-chip">🔥 Fire/Dark BREAK: Inferlupa</span>
-    <span class="chip">🌿 Grass/Electric DPS: Thornblade</span>
-    <span class="chip">⚡ Support: Turbo</span>
-    <span class="chip">❄️ Ice BREAK: Geoclaw</span>
-    <span class="chip">🔮 REGEN: Hexxin</span>
-    <span class="chip">🪨 Earth/Rock DPS: Grizbo</span>
+    <span class="chip core-chip" style="background: rgba(60, 20, 20, 0.85); border-color: rgba(239, 68, 68, 0.5); color: #fca5a5;">🔥 Fire Team: Infergon · Inferlupa · Turbo · Gracewing</span>
+    <span class="chip core-chip" style="background: rgba(14, 45, 75, 0.85); border-color: rgba(56, 189, 248, 0.5); color: #7dd3fc;">💧 Water Team: Sherro · Panpanta · Piopiota · Glacy</span>
+    <span class="chip core-chip" style="background: rgba(50, 20, 75, 0.85); border-color: rgba(168, 85, 247, 0.5); color: #d8b4fe;">🌑 Dark Team: Stellarys · Rookey · Fragrancier · Turbo</span>
+    <span class="chip core-chip" style="background: rgba(65, 55, 15, 0.85); border-color: rgba(234, 179, 8, 0.5); color: #fde047;">⚡ Electric Team: Fenmane · Blazen · Luminelle · Glacy</span>
+    <span class="chip core-chip" style="background: rgba(18, 55, 30, 0.85); border-color: rgba(34, 197, 94, 0.5); color: #86efac;">🌿 Grass Specialist: Thornblade · Pomawk · Melloblum · Gracewing</span>
   </div>
 
   <!-- ACTIVE BATTLE PARTY SHOWCASE (ĐỘI HÌNH 4 CON TÁC CHIẾN) -->
@@ -1900,7 +1926,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
         <div class="slot-role-ribbon dps-ribbon">💥 MAIN DPS</div>
         <div class="slot-full-art-wrap">
           <div class="art-glow-pedestal"></div>
-          <img class="slot-full-art" id="dpsArtImg" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10025.png" alt="Infergon">
+          <img class="slot-full-art" id="dpsArtImg" src="https://aniimotools.dev/assets/creatures/forms/infergon-a1002503.webp" alt="Infergon">
         </div>
         <div class="slot-details">
           <div class="slot-name-row">
@@ -1918,7 +1944,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
       <div class="party-slot slot-breaker" id="slotBreaker" data-id="inferlupa" onclick="openAniimoDrawer(this.dataset.id)">
         <div class="slot-role-ribbon breaker-ribbon">🛡️ BREAKER</div>
         <div class="slot-breaker-art-wrap">
-          <img class="slot-breaker-art" id="breakerArtImg" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005503.png" alt="Inferlupa">
+          <img class="slot-breaker-art" id="breakerArtImg" src="https://aniimotools.dev/assets/creatures/forms/inferlupa-a1005503.webp" alt="Inferlupa">
         </div>
         <div class="slot-details">
           <div class="slot-name-row">
@@ -1944,7 +1970,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
             <div class="oct-shape support-oct-wrapper">
               <div class="oct-shape support-oct-inner">
                 <span class="oct-rank-chevron">︽ Lv.46</span>
-                <img class="oct-avatar" id="sup1Img" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026202.png" alt="Turbo">
+                <img class="oct-avatar" id="sup1Img" src="https://aniimotools.dev/assets/creatures/avatar/turbo.webp" alt="Turbo">
                 <span class="oct-bot-pill" id="sup1ElemTag">🌑 🌪️</span>
               </div>
             </div>
@@ -1960,7 +1986,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
             <div class="oct-shape support-oct-wrapper">
               <div class="oct-shape support-oct-inner">
                 <span class="oct-rank-chevron">︽ Lv.48</span>
-                <img class="oct-avatar" id="sup2Img" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png" alt="Gracewing">
+                <img class="oct-avatar" id="sup2Img" src="https://aniimotools.dev/assets/creatures/avatar/gracewing.webp" alt="Gracewing">
                 <span class="oct-bot-pill" id="sup2ElemTag">🌪️ ✨</span>
               </div>
             </div>
@@ -1981,10 +2007,10 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
     <!-- Left: Main Content Column -->
     <div class="content-col">
 
-      <!-- 1. Danh sách 9 Aniimo & Kho Lưu Trữ Octagon Grid -->
+      <!-- 1. Danh sách 17 Aniimo & Kho Lưu Trữ Octagon Grid -->
       <section class="section" id="sectionRosterStorage">
         <h2>1) Kho Lưu Trữ Aniimo (Storage Grid) & Roster Chi Tiết</h2>
-        <p class="section-sub">Bấm vào bất kỳ ô Bát Giác (Octagon) nào dưới đây để mở bảng tra cứu thông tin và biểu đồ Radar 6 trục bên trái. Bạn có thể chuyển đổi giữa giao diện Bát Giác HUD và Thẻ bài chi tiết.</p>
+        <p class="section-sub">Kho lưu trữ 17 Aniimo nòng cốt thuộc 5 Đội Hình Nguyên Tố (Fire, Water, Dark, Electric, Grass). Bấm vào bất kỳ ô Bát Giác (Octagon) nào dưới đây để mở bảng tra cứu thông tin và biểu đồ Radar 6 trục bên trái. Bạn có thể chuyển đổi giữa giao diện Bát Giác HUD và Thẻ bài chi tiết.</p>
 
         <!-- Storage Box Container -->
         <div class="storage-box-container">
@@ -1994,11 +2020,16 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
               <button class="view-switch-btn" id="viewSwitchCard" type="button">📋 Thẻ Roster Chi Tiết</button>
             </div>
             <div class="storage-filters" id="storageRoleFilters">
-              <button class="filter-pill active" data-role="all" type="button">Tất cả (10 Roster)</button>
-              <button class="filter-pill" data-role="dps" type="button">DPS (4)</button>
-              <button class="filter-pill" data-role="break" type="button">BREAK (3)</button>
-              <button class="filter-pill" data-role="heal" type="button">HEAL (1)</button>
-              <button class="filter-pill" data-role="support" type="button">SUPPORT / REGEN (2)</button>
+              <button class="filter-pill active" data-role="all" type="button">Tất cả (17 Aniimo)</button>
+              <button class="filter-pill" data-role="dps" type="button">💥 DPS (5)</button>
+              <button class="filter-pill" data-role="break" type="button">🛡️ BREAK (5)</button>
+              <button class="filter-pill" data-role="heal" type="button">💖 HEAL (3)</button>
+              <button class="filter-pill" data-role="support" type="button">⚡ SUPPORT (4)</button>
+              <button class="filter-pill" data-role="fire" type="button">🔥 Fire Team</button>
+              <button class="filter-pill" data-role="water" type="button">💧 Water Team</button>
+              <button class="filter-pill" data-role="dark" type="button">🌑 Dark Team</button>
+              <button class="filter-pill" data-role="electric" type="button">⚡ Electric Team</button>
+              <button class="filter-pill" data-role="grass" type="button">🌿 Grass Team</button>
             </div>
           </div>
 
@@ -2009,258 +2040,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
         </div>
 
         <div class="grid" id="rosterCardsGrid" style="display: none;">
-
-          <!-- Helion -->
-          <article class="card" data-aniimo="helion" data-id="helion">
-            <span class="pick-badge">NÊN MANG</span>
-            <div class="art">
-              <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10361.png" alt="Helion">
-            </div>
-            <div class="body">
-              <div class="title"><h3>Helion</h3><span class="no">#99998</span></div>
-              <div class="tags">
-                <span class="tag elem-holy">Thánh</span>
-                <span class="tag role-dps">DPS</span>
-                <span class="tag form-tag">Basic</span>
-                <span class="tag core-tag">CORE</span>
-              </div>
-              <div class="rows">
-                <div class="row"><span class="row-label">🎯 Vai trò:</span>Carry vật lý cận chiến; con cưng "khi chưa biết địch chơi gì cứ mang". ATK 116, tổng stat 514.</div>
-                <div class="row"><span class="row-label">🧬 Tiến hoá:</span>Aniidex không có cây tiến hoá thông thường; Ultimate biến đổi trong combat chứ không cần farm nhánh tiến hoá.</div>
-                <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Basic</span> — hiện wiki chỉ có 1 form duy nhất.</div>
-                <div class="row"><span class="row-label">📍 Xuất hiện:</span>Starter / nhiệm vụ đặc biệt; official wiki không ghi habitat hoang dã.</div>
-                <div class="row"><span class="row-label">💡 Lưu ý:</span>Trait <b>Ân Huệ Thái Dương</b> tăng +30% final damage khi không đánh bằng nguyên tố tương khắc — cực kỳ hoàn hảo cho vai trò carry trung tính.</div>
-              </div>
-              <div class="source"><a href="https://wiki.aniimo.com/vi/item/99998/basic-form" target="_blank" rel="noopener">Official Aniidex – Helion ↗</a></div>
-            </div>
-          </article>
-
-          <!-- Glacy -->
-          <article class="card" data-aniimo="glacy" data-id="glacy">
-            <span class="pick-badge">NÊN MANG</span>
-            <div class="art">
-              <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png" alt="Glacy Prismana">
-            </div>
-            <div class="body">
-              <div class="title"><h3>Glacy</h3><span class="no">#015</span></div>
-              <div class="tags">
-                <span class="tag elem-holy">Thánh</span>
-                <span class="tag elem-water">Nước</span>
-                <span class="tag role-heal">Heal</span>
-                <span class="tag form-tag">Prismana ★</span>
-                <span class="tag core-tag">CORE</span>
-              </div>
-              <div class="rows">
-                <div class="row"><span class="row-label">🎯 Vai trò:</span>Healer chính + buff toàn diện; HP 120, M.DEF 110. Luôn khóa slot ở các trận Trainer khó hoặc Boss.</div>
-                <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Skippy</span><span class="arr">→</span><span class="node">Pranky</span><span class="arr">→</span><span class="node">Glacy</span></span></div>
-                <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Prismana</span> — hệ Thánh/Nước; bảo toàn Heal và bổ sung coverage Thánh rất giá trị cho team.</div>
-                <div class="row"><span class="row-label">📍 Xuất hiện:</span><span class="k">Driftwise Meadow</span> (cho dạng Prismana); Sea of Flowers form ở Sea of Flowers.</div>
-                <div class="row"><span class="row-label">💡 Lưu ý:</span>Water Spirit giảm tiêu hao EP khi đứng trong địa hình nước. Không cần dồn đồ DPS; giá trị cốt lõi là giữ team sống sót và buff.</div>
-              </div>
-              <div class="source"><a href="https://wiki.aniimo.com/item/015/prismana-form" target="_blank" rel="noopener">Official Aniidex – Glacy Prismana ↗</a></div>
-            </div>
-          </article>
-
-          <!-- Panpanta -->
-          <article class="card" data-aniimo="panpanta" data-id="panpanta">
-            <span class="pick-badge">NÊN MANG</span>
-            <div class="art">
-              <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017402.png" alt="Panpanta Prismana">
-            </div>
-            <div class="body">
-              <div class="title"><h3>Panpanta</h3><span class="no">#052</span></div>
-              <div class="tags">
-                <span class="tag elem-water">Nước</span>
-                <span class="tag role-break">BREAK</span>
-                <span class="tag form-tag">Prismana ★</span>
-                <span class="tag core-tag">CORE</span>
-              </div>
-              <div class="rows">
-                <div class="row"><span class="row-label">🎯 Vai trò:</span>Water BREAK siêu trâu, tổng stat 545; BREAK 100, HP 104, M.DEF 106.</div>
-                <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Susuta</span><span class="arr">→</span><span class="node">Popota</span><span class="arr">→</span><span class="node">Panpanta</span></span> <span class="small">(nhánh Nova Piopiota)</span></div>
-                <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Prismana nếu có</span>. Dạng Basic vẫn giữ nguyên bộ role/stat Water BREAK nên hoàn toàn dùng tốt nếu chưa farm được Prismana.</div>
-                <div class="row"><span class="row-label">📍 Xuất hiện:</span><span class="k">Echoback Landing</span>.</div>
-                <div class="row"><span class="row-label">💡 Lưu ý:</span>Hydro Roll thi triển gần nước tăng <b>30% BREAK Efficiency</b> trong 15s; trait Appeal còn tăng 30% BREAK nếu trong team có họ hàng Susuta khác giới.</div>
-              </div>
-              <div class="source"><a href="https://wiki.aniimo.com/item/052/prismana-form" target="_blank" rel="noopener">Official Aniidex – Panpanta Prismana ↗</a></div>
-            </div>
-          </article>
-
-                    <!-- Infergon -->
-          <article class="card" data-aniimo="infergon" data-id="infergon">
-            <span class="pick-badge">NÊN MANG</span>
-            <div class="art">
-              <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10025.png" alt="Infergon Basic">
-            </div>
-            <div class="body">
-              <div class="title"><h3>Infergon</h3><span class="no">#067</span></div>
-              <div class="tags">
-                <span class="tag elem-fire">Lửa</span>
-                <span class="tag role-dps">DPS Tầm Xa</span>
-                <span class="tag form-tag">Basic Perfect ★</span>
-                <span class="tag core-tag">FIRE CORE</span>
-              </div>
-              <div class="rows">
-                <div class="row"><span class="row-label">🎯 Vai trò:</span>DPS Lửa tầm xa chủ lực; ATK cực khủng <b>125</b> (Tổng stat 505). Đòn đánh thường (Basic Attack) dùng sát thương Lửa và tấn công từ xa.</div>
-                <div class="row"><span class="row-label">💥 Khắc chế:</span>Counter trực tiếp theo bảng GameWith: <b>Cỏ ×1.6</b> và <b>Băng ×1.6</b>. Mũi nhọn dứt điểm hàng đầu khi gặp đối thủ hệ Cỏ hoặc Băng.</div>
-                <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Jawling</span><span class="arr">→</span><span class="node">Helmwhelp</span><span class="arr">→</span><span class="node">Infergon</span></span></div>
-                <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Basic Perfect</span> — bản Basic Perfect đã đủ làm Fire DPS chính; không cần ép farm Prismana chỉ vì stat.</div>
-                <div class="row"><span class="row-label">📍 Xuất hiện:</span>Line Jawling / Infergon ở <span class="k">Russet Highlands</span>. Nhánh cuối cần làm điều kiện Warrior + Omega Infergon.</div>
-                <div class="row"><span class="row-label">💡 Trait & Mẹo:</span>Trait <b>Power of Fire</b>: Khi mục tiêu có trên 5 stack Fire Debuff, tăng thêm khoảng <b>+30% damage</b>. User hiện đã có <b>Jawling Perfect từ trứng</b>, nên ưu tiên dồn tài nguyên nuôi con đó lên Infergon!</div>
-              </div>
-              <div class="source"><a href="https://wiki.aniimo.com/item/067/basic-form" target="_blank" rel="noopener">Official Aniidex – Infergon #067 ↗</a></div>
-            </div>
-          </article>
-
-          <!-- Inferlupa -->
-          <article class="card" data-aniimo="inferlupa" data-id="inferlupa">
-            <span class="pick-badge">NÊN MANG</span>
-            <div class="art">
-              <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005503.png" alt="Inferlupa Prismana">
-            </div>
-            <div class="body">
-              <div class="title"><h3>Inferlupa</h3><span class="no">#004</span></div>
-              <div class="tags">
-                <span class="tag elem-fire">Lửa</span>
-                <span class="tag elem-dark">Bóng tối</span>
-                <span class="tag role-break">BREAK Lửa</span>
-                <span class="tag form-tag">Prismana</span>
-                <span class="tag core-tag">FIRE CORE</span>
-              </div>
-              <div class="rows">
-                <div class="row"><span class="row-label">🎯 Vai trò:</span>Breaker Lửa / Bóng tối số một; chỉ số BREAK 108, tổng stat 541. Mảnh ghép hoàn hảo tạo thành Fire Core cùng Infergon (Infergon DPS + Inferlupa BREAK).</div>
-                <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Emberpup</span><span class="arr">→</span><span class="node">Flameruff</span><span class="arr">→</span><span class="node">Inferlupa</span></span></div>
-                <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Prismana nếu có</span>; nhưng bản Basic vẫn cực mạnh thiên về Fire/Dark BREAK, không cần gượng ép farm sớm.</div>
-                <div class="row"><span class="row-label">📍 Xuất hiện:</span>Trang wiki chính thức không ghi habitat; cách chuẩn nhất là thuần hoá từ <b>Flameruff</b> rồi tiến hoá lên.</div>
-                <div class="row"><span class="row-label">💡 Lưu ý:</span>Sau 8 đòn đánh cơ bản sẽ kích hoạt <b>Full Energy</b> để cường hoá chiêu thức kế. Tránh xả skill lớn khi chưa tích stack.</div>
-              </div>
-              <div class="source"><a href="https://wiki.aniimo.com/item/004/prismana-form" target="_blank" rel="noopener">Official Aniidex – Inferlupa Prismana ↗</a></div>
-            </div>
-          </article>
-
-          <!-- Thornblade -->
-          <article class="card" data-aniimo="thornblade" data-id="thornblade">
-            <span class="pick-badge">NÊN MANG</span>
-            <div class="art">
-              <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032301.png" alt="Thornblade Thunderstorm">
-            </div>
-            <div class="body">
-              <div class="title"><h3>Thornblade</h3><span class="no">#034</span></div>
-              <div class="tags">
-                <span class="tag elem-grass">Cỏ</span>
-                <span class="tag elem-electric">Điện</span>
-                <span class="tag role-dps">DPS</span>
-                <span class="tag form-tag">Thunderstorm ★</span>
-              </div>
-              <div class="rows">
-                <div class="row"><span class="row-label">🎯 Vai trò:</span>DPS Cỏ hạng nặng, ATK 121; dạng Thunderstorm ghép thêm hệ Điện giúp phủ 2 nhánh khắc chế cực ngon.</div>
-                <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Budsquire</span><span class="arr">→</span><span class="node">Thornblade</span></span> <span class="small">(cùng họ với Melloblum)</span></div>
-                <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Thunderstorm (Cỏ / Điện)</span> — độ bao phủ nguyên tố vượt trội hoàn toàn so với Basic/Towerwood khi đi gặp Trainer.</div>
-                <div class="row"><span class="row-label">📍 Xuất hiện:</span><span class="k">Sea of Flowers</span> (cho dạng Thunderstorm); dạng Towerwood tìm thấy ở Rosetower Woods.</div>
-                <div class="row"><span class="row-label">💡 Lưu ý:</span>Tích luỹ <b>Sword Dance</b> bằng skill trước rồi basic attack để hưởng tối đa bonus; có thế thủ giảm 20% sát thương và phản kích.</div>
-              </div>
-              <div class="source"><a href="https://wiki.aniimo.com/item/034/thunderstorm-form" target="_blank" rel="noopener">Official Aniidex – Thornblade Thunderstorm ↗</a></div>
-            </div>
-          </article>
-
-          <!-- Turbo -->
-          <article class="card" data-aniimo="turbo" data-id="turbo">
-            <span class="pick-badge">NÊN MANG</span>
-            <div class="art">
-              <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026202.png" alt="Turbo Prismana">
-            </div>
-            <div class="body">
-              <div class="title"><h3>Turbo</h3><span class="no">#018</span></div>
-              <div class="tags">
-                <span class="tag elem-dark">Bóng tối</span>
-                <span class="tag elem-wind">Gió</span>
-                <span class="tag role-support">Support</span>
-                <span class="tag form-tag">Prismana ★</span>
-              </div>
-              <div class="rows">
-                <div class="row"><span class="row-label">🎯 Vai trò:</span>Hỗ trợ gia tăng sát thương đội hình + hiệu quả BREAK; cực kỳ đắc lực trước các Trainer trâu bò hoặc Boss.</div>
-                <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Nimbi</span><span class="arr">→</span><span class="node">Turbo</span></span> <span class="small">(nhánh Gamma khác: Dreaple)</span></div>
-                <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Prismana (Bóng tối / Gió)</span> để vừa support vừa bổ trợ Dark coverage. Nếu chỉ thuần hỗ trợ thì Cloudmist cũng rất tốt.</div>
-                <div class="row"><span class="row-label">📍 Xuất hiện:</span><span class="k">Nimbus Fields (Thảo Nguyên Trên Mây)</span>.</div>
-                <div class="row"><span class="row-label">💡 Lưu ý:</span>Đánh 4 đòn đánh thường để kích hoạt trạng thái <b>Shrouded in Mist</b>, sau đó mới dùng skill buff để đạt hiệu lực tăng cường tối đa.</div>
-              </div>
-              <div class="source"><a href="https://wiki.aniimo.com/vi/item/10003926" target="_blank" rel="noopener">Official Aniidex – Turbo Prismana ↗</a></div>
-            </div>
-          </article>
-
-          <!-- Geoclaw -->
-          <article class="card" data-aniimo="geoclaw" data-id="geoclaw">
-            <span class="pick-badge">NÊN MANG</span>
-            <div class="art">
-              <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10163.png" alt="Geoclaw">
-            </div>
-            <div class="body">
-              <div class="title"><h3>Geoclaw</h3><span class="no">#025</span></div>
-              <div class="tags">
-                <span class="tag elem-ice">Băng</span>
-                <span class="tag role-break">BREAK</span>
-                <span class="tag form-tag">Basic</span>
-              </div>
-              <div class="rows">
-                <div class="row"><span class="row-label">🎯 Vai trò:</span>Phá chướng ngại hệ Băng (Ice BREAK) + hiệu ứng khống chế; dùng khi matchup của Inferlupa hoặc Panpanta bị bất lợi.</div>
-                <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Budclaw</span><span class="arr">→</span><span class="node">Geoclaw</span></span> <span class="small">(nhánh Gamma khác: Shrubclaw)</span></div>
-                <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Basic</span> — Aniidex hiện tại chỉ có 1 form chính này.</div>
-                <div class="row"><span class="row-label">📍 Xuất hiện:</span>Trang chính thức không ghi habitat trực tiếp; cách an toàn nhất là bắt <b>Budclaw</b> và tiến hoá lên.</div>
-                <div class="row"><span class="row-label">💡 Lưu ý:</span>Đòn đánh thường tích luỹ Ice debuff; khi đạt đủ điểm cộng dồn sẽ gia tăng đột biến khả năng làm choáng và phá giáp đối thủ.</div>
-              </div>
-              <div class="source"><a href="https://wiki.aniimo.com/vi" target="_blank" rel="noopener">Official Aniidex – Geoclaw #025 ↗</a></div>
-            </div>
-          </article>
-
-          <!-- Hexxin -->
-          <article class="card" data-aniimo="hexxin" data-id="hexxin">
-            <span class="pick-badge">NÊN MANG</span>
-            <div class="art">
-              <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020301.png" alt="Hexxin Mountain">
-            </div>
-            <div class="body">
-              <div class="title"><h3>Hexxin</h3><span class="no">#021</span></div>
-              <div class="tags">
-                <span class="tag elem-dark">Bóng tối</span>
-                <span class="tag elem-grass">Cỏ</span>
-                <span class="tag role-regen">REGEN</span>
-                <span class="tag form-tag">Mountain ★</span>
-              </div>
-              <div class="rows">
-                <div class="row"><span class="row-label">🎯 Vai trò:</span>Hồi phục năng lượng EP + bộ tiện ích khoá chiêu trong trận chiến dài; REGEN 115, HP 115.</div>
-                <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Hummin</span><span class="arr">→</span><span class="node">Hexxin</span></span> <span class="small">(nhánh Gamma: Tuckin)</span></div>
-                <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Mountain (Bóng tối / Cỏ)</span> cho đa dụng utility, bổ sung skill Earth và độ phủ hệ Cỏ.</div>
-                <div class="row"><span class="row-label">📍 Xuất hiện:</span><span class="k">Sea of Flowers</span> và <span class="k">Berylline Causeway</span>.</div>
-                <div class="row"><span class="row-label">💡 Lưu ý:</span>Curse giúp đòn đánh thường hệ Dark tự hồi EP; kit kỹ năng còn giảm shield/heal và gây hiệu ứng khống chế cực mạnh lên Boss.</div>
-              </div>
-              <div class="source"><a href="https://wiki.aniimo.com/item/021/mountain-form" target="_blank" rel="noopener">Official Aniidex – Hexxin Mountain ↗</a></div>
-            </div>
-          </article>
-
-          <!-- Grizbo -->
-          <article class="card" data-aniimo="grizbo" data-id="grizbo">
-            <span class="pick-badge">NÊN MANG</span>
-            <div class="art">
-              <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10503.png" alt="Grizbo Basic">
-            </div>
-            <div class="body">
-              <div class="title"><h3>Grizbo</h3><span class="no">#069</span></div>
-              <div class="tags">
-                <span class="tag elem-earth">Đá / Earth attacks</span>
-                <span class="tag role-dps">DPS</span>
-                <span class="tag form-tag">Basic ★</span>
-              </div>
-              <div class="rows">
-                <div class="row"><span class="row-label">🎯 Vai trò:</span>DPS hệ Đất/Đá hàng đầu; chỉ số ATK cực khủng <b>124</b>. Cần dùng khi team đòi hỏi sát thương kết liễu thực sự chứ không chỉ BREAK.</div>
-                <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Cubbo</span><span class="arr">→</span><span class="node">Grizbo</span></span></div>
-                <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Basic để tiết kiệm tài nguyên</span>. Bản Prismana đổi thành Bóng tối + Đá nhưng đội hình đã có thừa Dark; nếu có sẵn Prismana thì vẫn dùng tốt.</div>
-                <div class="row"><span class="row-label">📍 Xuất hiện:</span><span class="k">Rosetower Woods</span>.</div>
-                <div class="row"><span class="row-label">💡 Lưu ý:</span>Tích điểm Rage; khi chạm mốc 100 bước vào trạng thái <b>Enraged</b>, tăng tốc độ đánh, sát thương chiêu và hồi phục EP.</div>
-              </div>
-              <div class="source"><a href="https://wiki.aniimo.com/item/069/basic-form" target="_blank" rel="noopener">Official Aniidex – Grizbo ↗</a> · <a href="https://wiki.aniimo.com/item/069/prismana-form" target="_blank" rel="noopener">Prismana form ↗</a></div>
-            </div>
-          </article>
-
+          <!-- Rendered dynamically by JS renderStorageCards() -->
         </div>
       </section>
 
@@ -2331,20 +2111,6 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
             <p class="dps-note-text">DPS Điện tốc độ cao, trừng phạt triệt để các mục tiêu hệ Gió và Nước bằng chuỗi sốc điện tê liệt dồn dập.</p>
           </div>
 
-          <!-- Helion -->
-          <div class="core-dps-card holy-border">
-            <div class="dps-card-top">
-              <span class="dps-badge-pill" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4);">✨ HOLY DPS</span>
-              <span class="dps-stat-atk">ATK 116 · Cận Chiến</span>
-            </div>
-            <h3 class="dps-card-name">Helion</h3>
-            <div class="dps-counters-row">
-              <span class="counter-tag-label">Khắc chế:</span>
-              <span class="counter-target-pill" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.35); color: #fef08a;">🌪️ Gió (×1.6)</span>
-              <span class="counter-target-pill" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.35); color: #fef08a;">🌑 Bóng tối (×1.6)</span>
-            </div>
-            <p class="dps-note-text">Carry Thánh vật lý số 1. Trait <b>Ân Huệ Thái Dương</b> (+30% final dmg khi không đánh khắc hệ) giúp gánh 80% câu chuyện.</p>
-          </div>
           <!-- Thornblade (Grass Specialist) -->
           <div class="core-dps-card" style="border-color: rgba(34, 197, 94, 0.5); background: linear-gradient(180deg, #13241d 0%, #0a1712 100%);">
             <div class="dps-card-top">
@@ -2359,7 +2125,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
               <span class="counter-target-pill" style="background: rgba(34, 197, 94, 0.2); border-color: rgba(34, 197, 94, 0.6); color: #4ade80;">💧+❄️ Nước Băng (×1.6)</span>
               <span class="counter-target-pill" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(245, 158, 11, 0.3)); border-color: #f87171; color: #fef08a;">💥 🪨+💧 Đá Nước (×2.56)</span>
             </div>
-            <p class="dps-note-text">Giải quyết điểm mù cho nhóm 5 DPS chính! Khi gặp song hệ <b>Nước + Băng</b> (Lửa bị hòa 1.0x) hoặc <b>Đá + Nước</b> (ăn đòn Cỏ <b>×2.56 siêu chí mạng</b>), Thornblade là lựa chọn số 1 không thể thay thế.</p>
+            <p class="dps-note-text">Giải quyết điểm mù cho nhóm 4 DPS chính! Khi gặp song hệ <b>Nước + Băng</b> (Lửa bị hòa 1.0x) hoặc <b>Đá + Nước</b> (ăn đòn Cỏ <b>×2.56 siêu chí mạng</b>), Thornblade là lựa chọn số 1 không thể thay thế.</p>
           </div>
         </div>
 
@@ -2385,17 +2151,16 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
           <ul style="margin: 8px 0 0; padding-left: 20px; line-height: 1.7;">
             <li><b>Không dùng icon song hệ để suy ra damage:</b> Phải dựa vào hệ của skill / rotation DPS thực tế của quái.</li>
             <li><i>Sherro Thunderstorm</i> vẫn dùng chủ yếu Water damage, không coi là Electric DPS chính.</li>
-            <li><i>Grizbo</i> là Rock DPS đánh Fire/Ice, không phải counter Electric.</li>
-            <li><i>Không đưa Geoclaw vào đánh Fire</i> (Geoclaw thuần Ice BREAK).</li>
+            <li><i>Thornblade Thunderstorm</i> sở hữu rotation Cỏ + Điện cực kỳ toàn diện.</li>
             <li>Nguồn chuẩn: <a href="https://gamewith.ai/aniimo/vi/type-chart" target="_blank" rel="noopener">Type chart GameWith ↗</a> · <a href="https://wiki.aniimo.com/item/067/basic-form" target="_blank" rel="noopener">Aniidex Infergon #067 ↗</a></li>
           </ul>
         </div>
       </section>
 
-            <!-- 3. Bộ Khung 6 Đội Hình Nguyên Tố Chuẩn (Elemental Synergy Teams) -->
+      <!-- 3. Bộ Khung 5 Đội Hình Nguyên Tố Chuẩn (Elemental Synergy Teams) -->
       <section class="section">
-        <h2>3) Bộ Khung 6 Đội Hình Nguyên Tố Chuẩn (Elemental Synergy Teams)</h2>
-        <p class="section-sub">Tổng hợp 6 đội hình tối ưu hóa sức mạnh cộng hưởng nguyên tố, kỹ năng buff đặc hệ và bảo kê sinh tồn toàn diện.</p>
+        <h2>3) Bộ Khung 5 Đội Hình Nguyên Tố Chuẩn (Elemental Synergy Teams)</h2>
+        <p class="section-sub">Tổng hợp 5 đội hình tối ưu hóa sức mạnh cộng hưởng nguyên tố, kỹ năng buff đặc hệ và bảo kê sinh tồn toàn diện.</p>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin: 18px 0;">
           
@@ -2455,19 +2220,6 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
             </div>
           </div>
 
-          <!-- Helion Team vs Dark -->
-          <div class="core-dps-card holy-border">
-            <div class="dps-card-top">
-              <span class="dps-badge-pill" style="background: rgba(245, 158, 11, 0.25); color: #fef08a; border: 1px solid rgba(245, 158, 11, 0.5);">✨ HELION TEAM</span>
-              <span class="dps-stat-atk">Chuyên Đánh Bóng Tối</span>
-            </div>
-            <h3 class="dps-card-name" style="font-size: 16.5px; color: #fff;">Helion + Tubster + Turbo + Gracewing</h3>
-            <div style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6; margin-top: 6px;">
-              <b>• Core Holy:</b> <b>Helion</b> (Carry Thánh cận chiến) + <b>Tubster</b> (Chống chịu & phá giáp).<br>
-              <b>• Hỗ trợ tối ưu:</b> Vì hệ Thánh chưa có support buff trực tiếp đặc hệ, kết hợp <b>Turbo</b> buff trực tiếp damage/BREAK + <b>Gracewing</b> sustain (heal/cleanse/EP) là phương án gọn và mạnh nhất.
-            </div>
-          </div>
-
           <!-- Grass Specialist Team -->
           <div class="core-dps-card" style="border-color: rgba(34, 197, 94, 0.5); background: linear-gradient(180deg, #13241d 0%, #0a1712 100%);">
             <div class="dps-card-top">
@@ -2501,58 +2253,58 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
           <tbody>
             <tr>
               <td><strong>🌐 Không rõ / Đi map</strong></td>
-              <td><span class="core">Helion · Glacy · Panpanta · Inferlupa</span></td>
-              <td class="hide-mobile">Carry + Heal + Water BREAK + Fire/Dark BREAK; bộ khung an toàn số 1, gần như không cần thay đổi.</td>
+              <td><span class="core">Infergon · Inferlupa · Turbo · Gracewing</span></td>
+              <td class="hide-mobile">🔥 Fire Synergy hoàn chỉnh: Infergon (Fire DPS tầm xa) + Inferlupa (Fire BREAK), Turbo buff +30% DMG & BREAK, Gracewing hồi máu, giải debuff và nạp EP liên tục.</td>
             </tr>
             <tr>
               <td><strong>💧 Nước</strong></td>
-              <td><b>Thornblade</b> · Helion · Glacy · Turbo</td>
-              <td class="hide-mobile">Thornblade Thunderstorm làm mũi sát thương chính; Turbo buff dồn nổ dame & phá vỡ giáp.</td>
+              <td><b>Thornblade</b> · <b>Pomawk</b> · Melloblum · Gracewing</td>
+              <td class="hide-mobile">🌿 Grass Specialist: Thornblade chém Cỏ khắc chế cứng (×1.6), Pomawk phá giáp Cỏ, Melloblum hỗ trợ hồi máu & giải độc, Gracewing nạp EP.</td>
             </tr>
             <tr>
               <td><strong>🔥 Lửa</strong></td>
-              <td><b>Panpanta</b> · Glacy · Helion · Geoclaw</td>
-              <td class="hide-mobile">Dồn áp lực Water core; Geoclaw hỗ trợ khống chế và BREAK phụ nếu Panpanta cần giãn cách hồi chiêu.</td>
+              <td><b>Sherro</b> · <b>Panpanta</b> · Piopiota · Glacy</td>
+              <td class="hide-mobile">💧 Water Synergy: Sherro carry Nước dồn sát thương cực mạnh, Panpanta lo Water BREAK, Piopiota buff +36% Water DMG & tạo vũng nước, Glacy giữ vững sinh tồn.</td>
             </tr>
             <tr>
               <td><strong>🌿 Cỏ</strong></td>
-              <td><b>Infergon</b> (DPS) · <b>Inferlupa</b> (BREAK) · Turbo · Glacy</td>
-              <td class="hide-mobile">Infergon làm DPS Lửa tầm xa xả sát thương dứt điểm (Cỏ ×1.6); Inferlupa dồn Fire BREAK; Turbo buff tốc độ & sát thương; Glacy hồi phục.</td>
+              <td><b>Infergon</b> · <b>Inferlupa</b> · Turbo · Gracewing</td>
+              <td class="hide-mobile">🔥 Fire Synergy: Infergon làm DPS Lửa tầm xa xả sát thương dứt điểm (Cỏ ×1.6); Inferlupa dồn Fire BREAK; Turbo buff tốc độ & sát thương +30%; Gracewing hồi phục.</td>
             </tr>
             <tr>
               <td><strong>❄️ Băng</strong></td>
-              <td><b>Infergon</b> (DPS) · <b>Inferlupa</b> (BREAK) · Glacy · Turbo</td>
-              <td class="hide-mobile">Sát thương Lửa từ Infergon (Băng ×1.6) là trọng tâm càn quét; Inferlupa lo Fire BREAK; Glacy hồi máu và Turbo hỗ trợ buff.</td>
+              <td><b>Infergon</b> · <b>Inferlupa</b> · Turbo · Gracewing</td>
+              <td class="hide-mobile">🔥 Fire Synergy: Sát thương Lửa từ Infergon (Băng ×1.6) càn quét; Inferlupa lo Fire BREAK; Turbo buff +30% DMG & BREAK; Gracewing hồi máu & giải trừ đóng băng.</td>
             </tr>
             <tr>
               <td><strong>⚡ Điện</strong></td>
-              <td><b>Grizbo</b> · Helion · Glacy · Inferlupa</td>
-              <td class="hide-mobile">Grizbo dùng đòn đánh hệ Đất làm mũi nhọn tiêu diệt; 3 vị trí còn lại duy trì độ ổn định đội hình.</td>
+              <td><b>Stellarys</b> · <b>Rookey</b> · Fragrancier · Turbo</td>
+              <td class="hide-mobile">🌑 Dark Synergy: Theo GameWith, Bóng tối khắc Điện (×1.6); Stellarys dồn Dark DPS, Rookey lo BREAK, Fragrancier trừ 12% kháng và gán mark +50% đòn đánh thường.</td>
             </tr>
             <tr>
-              <td><strong>🪨 Đất / Earth</strong></td>
-              <td><b>Thornblade</b> · <b>Panpanta</b> · Glacy · Helion</td>
-              <td class="hide-mobile">Cỏ + Nước là 2 mũi nhọn dập tắt Đất hoàn hảo; Helion dọn dẹp các mục tiêu phụ trung tính.</td>
+              <td><strong>🪨 Đất / Đá</strong></td>
+              <td><b>Thornblade</b> · <b>Pomawk</b> · Melloblum · Gracewing</td>
+              <td class="hide-mobile">🌿 Grass Specialist: Cỏ khắc chế cứng Đá (×1.6); đặc biệt khi gặp song hệ Đá + Nước đòn Cỏ của Thornblade đạt SIÊU CHÍ MẠNG ×2.56 thổi bay đối thủ ngay lập tức!</td>
             </tr>
             <tr>
               <td><strong>🌪️ Gió</strong></td>
-              <td>Helion · <b>Thornblade</b> · Glacy · Panpanta</td>
-              <td class="hide-mobile">Helion & Glacy sở hữu hệ Thánh; Thornblade Thunderstorm bổ sung sát thương Điện dứt điểm hệ Gió.</td>
+              <td><b>Fenmane</b> · <b>Blazen</b> · Luminelle · Glacy</td>
+              <td class="hide-mobile">⚡ Electric Synergy: Fenmane xả điện tốc độ cao (Gió ×1.6), Blazen dồn BREAK, Luminelle Prismana kích hoạt chuỗi buff 3 tầng điện cực khủng.</td>
             </tr>
             <tr>
               <td><strong>🌑 Bóng tối</strong></td>
-              <td><b>Helion</b> · <b>Glacy</b> · Panpanta · Turbo</td>
-              <td class="hide-mobile">Trục Thánh Helion + Glacy phản đòn cực rát; Panpanta lo phá giáp; Turbo hỗ trợ buff.</td>
+              <td><b>Infergon</b> · <b>Inferlupa</b> · Turbo · Gracewing</td>
+              <td class="hide-mobile">🔥 Fire Synergy: Dồn hỏa lực Fire càn quét trung tính kết hợp Gracewing mang song hệ Gió / Thánh hồi máu và thanh tẩy nguyền rủa; Turbo buff +30% dứt điểm nhanh.</td>
             </tr>
             <tr>
               <td><strong>✨ Thánh</strong></td>
-              <td><b>Inferlupa</b> · <b>Turbo</b> · <b>Hexxin</b> · Glacy</td>
-              <td class="hide-mobile">Dồn tối đa các vị trí hệ Dark / Utility quấy rối, giữ Glacy duy trì mạch sống cho toàn đội.</td>
+              <td><b>Stellarys</b> · <b>Rookey</b> · Fragrancier · Gracewing</td>
+              <td class="hide-mobile">🌑 Dark Synergy: Theo GameWith, Bóng tối khắc Thánh (×1.6); dồn bộ 3 Stellarys + Rookey + Fragrancier trừ kháng và dứt điểm mục tiêu, Gracewing hồi phục sinh tồn.</td>
             </tr>
             <tr>
               <td><strong>👑 Boss / Trận dài</strong></td>
-              <td>Helion · Glacy · Panpanta · <b>Hexxin</b></td>
-              <td class="hide-mobile">Carry + Healer + Breaker + Regen nạp EP lâu dài. Nếu boss đòi hỏi burst BREAK nhanh hơn, đổi Hexxin sang Inferlupa.</td>
+              <td><b>Stellarys</b> · <b>Rookey</b> · Fragrancier · Turbo</td>
+              <td class="hide-mobile">🌑 Dark Burst: Fragrancier trừ 12% kháng Dark, buff 20% Dark Boost và mark +50% basic; Turbo buff +30% DMG/BREAK giúp kết liễu Boss cực nhanh trước khi thanh nộ đầy.</td>
             </tr>
           </tbody>
         </table>
@@ -2560,78 +2312,82 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
 
       <!-- 3. Cách nuôi đỡ cày chay -->
       <section class="section">
-        <h2>5) Chiến Lược Phân Bổ Tài Nguyên — Tránh Cày Chay</h2>
-        <p class="section-sub">Tuyệt đối không dồn tài nguyên chia đều cho cả 9 con. Hãy phân bổ theo từng bậc ưu tiên sau:</p>
+        <h2>5) Chiến Lược Phân Bổ Tài Nguyên Cho 5 Đội Hình — Tránh Cày Chay</h2>
+        <p class="section-sub">Tuyệt đối không dồn tài nguyên chia đều cho cả 17 con. Hãy phân bổ theo từng bậc ưu tiên sau:</p>
         <table>
           <thead>
             <tr>
-              <th style="width: 22%;">Mức Ưu Tiên</th>
-              <th style="width: 38%;">Aniimo</th>
+              <th style="width: 24%;">Mức Ưu Tiên</th>
+              <th style="width: 40%;">Aniimo</th>
               <th>Chiến Thuật Nuôi Dưỡng</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><span class="star">★★★★★</span> <strong style="color:var(--ok)">Nòng Cốt</strong></td>
-              <td><b>Helion · Glacy · Panpanta · Infergon · Inferlupa</b></td>
-              <td>Giữ sát level câu chuyện (Story). Đây là bộ tứ mặc định vượt map khi chưa rõ hệ của đối thủ.</td>
+              <td><span class="star">★★★★★</span> <strong style="color:var(--ok)">Trụ Cột Lõi (Core DPS & BREAK)</strong></td>
+              <td><b>Infergon, Sherro, Stellarys, Fenmane, Thornblade</b><br><span class="small" style="color:#94a3b8;">Kèm 5 Breaker: Inferlupa, Panpanta, Rookey, Blazen, Pomawk</span></td>
+              <td>Giữ sát level câu chuyện (Story). Đây là 5 cặp bài trùng DPS + BREAK mang lại 80% sức mạnh càn quét và vượt ải của từng hệ nguyên tố.</td>
             </tr>
             <tr>
-              <td><span class="star">★★★★☆</span> <strong style="color:var(--gold)">Khắc Chế</strong></td>
-              <td><b>Thornblade · Grizbo</b></td>
-              <td>Hai mũi nhọn DPS counter then chốt; có thể kém nhóm Core 2-3 level nhưng cần nâng đều kỹ năng.</td>
+              <td><span class="star">★★★★☆</span> <strong style="color:var(--gold)">Universal Support & Healer</strong></td>
+              <td><b>Turbo · Gracewing · Glacy</b></td>
+              <td>Bộ ba hỗ trợ / hồi máu quốc dân dùng chung cho mọi đội hình. Turbo buff +30% DMG & BREAK; Gracewing hồi máu, giải debuff, nạp EP; Glacy hồi phục toàn diện. Ưu tiên nâng max kỹ năng buff.</td>
             </tr>
             <tr>
-              <td><span class="star">★★★☆☆</span> <strong style="color:var(--accent)">Hỗ Trợ</strong></td>
-              <td><b>Turbo · Geoclaw · Hexxin</b></td>
-              <td>Nhóm linh hoạt tiện ích. Không cần ngang level với Core; chỉ cần đủ sống và thi triển đúng bộ skill buff / regen.</td>
+              <td><span class="star">★★★☆☆</span> <strong style="color:var(--accent)">Chuyên Gia Buff Đặc Hệ</strong></td>
+              <td><b>Piopiota · Fragrancier · Luminelle · Melloblum</b></td>
+              <td>Các mảnh ghép tối ưu hóa synergy nguyên tố (Piopiota buff Nước, Fragrancier bào kháng Dark, Luminelle buff 3 tầng Điện, Melloblum hỗ trợ Cỏ). Chỉ cần đầu tư vừa đủ sống để thi triển trọn vẹn chuỗi buff.</td>
             </tr>
           </tbody>
         </table>
         <div class="notice">
-          <b>💡 Lời khuyên vàng:</b> Roster 9 con phát huy sức mạnh cao nhất khi bạn có <b>4 trụ cột cứng</b> gánh 80% trận đấu, và chỉ lấy tài nguyên thừa bù cho 1-2 con counter trực diện từng khu vực. Tránh tình trạng biến thành 9 con cùng thiếu hụt tài nguyên!
+          <b>💡 Lời khuyên vàng:</b> Hãy chọn <b>1 Team làm mũi nhọn chính</b> (ví dụ 🔥 Fire Team hoặc 💧 Water Team) để vượt cốt truyện trước, sau đó đầu tư dần vào <b>Thornblade Thunderstorm</b> để giải quyết các ải có song hệ tử thần (Nước+Băng, Đá+Nước).
         </div>
       </section>
 
       <!-- 4. Form nên nhắm -->
       <section class="section">
-        <h2>6) Dạng Form Tối Ưu Nên Nhắm Đến</h2>
+        <h2>6) Dạng Form Tối Ưu Nên Nhắm Đến Cho 17 Aniimo</h2>
         <div class="legend">
-          <div class="box">
-            <b>Glacy → Prismana</b>
-            <span class="small">Ưu tiên cao nhất. Hệ Thánh / Nước kết hợp Healer tạo nên mảnh ghép hoàn hảo nhất cho roster.</span>
-          </div>
-          <div class="box">
-            <b>Panpanta → Prismana</b>
-            <span class="small">Không bắt buộc về mặt chỉ số; bản Basic vẫn làm nhiệm vụ Water BREAK cực kỳ xuất sắc.</span>
-          </div>
           <div class="box" style="border-color: rgba(239, 68, 68, 0.4); background: rgba(35, 18, 25, 0.7);">
             <b style="color: #fca5a5;">Infergon → Basic Perfect ★</b>
-            <span class="small">User hiện đã có <b>Jawling Perfect từ trứng</b>, nên ưu tiên nuôi con đó để lên Infergon. Bản Basic Perfect đã đủ làm Fire DPS chính; không cần ép Prismana chỉ vì stat.</span>
+            <span class="small">Nuôi từ <b>Jawling Perfect từ trứng</b> để lên Infergon. Bản Basic Perfect đã đủ làm Fire DPS chính cực mạnh; không cần ép Prismana chỉ vì stat.</span>
+          </div>
+          <div class="box" style="border-color: rgba(34, 197, 94, 0.4); background: rgba(18, 35, 25, 0.7);">
+            <b style="color: #86efac;">Thornblade → Thunderstorm ★</b>
+            <span class="small">Ưu tiên rất cao! Mang hệ Cỏ + Điện mở rộng vùng phủ khắc chế, giải quyết điểm mù Nước+Băng và kích nổ SIÊU CHÍ MẠNG ×2.56 trước Đá+Nước.</span>
+          </div>
+          <div class="box" style="border-color: rgba(234, 179, 8, 0.4); background: rgba(35, 30, 18, 0.7);">
+            <b style="color: #fde047;">Luminelle → Prismana ★</b>
+            <span class="small">Mảnh ghép support đặc hệ Điện đỉnh nhất: mang lại chuỗi buff 3 tầng sát thương và field điện cho Fenmane.</span>
           </div>
           <div class="box">
-            <b>Inferlupa → Prismana</b>
-            <span class="small">Có thì dùng; không cần ép farm sớm nếu bản Basic của bạn đã được đầu tư cấp độ từ trước.</span>
+            <b>Glacy → Prismana ★</b>
+            <span class="small">Ưu tiên số 1 cho vị trí healer. Hệ Thánh / Nước kết hợp khả năng hồi phục toàn diện cho cả đội.</span>
           </div>
           <div class="box">
-            <b>Thornblade → Thunderstorm</b>
-            <span class="small">Ưu tiên rất cao vì kết hợp Cỏ + Điện mở rộng vùng phủ khắc chế cực kỳ ấn tượng.</span>
+            <b>Turbo → Prismana / Cloudmist</b>
+            <span class="small">Bóng tối + Gió: vừa buff Nimbi Burst +30% vừa phủ thêm hệ Dark. Dạng nào cũng phát huy tối đa hiệu quả support universal.</span>
           </div>
           <div class="box">
-            <b>Turbo → Prismana</b>
-            <span class="small">Bóng tối + Gió: vừa buff vừa phủ thêm hệ Dark. Dạng Cloudmist cũng là lựa chọn thuần support tốt.</span>
+            <b>Sherro → Thunderstorm / Basic</b>
+            <span class="small">DPS Nước dồn sát thương cực khủng; kể cả ở dạng Thunderstorm vẫn dùng chủ yếu Water damage để kết liễu quái Lửa/Đá.</span>
           </div>
           <div class="box">
-            <b>Hexxin → Mountain</b>
-            <span class="small">Bóng tối + Cỏ: bộ tiện ích hỗ trợ kéo dài trận đánh cực kỳ an toàn.</span>
+            <b>Stellarys → Eclipse / Prismana</b>
+            <span class="small">DPS Bóng tối có độ phủ 3 hệ (Cỏ, Điện, Thánh); dồn đột biến sát thương cực kỳ ấn tượng.</span>
           </div>
           <div class="box">
-            <b>Grizbo → Basic</b>
-            <span class="small">Tiết kiệm farm. Bản Prismana có Dark + Rock nhưng đội hình đã đủ Dark từ các vị trí khác.</span>
+            <b>Gracewing → Skybound ★</b>
+            <span class="small">Hệ Gió / Thánh: chuyên gia hồi máu diện rộng, giải trừ toàn bộ hiệu ứng xấu (cleanse) và nạp EP liên tục.</span>
           </div>
           <div class="box">
-            <b>Helion / Geoclaw</b>
-            <span class="small">Sử dụng ngay dạng chuẩn theo Aniidex; không mất công săn tìm các biến thể form khác.</span>
+            <b>5 Breakers (Inferlupa, Panpanta, Rookey, Blazen, Pomawk)</b>
+            <span class="small">Bản Basic hoặc Prismana đều làm xuất sắc nhiệm vụ phá vỡ giáp; ưu tiên dồn trang bị gia tăng chỉ số BREAK.</span>
+          </div>
+          <div class="box">
+            <b>Piopiota / Fragrancier / Melloblum</b>
+            <span class="small">Tập trung nâng cấp kỹ năng nội tại buff đặc hệ và chỉ số REGEN để duy trì hiệu ứng hỗ trợ liên tục.</span>
           </div>
         </div>
       </section>
@@ -2744,14 +2500,14 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
 <aside class="inspect-drawer-left" id="inspectDrawer" aria-hidden="true">
   <div class="drawer-header">
     <div class="drawer-header-left">
-      <span class="drawer-role-badge" id="drawerRoleBadge">🔮 REGEN</span>
-      <span class="drawer-no" id="drawerNo">#021</span>
+      <span class="drawer-role-badge" id="drawerRoleBadge">💥 DPS · Fire DPS Tầm Xa</span>
+      <span class="drawer-no" id="drawerNo">#067</span>
     </div>
     <div class="drawer-header-right">
       <div class="drawer-level-circle">
         <div class="drawer-level-circle-inner">
           <span class="lvl-label">LV</span>
-          <span class="lvl-val" id="drawerLevelVal">36</span>
+          <span class="lvl-val" id="drawerLevelVal">50</span>
         </div>
       </div>
       <button class="drawer-close-btn" type="button" onclick="closeAniimoDrawer()" title="Đóng bảng">✕</button>
@@ -2759,16 +2515,22 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
   </div>
 
   <div class="drawer-profile">
-    <div class="drawer-name-row">
-      <h2 class="drawer-aniimo-name" id="drawerAniimoName">Hexxin</h2>
-      <span class="drawer-gender-tag" id="drawerGenderTag">♀</span>
-    </div>
-    <div class="drawer-sub-row">
-      <span class="drawer-form-pill" id="drawerFormPill">Mountain Form ★</span>
-      <span class="drawer-cp-pill" id="drawerCpPill">CP 741</span>
-      <div class="drawer-elem-pills" id="drawerElemPills">
-        <span class="elem-mini-pill">🌑 Bóng tối</span>
-        <span class="elem-mini-pill">🌿 Cỏ</span>
+    <div class="drawer-profile-top">
+      <div class="drawer-avatar-wrap oct-shape">
+        <img class="drawer-avatar-img" id="drawerAvatarImg" src="https://aniimotools.dev/assets/creatures/avatar/infergon.webp" alt="Infergon">
+      </div>
+      <div class="drawer-meta-col">
+        <div class="drawer-name-row">
+          <h2 class="drawer-aniimo-name" id="drawerAniimoName">Infergon</h2>
+          <span class="drawer-gender-tag" id="drawerGenderTag">♂</span>
+        </div>
+        <div class="drawer-sub-row">
+          <span class="drawer-form-pill" id="drawerFormPill">Basic Perfect ★</span>
+          <span class="drawer-cp-pill" id="drawerCpPill">CP 820</span>
+        </div>
+        <div class="drawer-elem-pills" id="drawerElemPills">
+          <span class="elem-mini-pill">🔥 Lửa</span>
+        </div>
       </div>
     </div>
   </div>
@@ -2784,39 +2546,39 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
     </div>
     <!-- 6 stats grid -->
     <div class="drawer-stats-grid">
-      <div class="stat-mini-card"><span>HP</span><b id="statHp">115</b></div>
-      <div class="stat-mini-card"><span>ATK</span><b id="statAtk">85</b></div>
-      <div class="stat-mini-card"><span>BREAK</span><b id="statBreak">82</b></div>
-      <div class="stat-mini-card"><span>P.DEF</span><b id="statPdef">90</b></div>
-      <div class="stat-mini-card"><span>M.DEF</span><b id="statMdef">108</b></div>
-      <div class="stat-mini-card"><span>REGEN</span><b id="statRegen">115</b></div>
+      <div class="stat-mini-card"><span>HP</span><b id="statHp">102</b></div>
+      <div class="stat-mini-card"><span>ATK</span><b id="statAtk">125</b></div>
+      <div class="stat-mini-card"><span>BREAK</span><b id="statBreak">98</b></div>
+      <div class="stat-mini-card"><span>P.DEF</span><b id="statPdef">88</b></div>
+      <div class="stat-mini-card"><span>M.DEF</span><b id="statMdef">94</b></div>
+      <div class="stat-mini-card"><span>REGEN</span><b id="statRegen">90</b></div>
     </div>
   </div>
 
   <!-- TRAIT & PASSIVE -->
   <div class="drawer-section-box">
     <div class="drawer-box-title">⚡ Trait & Kỹ Năng Nội Tại</div>
-    <div class="drawer-trait-name" id="drawerTraitName">Curse & Recharge</div>
-    <p class="drawer-trait-desc" id="drawerTraitDesc">Đòn đánh thường hệ Dark tự nạp năng lượng EP; giảm lá chắn và hồi máu của Boss, khống chế cứng trong các trận đánh kéo dài.</p>
+    <div class="drawer-trait-name" id="drawerTraitName">Power of Fire (Sức Mạnh Hỏa Diệm)</div>
+    <p class="drawer-trait-desc" id="drawerTraitDesc">Khi mục tiêu có trên 5 stack Fire Debuff, tăng thêm khoảng +30% damage. Basic attack dùng sát thương Lửa và đánh từ xa.</p>
   </div>
 
   <!-- EVOLUTION ROUTE -->
   <div class="drawer-section-box">
     <div class="drawer-box-title">🧬 Cây Tiến Hóa</div>
     <div class="drawer-evo-chain" id="drawerEvoChain">
-      <span class="evo-node">Hummin</span>
+      <span class="evo-node">Jawling (Trứng)</span>
       <span class="evo-arr">→</span>
-      <span class="evo-node">Tuckin</span>
+      <span class="evo-node">Helmwhelp</span>
       <span class="evo-arr">→</span>
-      <span class="evo-node">Hexxin</span>
+      <span class="evo-node">Infergon</span>
     </div>
   </div>
 
   <!-- FORM & HABITAT -->
   <div class="drawer-section-box">
     <div class="drawer-box-title">⭐ Form Khuyên Dùng & Nơi Xuất Hiện</div>
-    <p class="drawer-form-advice" id="drawerFormAdvice">Mountain Form (Bóng tối / Cỏ) cho đa dụng utility, bổ sung skill Earth và độ phủ hệ Cỏ.</p>
-    <div class="drawer-habitat-row">📍 <b>Khu vực:</b> <span id="drawerHabitat">Sea of Flowers & Berylline Causeway</span></div>
+    <p class="drawer-form-advice" id="drawerFormAdvice">Basic Perfect đã đủ làm Fire DPS chính; không cần ép Prismana chỉ vì stat.</p>
+    <div class="drawer-habitat-row">📍 <b>Khu vực:</b> <span id="drawerHabitat">Russet Highlands (Nhánh cuối: Warrior + Omega Infergon). Ưu tiên nuôi Jawling Perfect từ trứng.</span></div>
   </div>
 
   <!-- ACTION FOOTER -->
@@ -2856,7 +2618,7 @@ const elementIcons = {
   "Băng": "❄️"
 };
 
-// Full Aniimo Database with 6-Axis Stats for In-Game HUD
+// Full Aniimo Database with 6-Axis Stats for In-Game HUD (All 22 Aniimos)
 const aniimoDatabase = {
   infergon: {
     id: 'infergon',
@@ -2870,7 +2632,8 @@ const aniimoDatabase = {
     level: 50,
     cp: 820,
     gender: '♂',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10025.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/infergon.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/infergon-a1002503.webp',
     stats: { hp: 102, atk: 125, pdef: 88, regen: 90, mdef: 94, break: 98 },
     traitName: 'Power of Fire (Sức Mạnh Hỏa Diệm)',
     traitDesc: 'Khi mục tiêu có trên 5 stack Fire Debuff, tăng thêm khoảng +30% damage. Basic attack dùng sát thương Lửa và đánh từ xa.',
@@ -2891,7 +2654,8 @@ const aniimoDatabase = {
     level: 50,
     cp: 795,
     gender: '♂',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005503.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/inferlupa.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/inferlupa-a1005503.webp',
     stats: { hp: 100, atk: 112, pdef: 92, regen: 88, mdef: 85, break: 120 },
     traitName: 'Wild Fire Burst (Phá Giáp Hỏa)',
     traitDesc: 'Dồn lượng BREAK cực lớn bằng sát thương Lửa, thiêu đốt lớp giáp và tạo cơ hội dứt điểm cho Infergon.',
@@ -2899,27 +2663,6 @@ const aniimoDatabase = {
     formAdvice: 'Prismana có sẵn thì dùng; bản Basic vẫn đảm nhiệm vai trò Fire BREAK rất tốt.',
     habitat: 'Ashen Crags & Vùng đất dung nham.',
     sourceUrl: 'https://wiki.aniimo.com/item/004/prismana-form'
-  },
-  helion: {
-    id: 'helion',
-    no: '#99998',
-    name: 'Helion',
-    element1: 'Thánh',
-    element2: null,
-    role: 'DPS',
-    subRole: 'Holy Carry Cận Chiến',
-    form: 'Basic Form',
-    level: 50,
-    cp: 850,
-    gender: '—',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10361.png',
-    stats: { hp: 105, atk: 116, pdef: 95, regen: 80, mdef: 90, break: 108 },
-    traitName: 'Ân Huệ Thái Dương',
-    traitDesc: 'Tăng +30% final damage khi không đánh bằng nguyên tố tương khắc — carry cân bằng hoàn hảo cho mọi trận đấu.',
-    evolution: ['Không có cây thường (Ultimate biến hình trong trận)'],
-    formAdvice: 'Hiện wiki chỉ có 1 form Basic duy nhất.',
-    habitat: 'Starter / Nhiệm vụ cốt truyện đặc biệt.',
-    sourceUrl: 'https://wiki.aniimo.com/vi/item/99998/basic-form'
   },
   glacy: {
     id: 'glacy',
@@ -2933,7 +2676,8 @@ const aniimoDatabase = {
     level: 50,
     cp: 810,
     gender: '♀',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/glacy.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/glacy-a1004303.webp',
     stats: { hp: 120, atk: 80, pdef: 90, regen: 105, mdef: 110, break: 75 },
     traitName: 'Water Spirit (Linh Hồn Nước)',
     traitDesc: 'Giảm tiêu hao năng lượng EP khi đứng trong địa hình nước; kỹ năng hồi phục và thanh tẩy toàn đội.',
@@ -2954,7 +2698,8 @@ const aniimoDatabase = {
     level: 48,
     cp: 780,
     gender: '♂',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017402.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/panpanta.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/panpanta-a1017402.webp',
     stats: { hp: 108, atk: 95, pdef: 98, regen: 85, mdef: 92, break: 122 },
     traitName: 'Tidal Impact (Thủy Triều Kích)',
     traitDesc: 'Phá giáp hệ Nước cực mạnh, làm choáng mục tiêu và tạo cơ hội dồn nổ sát thương.',
@@ -2975,7 +2720,8 @@ const aniimoDatabase = {
     level: 48,
     cp: 815,
     gender: '♂',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032301.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/thornblade.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/thornblade-a1032301.webp',
     stats: { hp: 98, atk: 122, pdef: 90, regen: 95, mdef: 92, break: 105 },
     traitName: 'Thorn Storm (Lôi Cước Gai Nhọn)',
     traitDesc: 'Xả sát thương Cỏ dồn dập. Khắc chế triệt để Nước, Đá, Nước+Băng (×1.6) và đặc biệt Đá+Nước đạt siêu chí mạng ×2.56!',
@@ -2996,7 +2742,8 @@ const aniimoDatabase = {
     level: 46,
     cp: 760,
     gender: '♂',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026202.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/turbo.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/turbo-a1026204.webp',
     stats: { hp: 104, atk: 88, pdef: 86, regen: 118, mdef: 96, break: 92 },
     traitName: 'Nimbi Burst (Cuồng Phong Tăng Cường)',
     traitDesc: 'Tăng sát thương và hiệu suất phá giáp (BREAK efficiency) cho toàn đội lên tới +30%. Cực kỳ đa dụng trong mọi đội hình.',
@@ -3005,73 +2752,9 @@ const aniimoDatabase = {
     habitat: 'Berylline Causeway.',
     sourceUrl: 'https://wiki.aniimo.com/item/026/prismana-form'
   },
-  geoclaw: {
-    id: 'geoclaw',
-    no: '#016',
-    name: 'Geoclaw',
-    element1: 'Băng',
-    element2: null,
-    role: 'BREAK',
-    subRole: 'Ice Breaker & Khống Chế',
-    form: 'Basic Form',
-    level: 45,
-    cp: 770,
-    gender: '♂',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10163.png',
-    stats: { hp: 115, atk: 90, pdef: 110, regen: 75, mdef: 85, break: 126 },
-    traitName: 'Permafrost Grip (Vuốt Băng Vĩnh Cửu)',
-    traitDesc: 'Đóng băng và làm chậm mục tiêu, phá vỡ thanh giáp siêu tốc trước các đối thủ sợ hệ Băng.',
-    evolution: ['Frostclaw', 'Geoclaw'],
-    formAdvice: 'Dùng ngay bản chuẩn theo Aniidex, không cần form biến thể.',
-    habitat: 'Frostfall Peak & Các hang đá băng tuyết.',
-    sourceUrl: 'https://wiki.aniimo.com/item/016/basic-form'
-  },
-  hexxin: {
-    id: 'hexxin',
-    no: '#021',
-    name: 'Hexxin',
-    element1: 'Bóng tối',
-    element2: 'Cỏ',
-    role: 'REGEN',
-    subRole: 'Nạp EP & Khóa Chiêu Trận Dài',
-    form: 'Mountain ★',
-    level: 47,
-    cp: 741,
-    gender: '♀',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020301.png',
-    stats: { hp: 115, atk: 85, pdef: 90, regen: 115, mdef: 108, break: 82 },
-    traitName: 'Curse & Recharge (Nguyền Rủa & Nạp Năng Lượng)',
-    traitDesc: 'Đòn đánh thường hệ Dark tự nạp năng lượng EP; giảm lá chắn và hồi máu của Boss, khống chế cứng trong các trận đánh kéo dài.',
-    evolution: ['Hummin', 'Tuckin', 'Hexxin'],
-    formAdvice: 'Mountain (Bóng tối / Cỏ) đa dụng, bổ sung skill Earth và độ phủ hệ Cỏ.',
-    habitat: 'Sea of Flowers & Berylline Causeway.',
-    sourceUrl: 'https://wiki.aniimo.com/item/021/mountain-form'
-  },
-  grizbo: {
-    id: 'grizbo',
-    no: '#069',
-    name: 'Grizbo',
-    element1: 'Đá',
-    element2: null,
-    role: 'DPS',
-    subRole: 'Earth / Rock DPS Cận Chiến',
-    form: 'Basic Form ★',
-    level: 48,
-    cp: 805,
-    gender: '♂',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10503.png',
-    stats: { hp: 118, atk: 124, pdef: 105, regen: 78, mdef: 80, break: 100 },
-    traitName: 'Enraged (Cuồng Nộ Hùng)',
-    traitDesc: 'Tích điểm Rage khi chịu hoặc gây sát thương. Đạt 100 điểm bước vào trạng thái Enraged: tăng tốc độ đánh, sát thương chiêu và tự hồi EP.',
-    evolution: ['Cubbo', 'Grizbo'],
-    formAdvice: 'Basic tiết kiệm tài nguyên farm. ATK 124 cơ bản đã đủ đè bẹp đối thủ.',
-    habitat: 'Rosetower Woods.',
-    sourceUrl: 'https://wiki.aniimo.com/item/069/basic-form'
-  },
-  // Additional synergy members
   gracewing: {
     id: 'gracewing',
-    no: '#042',
+    no: '#029',
     name: 'Gracewing',
     element1: 'Gió',
     element2: 'Thánh',
@@ -3081,7 +2764,8 @@ const aniimoDatabase = {
     level: 48,
     cp: 785,
     gender: '♀',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/gracewing.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/gracewing-2.webp',
     stats: { hp: 112, atk: 78, pdef: 88, regen: 122, mdef: 112, break: 76 },
     traitName: 'Purifying Gale (Ngọn Gió Thanh Khiết)',
     traitDesc: 'Hồi máu diện rộng liên tục, giải trừ toàn bộ hiệu ứng bất lợi (cleanse) và bơm năng lượng EP dồi dào cho đồng minh.',
@@ -3092,7 +2776,7 @@ const aniimoDatabase = {
   },
   sherro: {
     id: 'sherro',
-    no: '#028',
+    no: '#055',
     name: 'Sherro',
     element1: 'Nước',
     element2: null,
@@ -3102,7 +2786,8 @@ const aniimoDatabase = {
     level: 50,
     cp: 825,
     gender: '♂',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017402.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/sherro.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/sherro-a1019401.webp',
     stats: { hp: 104, atk: 126, pdef: 92, regen: 88, mdef: 90, break: 102 },
     traitName: 'Hydro Surge (Dâng Trào Thủy Lực)',
     traitDesc: 'Dồn sát thương Nước liên tiếp, nhận thêm buff sát thương khi đứng trên vũng nước do Piopiota tạo ra.',
@@ -3123,7 +2808,8 @@ const aniimoDatabase = {
     level: 47,
     cp: 770,
     gender: '♀',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017402.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/piopiota.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/piopiota-2.webp',
     stats: { hp: 110, atk: 82, pdef: 86, regen: 112, mdef: 104, break: 85 },
     traitName: 'Tidal Harmony (Hòa Âm Thủy Triều)',
     traitDesc: 'Tăng +16% sát thương Nước cho đồng đội khác giới; Ultimate tăng thêm +20% Water damage trong 30s, đồng thời tạo vũng nước và hồi máu.',
@@ -3134,7 +2820,7 @@ const aniimoDatabase = {
   },
   stellarys: {
     id: 'stellarys',
-    no: '#055',
+    no: '#006',
     name: 'Stellarys',
     element1: 'Bóng tối',
     element2: null,
@@ -3144,7 +2830,8 @@ const aniimoDatabase = {
     level: 50,
     cp: 830,
     gender: '♂',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020301.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/stellarys.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/stellarys-a1001201.webp',
     stats: { hp: 98, atk: 128, pdef: 84, regen: 92, mdef: 96, break: 104 },
     traitName: 'Eclipse Strike (Đòn Nhật Thực)',
     traitDesc: 'Tấn công gây sát thương Bóng tối diện rộng, kích nổ dấu ấn của Fragrancier gây thêm 50% damage.',
@@ -3155,7 +2842,7 @@ const aniimoDatabase = {
   },
   rookey: {
     id: 'rookey',
-    no: '#056',
+    no: '#063',
     name: 'Rookey',
     element1: 'Bóng tối',
     element2: null,
@@ -3165,7 +2852,8 @@ const aniimoDatabase = {
     level: 48,
     cp: 780,
     gender: '♂',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026202.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/rookey.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/rookey-2.webp',
     stats: { hp: 106, atk: 102, pdef: 95, regen: 85, mdef: 90, break: 124 },
     traitName: 'Shadow Crusher (Nghiền Nát Bóng Đêm)',
     traitDesc: 'Phá vỡ khiên đối phương bằng đòn Dark búa tạ, giảm tốc độ di chuyển của địch.',
@@ -3176,7 +2864,7 @@ const aniimoDatabase = {
   },
   fragrancier: {
     id: 'fragrancier',
-    no: '#058',
+    no: '#039',
     name: 'Fragrancier',
     element1: 'Bóng tối',
     element2: null,
@@ -3186,7 +2874,8 @@ const aniimoDatabase = {
     level: 47,
     cp: 765,
     gender: '♀',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020301.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/fragrancier.webp',
+    art: 'https://aniimotools.dev/assets/creatures/avatar/fragrancier.webp',
     stats: { hp: 108, atk: 84, pdef: 88, regen: 114, mdef: 102, break: 88 },
     traitName: 'Dark Fragrance (Hương Thơm U Tối)',
     traitDesc: 'Skill trúng địch giảm 12% kháng Bóng Tối; Ultimate tăng 20% Dark Boost và gán dấu ấn khiến đòn đánh thường hệ Dark tăng +50% damage.',
@@ -3197,7 +2886,7 @@ const aniimoDatabase = {
   },
   fenmane: {
     id: 'fenmane',
-    no: '#045',
+    no: '#060',
     name: 'Fenmane',
     element1: 'Điện',
     element2: null,
@@ -3207,7 +2896,8 @@ const aniimoDatabase = {
     level: 50,
     cp: 825,
     gender: '♂',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032301.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/fenmane.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/fenmane-a1029301.webp',
     stats: { hp: 100, atk: 126, pdef: 90, regen: 90, mdef: 92, break: 106 },
     traitName: 'Static Overcharge (Quá Tải Tĩnh Điện)',
     traitDesc: 'Tấn công nhanh liên hoàn gây sốc điện, tăng tỉ lệ chí mạng lên các mục tiêu bị dính debuff Điện.',
@@ -3228,7 +2918,8 @@ const aniimoDatabase = {
     level: 48,
     cp: 785,
     gender: '♂',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10503.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/blazen.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/blazen-a1022201.webp',
     stats: { hp: 105, atk: 100, pdef: 94, regen: 86, mdef: 88, break: 122 },
     traitName: 'Lightning Breaker',
     traitDesc: 'Phá giáp siêu tốc đối phương bằng chuỗi đòn điện cao thế.',
@@ -3239,7 +2930,7 @@ const aniimoDatabase = {
   },
   luminelle: {
     id: 'luminelle',
-    no: '#048',
+    no: '#079',
     name: 'Luminelle',
     element1: 'Điện',
     element2: 'Thánh',
@@ -3249,7 +2940,8 @@ const aniimoDatabase = {
     level: 49,
     cp: 800,
     gender: '♀',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/luminelle.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/luminelle-a1014301.webp',
     stats: { hp: 114, atk: 86, pdef: 92, regen: 116, mdef: 108, break: 90 },
     traitName: 'Plasma Aura (Hào Quang Tĩnh Điện)',
     traitDesc: 'Nội tại buff +12% Electric dmg; Ultimate tăng +27% ATK +16% BREAK cho đồng đội Điện, kích hoạt sân đấu tăng thêm +20% sát thương Điện.',
@@ -3258,30 +2950,9 @@ const aniimoDatabase = {
     habitat: 'Berylline Causeway.',
     sourceUrl: 'https://wiki.aniimo.com'
   },
-  tubster: {
-    id: 'tubster',
-    no: '#012',
-    name: 'Tubster',
-    element1: 'Gió',
-    element2: 'Thánh',
-    role: 'BREAK',
-    subRole: 'Tank / Phá Giáp Trợ Thủ',
-    form: 'Basic Form',
-    level: 46,
-    cp: 755,
-    gender: '♂',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10163.png',
-    stats: { hp: 122, atk: 92, pdef: 108, regen: 82, mdef: 98, break: 116 },
-    traitName: 'Trumpet Blast',
-    traitDesc: 'Thổi kèn tạo sóng âm đẩy lùi và làm choáng kẻ địch, đồng thời bào mòn thanh kháng cự.',
-    evolution: ['Tubby', 'Tubster'],
-    formAdvice: 'Cặp bài trùng cùng Helion đối đầu hệ Bóng Tối.',
-    habitat: 'Highland Meadows.',
-    sourceUrl: 'https://wiki.aniimo.com'
-  },
   pomawk: {
     id: 'pomawk',
-    no: '#038',
+    no: '#037',
     name: 'Pomawk',
     element1: 'Cỏ',
     element2: null,
@@ -3291,7 +2962,8 @@ const aniimoDatabase = {
     level: 47,
     cp: 775,
     gender: '♂',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032301.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/pomawk.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/pomawk-2.webp',
     stats: { hp: 108, atk: 98, pdef: 96, regen: 88, mdef: 86, break: 121 },
     traitName: 'Mohawk Smash',
     traitDesc: 'Dồn lực phá giáp bằng chùy gai thảo mộc, tạo điều kiện cho Thornblade dứt điểm.',
@@ -3302,7 +2974,7 @@ const aniimoDatabase = {
   },
   melloblum: {
     id: 'melloblum',
-    no: '#039',
+    no: '#035',
     name: 'Melloblum',
     element1: 'Cỏ',
     element2: null,
@@ -3312,7 +2984,8 @@ const aniimoDatabase = {
     level: 46,
     cp: 760,
     gender: '♀',
-    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png',
+    avatar: 'https://aniimotools.dev/assets/creatures/avatar/melloblum.webp',
+    art: 'https://aniimotools.dev/assets/creatures/forms/melloblum-a1032402.webp',
     stats: { hp: 116, atk: 80, pdef: 90, regen: 118, mdef: 106, break: 78 },
     traitName: 'Spore Restoration',
     traitDesc: 'Thả phấn hoa chữa lành đồng đội, hóa giải trúng độc và tăng hồi phục EP.',
@@ -3330,24 +3003,38 @@ const supportEffects = {
   piopiota: { role: '💧 WATER BUFFER', effect: '+36% Water DMG & Vũng Nước' },
   fragrancier: { role: '🌑 DARK SUPPORT', effect: '-12% Dark Res · +50% Basic' },
   luminelle: { role: '⚡ ELECTRIC BUFF', effect: '+47% Elec DMG & Field' },
-  hexxin: { role: '🔮 REGEN & UTILITY', effect: 'Khóa Chiêu · Bơm Năng Lượng EP' },
-  tubster: { role: '🛡️ TANK / PHÁ GIÁP', effect: 'Đẩy Lùi & Bào Mòn Kháng Cự' },
   pomawk: { role: '🌿 GRASS BREAK', effect: 'Chùy Gai Phá Giáp' },
   melloblum: { role: '🌿 HEAL & UTILITY', effect: 'Phấn Hoa Trị Liệu & Giải Độc' },
   rookey: { role: '🌑 DARK BREAK', effect: 'Búa Tạ Phá Vỡ Khiên' },
   blazen: { role: '⚡ ELECTRIC BREAK', effect: 'Sốc Điện Phá Giáp' },
   inferlupa: { role: '🛡️ FIRE BREAK', effect: 'Phá Giáp & Thiêu Đốt' },
-  panpanta: { role: '🛡️ WATER BREAK', effect: 'Phá Giáp Thủy Triều' }
+  panpanta: { role: '🛡️ WATER BREAK', effect: 'Phá Giáp Thủy Triều' },
+  thornblade: { role: '🌿 GRASS SPECIALIST', effect: 'Lôi Cước Gai Nhọn' },
+  infergon: { role: '🔥 FIRE DPS', effect: 'Hỏa Diệm Tầm Xa' },
+  sherro: { role: '💧 WATER DPS', effect: 'Thủy Lực Dồn Sát Thương' },
+  stellarys: { role: '🌑 DARK DPS', effect: 'Đòn Đột Biến Nhật Thực' },
+  fenmane: { role: '⚡ ELEC DPS', effect: 'Quá Tải Tĩnh Điện' }
 };
 
-const rosterKeys = [
-  'helion', 'glacy', 'panpanta', 'infergon', 'inferlupa',
-  'thornblade', 'turbo', 'geoclaw', 'hexxin', 'grizbo'
+const synergyTeams = {
+  fire: ['infergon', 'inferlupa', 'turbo', 'gracewing'],
+  water: ['sherro', 'panpanta', 'piopiota', 'glacy'],
+  dark: ['stellarys', 'rookey', 'fragrancier', 'turbo'],
+  electric: ['fenmane', 'blazen', 'luminelle', 'glacy'],
+  grass: ['thornblade', 'pomawk', 'melloblum', 'gracewing']
+};
+
+const allStorageKeys = [
+  'infergon', 'inferlupa', 'turbo', 'gracewing',
+  'sherro', 'panpanta', 'piopiota', 'glacy',
+  'stellarys', 'rookey', 'fragrancier',
+  'fenmane', 'blazen', 'luminelle',
+  'thornblade', 'pomawk', 'melloblum'
 ];
 
 const displayNames = {};
-Object.keys(aniimoDatabase).forEach(k => {
-  displayNames[k] = aniimoDatabase[k].name;
+allStorageKeys.forEach(k => {
+  displayNames[k] = aniimoDatabase[k] ? aniimoDatabase[k].name : k;
 });
 
 // Radar Chart SVG Renderer (6-Axis Hexagonal)
@@ -3443,6 +3130,11 @@ function openAniimoDrawer(id) {
   if (lvlVal) lvlVal.textContent = data.level || 50;
 
   // Profile
+  const avatarEl = document.getElementById('drawerAvatarImg');
+  if (avatarEl) {
+    avatarEl.src = data.avatar || data.art;
+    avatarEl.alt = data.name;
+  }
   const nameEl = document.getElementById('drawerAniimoName');
   if (nameEl) nameEl.textContent = data.name;
   const genderEl = document.getElementById('drawerGenderTag');
@@ -3526,21 +3218,45 @@ function closeAniimoDrawer() {
   document.querySelectorAll('.aniimo-oct-tile.selected').forEach(t => t.classList.remove('selected'));
 }
 
-// Storage Box Octagon Grid Builder
+function getFilteredKeys(filter = 'all') {
+  return allStorageKeys.filter(k => {
+    const d = aniimoDatabase[k];
+    if (!d) return false;
+    if (filter === 'all') return true;
+    if (filter === 'dps') return d.role === 'DPS';
+    if (filter === 'break') return d.role === 'BREAK';
+    if (filter === 'heal') return d.role === 'HEAL';
+    if (filter === 'support') return d.role === 'SUPPORT' || d.role === 'REGEN';
+    if (filter === 'fire') return synergyTeams.fire.includes(k);
+    if (filter === 'water') return synergyTeams.water.includes(k);
+    if (filter === 'dark') return synergyTeams.dark.includes(k);
+    if (filter === 'electric') return synergyTeams.electric.includes(k);
+    if (filter === 'grass') return synergyTeams.grass.includes(k);
+    return true;
+  });
+}
+
+function getElemClass(elem) {
+  const map = {
+    'Lửa': 'fire',
+    'Nước': 'water',
+    'Cỏ': 'grass',
+    'Điện': 'electric',
+    'Băng': 'ice',
+    'Gió': 'wind',
+    'Đá': 'earth',
+    'Bóng tối': 'dark',
+    'Thánh': 'holy'
+  };
+  return map[elem] || 'fire';
+}
+
+// Storage Box Octagon Grid Builder (17 Aniimos)
 function renderStorageOctagons(roleFilter = 'all') {
   const container = document.getElementById('storageOctagonGrid');
   if (!container) return;
 
-  const filteredKeys = rosterKeys.filter(k => {
-    const d = aniimoDatabase[k];
-    if (!d) return false;
-    if (roleFilter === 'all') return true;
-    if (roleFilter === 'dps') return d.role === 'DPS';
-    if (roleFilter === 'break') return d.role === 'BREAK';
-    if (roleFilter === 'heal') return d.role === 'HEAL';
-    if (roleFilter === 'support') return d.role === 'SUPPORT' || d.role === 'REGEN';
-    return true;
-  });
+  const filteredKeys = getFilteredKeys(roleFilter);
 
   container.innerHTML = filteredKeys.map(key => {
     const d = aniimoDatabase[key];
@@ -3548,14 +3264,70 @@ function renderStorageOctagons(roleFilter = 'all') {
     return `
       <div class="aniimo-oct-tile oct-shape" data-id="${key}" onclick="openAniimoDrawer('${key}')" title="${d.name} (${d.role})">
         <div class="aniimo-oct-inner oct-shape">
-          <span class="oct-rank-chevron">︽ Lv.${d.level || 48}</span>
-          <img class="oct-avatar" src="${d.art}" alt="${d.name}" loading="lazy">
+          <span class="oct-rank-chevron">✦ Lv.${d.level || 48}</span>
+          <img class="oct-avatar" src="${d.avatar || d.art}" alt="${d.name}" loading="lazy">
           <span class="oct-bot-pill">${elemStr} ${d.cp ? d.cp : d.no}</span>
         </div>
       </div>
     `;
   }).join('');
 }
+
+// Storage Box Detailed Cards Builder (17 Aniimos)
+function renderStorageCards(filter = 'all') {
+  const container = document.getElementById('rosterCardsGrid');
+  if (!container) return;
+
+  const filteredKeys = getFilteredKeys(filter);
+
+  container.innerHTML = filteredKeys.map(key => {
+    const d = aniimoDatabase[key];
+    const elem1Tag = d.element1 ? `<span class="tag elem-${getElemClass(d.element1)}">${elementIcons[d.element1]} ${d.element1}</span>` : '';
+    const elem2Tag = d.element2 ? `<span class="tag elem-${getElemClass(d.element2)}">${elementIcons[d.element2]} ${d.element2}</span>` : '';
+    const roleTag = `<span class="tag role-${d.role.toLowerCase()}">${d.role}</span>`;
+    const formTag = `<span class="tag form-tag">${d.form || 'Standard'}</span>`;
+    const evoStr = (d.evolution && d.evolution.length > 0)
+      ? d.evolution.join(' → ')
+      : 'Không có chuỗi';
+
+    return `
+      <article class="card" data-aniimo="${key}" data-id="${key}" onclick="openAniimoDrawer('${key}')" style="cursor: pointer;">
+        <span class="pick-badge">NÊN MANG</span>
+        <div class="art">
+          <img src="${d.art || d.avatar}" alt="${d.name}" loading="lazy">
+        </div>
+        <div class="body">
+          <div class="title">
+            <h3>${d.name}</h3>
+            <span class="no">${d.no}</span>
+          </div>
+          <div class="tags">
+            ${roleTag}
+            ${elem1Tag}
+            ${elem2Tag}
+            ${formTag}
+          </div>
+          <div class="rows">
+            <div class="row">
+              <span class="row-label">⚡ Vai trò:</span> <b>${d.subRole || d.role}</b>
+            </div>
+            <div class="row">
+              <span class="row-label">🎯 Điểm mạnh:</span> ${d.traitDesc || d.traitName}
+            </div>
+            <div class="row">
+              <span class="row-label">⭐ Khuyên dùng:</span> ${d.formAdvice || ''}
+            </div>
+            <div class="row">
+              <span class="row-label">🧬 Tiến hóa:</span> <span class="small">${evoStr}</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+let currentStorageFilter = 'all';
 
 // View switcher for Storage Box
 const viewSwitchOct = document.getElementById('viewSwitchOct');
@@ -3576,6 +3348,8 @@ if (viewSwitchOct && viewSwitchCard && storageOctagonGrid && rosterCardsGrid) {
     viewSwitchOct.classList.remove('active');
     storageOctagonGrid.style.display = 'none';
     rosterCardsGrid.style.display = 'grid';
+    renderStorageCards(currentStorageFilter);
+    updateCardHighlights();
   });
 }
 
@@ -3584,9 +3358,11 @@ document.querySelectorAll('#storageRoleFilters [data-role]').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('#storageRoleFilters [data-role]').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    renderStorageOctagons(btn.dataset.role);
-    // Re-apply recommended / dimmed states
+    currentStorageFilter = btn.dataset.role;
+    renderStorageOctagons(currentStorageFilter);
+    renderStorageCards(currentStorageFilter);
     updateOctagonHighlights();
+    updateCardHighlights();
   });
 });
 
@@ -3602,6 +3378,26 @@ function updateOctagonHighlights() {
     } else {
       tile.classList.toggle('recommended-oct', isRec);
       tile.classList.toggle('dimmed-oct', !isRec);
+    }
+  });
+}
+
+function updateCardHighlights() {
+  const chosenSet = new Set(currentRecommendedTeam);
+  document.querySelectorAll('#rosterCardsGrid .card').forEach(card => {
+    const cid = card.dataset.id || card.dataset.aniimo;
+    const on = chosenSet.has(cid);
+    if (chosenSet.size === 0) {
+      card.classList.remove('recommended', 'dimmed');
+      const badge = card.querySelector('.pick-badge');
+      if (badge) badge.textContent = 'NÊN MANG';
+    } else {
+      card.classList.toggle('recommended', on);
+      card.classList.toggle('dimmed', !on);
+      const badge = card.querySelector('.pick-badge');
+      if (badge && on) {
+        badge.textContent = `TOP ${currentRecommendedTeam.indexOf(cid) + 1}`;
+      }
     }
   });
 }
@@ -3646,17 +3442,17 @@ function recommendTeam(def1, def2, effectiveness) {
   // Preset special modes
   if (currentMode === 'default') {
     return {
-      team: ['helion', 'panpanta', 'inferlupa', 'glacy'],
-      why: 'Đội hình vượt map ổn định nhất: Helion carry trung tính (không bị khắc hệ), Panpanta lo Water BREAK, Inferlupa gánh Fire/Dark BREAK và Glacy hồi phục toàn diện.',
-      note: 'Dùng khi chưa rõ đối thủ chơi hệ gì. Giữ 4 con này sát level story để tiết kiệm tài nguyên.'
+      team: ['infergon', 'inferlupa', 'turbo', 'gracewing'],
+      why: 'Bộ khung Fire Synergy hoàn chỉnh & toàn diện nhất: Infergon (Fire DPS) + Inferlupa (Fire BREAK) càn quét sát thương, Turbo kích hoạt Nimbi Burst tăng +30% DMG & BREAK, Gracewing đảm nhận hồi máu diện rộng, giải hiệu ứng xấu và nạp EP liên tục.',
+      note: 'Đội hình vượt map mặc định khi chưa rõ hệ của đối phương. 4 slot vận hành trơn tru không bị tranh vai trò.'
     };
   }
 
   if (currentMode === 'boss') {
     return {
-      team: ['helion', 'panpanta', 'hexxin', 'glacy'],
-      why: 'Bộ khung sinh tồn & nạp EP lâu dài: Helion dồn damage, Panpanta lo BREAK, Hexxin khống chế và nạp EP liên tục, Glacy bảo đảm lượng máu. Nếu boss đòi hỏi burst BREAK nhanh, có thể hoán đổi Hexxin sang Inferlupa.',
-      note: 'Đội hình dồn nổ sát thương Boss nhanh: Helion · Inferlupa · Panpanta · Glacy.'
+      team: ['stellarys', 'rookey', 'fragrancier', 'turbo'],
+      why: 'Đội hình diệt Boss dồn sát thương & bào mòn kháng cự đỉnh nhất: Stellarys (Dark DPS) + Rookey (Dark BREAK). Fragrancier trừ 12% kháng Bóng tối, tăng 20% Dark Boost và gán ấn +50% basic attack; Turbo kích hoạt +30% DMG & BREAK dứt điểm Boss thần tốc.',
+      note: 'Nếu Boss đánh quá rát, hãy linh hoạt thay Turbo bằng Healer (Glacy hoặc Gracewing) để đảm bảo sinh tồn.'
     };
   }
 
@@ -3668,8 +3464,8 @@ function recommendTeam(def1, def2, effectiveness) {
   if ((def1 === "Đá" && def2 === "Nước") || (def1 === "Nước" && def2 === "Đá")) {
     return {
       team: ['thornblade', 'pomawk', 'melloblum', 'gracewing'],
-      why: 'Kẻ địch song hệ [Đá + Nước] có tử huyệt kép trước hệ CỎ đạt mức SIÊU CHÍ MẠNG ×2.56! Kích hoạt 🌿 Grass Specialist Team: Thornblade Thunderstorm (DPS) + Pomawk (BREAK) + Melloblum (Heal/Utility) + Gracewing (Sustain/EP) để xóa sổ đối thủ.',
-      note: '💥 SIÊU CHÍ MẠNG (×2.56): Cả Đá và Nước đều bị Cỏ khắc chế (1.6 × 1.6 = 2.56). Đòn Cỏ của Thornblade thổi bay đối thủ ngay lập tức!'
+      why: 'Kẻ địch song hệ [Đá + Nước] có tử huyệt kép trước hệ CỎ đạt mức SIÊU CHÍ MẠNG ×2.56! Kích hoạt 🌿 Grass Specialist Team: Thornblade Thunderstorm (DPS Cỏ) + Pomawk (BREAK) + Melloblum (Heal/Utility) + Gracewing (Sustain/EP) để xóa sổ đối thủ.',
+      note: '💥 SIÊU CHÍ MẠNG (×2.56): Cả Đá và Nước đều bị Cỏ khắc chế (1.6 × 1.6 = 2.56). Kiếm gai của Thornblade thổi bay đối thủ ngay lập tức!'
     };
   }
 
@@ -3678,80 +3474,75 @@ function recommendTeam(def1, def2, effectiveness) {
     return {
       team: ['thornblade', 'pomawk', 'melloblum', 'gracewing'],
       why: 'Kẻ địch song hệ [Nước + Băng] khiến Lửa và Điện đều bị hòa vốn (×1.0)! Kích hoạt 🌿 Grass Specialist Team: Thornblade Thunderstorm là cứu cánh số 1 với đòn Cỏ giữ vững mốc ×1.6; Pomawk dồn BREAK, Melloblum hỗ trợ và Gracewing bảo đảm lượng máu.',
-      note: '🌿 Khắc chế điểm mù: Khi 5 team chính không ăn thua trước Nước + Băng, Grass Specialist là lựa chọn duy nhất đạt chuẩn ×1.6!'
+      note: '🌿 Khắc chế điểm mù: Khi các team khác bị hòa sát thương 1.0x trước Nước + Băng, Grass Specialist là lựa chọn duy nhất đạt chuẩn ×1.6!'
     };
   }
 
-  // 3. Helion Team vs Dark (hoặc khi Thánh là tốt nhất)
-  if (def1 === 'Bóng tối' || def2 === 'Bóng tối' || (bestElements.includes('Thánh') && bestElements.length === 1)) {
-    return {
-      team: ['helion', 'tubster', 'turbo', 'gracewing'],
-      why: 'Kích hoạt ✨ Helion Team khắc chế Bóng Tối: Helion (Holy Carry cận chiến) + Tubster (Hỗ trợ tank / phá giáp). Turbo buff trực tiếp damage/BREAK + Gracewing gánh sustain (heal/cleanse/EP) là phương án gọn và mạnh nhất!',
-      note: 'Helion với Trait Ân Huệ Thái Dương kết hợp Turbo buff sát thương dứt điểm cực ngọt các quái hệ Bóng tối.'
-    };
+  // 3. Grass counter: when Grass is effective (especially vs Water or Rock)
+  if (bestElements.includes('Cỏ')) {
+    if (def1 === 'Nước' || def2 === 'Nước' || def1 === 'Đá' || def2 === 'Đá' || !bestElements.includes('Lửa')) {
+      return {
+        team: ['thornblade', 'pomawk', 'melloblum', 'gracewing'],
+        why: `Kích hoạt 🌿 Grass Specialist Team: Kẻ địch chịu sát thương tối đa từ hệ Cỏ (×${bestMult}). Thornblade Thunderstorm xả kiếm khí Cỏ dồn dập, Pomawk dồn BREAK phá giáp, Melloblum hỗ trợ hồi máu & giải độc, Gracewing nạp EP.`,
+        note: bestMult >= 2.5
+          ? `💥 SIÊU CHÍ MẠNG (×${bestMult}): Mục tiêu có điểm yếu kép trước hệ Cỏ! Thornblade sẽ kết liễu cực nhanh.`
+          : 'Thornblade Thunderstorm sở hữu bộ kỹ năng Cỏ dứt điểm cực ngọt các đối thủ hệ Nước và Đá.'
+      };
+    }
   }
 
-  // 4. Fire Synergy Team (Infergon + Inferlupa + Turbo + Gracewing)
+  // 4. Fire Synergy Team (vs Grass, Ice, etc.)
   if (bestElements.includes('Lửa')) {
     return {
       team: ['infergon', 'inferlupa', 'turbo', 'gracewing'],
-      why: 'Kích hoạt 🔥 Fire Synergy Team: Infergon (Fire DPS tầm xa) + Inferlupa (Fire BREAK). Turbo làm Universal Support dùng Nimbi Burst tăng tới 30% damage và BREAK efficiency cho đồng đội. Gracewing lo heal / cleanse debuff / nạp EP, không tranh vai trò với Fire core.',
+      why: `Kích hoạt 🔥 Fire Synergy Team: Kẻ địch chịu sát thương tối đa từ hệ Lửa (×${bestMult}). Infergon dồn hỏa diệm tầm xa, Inferlupa phá giáp thiêu đốt; Turbo kích hoạt Nimbi Burst (+30% DMG & BREAK); Gracewing hồi phục & giải debuff.`,
       note: bestMult >= 2.5 
-        ? `🔥 SIÊU CHÍ MẠNG (×${bestMult}): Địch có điểm yếu kép trước Lửa! Infergon bắn Lửa từ xa kết hợp Inferlupa phá giáp sẽ kết liễu trong chớp mắt.`
-        : 'Infergon Basic Perfect đã đủ làm Fire DPS chính. Tận dụng Trait Power of Fire khi địch có >5 stack Fire Debuff (+30% dmg)!'
+        ? `🔥 SIÊU CHÍ MẠNG (×${bestMult}): Kẻ địch có điểm yếu kép trước Lửa! Infergon bắn tỉa tầm xa kết liễu trong tích tắc.`
+        : 'Infergon Basic Perfect tận dụng Trait Power of Fire khi địch dính trên 5 stack Fire Debuff (+30% dmg).'
     };
   }
 
-  // 5. Water Synergy Team (Sherro + Panpanta + Piopiota + Glacy)
-  if (bestElements.includes('Nước') && !bestElements.includes('Cỏ')) {
+  // 5. Water Synergy Team (vs Fire, Rock, etc.)
+  if (bestElements.includes('Nước')) {
     return {
       team: ['sherro', 'panpanta', 'piopiota', 'glacy'],
-      why: 'Kích hoạt 💧 Water Synergy Team: Sherro (Water DPS) + Panpanta (Water BREAK). Piopiota buff cộng hưởng siêu khủng (+16% Water damage cho Aniimo khác giới, ulti tăng thêm 20% Water damage/30s, vừa tạo vũng nước vừa heal). Glacy khóa vị trí healer chính!',
-      note: 'Team Nước có synergy đồng bộ nguyên tố cao nhất: Sát thương Nước được nhân dồn liên tục qua buff của Piopiota và địa hình vũng nước.'
+      why: `Kích hoạt 💧 Water Synergy Team: Kẻ địch chịu sát thương tối đa từ hệ Nước (×${bestMult}). Sherro dồn thủy lực cực mạnh, Panpanta lo Water BREAK, Piopiota kích buff (+16% nội tại khác giới, ulti +20% Water dmg và tạo vũng nước), Glacy hồi phục toàn đội.`,
+      note: 'Team Nước có khả năng khuếch đại sát thương đồng bộ nguyên tố cao nhất: Sát thương Nước của Sherro được nhân dồn liên tục!'
     };
   }
 
-  // 6. Grass Specialist Team (Thornblade + Pomawk + Melloblum + Gracewing/Turbo)
-  if (bestElements.includes('Cỏ')) {
-    return {
-      team: ['thornblade', 'pomawk', 'melloblum', 'gracewing'],
-      why: 'Kích hoạt 🌿 Grass Specialist Team: Thornblade Thunderstorm (DPS Cỏ) + Pomawk (BREAK) + Melloblum (Heal/Utility) + Gracewing (Sustain hồi EP & giải khống chế). Đội hình chuyên trách dập tắt hệ Nước và Đá triệt để!',
-      note: 'Thornblade Thunderstorm dùng kiếm khí Cỏ dồn dập, Pomawk phụ trách dồn BREAK phá vỡ giáp đối phương.'
-    };
-  }
-
-  // 7. Electric Synergy Team (Fenmane + Blazen + Luminelle Prismana + Glacy)
+  // 6. Electric Synergy Team (vs Wind, Water, etc.)
   if (bestElements.includes('Điện')) {
     return {
       team: ['fenmane', 'blazen', 'luminelle', 'glacy'],
-      why: 'Kích hoạt ⚡ Electric Synergy Team: Fenmane (Electric DPS) + Blazen (Electric BREAK). Luminelle Prismana là support đặc hệ Điện đỉnh nhất: nội tại buff +12% Electric dmg cho đồng đội, ulti tăng 27% attack dmg + 16% BREAK efficiency cho đồng đội Điện, field tăng thêm +20% Electric dmg! Glacy hồi phục.',
-      note: 'Cặp đôi Fenmane + Luminelle Prismana tạo ra lượng sát thương Điện khuếch đại 3 tầng cực kỳ khủng khiếp.'
+      why: `Kích hoạt ⚡ Electric Synergy Team: Kẻ địch chịu sát thương tối đa từ hệ Điện (×${bestMult}). Fenmane tốc độ cao kết hợp Blazen phá giáp; Luminelle Prismana buff 3 tầng sát thương (+12% đồng đội, ulti +27% ATK + 16% BREAK, field +20% Electric dmg); Glacy hồi phục.`,
+      note: 'Cặp đôi Fenmane + Luminelle Prismana tạo ra lượng sát thương Điện khuếch đại 3 tầng làm tê liệt hoàn toàn đối thủ.'
     };
   }
 
-  // 8. Dark Synergy Team (Stellarys + Rookey + Fragrancier + Turbo)
+  // 7. Dark Synergy Team (vs Holy, Electric, Grass, etc.)
   if (bestElements.includes('Bóng tối')) {
     return {
       team: ['stellarys', 'rookey', 'fragrancier', 'turbo'],
-      why: 'Kích hoạt 🌑 Dark Synergy Team: Stellarys (Dark DPS) + Rookey (Dark BREAK). Fragrancier sinh ra cho team Dark: skill giảm 12% kháng Bóng tối của địch, ulti tăng 20% Dark Elemental Boost, và gán ấn (mark) giúp đòn đánh thường hệ Dark tăng thêm +50% damage! Turbo gia tăng tốc độ burst/BREAK thần tốc.',
-      note: 'Nếu route đi map hoặc đánh boss đau, có thể linh hoạt đổi Turbo lấy Healer (Glacy/Gracewing) để bảo kê.'
+      why: `Kích hoạt 🌑 Dark Synergy Team: Kẻ địch chịu sát thương tối đa từ hệ Bóng tối (×${bestMult}). Stellarys (Dark DPS) + Rookey (Dark BREAK). Fragrancier giảm 12% kháng Dark của địch, ulti tăng 20% Dark Boost và gán mark +50% đòn đánh thường; Turbo tăng tốc burst.`,
+      note: 'Nếu gặp Trainer đánh quá gắt, có thể thay thế vị trí của Turbo bằng Healer (Glacy hoặc Gracewing) để giữ vững sinh tồn.'
     };
   }
 
-  // 9. Rock / Earth
-  if (bestElements.includes('Đá')) {
+  // 8. Dark Enemy Matchup (def1 or def2 is Dark)
+  if (def1 === 'Bóng tối' || def2 === 'Bóng tối') {
     return {
-      team: ['grizbo', 'panpanta', 'turbo', 'glacy'],
-      why: `Grizbo sở hữu đòn đánh Đá với ATK 124 vượt trội để trừng phạt hệ ${def1}; Panpanta lo BREAK, Turbo buff tốc và Glacy giữ nhịp sinh tồn.`,
-      note: 'Grizbo bản Basic là hoàn toàn đủ lực; không cần mất công săn Prismana.'
+      team: ['infergon', 'inferlupa', 'turbo', 'gracewing'],
+      why: 'Đối đầu hệ Bóng tối: Sử dụng bộ khung 🔥 Fire Synergy hoàn chỉnh (Infergon + Inferlupa) kết hợp Gracewing (Gió / Thánh giúp kháng nguyền rủa và giải debuff) cùng Turbo (Bóng tối / Gió buff +30% DMG & BREAK).',
+      note: 'Gracewing mang song hệ Gió / Thánh cung cấp khả năng hồi máu giải trừ debuff Dark cực kỳ hiệu quả.'
     };
   }
 
-  // Fallback default
+  // 9. Fallback neutral
   return {
-    team: ['helion', 'panpanta', 'inferlupa', 'glacy'],
-    why: `Kẻ địch [${def1}] bị khắc chế bởi hệ [${bestElements.join(', ')}]. Đội hình ưu tiên Helion làm carry cân bằng, Panpanta và Inferlupa lo phá giáp, Glacy bảo đảm lượng máu.`,
-    note: 'Tận dụng đúng hệ tương khắc để dứt điểm trận đấu nhanh nhất.'
+    team: ['infergon', 'inferlupa', 'turbo', 'gracewing'],
+    why: 'Kẻ địch có kháng tính cân bằng (không có điểm yếu lớn). Triển khai 🔥 Fire Synergy Team để tối đa hóa lượng sát thương dồn nổ, kết hợp Turbo buff +30% DMG & BREAK và Gracewing bảo toàn lượng máu.',
+    note: 'Bộ khung Fire Synergy + Universal Support mang lại DPS ổn định nhất trong các tình huống trung tính.'
   };
 }
 
@@ -3767,10 +3558,10 @@ function updateBattlePartyShowcase(rec, defText, maxMult) {
   const slotDps = document.getElementById('slotMainDps');
   if (slotDps && d1) {
     slotDps.dataset.id = d1.id;
-    const art = document.getElementById('dpsArtImg'); if (art) { art.src = d1.art; art.alt = d1.name; }
+    const art = document.getElementById('dpsArtImg'); if (art) { art.src = d1.art || d1.avatar; art.alt = d1.name; }
     const name = document.getElementById('dpsName'); if (name) name.textContent = d1.name;
     const elem = document.getElementById('dpsElemTag');
-    if (elem) elem.textContent = `${elementIcons[d1.element1] || ''} ${d1.element1}`;
+    if (elem) elem.textContent = `${elementIcons[d1.element1] || ''} ${d1.element1}${d1.element2 ? ' · ' + elementIcons[d1.element2] : ''}`;
     const statCall = document.getElementById('dpsStatCallout');
     if (statCall) {
       statCall.innerHTML = `<span>ATK <b>${d1.stats.atk}</b> · ${d1.subRole || 'DPS Chủ Lực'}</span>`;
@@ -3781,7 +3572,7 @@ function updateBattlePartyShowcase(rec, defText, maxMult) {
   const slotBreaker = document.getElementById('slotBreaker');
   if (slotBreaker && d2) {
     slotBreaker.dataset.id = d2.id;
-    const art = document.getElementById('breakerArtImg'); if (art) { art.src = d2.art; art.alt = d2.name; }
+    const art = document.getElementById('breakerArtImg'); if (art) { art.src = d2.art || d2.avatar; art.alt = d2.name; }
     const name = document.getElementById('breakerName'); if (name) name.textContent = d2.name;
     const elem = document.getElementById('breakerElemTag');
     if (elem) elem.textContent = `${elementIcons[d2.element1] || ''} ${d2.element1}${d2.element2 ? ' · ' + elementIcons[d2.element2] : ''}`;
@@ -3795,7 +3586,7 @@ function updateBattlePartyShowcase(rec, defText, maxMult) {
   const slotSup1 = document.getElementById('slotSupport1');
   if (slotSup1 && d3) {
     slotSup1.dataset.id = d3.id;
-    const img = document.getElementById('sup1Img'); if (img) { img.src = d3.art; img.alt = d3.name; }
+    const img = document.getElementById('sup1Img'); if (img) { img.src = d3.avatar || d3.art; img.alt = d3.name; }
     const name = document.getElementById('sup1Name'); if (name) name.textContent = d3.name;
     const elem = document.getElementById('sup1ElemTag');
     if (elem) elem.textContent = `${elementIcons[d3.element1] || ''}${d3.element2 ? ' ' + elementIcons[d3.element2] : ''}`;
@@ -3808,7 +3599,7 @@ function updateBattlePartyShowcase(rec, defText, maxMult) {
   const slotSup2 = document.getElementById('slotSupport2');
   if (slotSup2 && d4) {
     slotSup2.dataset.id = d4.id;
-    const img = document.getElementById('sup2Img'); if (img) { img.src = d4.art; img.alt = d4.name; }
+    const img = document.getElementById('sup2Img'); if (img) { img.src = d4.avatar || d4.art; img.alt = d4.name; }
     const name = document.getElementById('sup2Name'); if (name) name.textContent = d4.name;
     const elem = document.getElementById('sup2ElemTag');
     if (elem) elem.textContent = `${elementIcons[d4.element1] || ''}${d4.element2 ? ' ' + elementIcons[d4.element2] : ''}`;
@@ -3823,10 +3614,10 @@ function updateBattlePartyShowcase(rec, defText, maxMult) {
   if (titleEl && badgeEl) {
     if (currentMode === 'default') {
       titleEl.textContent = 'Đội Hình Mặc Định Đi Map & Story';
-      badgeEl.textContent = '🌐 Đội Hình Đa Dụng (Helion Core)';
+      badgeEl.textContent = '🌐 Fire Synergy (Infergon Core)';
     } else if (currentMode === 'boss') {
       titleEl.textContent = 'Đội Hình Diệt Boss & Trận Đánh Kéo Dài';
-      badgeEl.textContent = '👑 Phá Giáp & Nạp EP Lâu Dài';
+      badgeEl.textContent = '👑 Dark Burst (Stellarys Core)';
     } else {
       titleEl.textContent = `Đội Hình Counter Kẻ Địch [${defText}]`;
       badgeEl.textContent = maxMult >= 2.5 ? `💥 SIÊU CHÍ MẠNG (×${maxMult})` : `🎯 Khắc chế (×${maxMult} DMG)`;
@@ -3864,14 +3655,14 @@ function updateView() {
   if (currentMode === 'default') {
     if (enemyTypesDisplay) enemyTypesDisplay.innerHTML = '🌐 Không rõ / Đi Map (Mặc định)';
     if (maxDamageBadge) { maxDamageBadge.textContent = 'Cân bằng'; maxDamageBadge.className = 'badge-max-dmg'; }
-    if (weaknessPills) weaknessPills.innerHTML = '<span class="weak-pill">⚔️ Helion (Sát thương trung tính)</span>';
-    if (weaknessDesc) weaknessDesc.textContent = 'Dùng bộ khung đa dụng nhất để càn quét map khi chưa rõ hệ của đối phương.';
+    if (weaknessPills) weaknessPills.innerHTML = '<span class="weak-pill">🔥 Infergon · Inferlupa (Fire Core)</span><span class="weak-pill">⚡ Turbo (+30% DMG/BREAK)</span><span class="weak-pill">💖 Gracewing (Sustain/EP)</span>';
+    if (weaknessDesc) weaknessDesc.textContent = 'Dùng bộ khung Fire Synergy hoàn chỉnh nhất để càn quét map khi chưa rõ hệ của đối phương.';
     if (resistRow) resistRow.style.display = 'none';
   } else if (currentMode === 'boss') {
     if (enemyTypesDisplay) enemyTypesDisplay.innerHTML = '👑 Boss / Trận Đánh Dài';
     if (maxDamageBadge) { maxDamageBadge.textContent = 'Dồn BREAK'; maxDamageBadge.className = 'badge-max-dmg crit'; }
-    if (weaknessPills) weaknessPills.innerHTML = '<span class="weak-pill crit">💥 Phá Giáp BREAK (Ưu tiên)</span><span class="weak-pill">🔮 Nạp EP Lâu Dài</span>';
-    if (weaknessDesc) weaknessDesc.textContent = 'Boss có giáp rất dày và cơ chế kháng hiệu ứng. Đội hình cần nạp năng lượng EP và dồn burst BREAK nhanh.';
+    if (weaknessPills) weaknessPills.innerHTML = '<span class="weak-pill crit">🌑 Dark Burst (Stellarys)</span><span class="weak-pill">🛡️ Phá Giáp (Rookey)</span><span class="weak-pill">🔮 Trừ Kháng & Mark (Fragrancier)</span>';
+    if (weaknessDesc) weaknessDesc.textContent = 'Boss có giáp dày và kháng cao. Fragrancier trừ 12% kháng Bóng tối, buff 20% Dark Boost và mark +50% đòn đánh thường kết hợp Turbo burst nhanh.';
     if (resistRow) resistRow.style.display = 'none';
   } else {
     // Dual / Single calculation
@@ -3906,7 +3697,7 @@ function updateView() {
       } else if (superWeak.length > 0) {
         weaknessDesc.innerHTML = `Địch bị suy yếu trước các nguyên tố trên (gây <b>×${maxMult} sát thương</b>).`;
       } else {
-        weaknessDesc.textContent = 'Mục tiêu có kháng tính cân bằng; hãy dùng Helion hoặc carry có ATK cơ bản cao nhất.';
+        weaknessDesc.textContent = 'Mục tiêu có kháng tính cân bằng; hãy dùng Fire Synergy Team hoặc carry có ATK cơ bản cao nhất.';
       }
     }
 
@@ -3927,7 +3718,6 @@ function updateView() {
   const eff = calculateEffectiveness(selectedType1, selectedType2);
   const rec = recommendTeam(selectedType1, selectedType2, eff);
   currentRecommendedTeam = rec.team;
-  const chosenSet = new Set(rec.team);
 
   // Update Battle Party Showcase (Main DPS + Breaker + 2 Octagon Supports)
   updateBattlePartyShowcase(rec, defText, maxMult);
@@ -3936,16 +3726,7 @@ function updateView() {
   updateOctagonHighlights();
 
   // Highlight Cards
-  cards.forEach(card => {
-    const cid = card.dataset.id || card.dataset.aniimo;
-    const on = chosenSet.has(cid);
-    card.classList.toggle('recommended', on);
-    card.classList.toggle('dimmed', !on);
-    const badge = card.querySelector('.pick-badge');
-    if (badge && on) {
-      badge.textContent = `TOP ${rec.team.indexOf(cid) + 1}`;
-    }
-  });
+  updateCardHighlights();
 
   if (pills) {
     pills.innerHTML = rec.team.map(id => `<span class="team-pill">${displayNames[id] || id}</span>`).join('');
@@ -3995,7 +3776,7 @@ document.getElementById('resetTeam').addEventListener('click', () => {
   });
 
   // Reset cards
-  cards.forEach(card => {
+  document.querySelectorAll('#rosterCardsGrid .card').forEach(card => {
     card.classList.remove('recommended', 'dimmed');
     const badge = card.querySelector('.pick-badge');
     if (badge) badge.textContent = 'NÊN MANG';
@@ -4005,21 +3786,21 @@ document.getElementById('resetTeam').addEventListener('click', () => {
 
   // Update Party Showcase with default squad
   const defaultRec = {
-    team: ['helion', 'panpanta', 'inferlupa', 'glacy'],
-    why: 'Đang hiển thị toàn bộ 10 Aniimo trong kho. Đội hình 4 con bên trên là bộ khung mặc định cân bằng nhất đi map.',
-    note: 'Bấm vào bất kỳ ô Bát Giác nào để mở bảng chỉ số Radar 6 trục bên trái!'
+    team: ['infergon', 'inferlupa', 'turbo', 'gracewing'],
+    why: 'Đang hiển thị toàn bộ 17 Aniimo trong kho (thuộc 5 Đội Hình Nguyên Tố). Đội hình 4 con bên trên là bộ khung Fire Synergy mặc định đi map.',
+    note: 'Bấm vào bất kỳ ô Bát Giác hoặc Thẻ bài nào để mở bảng chỉ số Radar 6 trục bên trái!'
   };
-  updateBattlePartyShowcase(defaultRec, 'Toàn bộ Roster', 1.0);
+  updateBattlePartyShowcase(defaultRec, 'Toàn bộ 17 Aniimo', 1.0);
 
-  pills.innerHTML = '<span class="small" style="color: #94a3b8;">Đang hiển thị toàn bộ roster (Kho Bát Giác). Bấm vào từng ô để xem thông tin chi tiết.</span>';
+  pills.innerHTML = '<span class="small" style="color: #94a3b8;">Đang hiển thị toàn bộ 17 Aniimo trong Kho. Bấm vào từng ô để xem thông tin chi tiết.</span>';
   why.textContent = 'Bấm chọn nguyên tố 1 và nguyên tố 2 của kẻ địch để máy tự động tính tổ hợp sát thương và đưa ra đội 4 con tối ưu.';
   note.innerHTML = '';
-  if (mobileChoiceLabel) mobileChoiceLabel.textContent = 'Toàn bộ roster';
-  if (enemyTypesDisplay) enemyTypesDisplay.textContent = 'Toàn bộ Roster';
-  if (weaknessPills) weaknessPills.innerHTML = '<span class="weak-pill">⬡ Danh sách 10 Aniimo trong Kho</span>';
-  if (weaknessDesc) weaknessDesc.textContent = 'Bấm vào ô bát giác bất kỳ để xem radar stat.';
+  if (mobileChoiceLabel) mobileChoiceLabel.textContent = 'Toàn bộ 17 Aniimo';
+  if (enemyTypesDisplay) enemyTypesDisplay.textContent = 'Toàn bộ 17 Aniimo';
+  if (weaknessPills) weaknessPills.innerHTML = '<span class="weak-pill">⬡ Danh sách 17 Aniimo (5 Đội Hình)</span>';
+  if (weaknessDesc) weaknessDesc.textContent = 'Bấm vào ô bát giác hoặc thẻ bài bất kỳ để xem radar stat.';
   if (resistRow) resistRow.style.display = 'none';
-  if (maxDamageBadge) { maxDamageBadge.textContent = '10 Roster'; maxDamageBadge.className = 'badge-max-dmg'; }
+  if (maxDamageBadge) { maxDamageBadge.textContent = '17 Aniimo'; maxDamageBadge.className = 'badge-max-dmg'; }
 });
 
 if (mobileToggleBtn && matchupSidebar) {
@@ -4036,8 +3817,9 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// Initialize Octagon Grid and default view on Cỏ
+// Initialize Octagon Grid, Cards Grid and default view on Cỏ
 renderStorageOctagons('all');
+renderStorageCards('all');
 updateView();
 </script>
 </body>
