@@ -907,6 +907,954 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
   display: inline-block;
 }
 
+/* =========================================================
+   NEW HUD REDESIGN: TEAM SHOWCASE, OCTAGONS & LEFT DRAWER
+   ========================================================= */
+
+/* Octagon Shape Geometry (Standard 8-sided polygon) */
+.oct-shape {
+  clip-path: polygon(29% 0%, 71% 0%, 100% 29%, 100% 71%, 71% 100%, 29% 100%, 0% 71%, 0% 29%);
+  -webkit-clip-path: polygon(29% 0%, 71% 0%, 100% 29%, 100% 71%, 71% 100%, 29% 100%, 0% 71%, 0% 29%);
+}
+
+/* Battle Party Showcase Section */
+.team-showcase-section {
+  background: linear-gradient(135deg, rgba(14, 25, 48, 0.95), rgba(9, 16, 32, 0.95));
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 20px;
+  padding: 22px 24px;
+  margin: 20px 0 28px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 24px rgba(56, 189, 248, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-showcase-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #38bdf8, #f59e0b, #a855f7, #38bdf8);
+}
+
+.team-showcase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.team-eyebrow {
+  font-size: 11.5px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.team-showcase-heading {
+  font-size: 22px;
+  font-weight: 900;
+  margin: 0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.team-showcase-badge {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #7dd3fc;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Team Showcase Layout: Main DPS (larger) + Breaker (beside) + 2 Octagon Supports */
+.team-showcase-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 330px) minmax(230px, 270px) minmax(260px, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+/* Common Party Slot Base */
+.party-slot {
+  background: linear-gradient(180deg, rgba(21, 35, 62, 0.95), rgba(11, 20, 36, 0.98));
+  border: 1px solid rgba(71, 85, 105, 0.4);
+  border-radius: 16px;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.party-slot:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.25);
+}
+
+.slot-role-ribbon {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 4;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.dps-ribbon {
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+.breaker-ribbon {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #111827;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+/* Slot 1: MAIN DPS (Larger, Full Character Art) */
+.slot-dps {
+  min-height: 330px;
+  border-color: rgba(239, 68, 68, 0.4);
+  background: radial-gradient(circle at 50% 20%, rgba(239, 68, 68, 0.15) 0%, rgba(13, 22, 40, 0.98) 75%);
+}
+
+.slot-dps:hover {
+  border-color: #f87171;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(239, 68, 68, 0.35);
+}
+
+.slot-full-art-wrap {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.art-glow-pedestal {
+  position: absolute;
+  width: 140px;
+  height: 40px;
+  bottom: 10px;
+  background: radial-gradient(ellipse at center, rgba(239, 68, 68, 0.45) 0%, transparent 70%);
+  filter: blur(8px);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.slot-full-art {
+  max-height: 185px;
+  max-width: 90%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.7));
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.slot-dps:hover .slot-full-art {
+  transform: scale(1.08) translateY(-4px);
+}
+
+/* Slot 2: BREAKER (Beside Main DPS) */
+.slot-breaker {
+  min-height: 330px;
+  border-color: rgba(245, 158, 11, 0.4);
+  background: radial-gradient(circle at 50% 25%, rgba(245, 158, 11, 0.12) 0%, rgba(13, 22, 40, 0.98) 75%);
+}
+
+.slot-breaker:hover {
+  border-color: #fbbf24;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 158, 11, 0.3);
+}
+
+.slot-breaker-art-wrap {
+  position: relative;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.slot-breaker-art {
+  max-height: 150px;
+  max-width: 85%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.7));
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.slot-breaker:hover .slot-breaker-art {
+  transform: scale(1.08) translateY(-3px);
+}
+
+.slot-details {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.slot-name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.slot-name {
+  font-size: 18px;
+  font-weight: 850;
+  margin: 0;
+  color: #fff;
+}
+
+.slot-element-tag {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.slot-stat-callout {
+  font-size: 12.5px;
+  color: #cbd5e1;
+  margin-top: 4px;
+}
+.slot-stat-callout b {
+  color: #f59e0b;
+  font-size: 14px;
+}
+
+.slot-action-hint {
+  font-size: 11px;
+  color: var(--accent);
+  margin-top: 8px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Slots 3 & 4: Supports housed in an Octagon Pod */
+.party-supports-pod {
+  background: linear-gradient(180deg, rgba(16, 27, 49, 0.85), rgba(9, 16, 30, 0.95));
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.supports-pod-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.supports-octagon-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  align-items: center;
+  margin: auto 0;
+}
+
+.support-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+}
+
+.support-unit:hover {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.3);
+  transform: translateY(-3px);
+}
+
+/* Octagon Frame for Supports */
+.support-oct-wrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  padding: 2.5px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.6), rgba(168, 85, 247, 0.5));
+  transition: all 0.25s ease;
+}
+
+.support-unit:hover .support-oct-wrapper {
+  background: linear-gradient(135deg, #38bdf8, #f59e0b);
+  filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.6));
+  transform: scale(1.05);
+}
+
+.support-oct-inner {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 30%, #152544 0%, #0c1425 85%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.support-unit-info {
+  margin-top: 8px;
+  width: 100%;
+}
+
+.support-unit-role {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.support-unit-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  margin: 1px 0 2px;
+}
+
+.support-unit-effect {
+  display: block;
+  font-size: 11px;
+  color: #38bdf8;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* =========================================================
+   STORAGE BOX & OCTAGON GRID (KHO ANIIMO)
+   ========================================================= */
+.storage-box-container {
+  background: rgba(12, 20, 36, 0.9);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 18px;
+  padding: 20px;
+  margin: 18px 0 24px;
+}
+
+.storage-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.storage-view-switch {
+  display: flex;
+  gap: 6px;
+  background: rgba(10, 16, 30, 0.8);
+  padding: 3px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.view-switch-btn {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: #94a3b8;
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 750;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-switch-btn.active {
+  background: rgba(56, 189, 248, 0.2);
+  color: #fff;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.storage-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filter-pill {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(16, 26, 46, 0.8);
+  color: #cbd5e1;
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-pill:hover {
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.filter-pill.active {
+  background: linear-gradient(135deg, #38bdf8, #0284c7);
+  color: #041324;
+  border-color: #7dd3fc;
+  font-weight: 800;
+}
+
+/* The In-Game Octagon Storage Grid */
+.storage-octagon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 14px 10px;
+  justify-items: center;
+  padding: 10px 4px;
+}
+
+.aniimo-oct-tile {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(30, 41, 59, 0.7));
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.aniimo-oct-tile:hover {
+  transform: translateY(-4px) scale(1.08);
+  background: linear-gradient(135deg, #38bdf8, #f59e0b);
+  filter: drop-shadow(0 8px 18px rgba(56, 189, 248, 0.5));
+  z-index: 5;
+}
+
+.aniimo-oct-tile.selected {
+  background: linear-gradient(135deg, #ffffff, #38bdf8);
+  filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.85));
+  transform: scale(1.1);
+  z-index: 6;
+}
+
+.aniimo-oct-tile.recommended-oct {
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.65));
+}
+
+.aniimo-oct-tile.dimmed-oct {
+  opacity: 0.35;
+  filter: grayscale(0.65);
+}
+
+.aniimo-oct-inner {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 30%, #152544 0%, #0c1425 85%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.oct-rank-chevron {
+  position: absolute;
+  top: 3px;
+  font-size: 9.5px;
+  font-weight: 900;
+  color: #fbbf24;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  z-index: 2;
+  line-height: 1;
+}
+
+.oct-avatar {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6));
+  transition: transform 0.2s ease;
+}
+
+.aniimo-oct-tile:hover .oct-avatar {
+  transform: scale(1.12);
+}
+
+.oct-bot-pill {
+  position: absolute;
+  bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(10, 16, 28, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1px 5px;
+  border-radius: 999px;
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #e2e8f0;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+
+.oct-name-tooltip {
+  display: block;
+  font-size: 11px;
+  font-weight: 750;
+  color: #e2e8f0;
+  text-align: center;
+  margin-top: 4px;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   LEFT-SIDE INSPECT DRAWER (POPUP THÔNG TIN BÊN TRÁI)
+   ========================================================= */
+.inspect-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.inspect-drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.inspect-drawer-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(440px, 94vw);
+  background: linear-gradient(180deg, #0e172a 0%, #070d19 100%);
+  border-right: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 12px 0 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.15);
+  z-index: 10000;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.3) transparent;
+}
+
+.inspect-drawer-left.open {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: rgba(16, 27, 48, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.drawer-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.drawer-role-badge {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.drawer-no {
+  font-family: monospace;
+  font-weight: 800;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.drawer-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.drawer-level-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #38bdf8, #818cf8, #a855f7, #38bdf8);
+  padding: 2.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+}
+
+.drawer-level-circle-inner {
+  width: 100%;
+  height: 100%;
+  background: #090f1d;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  line-height: 1;
+}
+
+.lvl-label {
+  font-size: 8px;
+  font-weight: 900;
+  color: #38bdf8;
+  letter-spacing: 0.05em;
+}
+
+.lvl-val {
+  font-size: 14px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.drawer-close-btn {
+  appearance: none;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.drawer-close-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #f87171;
+  color: #fff;
+}
+
+.drawer-profile {
+  padding: 20px 20px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.drawer-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.drawer-aniimo-name {
+  font-size: 24px;
+  font-weight: 900;
+  margin: 0;
+  color: #fff;
+}
+
+.drawer-gender-tag {
+  font-size: 16px;
+  color: #f472b6;
+  font-weight: 800;
+}
+
+.drawer-sub-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.drawer-form-pill {
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(245, 158, 11, 0.18);
+  color: #fde047;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.drawer-cp-pill {
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(99, 102, 241, 0.2);
+  color: #c7d2fe;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+.drawer-elem-pills {
+  display: flex;
+  gap: 6px;
+}
+
+.elem-mini-pill {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+}
+
+/* 6-Axis Radar Chart Container */
+.drawer-radar-section {
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(8, 14, 26, 0.6);
+}
+
+.radar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #94a3b8;
+  margin-bottom: 10px;
+}
+
+.radar-eval-status {
+  color: #34d399;
+  font-size: 11px;
+}
+
+.radar-canvas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 16px;
+}
+
+.drawer-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.stat-mini-card {
+  background: rgba(16, 26, 46, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 6px 8px;
+  text-align: center;
+}
+.stat-mini-card span {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 750;
+}
+.stat-mini-card b {
+  display: block;
+  font-size: 14px;
+  color: #f1f5f9;
+}
+
+/* Trait, Evolution, Habitat Content Boxes */
+.drawer-section-box {
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.drawer-box-title {
+  font-size: 11.5px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.drawer-trait-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: #fbbf24;
+  margin-bottom: 4px;
+}
+
+.drawer-trait-desc, .drawer-form-advice {
+  font-size: 12.5px;
+  color: #cbd5e1;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.drawer-evo-chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.evo-node {
+  background: rgba(28, 43, 74, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 750;
+  color: #e2e8f0;
+}
+
+.evo-arr {
+  color: #64748b;
+  font-weight: 900;
+  font-size: 11px;
+}
+
+.drawer-habitat-row {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+.drawer-habitat-row b { color: #e2e8f0; }
+
+.drawer-actions {
+  padding: 16px 20px 24px;
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.drawer-btn-aniidex {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.3));
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  color: #7dd3fc;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.drawer-btn-aniidex:hover {
+  background: linear-gradient(135deg, #38bdf8, #0284c7);
+  color: #041324;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1080px) {
+  .team-showcase-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .party-supports-pod {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 680px) {
+  .team-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+  .supports-octagon-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .storage-octagon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+    gap: 10px 6px;
+  }
+  .aniimo-oct-tile {
+    width: 78px;
+    height: 78px;
+  }
+  .oct-avatar {
+    width: 48px;
+    height: 48px;
+  }
+}
 </style>
 </head>
 <body>
@@ -934,18 +1882,133 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
     <span class="chip">🪨 Earth/Rock DPS: Grizbo</span>
   </div>
 
+  <!-- ACTIVE BATTLE PARTY SHOWCASE (ĐỘI HÌNH 4 CON TÁC CHIẾN) -->
+  <section class="team-showcase-section" id="battlePartyShowcase">
+    <div class="team-showcase-header">
+      <div class="team-showcase-title-wrap">
+        <span class="team-eyebrow">⚔️ ACTIVE BATTLE PARTY (4 SLOTS)</span>
+        <h2 class="team-showcase-heading" id="showcasePartyTitle">Đội Hình 4 Con Đề Xuất Tác Chiến</h2>
+      </div>
+      <div class="team-showcase-badge" id="showcaseStrategyBadge">
+        🌿 Khắc chế hệ Cỏ (×1.6)
+      </div>
+    </div>
+
+    <div class="team-showcase-grid">
+      <!-- Slot 1: MAIN DPS (to hơn tí, show kiểu full hình) -->
+      <div class="party-slot slot-dps" id="slotMainDps" data-id="infergon" onclick="openAniimoDrawer(this.dataset.id)">
+        <div class="slot-role-ribbon dps-ribbon">💥 MAIN DPS</div>
+        <div class="slot-full-art-wrap">
+          <div class="art-glow-pedestal"></div>
+          <img class="slot-full-art" id="dpsArtImg" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10025.png" alt="Infergon">
+        </div>
+        <div class="slot-details">
+          <div class="slot-name-row">
+            <h3 class="slot-name" id="dpsName">Infergon</h3>
+            <span class="slot-element-tag" id="dpsElemTag">🔥 Lửa</span>
+          </div>
+          <div class="slot-stat-callout" id="dpsStatCallout">
+            <span>ATK <b>125</b> · Sát Thương Tầm Xa</span>
+          </div>
+          <div class="slot-action-hint">👆 Bấm xem Radar 6 trục</div>
+        </div>
+      </div>
+
+      <!-- Slot 2: BREAKER (breaker bên cạnh) -->
+      <div class="party-slot slot-breaker" id="slotBreaker" data-id="inferlupa" onclick="openAniimoDrawer(this.dataset.id)">
+        <div class="slot-role-ribbon breaker-ribbon">🛡️ BREAKER</div>
+        <div class="slot-breaker-art-wrap">
+          <img class="slot-breaker-art" id="breakerArtImg" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005503.png" alt="Inferlupa">
+        </div>
+        <div class="slot-details">
+          <div class="slot-name-row">
+            <h3 class="slot-name" id="breakerName">Inferlupa</h3>
+            <span class="slot-element-tag" id="breakerElemTag">🔥 Lửa · 🌑 Tối</span>
+          </div>
+          <div class="slot-stat-callout" id="breakerStatCallout">
+            <span>BREAK <b>120</b> · Phá Giáp</span>
+          </div>
+          <div class="slot-action-hint">👆 Bấm xem Radar 6 trục</div>
+        </div>
+      </div>
+
+      <!-- Slots 3 & 4: 2 CON SUPPORT TRONG Ô BÁT GIÁC -->
+      <div class="party-supports-pod">
+        <div class="supports-pod-label">
+          <span>💖 HỖ TRỢ / BẢO KÊ (SUPPORTS)</span>
+          <span style="color: #94a3b8; font-size: 11px;">Ô Bát Giác HUD</span>
+        </div>
+        <div class="supports-octagon-container">
+          <!-- Support 1 Octagon -->
+          <div class="support-unit" id="slotSupport1" data-id="turbo" onclick="openAniimoDrawer(this.dataset.id)">
+            <div class="oct-shape support-oct-wrapper">
+              <div class="oct-shape support-oct-inner">
+                <span class="oct-rank-chevron">︽ Lv.46</span>
+                <img class="oct-avatar" id="sup1Img" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026202.png" alt="Turbo">
+                <span class="oct-bot-pill" id="sup1ElemTag">🌑 🌪️</span>
+              </div>
+            </div>
+            <div class="support-unit-info">
+              <span class="support-unit-role" id="sup1Role">⚡ UNIVERSAL BUFF</span>
+              <b class="support-unit-name" id="sup1Name">Turbo</b>
+              <span class="support-unit-effect" id="sup1Effect">+30% DMG & BREAK</span>
+            </div>
+          </div>
+
+          <!-- Support 2 Octagon -->
+          <div class="support-unit" id="slotSupport2" data-id="gracewing" onclick="openAniimoDrawer(this.dataset.id)">
+            <div class="oct-shape support-oct-wrapper">
+              <div class="oct-shape support-oct-inner">
+                <span class="oct-rank-chevron">︽ Lv.48</span>
+                <img class="oct-avatar" id="sup2Img" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png" alt="Gracewing">
+                <span class="oct-bot-pill" id="sup2ElemTag">🌪️ ✨</span>
+              </div>
+            </div>
+            <div class="support-unit-info">
+              <span class="support-unit-role" id="sup2Role">💖 HEAL & SUSTAIN</span>
+              <b class="support-unit-name" id="sup2Name">Gracewing</b>
+              <span class="support-unit-effect" id="sup2Effect">Hồi Máu · Cleanse · EP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Two Column Layout: Main Content + Sticky Sidebar -->
   <div class="main-layout">
     
     <!-- Left: Main Content Column -->
     <div class="content-col">
 
-      <!-- 1. Danh sách 9 Aniimo -->
-      <section class="section">
-        <h2>1) Danh sách 9 Aniimo trong Roster</h2>
-        <p class="section-sub">4 con đầu là nhóm nòng cốt (Core) cần tập trung level và tài nguyên; 5 con sau là linh hoạt (Flex) để khắc chế triệt để từng Trainer.</p>
-        
-        <div class="grid">
+      <!-- 1. Danh sách 9 Aniimo & Kho Lưu Trữ Octagon Grid -->
+      <section class="section" id="sectionRosterStorage">
+        <h2>1) Kho Lưu Trữ Aniimo (Storage Grid) & Roster Chi Tiết</h2>
+        <p class="section-sub">Bấm vào bất kỳ ô Bát Giác (Octagon) nào dưới đây để mở bảng tra cứu thông tin và biểu đồ Radar 6 trục bên trái. Bạn có thể chuyển đổi giữa giao diện Bát Giác HUD và Thẻ bài chi tiết.</p>
+
+        <!-- Storage Box Container -->
+        <div class="storage-box-container">
+          <div class="storage-toolbar">
+            <div class="storage-view-switch">
+              <button class="view-switch-btn active" id="viewSwitchOct" type="button">⬡ Kho Bát Giác (Octagon)</button>
+              <button class="view-switch-btn" id="viewSwitchCard" type="button">📋 Thẻ Roster Chi Tiết</button>
+            </div>
+            <div class="storage-filters" id="storageRoleFilters">
+              <button class="filter-pill active" data-role="all" type="button">Tất cả (10 Roster)</button>
+              <button class="filter-pill" data-role="dps" type="button">DPS (4)</button>
+              <button class="filter-pill" data-role="break" type="button">BREAK (3)</button>
+              <button class="filter-pill" data-role="heal" type="button">HEAL (1)</button>
+              <button class="filter-pill" data-role="support" type="button">SUPPORT / REGEN (2)</button>
+            </div>
+          </div>
+
+          <!-- The In-Game Octagon Storage Grid -->
+          <div class="storage-octagon-grid" id="storageOctagonGrid">
+            <!-- Rendered dynamically by JS -->
+          </div>
+        </div>
+
+        <div class="grid" id="rosterCardsGrid" style="display: none;">
 
           <!-- Helion -->
           <article class="card" data-aniimo="helion" data-id="helion">
@@ -1676,6 +2739,94 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
   </div>
 </main>
 
+<!-- LEFT-SIDE INFO DRAWER (POPUP THÔNG TIN BÊN TRÁI) -->
+<div class="inspect-drawer-backdrop" id="inspectBackdrop" onclick="closeAniimoDrawer()"></div>
+<aside class="inspect-drawer-left" id="inspectDrawer" aria-hidden="true">
+  <div class="drawer-header">
+    <div class="drawer-header-left">
+      <span class="drawer-role-badge" id="drawerRoleBadge">🔮 REGEN</span>
+      <span class="drawer-no" id="drawerNo">#021</span>
+    </div>
+    <div class="drawer-header-right">
+      <div class="drawer-level-circle">
+        <div class="drawer-level-circle-inner">
+          <span class="lvl-label">LV</span>
+          <span class="lvl-val" id="drawerLevelVal">36</span>
+        </div>
+      </div>
+      <button class="drawer-close-btn" type="button" onclick="closeAniimoDrawer()" title="Đóng bảng">✕</button>
+    </div>
+  </div>
+
+  <div class="drawer-profile">
+    <div class="drawer-name-row">
+      <h2 class="drawer-aniimo-name" id="drawerAniimoName">Hexxin</h2>
+      <span class="drawer-gender-tag" id="drawerGenderTag">♀</span>
+    </div>
+    <div class="drawer-sub-row">
+      <span class="drawer-form-pill" id="drawerFormPill">Mountain Form ★</span>
+      <span class="drawer-cp-pill" id="drawerCpPill">CP 741</span>
+      <div class="drawer-elem-pills" id="drawerElemPills">
+        <span class="elem-mini-pill">🌑 Bóng tối</span>
+        <span class="elem-mini-pill">🌿 Cỏ</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6-AXIS RADAR CHART SECTION -->
+  <div class="drawer-radar-section">
+    <div class="radar-header">
+      <span>📊 Biểu Đồ Chỉ Số Cơ Bản (6 Trục)</span>
+      <span class="radar-eval-status">Tối Ưu Hoá Chiến Đấu</span>
+    </div>
+    <div class="radar-canvas-container" id="radarContainer">
+      <!-- SVG dynamic radar chart -->
+    </div>
+    <!-- 6 stats grid -->
+    <div class="drawer-stats-grid">
+      <div class="stat-mini-card"><span>HP</span><b id="statHp">115</b></div>
+      <div class="stat-mini-card"><span>ATK</span><b id="statAtk">85</b></div>
+      <div class="stat-mini-card"><span>BREAK</span><b id="statBreak">82</b></div>
+      <div class="stat-mini-card"><span>P.DEF</span><b id="statPdef">90</b></div>
+      <div class="stat-mini-card"><span>M.DEF</span><b id="statMdef">108</b></div>
+      <div class="stat-mini-card"><span>REGEN</span><b id="statRegen">115</b></div>
+    </div>
+  </div>
+
+  <!-- TRAIT & PASSIVE -->
+  <div class="drawer-section-box">
+    <div class="drawer-box-title">⚡ Trait & Kỹ Năng Nội Tại</div>
+    <div class="drawer-trait-name" id="drawerTraitName">Curse & Recharge</div>
+    <p class="drawer-trait-desc" id="drawerTraitDesc">Đòn đánh thường hệ Dark tự nạp năng lượng EP; giảm lá chắn và hồi máu của Boss, khống chế cứng trong các trận đánh kéo dài.</p>
+  </div>
+
+  <!-- EVOLUTION ROUTE -->
+  <div class="drawer-section-box">
+    <div class="drawer-box-title">🧬 Cây Tiến Hóa</div>
+    <div class="drawer-evo-chain" id="drawerEvoChain">
+      <span class="evo-node">Hummin</span>
+      <span class="evo-arr">→</span>
+      <span class="evo-node">Tuckin</span>
+      <span class="evo-arr">→</span>
+      <span class="evo-node">Hexxin</span>
+    </div>
+  </div>
+
+  <!-- FORM & HABITAT -->
+  <div class="drawer-section-box">
+    <div class="drawer-box-title">⭐ Form Khuyên Dùng & Nơi Xuất Hiện</div>
+    <p class="drawer-form-advice" id="drawerFormAdvice">Mountain Form (Bóng tối / Cỏ) cho đa dụng utility, bổ sung skill Earth và độ phủ hệ Cỏ.</p>
+    <div class="drawer-habitat-row">📍 <b>Khu vực:</b> <span id="drawerHabitat">Sea of Flowers & Berylline Causeway</span></div>
+  </div>
+
+  <!-- ACTION FOOTER -->
+  <div class="drawer-actions">
+    <a class="drawer-btn-aniidex" id="drawerAniidexLink" href="https://wiki.aniimo.com" target="_blank" rel="noopener">
+      Official Aniidex Tra Cứu ↗
+    </a>
+  </div>
+</aside>
+
 <script>
 /**
  * GameWith 9x9 Type Effectiveness Matrix
@@ -1705,39 +2856,755 @@ const elementIcons = {
   "Băng": "❄️"
 };
 
-// Core DPS List as specified
-const coreDpsList = [
-  { id: 'infergon', name: 'Infergon', el: 'fire' },
-  { id: 'sherro', name: 'Sherro', el: 'water' },
-  { id: 'stellarys', name: 'Stellarys', el: 'dark' },
-  { id: 'fenmane', name: 'Fenmane', el: 'electric' },
-  { id: 'helion', name: 'Helion', el: 'holy' }
+// Full Aniimo Database with 6-Axis Stats for In-Game HUD
+const aniimoDatabase = {
+  infergon: {
+    id: 'infergon',
+    no: '#067',
+    name: 'Infergon',
+    element1: 'Lửa',
+    element2: null,
+    role: 'DPS',
+    subRole: 'Fire DPS Tầm Xa',
+    form: 'Basic Perfect ★',
+    level: 50,
+    cp: 820,
+    gender: '♂',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10025.png',
+    stats: { hp: 102, atk: 125, pdef: 88, regen: 90, mdef: 94, break: 98 },
+    traitName: 'Power of Fire (Sức Mạnh Hỏa Diệm)',
+    traitDesc: 'Khi mục tiêu có trên 5 stack Fire Debuff, tăng thêm khoảng +30% damage. Basic attack dùng sát thương Lửa và đánh từ xa.',
+    evolution: ['Jawling (Trứng)', 'Helmwhelp', 'Infergon'],
+    formAdvice: 'Basic Perfect đã đủ làm Fire DPS chính; không cần ép Prismana chỉ vì stat.',
+    habitat: 'Russet Highlands (Nhánh cuối: Warrior + Omega Infergon). Ưu tiên nuôi Jawling Perfect từ trứng.',
+    sourceUrl: 'https://wiki.aniimo.com/item/067/basic-form'
+  },
+  inferlupa: {
+    id: 'inferlupa',
+    no: '#004',
+    name: 'Inferlupa',
+    element1: 'Lửa',
+    element2: 'Bóng tối',
+    role: 'BREAK',
+    subRole: 'Fire / Dark BREAK',
+    form: 'Prismana ★ / Basic',
+    level: 50,
+    cp: 795,
+    gender: '♂',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005503.png',
+    stats: { hp: 100, atk: 112, pdef: 92, regen: 88, mdef: 85, break: 120 },
+    traitName: 'Wild Fire Burst (Phá Giáp Hỏa)',
+    traitDesc: 'Dồn lượng BREAK cực lớn bằng sát thương Lửa, thiêu đốt lớp giáp và tạo cơ hội dứt điểm cho Infergon.',
+    evolution: ['Pupburn', 'Lupen', 'Inferlupa'],
+    formAdvice: 'Prismana có sẵn thì dùng; bản Basic vẫn đảm nhiệm vai trò Fire BREAK rất tốt.',
+    habitat: 'Ashen Crags & Vùng đất dung nham.',
+    sourceUrl: 'https://wiki.aniimo.com/item/004/prismana-form'
+  },
+  helion: {
+    id: 'helion',
+    no: '#99998',
+    name: 'Helion',
+    element1: 'Thánh',
+    element2: null,
+    role: 'DPS',
+    subRole: 'Holy Carry Cận Chiến',
+    form: 'Basic Form',
+    level: 50,
+    cp: 850,
+    gender: '—',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10361.png',
+    stats: { hp: 105, atk: 116, pdef: 95, regen: 80, mdef: 90, break: 108 },
+    traitName: 'Ân Huệ Thái Dương',
+    traitDesc: 'Tăng +30% final damage khi không đánh bằng nguyên tố tương khắc — carry cân bằng hoàn hảo cho mọi trận đấu.',
+    evolution: ['Không có cây thường (Ultimate biến hình trong trận)'],
+    formAdvice: 'Hiện wiki chỉ có 1 form Basic duy nhất.',
+    habitat: 'Starter / Nhiệm vụ cốt truyện đặc biệt.',
+    sourceUrl: 'https://wiki.aniimo.com/vi/item/99998/basic-form'
+  },
+  glacy: {
+    id: 'glacy',
+    no: '#015',
+    name: 'Glacy',
+    element1: 'Thánh',
+    element2: 'Nước',
+    role: 'HEAL',
+    subRole: 'Healer Chính & Buff Toàn Diện',
+    form: 'Prismana Form ★',
+    level: 50,
+    cp: 810,
+    gender: '♀',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png',
+    stats: { hp: 120, atk: 80, pdef: 90, regen: 105, mdef: 110, break: 75 },
+    traitName: 'Water Spirit (Linh Hồn Nước)',
+    traitDesc: 'Giảm tiêu hao năng lượng EP khi đứng trong địa hình nước; kỹ năng hồi phục và thanh tẩy toàn đội.',
+    evolution: ['Skippy', 'Pranky', 'Glacy'],
+    formAdvice: 'Prismana (Thánh/Nước) là ưu tiên số 1 để bảo toàn Heal và có coverage Thánh.',
+    habitat: 'Driftwise Meadow (dạng Prismana); Sea of Flowers.',
+    sourceUrl: 'https://wiki.aniimo.com/item/015/prismana-form'
+  },
+  panpanta: {
+    id: 'panpanta',
+    no: '#017',
+    name: 'Panpanta',
+    element1: 'Nước',
+    element2: null,
+    role: 'BREAK',
+    subRole: 'Water BREAK Phá Giáp',
+    form: 'Prismana ★ / Basic',
+    level: 48,
+    cp: 780,
+    gender: '♂',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017402.png',
+    stats: { hp: 108, atk: 95, pdef: 98, regen: 85, mdef: 92, break: 122 },
+    traitName: 'Tidal Impact (Thủy Triều Kích)',
+    traitDesc: 'Phá giáp hệ Nước cực mạnh, làm choáng mục tiêu và tạo cơ hội dồn nổ sát thương.',
+    evolution: ['Panta', 'Panpanta'],
+    formAdvice: 'Bản Basic là đủ dùng, Prismana tăng thêm độ trâu.',
+    habitat: 'Whispering Falls & Vùng hồ ẩm ướt.',
+    sourceUrl: 'https://wiki.aniimo.com/item/017/prismana-form'
+  },
+  thornblade: {
+    id: 'thornblade',
+    no: '#032',
+    name: 'Thornblade',
+    element1: 'Cỏ',
+    element2: 'Điện',
+    role: 'DPS',
+    subRole: 'Grass Specialist (Chuyên Gia Cỏ)',
+    form: 'Thunderstorm ★',
+    level: 48,
+    cp: 815,
+    gender: '♂',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032301.png',
+    stats: { hp: 98, atk: 122, pdef: 90, regen: 95, mdef: 92, break: 105 },
+    traitName: 'Thorn Storm (Lôi Cước Gai Nhọn)',
+    traitDesc: 'Xả sát thương Cỏ dồn dập. Khắc chế triệt để Nước, Đá, Nước+Băng (×1.6) và đặc biệt Đá+Nước đạt siêu chí mạng ×2.56!',
+    evolution: ['Seedle', 'Thorny', 'Thornblade'],
+    formAdvice: 'Thunderstorm là dạng mạnh nhất, mở rộng vùng phủ hệ Cỏ + Điện.',
+    habitat: 'Verdant Canopy & Rừng già ngập sấm.',
+    sourceUrl: 'https://wiki.aniimo.com/item/032/thunderstorm-form'
+  },
+  turbo: {
+    id: 'turbo',
+    no: '#026',
+    name: 'Turbo',
+    element1: 'Bóng tối',
+    element2: 'Gió',
+    role: 'SUPPORT',
+    subRole: 'Universal Buffer / Sát Thương & BREAK',
+    form: 'Prismana ★ / Cloudmist',
+    level: 46,
+    cp: 760,
+    gender: '♂',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026202.png',
+    stats: { hp: 104, atk: 88, pdef: 86, regen: 118, mdef: 96, break: 92 },
+    traitName: 'Nimbi Burst (Cuồng Phong Tăng Cường)',
+    traitDesc: 'Tăng sát thương và hiệu suất phá giáp (BREAK efficiency) cho toàn đội lên tới +30%. Cực kỳ đa dụng trong mọi đội hình.',
+    evolution: ['Zephyr', 'Swift', 'Turbo'],
+    formAdvice: 'Prismana (Tối/Gió) vừa buff vừa tăng coverage hệ Bóng tối.',
+    habitat: 'Berylline Causeway.',
+    sourceUrl: 'https://wiki.aniimo.com/item/026/prismana-form'
+  },
+  geoclaw: {
+    id: 'geoclaw',
+    no: '#016',
+    name: 'Geoclaw',
+    element1: 'Băng',
+    element2: null,
+    role: 'BREAK',
+    subRole: 'Ice Breaker & Khống Chế',
+    form: 'Basic Form',
+    level: 45,
+    cp: 770,
+    gender: '♂',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10163.png',
+    stats: { hp: 115, atk: 90, pdef: 110, regen: 75, mdef: 85, break: 126 },
+    traitName: 'Permafrost Grip (Vuốt Băng Vĩnh Cửu)',
+    traitDesc: 'Đóng băng và làm chậm mục tiêu, phá vỡ thanh giáp siêu tốc trước các đối thủ sợ hệ Băng.',
+    evolution: ['Frostclaw', 'Geoclaw'],
+    formAdvice: 'Dùng ngay bản chuẩn theo Aniidex, không cần form biến thể.',
+    habitat: 'Frostfall Peak & Các hang đá băng tuyết.',
+    sourceUrl: 'https://wiki.aniimo.com/item/016/basic-form'
+  },
+  hexxin: {
+    id: 'hexxin',
+    no: '#021',
+    name: 'Hexxin',
+    element1: 'Bóng tối',
+    element2: 'Cỏ',
+    role: 'REGEN',
+    subRole: 'Nạp EP & Khóa Chiêu Trận Dài',
+    form: 'Mountain ★',
+    level: 47,
+    cp: 741,
+    gender: '♀',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020301.png',
+    stats: { hp: 115, atk: 85, pdef: 90, regen: 115, mdef: 108, break: 82 },
+    traitName: 'Curse & Recharge (Nguyền Rủa & Nạp Năng Lượng)',
+    traitDesc: 'Đòn đánh thường hệ Dark tự nạp năng lượng EP; giảm lá chắn và hồi máu của Boss, khống chế cứng trong các trận đánh kéo dài.',
+    evolution: ['Hummin', 'Tuckin', 'Hexxin'],
+    formAdvice: 'Mountain (Bóng tối / Cỏ) đa dụng, bổ sung skill Earth và độ phủ hệ Cỏ.',
+    habitat: 'Sea of Flowers & Berylline Causeway.',
+    sourceUrl: 'https://wiki.aniimo.com/item/021/mountain-form'
+  },
+  grizbo: {
+    id: 'grizbo',
+    no: '#069',
+    name: 'Grizbo',
+    element1: 'Đá',
+    element2: null,
+    role: 'DPS',
+    subRole: 'Earth / Rock DPS Cận Chiến',
+    form: 'Basic Form ★',
+    level: 48,
+    cp: 805,
+    gender: '♂',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10503.png',
+    stats: { hp: 118, atk: 124, pdef: 105, regen: 78, mdef: 80, break: 100 },
+    traitName: 'Enraged (Cuồng Nộ Hùng)',
+    traitDesc: 'Tích điểm Rage khi chịu hoặc gây sát thương. Đạt 100 điểm bước vào trạng thái Enraged: tăng tốc độ đánh, sát thương chiêu và tự hồi EP.',
+    evolution: ['Cubbo', 'Grizbo'],
+    formAdvice: 'Basic tiết kiệm tài nguyên farm. ATK 124 cơ bản đã đủ đè bẹp đối thủ.',
+    habitat: 'Rosetower Woods.',
+    sourceUrl: 'https://wiki.aniimo.com/item/069/basic-form'
+  },
+  // Additional synergy members
+  gracewing: {
+    id: 'gracewing',
+    no: '#042',
+    name: 'Gracewing',
+    element1: 'Gió',
+    element2: 'Thánh',
+    role: 'HEAL',
+    subRole: 'Sustain / Cleanse / Nạp EP',
+    form: 'Skybound ★',
+    level: 48,
+    cp: 785,
+    gender: '♀',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png',
+    stats: { hp: 112, atk: 78, pdef: 88, regen: 122, mdef: 112, break: 76 },
+    traitName: 'Purifying Gale (Ngọn Gió Thanh Khiết)',
+    traitDesc: 'Hồi máu diện rộng liên tục, giải trừ toàn bộ hiệu ứng bất lợi (cleanse) và bơm năng lượng EP dồi dào cho đồng minh.',
+    evolution: ['Chirpy', 'Gracewing'],
+    formAdvice: 'Skybound hỗ trợ phục hồi và giải khống chế xuất sắc nhất.',
+    habitat: 'High Winds Plateau.',
+    sourceUrl: 'https://wiki.aniimo.com'
+  },
+  sherro: {
+    id: 'sherro',
+    no: '#028',
+    name: 'Sherro',
+    element1: 'Nước',
+    element2: null,
+    role: 'DPS',
+    subRole: 'Water DPS Dồn Sát Thương',
+    form: 'Thunderstorm / Basic',
+    level: 50,
+    cp: 825,
+    gender: '♂',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017402.png',
+    stats: { hp: 104, atk: 126, pdef: 92, regen: 88, mdef: 90, break: 102 },
+    traitName: 'Hydro Surge (Dâng Trào Thủy Lực)',
+    traitDesc: 'Dồn sát thương Nước liên tiếp, nhận thêm buff sát thương khi đứng trên vũng nước do Piopiota tạo ra.',
+    evolution: ['Shelly', 'Sherro'],
+    formAdvice: 'Dồn đồ sát thương Water để tối đa hóa lượng buff từ team Nước.',
+    habitat: 'Azure Bay.',
+    sourceUrl: 'https://wiki.aniimo.com'
+  },
+  piopiota: {
+    id: 'piopiota',
+    no: '#033',
+    name: 'Piopiota',
+    element1: 'Nước',
+    element2: null,
+    role: 'SUPPORT',
+    subRole: 'Water Damage Buffer & Vũng Nước',
+    form: 'Tidebringer ★',
+    level: 47,
+    cp: 770,
+    gender: '♀',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017402.png',
+    stats: { hp: 110, atk: 82, pdef: 86, regen: 112, mdef: 104, break: 85 },
+    traitName: 'Tidal Harmony (Hòa Âm Thủy Triều)',
+    traitDesc: 'Tăng +16% sát thương Nước cho đồng đội khác giới; Ultimate tăng thêm +20% Water damage trong 30s, đồng thời tạo vũng nước và hồi máu.',
+    evolution: ['Pio', 'Piota', 'Piopiota'],
+    formAdvice: 'Mảnh ghép không thể thiếu cho team chuyên sát thương Nước.',
+    habitat: 'Sunken Shallows.',
+    sourceUrl: 'https://wiki.aniimo.com'
+  },
+  stellarys: {
+    id: 'stellarys',
+    no: '#055',
+    name: 'Stellarys',
+    element1: 'Bóng tối',
+    element2: null,
+    role: 'DPS',
+    subRole: 'Dark DPS Đột Biến',
+    form: 'Nightfall ★',
+    level: 50,
+    cp: 830,
+    gender: '♂',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020301.png',
+    stats: { hp: 98, atk: 128, pdef: 84, regen: 92, mdef: 96, break: 104 },
+    traitName: 'Eclipse Strike (Đòn Nhật Thực)',
+    traitDesc: 'Tấn công gây sát thương Bóng tối diện rộng, kích nổ dấu ấn của Fragrancier gây thêm 50% damage.',
+    evolution: ['Stellina', 'Stellarys'],
+    formAdvice: 'Nightfall tối đa hóa chỉ số chí mạng.',
+    habitat: 'Obsidian Ridge.',
+    sourceUrl: 'https://wiki.aniimo.com'
+  },
+  rookey: {
+    id: 'rookey',
+    no: '#056',
+    name: 'Rookey',
+    element1: 'Bóng tối',
+    element2: null,
+    role: 'BREAK',
+    subRole: 'Dark Breaker Khống Chế',
+    form: 'Basic ★',
+    level: 48,
+    cp: 780,
+    gender: '♂',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026202.png',
+    stats: { hp: 106, atk: 102, pdef: 95, regen: 85, mdef: 90, break: 124 },
+    traitName: 'Shadow Crusher (Nghiền Nát Bóng Đêm)',
+    traitDesc: 'Phá vỡ khiên đối phương bằng đòn Dark búa tạ, giảm tốc độ di chuyển của địch.',
+    evolution: ['Rook', 'Rookey'],
+    formAdvice: 'Tập trung trang bị tăng BREAK efficiency.',
+    habitat: 'Shadowed Hollow.',
+    sourceUrl: 'https://wiki.aniimo.com'
+  },
+  fragrancier: {
+    id: 'fragrancier',
+    no: '#058',
+    name: 'Fragrancier',
+    element1: 'Bóng tối',
+    element2: null,
+    role: 'SUPPORT',
+    subRole: 'Dark Res Debuff & Ấn Đánh Thường',
+    form: 'Nocturne ★',
+    level: 47,
+    cp: 765,
+    gender: '♀',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020301.png',
+    stats: { hp: 108, atk: 84, pdef: 88, regen: 114, mdef: 102, break: 88 },
+    traitName: 'Dark Fragrance (Hương Thơm U Tối)',
+    traitDesc: 'Skill trúng địch giảm 12% kháng Bóng Tối; Ultimate tăng 20% Dark Boost và gán dấu ấn khiến đòn đánh thường hệ Dark tăng +50% damage.',
+    evolution: ['Florina', 'Fragrancier'],
+    formAdvice: 'Trang bị tăng tốc hồi chiêu (Skill Cooldown).',
+    habitat: 'Sea of Flowers.',
+    sourceUrl: 'https://wiki.aniimo.com'
+  },
+  fenmane: {
+    id: 'fenmane',
+    no: '#045',
+    name: 'Fenmane',
+    element1: 'Điện',
+    element2: null,
+    role: 'DPS',
+    subRole: 'Electric DPS Tốc Độ',
+    form: 'Thunderclaw ★',
+    level: 50,
+    cp: 825,
+    gender: '♂',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032301.png',
+    stats: { hp: 100, atk: 126, pdef: 90, regen: 90, mdef: 92, break: 106 },
+    traitName: 'Static Overcharge (Quá Tải Tĩnh Điện)',
+    traitDesc: 'Tấn công nhanh liên hoàn gây sốc điện, tăng tỉ lệ chí mạng lên các mục tiêu bị dính debuff Điện.',
+    evolution: ['Sparks', 'Fenmane'],
+    formAdvice: 'Tối ưu tốc độ đánh và bạo kích.',
+    habitat: 'Thunderclap Plateau.',
+    sourceUrl: 'https://wiki.aniimo.com'
+  },
+  blazen: {
+    id: 'blazen',
+    no: '#046',
+    name: 'Blazen',
+    element1: 'Điện',
+    element2: null,
+    role: 'BREAK',
+    subRole: 'Electric BREAK Phá Giáp',
+    form: 'Basic ★',
+    level: 48,
+    cp: 785,
+    gender: '♂',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10503.png',
+    stats: { hp: 105, atk: 100, pdef: 94, regen: 86, mdef: 88, break: 122 },
+    traitName: 'Lightning Breaker',
+    traitDesc: 'Phá giáp siêu tốc đối phương bằng chuỗi đòn điện cao thế.',
+    evolution: ['Volt', 'Blazen'],
+    formAdvice: 'Trang bị thuần BREAK.',
+    habitat: 'Voltwire Ruins.',
+    sourceUrl: 'https://wiki.aniimo.com'
+  },
+  luminelle: {
+    id: 'luminelle',
+    no: '#048',
+    name: 'Luminelle',
+    element1: 'Điện',
+    element2: 'Thánh',
+    role: 'SUPPORT',
+    subRole: 'Electric Support Đỉnh Cao',
+    form: 'Prismana ★',
+    level: 49,
+    cp: 800,
+    gender: '♀',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png',
+    stats: { hp: 114, atk: 86, pdef: 92, regen: 116, mdef: 108, break: 90 },
+    traitName: 'Plasma Aura (Hào Quang Tĩnh Điện)',
+    traitDesc: 'Nội tại buff +12% Electric dmg; Ultimate tăng +27% ATK +16% BREAK cho đồng đội Điện, kích hoạt sân đấu tăng thêm +20% sát thương Điện.',
+    evolution: ['Lumi', 'Luminelle'],
+    formAdvice: 'Prismana kết hợp Điện và Thánh cực kỳ mạnh.',
+    habitat: 'Berylline Causeway.',
+    sourceUrl: 'https://wiki.aniimo.com'
+  },
+  tubster: {
+    id: 'tubster',
+    no: '#012',
+    name: 'Tubster',
+    element1: 'Gió',
+    element2: 'Thánh',
+    role: 'BREAK',
+    subRole: 'Tank / Phá Giáp Trợ Thủ',
+    form: 'Basic Form',
+    level: 46,
+    cp: 755,
+    gender: '♂',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10163.png',
+    stats: { hp: 122, atk: 92, pdef: 108, regen: 82, mdef: 98, break: 116 },
+    traitName: 'Trumpet Blast',
+    traitDesc: 'Thổi kèn tạo sóng âm đẩy lùi và làm choáng kẻ địch, đồng thời bào mòn thanh kháng cự.',
+    evolution: ['Tubby', 'Tubster'],
+    formAdvice: 'Cặp bài trùng cùng Helion đối đầu hệ Bóng Tối.',
+    habitat: 'Highland Meadows.',
+    sourceUrl: 'https://wiki.aniimo.com'
+  },
+  pomawk: {
+    id: 'pomawk',
+    no: '#038',
+    name: 'Pomawk',
+    element1: 'Cỏ',
+    element2: null,
+    role: 'BREAK',
+    subRole: 'Grass BREAK',
+    form: 'Basic ★',
+    level: 47,
+    cp: 775,
+    gender: '♂',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032301.png',
+    stats: { hp: 108, atk: 98, pdef: 96, regen: 88, mdef: 86, break: 121 },
+    traitName: 'Mohawk Smash',
+    traitDesc: 'Dồn lực phá giáp bằng chùy gai thảo mộc, tạo điều kiện cho Thornblade dứt điểm.',
+    evolution: ['Pom', 'Pomawk'],
+    formAdvice: 'Trang bị gia tăng chỉ số BREAK.',
+    habitat: 'Verdant Canopy.',
+    sourceUrl: 'https://wiki.aniimo.com'
+  },
+  melloblum: {
+    id: 'melloblum',
+    no: '#039',
+    name: 'Melloblum',
+    element1: 'Cỏ',
+    element2: null,
+    role: 'HEAL',
+    subRole: 'Grass Heal & Utility',
+    form: 'Flora ★',
+    level: 46,
+    cp: 760,
+    gender: '♀',
+    art: 'https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png',
+    stats: { hp: 116, atk: 80, pdef: 90, regen: 118, mdef: 106, break: 78 },
+    traitName: 'Spore Restoration',
+    traitDesc: 'Thả phấn hoa chữa lành đồng đội, hóa giải trúng độc và tăng hồi phục EP.',
+    evolution: ['Blum', 'Melloblum'],
+    formAdvice: 'Tập trung chỉ số REGEN và HP.',
+    habitat: 'Sea of Flowers.',
+    sourceUrl: 'https://wiki.aniimo.com'
+  }
+};
+
+const supportEffects = {
+  turbo: { role: '⚡ UNIVERSAL BUFF', effect: '+30% DMG & BREAK' },
+  gracewing: { role: '💖 HEAL & SUSTAIN', effect: 'Hồi Máu · Cleanse · EP' },
+  glacy: { role: '💖 HEALER CHÍNH', effect: 'Hồi Phục & Buff Toàn Diện' },
+  piopiota: { role: '💧 WATER BUFFER', effect: '+36% Water DMG & Vũng Nước' },
+  fragrancier: { role: '🌑 DARK SUPPORT', effect: '-12% Dark Res · +50% Basic' },
+  luminelle: { role: '⚡ ELECTRIC BUFF', effect: '+47% Elec DMG & Field' },
+  hexxin: { role: '🔮 REGEN & UTILITY', effect: 'Khóa Chiêu · Bơm Năng Lượng EP' },
+  tubster: { role: '🛡️ TANK / PHÁ GIÁP', effect: 'Đẩy Lùi & Bào Mòn Kháng Cự' },
+  pomawk: { role: '🌿 GRASS BREAK', effect: 'Chùy Gai Phá Giáp' },
+  melloblum: { role: '🌿 HEAL & UTILITY', effect: 'Phấn Hoa Trị Liệu & Giải Độc' },
+  rookey: { role: '🌑 DARK BREAK', effect: 'Búa Tạ Phá Vỡ Khiên' },
+  blazen: { role: '⚡ ELECTRIC BREAK', effect: 'Sốc Điện Phá Giáp' },
+  inferlupa: { role: '🛡️ FIRE BREAK', effect: 'Phá Giáp & Thiêu Đốt' },
+  panpanta: { role: '🛡️ WATER BREAK', effect: 'Phá Giáp Thủy Triều' }
+};
+
+const rosterKeys = [
+  'helion', 'glacy', 'panpanta', 'infergon', 'inferlupa',
+  'thornblade', 'turbo', 'geoclaw', 'hexxin', 'grizbo'
 ];
 
-const displayNames = {
-  infergon: 'Infergon',
-  inferlupa: 'Inferlupa',
-  turbo: 'Turbo',
-  gracewing: 'Gracewing',
-  sherro: 'Sherro',
-  panpanta: 'Panpanta',
-  piopiota: 'Piopiota',
-  glacy: 'Glacy',
-  stellarys: 'Stellarys',
-  rookey: 'Rookey',
-  fragrancier: 'Fragrancier',
-  fenmane: 'Fenmane',
-  blazen: 'Blazen',
-  luminelle: 'Luminelle Prismana',
-  helion: 'Helion',
-  tubster: 'Tubster',
-  thornblade: 'Thornblade Thunderstorm',
-  pomawk: 'Pomawk',
-  melloblum: 'Melloblum',
-  grizbo: 'Grizbo',
-  geoclaw: 'Geoclaw',
-  hexxin: 'Hexxin'
-};
+const displayNames = {};
+Object.keys(aniimoDatabase).forEach(k => {
+  displayNames[k] = aniimoDatabase[k].name;
+});
+
+// Radar Chart SVG Renderer (6-Axis Hexagonal)
+function renderRadarSvg(stats) {
+  const cx = 135, cy = 115, rMax = 70;
+  const axes = [
+    { key: 'hp', label: 'HP', angle: -Math.PI / 2 },
+    { key: 'atk', label: 'ATK', angle: -Math.PI / 6 },
+    { key: 'pdef', label: 'P.DEF', angle: Math.PI / 6 },
+    { key: 'regen', label: 'REGEN', angle: Math.PI / 2 },
+    { key: 'mdef', label: 'M.DEF', angle: 5 * Math.PI / 6 },
+    { key: 'break', label: 'BREAK', angle: 7 * Math.PI / 6 }
+  ];
+
+  // Grid levels (25%, 50%, 75%, 100%)
+  let gridHexagons = '';
+  [0.25, 0.5, 0.75, 1].forEach(lvl => {
+    const pts = axes.map(a => {
+      const x = cx + Math.cos(a.angle) * rMax * lvl;
+      const y = cy + Math.sin(a.angle) * rMax * lvl;
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).join(' ');
+    gridHexagons += `<polygon points="${pts}" fill="none" stroke="rgba(56, 189, 248, ${lvl === 1 ? 0.4 : 0.16})" stroke-width="${lvl === 1 ? 1.5 : 1}" />`;
+  });
+
+  // Axis spokes & labels
+  let spokes = '';
+  let labels = '';
+  axes.forEach(a => {
+    const xEnd = cx + Math.cos(a.angle) * rMax;
+    const yEnd = cy + Math.sin(a.angle) * rMax;
+    spokes += `<line x1="${cx}" y1="${cy}" x2="${xEnd.toFixed(1)}" y2="${yEnd.toFixed(1)}" stroke="rgba(56, 189, 248, 0.22)" stroke-width="1" stroke-dasharray="2,2" />`;
+
+    const xLbl = cx + Math.cos(a.angle) * (rMax + 18);
+    const yLbl = cy + Math.sin(a.angle) * (rMax + 14) + 4;
+    labels += `<text x="${xLbl.toFixed(1)}" y="${yLbl.toFixed(1)}" text-anchor="middle" font-size="10" font-weight="800" fill="#94a3b8" font-family="'Plus Jakarta Sans', sans-serif">${a.label}</text>`;
+  });
+
+  // Data polygon
+  const maxStat = 135;
+  const polyPts = axes.map(a => {
+    const val = stats[a.key] || 80;
+    const norm = Math.min(1, Math.max(0.18, val / maxStat));
+    const x = cx + Math.cos(a.angle) * rMax * norm;
+    const y = cy + Math.sin(a.angle) * rMax * norm;
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(' ');
+
+  // Stat dots
+  let dots = '';
+  axes.forEach(a => {
+    const val = stats[a.key] || 80;
+    const norm = Math.min(1, Math.max(0.18, val / maxStat));
+    const x = cx + Math.cos(a.angle) * rMax * norm;
+    const y = cy + Math.sin(a.angle) * rMax * norm;
+    dots += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5" />`;
+  });
+
+  return `
+    <svg width="270" height="230" viewBox="0 0 270 230" style="overflow: visible;">
+      <defs>
+        <radialGradient id="radarFillGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="rgba(56, 189, 248, 0.45)" />
+          <stop offset="100%" stop-color="rgba(168, 85, 247, 0.25)" />
+        </radialGradient>
+      </defs>
+      ${gridHexagons}
+      ${spokes}
+      <polygon points="${polyPts}" fill="url(#radarFillGrad)" stroke="#38bdf8" stroke-width="2" />
+      ${dots}
+      ${labels}
+    </svg>
+  `;
+}
+
+// Left-side Info Drawer Controller
+function openAniimoDrawer(id) {
+  const data = aniimoDatabase[id];
+  if (!data) return;
+
+  const drawer = document.getElementById('inspectDrawer');
+  const backdrop = document.getElementById('inspectBackdrop');
+  if (!drawer || !backdrop) return;
+
+  // Header
+  const roleBadge = document.getElementById('drawerRoleBadge');
+  if (roleBadge) {
+    roleBadge.textContent = `${data.role} · ${data.subRole || ''}`;
+  }
+  const drawerNo = document.getElementById('drawerNo');
+  if (drawerNo) drawerNo.textContent = data.no;
+  const lvlVal = document.getElementById('drawerLevelVal');
+  if (lvlVal) lvlVal.textContent = data.level || 50;
+
+  // Profile
+  const nameEl = document.getElementById('drawerAniimoName');
+  if (nameEl) nameEl.textContent = data.name;
+  const genderEl = document.getElementById('drawerGenderTag');
+  if (genderEl) genderEl.textContent = data.gender || '';
+  const formEl = document.getElementById('drawerFormPill');
+  if (formEl) formEl.textContent = data.form || 'Standard';
+  const cpEl = document.getElementById('drawerCpPill');
+  if (cpEl) cpEl.textContent = `CP ${data.cp || 750}`;
+
+  const elemPills = document.getElementById('drawerElemPills');
+  if (elemPills) {
+    let pillsHtml = `<span class="elem-mini-pill">${elementIcons[data.element1] || ''} ${data.element1}</span>`;
+    if (data.element2) {
+      pillsHtml += `<span class="elem-mini-pill">${elementIcons[data.element2] || ''} ${data.element2}</span>`;
+    }
+    elemPills.innerHTML = pillsHtml;
+  }
+
+  // Radar Chart
+  const radarContainer = document.getElementById('radarContainer');
+  if (radarContainer) {
+    radarContainer.innerHTML = renderRadarSvg(data.stats);
+  }
+
+  // Stats Grid
+  const s = data.stats;
+  const hpEl = document.getElementById('statHp'); if (hpEl) hpEl.textContent = s.hp;
+  const atkEl = document.getElementById('statAtk'); if (atkEl) atkEl.textContent = s.atk;
+  const brkEl = document.getElementById('statBreak'); if (brkEl) brkEl.textContent = s.break;
+  const pdefEl = document.getElementById('statPdef'); if (pdefEl) pdefEl.textContent = s.pdef;
+  const mdefEl = document.getElementById('statMdef'); if (mdefEl) mdefEl.textContent = s.mdef;
+  const regEl = document.getElementById('statRegen'); if (regEl) regEl.textContent = s.regen;
+
+  // Trait & Passive
+  const traitNameEl = document.getElementById('drawerTraitName');
+  if (traitNameEl) traitNameEl.textContent = data.traitName;
+  const traitDescEl = document.getElementById('drawerTraitDesc');
+  if (traitDescEl) traitDescEl.textContent = data.traitDesc;
+
+  // Evolution
+  const evoEl = document.getElementById('drawerEvoChain');
+  if (evoEl) {
+    if (Array.isArray(data.evolution) && data.evolution.length > 0) {
+      evoEl.innerHTML = data.evolution.map((node, i) => 
+        `<span class="evo-node">${node}</span>` + (i < data.evolution.length - 1 ? `<span class="evo-arr">→</span>` : '')
+      ).join('');
+    } else {
+      evoEl.innerHTML = '<span class="small" style="color:var(--muted)">Không có chuỗi tiến hóa thông thường.</span>';
+    }
+  }
+
+  // Form & Habitat
+  const adviceEl = document.getElementById('drawerFormAdvice');
+  if (adviceEl) adviceEl.textContent = data.formAdvice;
+  const habitatEl = document.getElementById('drawerHabitat');
+  if (habitatEl) habitatEl.textContent = data.habitat;
+
+  // Aniidex Link
+  const linkEl = document.getElementById('drawerAniidexLink');
+  if (linkEl) linkEl.href = data.sourceUrl || 'https://wiki.aniimo.com';
+
+  // Highlight active tile in storage
+  document.querySelectorAll('.aniimo-oct-tile').forEach(tile => {
+    tile.classList.toggle('selected', tile.dataset.id === id);
+  });
+
+  // Open drawer
+  drawer.classList.add('open');
+  backdrop.classList.add('open');
+  drawer.setAttribute('aria-hidden', 'false');
+}
+
+function closeAniimoDrawer() {
+  const drawer = document.getElementById('inspectDrawer');
+  const backdrop = document.getElementById('inspectBackdrop');
+  if (drawer) {
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+  if (backdrop) backdrop.classList.remove('open');
+  document.querySelectorAll('.aniimo-oct-tile.selected').forEach(t => t.classList.remove('selected'));
+}
+
+// Storage Box Octagon Grid Builder
+function renderStorageOctagons(roleFilter = 'all') {
+  const container = document.getElementById('storageOctagonGrid');
+  if (!container) return;
+
+  const filteredKeys = rosterKeys.filter(k => {
+    const d = aniimoDatabase[k];
+    if (!d) return false;
+    if (roleFilter === 'all') return true;
+    if (roleFilter === 'dps') return d.role === 'DPS';
+    if (roleFilter === 'break') return d.role === 'BREAK';
+    if (roleFilter === 'heal') return d.role === 'HEAL';
+    if (roleFilter === 'support') return d.role === 'SUPPORT' || d.role === 'REGEN';
+    return true;
+  });
+
+  container.innerHTML = filteredKeys.map(key => {
+    const d = aniimoDatabase[key];
+    const elemStr = elementIcons[d.element1] + (d.element2 ? ' ' + elementIcons[d.element2] : '');
+    return `
+      <div class="aniimo-oct-tile oct-shape" data-id="${key}" onclick="openAniimoDrawer('${key}')" title="${d.name} (${d.role})">
+        <div class="aniimo-oct-inner oct-shape">
+          <span class="oct-rank-chevron">︽ Lv.${d.level || 48}</span>
+          <img class="oct-avatar" src="${d.art}" alt="${d.name}" loading="lazy">
+          <span class="oct-bot-pill">${elemStr} ${d.cp ? d.cp : d.no}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// View switcher for Storage Box
+const viewSwitchOct = document.getElementById('viewSwitchOct');
+const viewSwitchCard = document.getElementById('viewSwitchCard');
+const storageOctagonGrid = document.getElementById('storageOctagonGrid');
+const rosterCardsGrid = document.getElementById('rosterCardsGrid');
+
+if (viewSwitchOct && viewSwitchCard && storageOctagonGrid && rosterCardsGrid) {
+  viewSwitchOct.addEventListener('click', () => {
+    viewSwitchOct.classList.add('active');
+    viewSwitchCard.classList.remove('active');
+    storageOctagonGrid.style.display = 'grid';
+    rosterCardsGrid.style.display = 'none';
+  });
+
+  viewSwitchCard.addEventListener('click', () => {
+    viewSwitchCard.classList.add('active');
+    viewSwitchOct.classList.remove('active');
+    storageOctagonGrid.style.display = 'none';
+    rosterCardsGrid.style.display = 'grid';
+  });
+}
+
+// Storage Role Filter Buttons
+document.querySelectorAll('#storageRoleFilters [data-role]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#storageRoleFilters [data-role]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderStorageOctagons(btn.dataset.role);
+    // Re-apply recommended / dimmed states
+    updateOctagonHighlights();
+  });
+});
+
+let currentRecommendedTeam = [];
+
+function updateOctagonHighlights() {
+  const chosenSet = new Set(currentRecommendedTeam);
+  document.querySelectorAll('.aniimo-oct-tile').forEach(tile => {
+    const id = tile.dataset.id;
+    const isRec = chosenSet.has(id);
+    if (chosenSet.size === 0) {
+      tile.classList.remove('recommended-oct', 'dimmed-oct');
+    } else {
+      tile.classList.toggle('recommended-oct', isRec);
+      tile.classList.toggle('dimmed-oct', !isRec);
+    }
+  });
+}
 
 const cards = [...document.querySelectorAll('.card[data-aniimo], .card[data-id]')];
 const selType1Text = document.getElementById('selType1Text');
@@ -1779,17 +3646,17 @@ function recommendTeam(def1, def2, effectiveness) {
   // Preset special modes
   if (currentMode === 'default') {
     return {
-      team: ['helion', 'glacy', 'panpanta', 'inferlupa'],
-      why: 'Đội hình vượt map ổn định nhất: Helion carry trung tính (không bị khắc hệ), Glacy hồi phục, Panpanta lo Water BREAK và Inferlupa gánh Fire/Dark BREAK.',
+      team: ['helion', 'panpanta', 'inferlupa', 'glacy'],
+      why: 'Đội hình vượt map ổn định nhất: Helion carry trung tính (không bị khắc hệ), Panpanta lo Water BREAK, Inferlupa gánh Fire/Dark BREAK và Glacy hồi phục toàn diện.',
       note: 'Dùng khi chưa rõ đối thủ chơi hệ gì. Giữ 4 con này sát level story để tiết kiệm tài nguyên.'
     };
   }
 
   if (currentMode === 'boss') {
     return {
-      team: ['helion', 'glacy', 'panpanta', 'hexxin'],
-      why: 'Bộ khung sinh tồn & nạp EP lâu dài: Helion dồn damage, Glacy hồi phục, Panpanta lo BREAK, Hexxin khống chế và nạp EP liên tục. Nếu boss đòi hỏi burst BREAK nhanh, có thể hoán đổi Hexxin sang Inferlupa.',
-      note: 'Đội hình dồn nổ sát thương Boss nhanh: Helion · Glacy · Panpanta · Inferlupa.'
+      team: ['helion', 'panpanta', 'hexxin', 'glacy'],
+      why: 'Bộ khung sinh tồn & nạp EP lâu dài: Helion dồn damage, Panpanta lo BREAK, Hexxin khống chế và nạp EP liên tục, Glacy bảo đảm lượng máu. Nếu boss đòi hỏi burst BREAK nhanh, có thể hoán đổi Hexxin sang Inferlupa.',
+      note: 'Đội hình dồn nổ sát thương Boss nhanh: Helion · Inferlupa · Panpanta · Glacy.'
     };
   }
 
@@ -1819,7 +3686,7 @@ function recommendTeam(def1, def2, effectiveness) {
   if (def1 === 'Bóng tối' || def2 === 'Bóng tối' || (bestElements.includes('Thánh') && bestElements.length === 1)) {
     return {
       team: ['helion', 'tubster', 'turbo', 'gracewing'],
-      why: 'Kích hoạt ✨ Helion Team khắc chế Bóng Tối: Helion (Holy Carry cận chiến) + Tubster (Hỗ trợ tank / phá giáp). Vì hệ Thánh chưa có support đặc hệ riêng, Turbo buff trực tiếp damage/BREAK + Gracewing gánh sustain (heal/cleanse/EP) là phương án gọn và mạnh nhất!',
+      why: 'Kích hoạt ✨ Helion Team khắc chế Bóng Tối: Helion (Holy Carry cận chiến) + Tubster (Hỗ trợ tank / phá giáp). Turbo buff trực tiếp damage/BREAK + Gracewing gánh sustain (heal/cleanse/EP) là phương án gọn và mạnh nhất!',
       note: 'Helion với Trait Ân Huệ Thái Dương kết hợp Turbo buff sát thương dứt điểm cực ngọt các quái hệ Bóng tối.'
     };
   }
@@ -1874,18 +3741,97 @@ function recommendTeam(def1, def2, effectiveness) {
   // 9. Rock / Earth
   if (bestElements.includes('Đá')) {
     return {
-      team: ['grizbo', 'panpanta', 'helion', 'glacy'],
-      why: `Grizbo sở hữu đòn đánh Đá với ATK 124 vượt trội để trừng phạt hệ ${def1}; Panpanta lo BREAK và Glacy giữ nhịp sinh tồn.`,
+      team: ['grizbo', 'panpanta', 'turbo', 'glacy'],
+      why: `Grizbo sở hữu đòn đánh Đá với ATK 124 vượt trội để trừng phạt hệ ${def1}; Panpanta lo BREAK, Turbo buff tốc và Glacy giữ nhịp sinh tồn.`,
       note: 'Grizbo bản Basic là hoàn toàn đủ lực; không cần mất công săn Prismana.'
     };
   }
 
   // Fallback default
   return {
-    team: ['helion', 'glacy', 'panpanta', 'inferlupa'],
-    why: `Kẻ địch [${defText}] bị khắc chế bởi hệ [${bestElements.join(', ')}]. Đội hình ưu tiên Helion làm carry cân bằng, Panpanta và Inferlupa lo phá giáp, Glacy bảo đảm lượng máu.`,
+    team: ['helion', 'panpanta', 'inferlupa', 'glacy'],
+    why: `Kẻ địch [${def1}] bị khắc chế bởi hệ [${bestElements.join(', ')}]. Đội hình ưu tiên Helion làm carry cân bằng, Panpanta và Inferlupa lo phá giáp, Glacy bảo đảm lượng máu.`,
     note: 'Tận dụng đúng hệ tương khắc để dứt điểm trận đấu nhanh nhất.'
   };
+}
+
+function updateBattlePartyShowcase(rec, defText, maxMult) {
+  if (!rec.team || rec.team.length < 4) return;
+
+  const d1 = aniimoDatabase[rec.team[0]];
+  const d2 = aniimoDatabase[rec.team[1]];
+  const d3 = aniimoDatabase[rec.team[2]];
+  const d4 = aniimoDatabase[rec.team[3]];
+
+  // 1. Slot Main DPS (Larger, Full Art)
+  const slotDps = document.getElementById('slotMainDps');
+  if (slotDps && d1) {
+    slotDps.dataset.id = d1.id;
+    const art = document.getElementById('dpsArtImg'); if (art) { art.src = d1.art; art.alt = d1.name; }
+    const name = document.getElementById('dpsName'); if (name) name.textContent = d1.name;
+    const elem = document.getElementById('dpsElemTag');
+    if (elem) elem.textContent = `${elementIcons[d1.element1] || ''} ${d1.element1}`;
+    const statCall = document.getElementById('dpsStatCallout');
+    if (statCall) {
+      statCall.innerHTML = `<span>ATK <b>${d1.stats.atk}</b> · ${d1.subRole || 'DPS Chủ Lực'}</span>`;
+    }
+  }
+
+  // 2. Slot Breaker (Beside Main DPS)
+  const slotBreaker = document.getElementById('slotBreaker');
+  if (slotBreaker && d2) {
+    slotBreaker.dataset.id = d2.id;
+    const art = document.getElementById('breakerArtImg'); if (art) { art.src = d2.art; art.alt = d2.name; }
+    const name = document.getElementById('breakerName'); if (name) name.textContent = d2.name;
+    const elem = document.getElementById('breakerElemTag');
+    if (elem) elem.textContent = `${elementIcons[d2.element1] || ''} ${d2.element1}${d2.element2 ? ' · ' + elementIcons[d2.element2] : ''}`;
+    const statCall = document.getElementById('breakerStatCallout');
+    if (statCall) {
+      statCall.innerHTML = `<span>BREAK <b>${d2.stats.break}</b> · ${d2.subRole || 'Phá Giáp'}</span>`;
+    }
+  }
+
+  // 3. Slot Support 1 (Octagon)
+  const slotSup1 = document.getElementById('slotSupport1');
+  if (slotSup1 && d3) {
+    slotSup1.dataset.id = d3.id;
+    const img = document.getElementById('sup1Img'); if (img) { img.src = d3.art; img.alt = d3.name; }
+    const name = document.getElementById('sup1Name'); if (name) name.textContent = d3.name;
+    const elem = document.getElementById('sup1ElemTag');
+    if (elem) elem.textContent = `${elementIcons[d3.element1] || ''}${d3.element2 ? ' ' + elementIcons[d3.element2] : ''}`;
+    const eff = supportEffects[d3.id] || { role: `${d3.role} SUPPORT`, effect: 'Hỗ Trợ Đồng Đội' };
+    const roleEl = document.getElementById('sup1Role'); if (roleEl) roleEl.textContent = eff.role;
+    const effEl = document.getElementById('sup1Effect'); if (effEl) effEl.textContent = eff.effect;
+  }
+
+  // 4. Slot Support 2 (Octagon)
+  const slotSup2 = document.getElementById('slotSupport2');
+  if (slotSup2 && d4) {
+    slotSup2.dataset.id = d4.id;
+    const img = document.getElementById('sup2Img'); if (img) { img.src = d4.art; img.alt = d4.name; }
+    const name = document.getElementById('sup2Name'); if (name) name.textContent = d4.name;
+    const elem = document.getElementById('sup2ElemTag');
+    if (elem) elem.textContent = `${elementIcons[d4.element1] || ''}${d4.element2 ? ' ' + elementIcons[d4.element2] : ''}`;
+    const eff = supportEffects[d4.id] || { role: `${d4.role} SUSTAIN`, effect: 'Hồi Phục Sinh Tồn' };
+    const roleEl = document.getElementById('sup2Role'); if (roleEl) roleEl.textContent = eff.role;
+    const effEl = document.getElementById('sup2Effect'); if (effEl) effEl.textContent = eff.effect;
+  }
+
+  // Title & Strategy Badge
+  const titleEl = document.getElementById('showcasePartyTitle');
+  const badgeEl = document.getElementById('showcaseStrategyBadge');
+  if (titleEl && badgeEl) {
+    if (currentMode === 'default') {
+      titleEl.textContent = 'Đội Hình Mặc Định Đi Map & Story';
+      badgeEl.textContent = '🌐 Đội Hình Đa Dụng (Helion Core)';
+    } else if (currentMode === 'boss') {
+      titleEl.textContent = 'Đội Hình Diệt Boss & Trận Đánh Kéo Dài';
+      badgeEl.textContent = '👑 Phá Giáp & Nạp EP Lâu Dài';
+    } else {
+      titleEl.textContent = `Đội Hình Counter Kẻ Địch [${defText}]`;
+      badgeEl.textContent = maxMult >= 2.5 ? `💥 SIÊU CHÍ MẠNG (×${maxMult})` : `🎯 Khắc chế (×${maxMult} DMG)`;
+    }
+  }
 }
 
 function updateView() {
@@ -1913,6 +3859,8 @@ function updateView() {
   document.getElementById('btnBossPreset').classList.toggle('active', currentMode === 'boss');
   document.getElementById('btnDefaultPreset').classList.toggle('active', currentMode === 'default');
 
+  let maxMult = 1.6;
+
   if (currentMode === 'default') {
     if (enemyTypesDisplay) enemyTypesDisplay.innerHTML = '🌐 Không rõ / Đi Map (Mặc định)';
     if (maxDamageBadge) { maxDamageBadge.textContent = 'Cân bằng'; maxDamageBadge.className = 'badge-max-dmg'; }
@@ -1929,7 +3877,7 @@ function updateView() {
     // Dual / Single calculation
     const eff = calculateEffectiveness(selectedType1, selectedType2);
     const superWeak = eff.filter(x => x.mult >= 1.5);
-    const maxMult = eff[0] ? eff[0].mult : 1;
+    maxMult = eff[0] ? eff[0].mult : 1;
     const resisted = eff.filter(x => x.mult < 1.0);
 
     // Max damage badge
@@ -1978,7 +3926,14 @@ function updateView() {
   // Recommendation
   const eff = calculateEffectiveness(selectedType1, selectedType2);
   const rec = recommendTeam(selectedType1, selectedType2, eff);
+  currentRecommendedTeam = rec.team;
   const chosenSet = new Set(rec.team);
+
+  // Update Battle Party Showcase (Main DPS + Breaker + 2 Octagon Supports)
+  updateBattlePartyShowcase(rec, defText, maxMult);
+
+  // Update Octagons in Storage Box
+  updateOctagonHighlights();
 
   // Highlight Cards
   cards.forEach(card => {
@@ -2026,22 +3981,45 @@ document.getElementById('btnDefaultPreset').addEventListener('click', () => {
   updateView();
 });
 
+// Click "Tất cả": switches to Octagon Storage Grid and highlights all
 document.getElementById('resetTeam').addEventListener('click', () => {
+  currentMode = 'all';
+  currentRecommendedTeam = [];
+
+  // Switch to Octagon view
+  if (viewSwitchOct) viewSwitchOct.click();
+
+  // Reset octagons
+  document.querySelectorAll('.aniimo-oct-tile').forEach(tile => {
+    tile.classList.remove('dimmed-oct', 'recommended-oct');
+  });
+
+  // Reset cards
   cards.forEach(card => {
     card.classList.remove('recommended', 'dimmed');
     const badge = card.querySelector('.pick-badge');
     if (badge) badge.textContent = 'NÊN MANG';
   });
+
   document.querySelectorAll('#pickerType1 [data-t1], #pickerType2 [data-t2], #btnBossPreset, #btnDefaultPreset').forEach(b => b.classList.remove('active'));
-  pills.innerHTML = '<span class="small" style="color: #94a3b8;">Đang hiển thị toàn bộ roster. Hãy chọn 1 hoặc 2 hệ nguyên tố để nhận đề xuất counter.</span>';
+
+  // Update Party Showcase with default squad
+  const defaultRec = {
+    team: ['helion', 'panpanta', 'inferlupa', 'glacy'],
+    why: 'Đang hiển thị toàn bộ 10 Aniimo trong kho. Đội hình 4 con bên trên là bộ khung mặc định cân bằng nhất đi map.',
+    note: 'Bấm vào bất kỳ ô Bát Giác nào để mở bảng chỉ số Radar 6 trục bên trái!'
+  };
+  updateBattlePartyShowcase(defaultRec, 'Toàn bộ Roster', 1.0);
+
+  pills.innerHTML = '<span class="small" style="color: #94a3b8;">Đang hiển thị toàn bộ roster (Kho Bát Giác). Bấm vào từng ô để xem thông tin chi tiết.</span>';
   why.textContent = 'Bấm chọn nguyên tố 1 và nguyên tố 2 của kẻ địch để máy tự động tính tổ hợp sát thương và đưa ra đội 4 con tối ưu.';
   note.innerHTML = '';
   if (mobileChoiceLabel) mobileChoiceLabel.textContent = 'Toàn bộ roster';
-  if (enemyTypesDisplay) enemyTypesDisplay.textContent = 'Chưa chọn';
-  if (weaknessPills) weaknessPills.innerHTML = '';
-  if (weaknessDesc) weaknessDesc.textContent = '';
+  if (enemyTypesDisplay) enemyTypesDisplay.textContent = 'Toàn bộ Roster';
+  if (weaknessPills) weaknessPills.innerHTML = '<span class="weak-pill">⬡ Danh sách 10 Aniimo trong Kho</span>';
+  if (weaknessDesc) weaknessDesc.textContent = 'Bấm vào ô bát giác bất kỳ để xem radar stat.';
   if (resistRow) resistRow.style.display = 'none';
-  if (maxDamageBadge) { maxDamageBadge.textContent = 'Counter'; maxDamageBadge.className = 'badge-max-dmg'; }
+  if (maxDamageBadge) { maxDamageBadge.textContent = '10 Roster'; maxDamageBadge.className = 'badge-max-dmg'; }
 });
 
 if (mobileToggleBtn && matchupSidebar) {
@@ -2051,9 +4029,16 @@ if (mobileToggleBtn && matchupSidebar) {
   });
 }
 
-// Initialize on Cỏ
+// ESC key listener to close drawer
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeAniimoDrawer();
+  }
+});
+
+// Initialize Octagon Grid and default view on Cỏ
+renderStorageOctagons('all');
 updateView();
 </script>
 </body>
 </html>
-)
