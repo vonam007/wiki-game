@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Aniimo – Roster 9 Con Xoay Trainer Đi Story Chuẩn Nhất</title>
 <meta name="game" content="Aniimo">
-<meta name="description" content="Chi tiết roster 9 Aniimo xoay vòng đánh Trainer & Story hiệu quả: Helion, Glacy, Panpanta, Inferlupa... Công cụ chọn team 4 con counter từng hệ nhanh chóng.">
+<meta name="description" content="Chi tiết roster Aniimo xoay vòng đánh Trainer & Story: Helion, Glacy, Infergon (Fire DPS), Inferlupa (Fire BREAK)... Công cụ chọn team 4 con counter đơn hệ & song hệ theo GameWith.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -687,6 +687,226 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
     display: block !important;
   }
 }
+
+/* Extra CSS for Core DPS & Dual Type Picker */
+.core-dps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 18px 0;
+}
+
+.core-dps-card {
+  background: linear-gradient(180deg, #131f37 0%, #0c1527 100%);
+  border: 1px solid rgba(71, 85, 105, 0.4);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.core-dps-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+}
+
+.core-dps-card.fire-border { border-color: rgba(239, 68, 68, 0.45); }
+.core-dps-card.fire-border:hover { border-color: #f87171; box-shadow: 0 0 20px rgba(239, 68, 68, 0.25); }
+.core-dps-card.water-border { border-color: rgba(56, 189, 248, 0.45); }
+.core-dps-card.water-border:hover { border-color: #38bdf8; box-shadow: 0 0 20px rgba(56, 189, 248, 0.25); }
+.core-dps-card.dark-border { border-color: rgba(168, 85, 247, 0.45); }
+.core-dps-card.dark-border:hover { border-color: #c084fc; box-shadow: 0 0 20px rgba(168, 85, 247, 0.25); }
+.core-dps-card.electric-border { border-color: rgba(234, 179, 8, 0.45); }
+.core-dps-card.electric-border:hover { border-color: #facc15; box-shadow: 0 0 20px rgba(234, 179, 8, 0.25); }
+.core-dps-card.holy-border { border-color: rgba(245, 158, 11, 0.45); }
+.core-dps-card.holy-border:hover { border-color: #fbbf24; box-shadow: 0 0 20px rgba(245, 158, 11, 0.25); }
+
+.dps-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dps-badge-pill {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+}
+
+.dps-stat-atk {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.dps-card-name {
+  font-size: 19px;
+  font-weight: 900;
+  margin: 0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dps-counters-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.counter-tag-label {
+  font-size: 11.5px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.counter-target-pill {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.dps-note-text {
+  font-size: 12.5px;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Dual Type Picker Styles */
+.picker-section {
+  margin-bottom: 12px;
+}
+
+.picker-label {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #cbd5e1;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.picker-label b {
+  color: var(--accent);
+}
+
+.type-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.type-btn-sub {
+  font-size: 11.5px;
+  padding: 5px 6px;
+  border-radius: 8px;
+}
+
+.target-enemy-badge {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 12.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.target-enemy-badge b {
+  color: #f1f5f9;
+}
+
+.weakness-box {
+  background: linear-gradient(135deg, rgba(35, 18, 30, 0.9), rgba(18, 15, 32, 0.9));
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.badge-max-dmg {
+  font-size: 11px;
+  font-weight: 900;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.badge-max-dmg.crit {
+  background: linear-gradient(135deg, #ef4444, #f59e0b);
+  color: #ffffff;
+  border-color: #fca5a5;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.weakness-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 6px 0;
+}
+
+.weak-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.weak-pill.crit {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(245, 158, 11, 0.3));
+  border-color: #f87171;
+  color: #fef08a;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.35);
+}
+
+.resist-row {
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.resist-tag {
+  color: #64748b;
+  font-weight: 700;
+  background: rgba(100, 116, 139, 0.2);
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-right: 4px;
+  display: inline-block;
+}
+
 </style>
 </head>
 <body>
@@ -705,6 +925,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
     <span class="chip core-chip">⚔️ Core: Helion</span>
     <span class="chip core-chip">💧 Core: Glacy Prismana</span>
     <span class="chip core-chip">🛡️ Water BREAK: Panpanta</span>
+    <span class="chip core-chip" style="background: rgba(60, 20, 20, 0.85); border-color: rgba(239, 68, 68, 0.5); color: #fca5a5;">🔥 Fire DPS: Infergon</span>
     <span class="chip core-chip">🔥 Fire/Dark BREAK: Inferlupa</span>
     <span class="chip">🌿 Grass/Electric DPS: Thornblade</span>
     <span class="chip">⚡ Support: Turbo</span>
@@ -727,7 +948,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
         <div class="grid">
 
           <!-- Helion -->
-          <article class="card" data-aniimo="helion">
+          <article class="card" data-aniimo="helion" data-id="helion">
             <span class="pick-badge">NÊN MANG</span>
             <div class="art">
               <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10361.png" alt="Helion">
@@ -752,7 +973,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
           </article>
 
           <!-- Glacy -->
-          <article class="card" data-aniimo="glacy">
+          <article class="card" data-aniimo="glacy" data-id="glacy">
             <span class="pick-badge">NÊN MANG</span>
             <div class="art">
               <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png" alt="Glacy Prismana">
@@ -778,7 +999,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
           </article>
 
           <!-- Panpanta -->
-          <article class="card" data-aniimo="panpanta">
+          <article class="card" data-aniimo="panpanta" data-id="panpanta">
             <span class="pick-badge">NÊN MANG</span>
             <div class="art">
               <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017402.png" alt="Panpanta Prismana">
@@ -802,8 +1023,34 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
             </div>
           </article>
 
+                    <!-- Infergon -->
+          <article class="card" data-aniimo="infergon" data-id="infergon">
+            <span class="pick-badge">NÊN MANG</span>
+            <div class="art">
+              <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10025.png" alt="Infergon Basic">
+            </div>
+            <div class="body">
+              <div class="title"><h3>Infergon</h3><span class="no">#067</span></div>
+              <div class="tags">
+                <span class="tag elem-fire">Lửa</span>
+                <span class="tag role-dps">DPS Tầm Xa</span>
+                <span class="tag form-tag">Basic Perfect ★</span>
+                <span class="tag core-tag">FIRE CORE</span>
+              </div>
+              <div class="rows">
+                <div class="row"><span class="row-label">🎯 Vai trò:</span>DPS Lửa tầm xa chủ lực; ATK cực khủng <b>125</b> (Tổng stat 505). Đòn đánh thường (Basic Attack) dùng sát thương Lửa và tấn công từ xa.</div>
+                <div class="row"><span class="row-label">💥 Khắc chế:</span>Counter trực tiếp theo bảng GameWith: <b>Cỏ ×1.6</b> và <b>Băng ×1.6</b>. Mũi nhọn dứt điểm hàng đầu khi gặp đối thủ hệ Cỏ hoặc Băng.</div>
+                <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Jawling</span><span class="arr">→</span><span class="node">Helmwhelp</span><span class="arr">→</span><span class="node">Infergon</span></span></div>
+                <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Basic Perfect</span> — bản Basic Perfect đã đủ làm Fire DPS chính; không cần ép farm Prismana chỉ vì stat.</div>
+                <div class="row"><span class="row-label">📍 Xuất hiện:</span>Line Jawling / Infergon ở <span class="k">Russet Highlands</span>. Nhánh cuối cần làm điều kiện Warrior + Omega Infergon.</div>
+                <div class="row"><span class="row-label">💡 Trait & Mẹo:</span>Trait <b>Power of Fire</b>: Khi mục tiêu có trên 5 stack Fire Debuff, tăng thêm khoảng <b>+30% damage</b>. User hiện đã có <b>Jawling Perfect từ trứng</b>, nên ưu tiên dồn tài nguyên nuôi con đó lên Infergon!</div>
+              </div>
+              <div class="source"><a href="https://wiki.aniimo.com/item/067/basic-form" target="_blank" rel="noopener">Official Aniidex – Infergon #067 ↗</a></div>
+            </div>
+          </article>
+
           <!-- Inferlupa -->
-          <article class="card" data-aniimo="inferlupa">
+          <article class="card" data-aniimo="inferlupa" data-id="inferlupa">
             <span class="pick-badge">NÊN MANG</span>
             <div class="art">
               <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005503.png" alt="Inferlupa Prismana">
@@ -813,13 +1060,13 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
               <div class="tags">
                 <span class="tag elem-fire">Lửa</span>
                 <span class="tag elem-dark">Bóng tối</span>
-                <span class="tag role-break">BREAK</span>
+                <span class="tag role-break">BREAK Lửa</span>
                 <span class="tag form-tag">Prismana</span>
-                <span class="tag core-tag">CORE</span>
+                <span class="tag core-tag">FIRE CORE</span>
               </div>
               <div class="rows">
-                <div class="row"><span class="row-label">🎯 Vai trò:</span>Breaker Lửa / Bóng tối số một; chỉ số BREAK 108, tổng stat 541.</div>
-                <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Emberpup</span><span class="arr">→</span><span class="node">Flameruff</span><span class="arr">→</span><span class="node">Inferlupa</span></span> <span class="small">(nhánh Nova: Scorchhowl)</span></div>
+                <div class="row"><span class="row-label">🎯 Vai trò:</span>Breaker Lửa / Bóng tối số một; chỉ số BREAK 108, tổng stat 541. Mảnh ghép hoàn hảo tạo thành Fire Core cùng Infergon (Infergon DPS + Inferlupa BREAK).</div>
+                <div class="row"><span class="row-label">🧬 Tiến hoá:</span><span class="route"><span class="node">Emberpup</span><span class="arr">→</span><span class="node">Flameruff</span><span class="arr">→</span><span class="node">Inferlupa</span></span></div>
                 <div class="row"><span class="row-label">⭐ Khuyên dùng:</span><span class="k">Prismana nếu có</span>; nhưng bản Basic vẫn cực mạnh thiên về Fire/Dark BREAK, không cần gượng ép farm sớm.</div>
                 <div class="row"><span class="row-label">📍 Xuất hiện:</span>Trang wiki chính thức không ghi habitat; cách chuẩn nhất là thuần hoá từ <b>Flameruff</b> rồi tiến hoá lên.</div>
                 <div class="row"><span class="row-label">💡 Lưu ý:</span>Sau 8 đòn đánh cơ bản sẽ kích hoạt <b>Full Energy</b> để cường hoá chiêu thức kế. Tránh xả skill lớn khi chưa tích stack.</div>
@@ -829,7 +1076,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
           </article>
 
           <!-- Thornblade -->
-          <article class="card" data-aniimo="thornblade">
+          <article class="card" data-aniimo="thornblade" data-id="thornblade">
             <span class="pick-badge">NÊN MANG</span>
             <div class="art">
               <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032301.png" alt="Thornblade Thunderstorm">
@@ -854,7 +1101,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
           </article>
 
           <!-- Turbo -->
-          <article class="card" data-aniimo="turbo">
+          <article class="card" data-aniimo="turbo" data-id="turbo">
             <span class="pick-badge">NÊN MANG</span>
             <div class="art">
               <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026202.png" alt="Turbo Prismana">
@@ -879,7 +1126,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
           </article>
 
           <!-- Geoclaw -->
-          <article class="card" data-aniimo="geoclaw">
+          <article class="card" data-aniimo="geoclaw" data-id="geoclaw">
             <span class="pick-badge">NÊN MANG</span>
             <div class="art">
               <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10163.png" alt="Geoclaw">
@@ -903,7 +1150,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
           </article>
 
           <!-- Hexxin -->
-          <article class="card" data-aniimo="hexxin">
+          <article class="card" data-aniimo="hexxin" data-id="hexxin">
             <span class="pick-badge">NÊN MANG</span>
             <div class="art">
               <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020301.png" alt="Hexxin Mountain">
@@ -928,7 +1175,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
           </article>
 
           <!-- Grizbo -->
-          <article class="card" data-aniimo="grizbo">
+          <article class="card" data-aniimo="grizbo" data-id="grizbo">
             <span class="pick-badge">NÊN MANG</span>
             <div class="art">
               <img loading="lazy" src="https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10503.png" alt="Grizbo Basic">
@@ -954,9 +1201,231 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
         </div>
       </section>
 
-      <!-- 2. Đội 4 con đề xuất -->
+            <!-- 2. Danh sách 5 DPS Lõi & Logic Khắc Chế Thực Tế -->
       <section class="section">
-        <h2>2) Đội Hình 4 Con Khắc Chế Theo Từng Hệ Trainer</h2>
+        <h2>2) Danh Sách DPS Lõi & Chuyên Gia Hệ Cỏ (Grass Specialist)</h2>
+        <p class="section-sub">Dựa trên cơ sở dữ liệu chính thức từ <b>GameWith Type Chart</b> và <b>Aniidex</b>. Chuẩn hóa rotation sát thương thực tế của từng mũi nhọn DPS.</p>
+
+        <div class="core-dps-grid">
+          <!-- Infergon -->
+          <div class="core-dps-card fire-border">
+            <div class="dps-card-top">
+              <span class="dps-badge-pill" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4);">🔥 FIRE DPS</span>
+              <span class="dps-stat-atk">ATK 125 · Tầm Xa</span>
+            </div>
+            <h3 class="dps-card-name">Infergon</h3>
+            <div class="dps-counters-row">
+              <span class="counter-tag-label">Khắc chế:</span>
+              <span class="counter-target-pill">🌿 Cỏ (×1.6)</span>
+              <span class="counter-target-pill">❄️ Băng (×1.6)</span>
+            </div>
+            <p class="dps-note-text">Basic attack dùng sát thương Lửa tầm xa. Trait <b>Power of Fire</b> tăng +30% damage khi địch có trên 5 stack Fire Debuff. Ưu tiên nuôi từ <b>Jawling Perfect</b> (trứng).</p>
+          </div>
+
+          <!-- Sherro -->
+          <div class="core-dps-card water-border">
+            <div class="dps-card-top">
+              <span class="dps-badge-pill" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4);">💧 WATER DPS</span>
+              <span class="dps-stat-atk">Carry Nước</span>
+            </div>
+            <h3 class="dps-card-name">Sherro</h3>
+            <div class="dps-counters-row">
+              <span class="counter-tag-label">Khắc chế:</span>
+              <span class="counter-target-pill" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.35); color: #7dd3fc;">🔥 Lửa (×1.6)</span>
+              <span class="counter-target-pill" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.35); color: #7dd3fc;">🪨 Đá (×1.6)</span>
+            </div>
+            <p class="dps-note-text">DPS Nước dồn sát thương cực mạnh. Kể cả ở dạng Thunderstorm vẫn dùng <b>chủ yếu Water damage</b>, không coi là Electric DPS chính.</p>
+          </div>
+
+          <!-- Stellarys -->
+          <div class="core-dps-card dark-border">
+            <div class="dps-card-top">
+              <span class="dps-badge-pill" style="background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4);">🌑 DARK DPS</span>
+              <span class="dps-stat-atk">Carry Bóng Tối</span>
+            </div>
+            <h3 class="dps-card-name">Stellarys</h3>
+            <div class="dps-counters-row">
+              <span class="counter-tag-label">Khắc chế:</span>
+              <span class="counter-target-pill" style="background: rgba(168, 85, 247, 0.15); border-color: rgba(168, 85, 247, 0.35); color: #d8b4fe;">🌿 Cỏ (×1.6)</span>
+              <span class="counter-target-pill" style="background: rgba(168, 85, 247, 0.15); border-color: rgba(168, 85, 247, 0.35); color: #d8b4fe;">⚡ Điện (×1.6)</span>
+              <span class="counter-target-pill" style="background: rgba(168, 85, 247, 0.15); border-color: rgba(168, 85, 247, 0.35); color: #d8b4fe;">✨ Thánh (×1.6)</span>
+            </div>
+            <p class="dps-note-text">DPS Bóng tối có độ bao phủ khắc chế rộng nhất (3 hệ). Mũi nhọn số 1 khi đối đầu Trainer mang hệ Thánh, Cỏ hoặc Điện.</p>
+          </div>
+
+          <!-- Fenmane -->
+          <div class="core-dps-card electric-border">
+            <div class="dps-card-top">
+              <span class="dps-badge-pill" style="background: rgba(234, 179, 8, 0.2); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.4);">⚡ ELECTRIC DPS</span>
+              <span class="dps-stat-atk">Carry Điện</span>
+            </div>
+            <h3 class="dps-card-name">Fenmane</h3>
+            <div class="dps-counters-row">
+              <span class="counter-tag-label">Khắc chế:</span>
+              <span class="counter-target-pill" style="background: rgba(234, 179, 8, 0.15); border-color: rgba(234, 179, 8, 0.35); color: #fde047;">🌪️ Gió (×1.6)</span>
+              <span class="counter-target-pill" style="background: rgba(234, 179, 8, 0.15); border-color: rgba(234, 179, 8, 0.35); color: #fde047;">💧 Nước (×1.6)</span>
+            </div>
+            <p class="dps-note-text">DPS Điện tốc độ cao, trừng phạt triệt để các mục tiêu hệ Gió và Nước bằng chuỗi sốc điện tê liệt dồn dập.</p>
+          </div>
+
+          <!-- Helion -->
+          <div class="core-dps-card holy-border">
+            <div class="dps-card-top">
+              <span class="dps-badge-pill" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4);">✨ HOLY DPS</span>
+              <span class="dps-stat-atk">ATK 116 · Cận Chiến</span>
+            </div>
+            <h3 class="dps-card-name">Helion</h3>
+            <div class="dps-counters-row">
+              <span class="counter-tag-label">Khắc chế:</span>
+              <span class="counter-target-pill" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.35); color: #fef08a;">🌪️ Gió (×1.6)</span>
+              <span class="counter-target-pill" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.35); color: #fef08a;">🌑 Bóng tối (×1.6)</span>
+            </div>
+            <p class="dps-note-text">Carry Thánh vật lý số 1. Trait <b>Ân Huệ Thái Dương</b> (+30% final dmg khi không đánh khắc hệ) giúp gánh 80% câu chuyện.</p>
+          </div>
+          <!-- Thornblade (Grass Specialist) -->
+          <div class="core-dps-card" style="border-color: rgba(34, 197, 94, 0.5); background: linear-gradient(180deg, #13241d 0%, #0a1712 100%);">
+            <div class="dps-card-top">
+              <span class="dps-badge-pill" style="background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.45);">🌿 GRASS SPECIALIST</span>
+              <span class="dps-stat-atk" style="color: #86efac;">Chuyên Gia Hệ Cỏ</span>
+            </div>
+            <h3 class="dps-card-name" style="color: #bbf7d0;">Thornblade Thunderstorm</h3>
+            <div class="dps-counters-row">
+              <span class="counter-tag-label">Ưu tiên đánh:</span>
+              <span class="counter-target-pill" style="background: rgba(34, 197, 94, 0.15); border-color: rgba(34, 197, 94, 0.4); color: #86efac;">💧 Nước (×1.6)</span>
+              <span class="counter-target-pill" style="background: rgba(34, 197, 94, 0.15); border-color: rgba(34, 197, 94, 0.4); color: #86efac;">🪨 Đá (×1.6)</span>
+              <span class="counter-target-pill" style="background: rgba(34, 197, 94, 0.2); border-color: rgba(34, 197, 94, 0.6); color: #4ade80;">💧+❄️ Nước Băng (×1.6)</span>
+              <span class="counter-target-pill" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(245, 158, 11, 0.3)); border-color: #f87171; color: #fef08a;">💥 🪨+💧 Đá Nước (×2.56)</span>
+            </div>
+            <p class="dps-note-text">Giải quyết điểm mù cho nhóm 5 DPS chính! Khi gặp song hệ <b>Nước + Băng</b> (Lửa bị hòa 1.0x) hoặc <b>Đá + Nước</b> (ăn đòn Cỏ <b>×2.56 siêu chí mạng</b>), Thornblade là lựa chọn số 1 không thể thay thế.</p>
+          </div>
+        </div>
+
+        <div class="notice" style="margin-top: 14px; background: linear-gradient(135deg, rgba(20, 38, 66, 0.9), rgba(12, 22, 40, 0.9)); border-left: 4px solid var(--accent); border-color: rgba(56, 189, 248, 0.35);">
+          <b style="color: #38bdf8; font-size: 15px;">💡 Ví Dụ Dễ Hiểu Về Cơ Chế Tính Sát Thương Song Hệ (GameWith):</b>
+          <p style="margin: 8px 0 0; line-height: 1.65; color: #e2e8f0;">
+            Giả sử bạn đối đầu một Aniimo mang song hệ <b>💧 Nước + ❄️ Băng</b>:
+          </p>
+          <ul style="margin: 6px 0 8px; padding-left: 20px; line-height: 1.7; color: #cbd5e1;">
+            <li>Nếu dùng hệ <b>🔥 Lửa</b> đánh: Lửa gặp Nước bị kháng (<b>×0.625</b>), nhưng Lửa gặp Băng lại khắc chế (<b>×1.6</b>). Nhân gộp lại: <code>0.625 × 1.6 = 1.0</code> → Bị triệt tiêu hoàn toàn thành sát thương bình thường!</li>
+            <li>Nếu dùng hệ <b>🌿 Cỏ</b> đánh: Cỏ gặp Nước là khắc chế (<b>×1.6</b>), và Cỏ gặp Băng là trung tính (<b>×1.0</b>). Nhân gộp lại: <code>1.6 × 1.0 = 1.6</code>.</li>
+          </ul>
+          <p style="margin: 0; color: #34d399; font-weight: 700;">
+            👉 <b>Kết luận:</b> Lúc này hệ <b>🌿 Cỏ là lựa chọn ngon nhất</b> vì vẫn giữ vững mốc <b>×1.6 sát thương</b> (Lửa và Điện đều bị hòa vốn 1.0x).
+          </p>
+          <p style="margin: 8px 0 0; color: #fbbf24; font-weight: 700;">
+            💥 <b>Đặc biệt khi gặp Đá + Nước:</b> Cả Đá (×1.6) và Nước (×1.6) đều sợ Cỏ → <code>1.6 × 1.6 = 2.56</code>! Đòn Cỏ của <b>Thornblade Thunderstorm</b> đạt mức <b>SIÊU CHÍ MẠNG ×2.56</b>, thổi bay đối thủ ngay lập tức!
+          </p>
+        </div>
+
+        <div class="notice" style="margin-top: 14px;">
+          <b>⚡ Nguyên Tắc Phân Loại Counter (Theo Bảng GameWith):</b>
+          <ul style="margin: 8px 0 0; padding-left: 20px; line-height: 1.7;">
+            <li><b>Không dùng icon song hệ để suy ra damage:</b> Phải dựa vào hệ của skill / rotation DPS thực tế của quái.</li>
+            <li><i>Sherro Thunderstorm</i> vẫn dùng chủ yếu Water damage, không coi là Electric DPS chính.</li>
+            <li><i>Grizbo</i> là Rock DPS đánh Fire/Ice, không phải counter Electric.</li>
+            <li><i>Không đưa Geoclaw vào đánh Fire</i> (Geoclaw thuần Ice BREAK).</li>
+            <li>Nguồn chuẩn: <a href="https://gamewith.ai/aniimo/vi/type-chart" target="_blank" rel="noopener">Type chart GameWith ↗</a> · <a href="https://wiki.aniimo.com/item/067/basic-form" target="_blank" rel="noopener">Aniidex Infergon #067 ↗</a></li>
+          </ul>
+        </div>
+      </section>
+
+            <!-- 3. Bộ Khung 6 Đội Hình Nguyên Tố Chuẩn (Elemental Synergy Teams) -->
+      <section class="section">
+        <h2>3) Bộ Khung 6 Đội Hình Nguyên Tố Chuẩn (Elemental Synergy Teams)</h2>
+        <p class="section-sub">Tổng hợp 6 đội hình tối ưu hóa sức mạnh cộng hưởng nguyên tố, kỹ năng buff đặc hệ và bảo kê sinh tồn toàn diện.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin: 18px 0;">
+          
+          <!-- Fire Team -->
+          <div class="core-dps-card fire-border">
+            <div class="dps-card-top">
+              <span class="dps-badge-pill" style="background: rgba(239, 68, 68, 0.25); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.5);">🔥 FIRE TEAM</span>
+              <span class="dps-stat-atk">Synergy Lửa Hoàn Chỉnh</span>
+            </div>
+            <h3 class="dps-card-name" style="font-size: 16.5px; color: #fff;">Infergon + Inferlupa + Turbo + Gracewing</h3>
+            <div style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6; margin-top: 6px;">
+              <b>• Core Fire:</b> <b>Infergon</b> (Fire DPS tầm xa) + <b>Inferlupa</b> (Fire BREAK).<br>
+              <b>• Turbo:</b> Support universal với <i>Nimbi Burst</i> tăng sát thương & BREAK efficiency cho đồng đội lên tới <b>30%</b>.<br>
+              <b>• Gracewing:</b> Đảm nhận heal diện rộng, giải hiệu ứng xấu (debuff cleanse) và nạp EP, không tranh vai trò với core Fire.
+            </div>
+          </div>
+
+          <!-- Water Team -->
+          <div class="core-dps-card water-border">
+            <div class="dps-card-top">
+              <span class="dps-badge-pill" style="background: rgba(56, 189, 248, 0.25); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.5);">💧 WATER TEAM</span>
+              <span class="dps-stat-atk">Synergy Nước Tối Đa</span>
+            </div>
+            <h3 class="dps-card-name" style="font-size: 16.5px; color: #fff;">Sherro + Panpanta + Piopiota + Glacy</h3>
+            <div style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6; margin-top: 6px;">
+              <b>• Core Water:</b> <b>Sherro</b> (Water DPS) + <b>Panpanta</b> (Water BREAK).<br>
+              <b>• Piopiota:</b> Tăng <b>+16% Water damage</b> nội tại cho Aniimo khác giới; Ultimate tăng thêm <b>+20% Water damage / 30s</b>, vừa tạo vũng nước (puddle) vừa hồi máu phụ.<br>
+              <b>• Glacy:</b> Healer chính bảo toàn lượng máu tuyệt đối.
+            </div>
+          </div>
+
+          <!-- Dark Team -->
+          <div class="core-dps-card dark-border">
+            <div class="dps-card-top">
+              <span class="dps-badge-pill" style="background: rgba(168, 85, 247, 0.25); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.5);">🌑 DARK TEAM</span>
+              <span class="dps-stat-atk">Bào Kháng & Buff Ấn</span>
+            </div>
+            <h3 class="dps-card-name" style="font-size: 16.5px; color: #fff;">Stellarys + Rookey + Fragrancier + Turbo</h3>
+            <div style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6; margin-top: 6px;">
+              <b>• Core Dark:</b> <b>Stellarys</b> (Dark DPS) + <b>Rookey</b> (Dark BREAK).<br>
+              <b>• Fragrancier:</b> Sinh ra cho team Dark: skill trúng địch giảm <b>12% Dark Resistance</b>, ulti tăng <b>+20% Dark Boost</b>, gán mark khiến Dark basic gây thêm <b>+50% damage</b>.<br>
+              <b>• Slot 4 (Flex):</b> Dùng <b>Turbo</b> để burst/BREAK nhanh, hoặc đổi sang Healer (Glacy/Gracewing) nếu route đánh đau.
+            </div>
+          </div>
+
+          <!-- Electric Team -->
+          <div class="core-dps-card electric-border">
+            <div class="dps-card-top">
+              <span class="dps-badge-pill" style="background: rgba(234, 179, 8, 0.25); color: #fde047; border: 1px solid rgba(234, 179, 8, 0.5);">⚡ ELECTRIC TEAM</span>
+              <span class="dps-stat-atk">Buff Điện 3 Tầng</span>
+            </div>
+            <h3 class="dps-card-name" style="font-size: 16.5px; color: #fff;">Fenmane + Blazen + Luminelle Prismana + Glacy</h3>
+            <div style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6; margin-top: 6px;">
+              <b>• Core Electric:</b> <b>Fenmane</b> (Electric DPS) + <b>Blazen</b> (Electric BREAK).<br>
+              <b>• Luminelle Prismana:</b> Cặp support đặc hệ đỉnh nhất: cho đồng đội nhận buff <b>+12% Electric damage</b>, ulti tăng <b>+27% attack damage + 16% BREAK efficiency</b> cho đồng đội Điện, field tăng thêm <b>+20% Electric damage</b>.<br>
+              <b>• Glacy:</b> Giữ vững mạch sống cho toàn đội.
+            </div>
+          </div>
+
+          <!-- Helion Team vs Dark -->
+          <div class="core-dps-card holy-border">
+            <div class="dps-card-top">
+              <span class="dps-badge-pill" style="background: rgba(245, 158, 11, 0.25); color: #fef08a; border: 1px solid rgba(245, 158, 11, 0.5);">✨ HELION TEAM</span>
+              <span class="dps-stat-atk">Chuyên Đánh Bóng Tối</span>
+            </div>
+            <h3 class="dps-card-name" style="font-size: 16.5px; color: #fff;">Helion + Tubster + Turbo + Gracewing</h3>
+            <div style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6; margin-top: 6px;">
+              <b>• Core Holy:</b> <b>Helion</b> (Carry Thánh cận chiến) + <b>Tubster</b> (Chống chịu & phá giáp).<br>
+              <b>• Hỗ trợ tối ưu:</b> Vì hệ Thánh chưa có support buff trực tiếp đặc hệ, kết hợp <b>Turbo</b> buff trực tiếp damage/BREAK + <b>Gracewing</b> sustain (heal/cleanse/EP) là phương án gọn và mạnh nhất.
+            </div>
+          </div>
+
+          <!-- Grass Specialist Team -->
+          <div class="core-dps-card" style="border-color: rgba(34, 197, 94, 0.5); background: linear-gradient(180deg, #13241d 0%, #0a1712 100%);">
+            <div class="dps-card-top">
+              <span class="dps-badge-pill" style="background: rgba(34, 197, 94, 0.25); color: #86efac; border: 1px solid rgba(34, 197, 94, 0.5);">🌿 GRASS SPECIALIST</span>
+              <span class="dps-stat-atk" style="color: #4ade80;">Trị Nước+Băng & Đá+Nước</span>
+            </div>
+            <h3 class="dps-card-name" style="font-size: 16.5px; color: #bbf7d0;">Thornblade + Pomawk + Melloblum + Gracewing</h3>
+            <div style="font-size: 12.5px; color: #cbd5e1; line-height: 1.6; margin-top: 6px;">
+              <b>• Thornblade Thunderstorm:</b> DPS Cỏ chủ lực; giải quyết điểm mù khi 5 team chính không ăn thua trước Nước + Băng.<br>
+              <b>• Pomawk:</b> Phụ trách dồn BREAK hệ Cỏ cực kỳ tốc độ.<br>
+              <b>• Melloblum + Gracewing (hoặc Turbo):</b> Cung cấp utility, hồi máu, sạc EP và buff sát thương dứt điểm mục tiêu.<br>
+              <b>• Đặc biệt Đá + Nước:</b> Đòn Cỏ đạt <b>SIÊU CHÍ MẠNG ×2.56</b>!
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 4. Đội 4 con đề xuất theo Trainer -->
+      <section class="section">
+        <h2>4) Bảng Đối Chiếu Nhanh Theo Từng Hệ Trainer</h2>
         <p class="section-sub">Bảng đối chiếu nhanh khi bạn sắp bước vào khu vực hoặc gặp Trainer chuyên một hệ cụ thể.</p>
         <table>
           <thead>
@@ -984,13 +1453,13 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
             </tr>
             <tr>
               <td><strong>🌿 Cỏ</strong></td>
-              <td><b>Inferlupa</b> · Helion · Turbo · Glacy</td>
-              <td class="hide-mobile">Inferlupa tạo áp lực thiêu đốt Fire/Dark và dồn BREAK; Turbo gia tăng tốc độ burst sát thương.</td>
+              <td><b>Infergon</b> (DPS) · <b>Inferlupa</b> (BREAK) · Turbo · Glacy</td>
+              <td class="hide-mobile">Infergon làm DPS Lửa tầm xa xả sát thương dứt điểm (Cỏ ×1.6); Inferlupa dồn Fire BREAK; Turbo buff tốc độ & sát thương; Glacy hồi phục.</td>
             </tr>
             <tr>
               <td><strong>❄️ Băng</strong></td>
-              <td><b>Inferlupa</b> · Helion · Glacy · Turbo</td>
-              <td class="hide-mobile">Tận dụng sát thương Lửa của Inferlupa làm trọng tâm càn quét, bộ hỗ trợ bọc lót an toàn.</td>
+              <td><b>Infergon</b> (DPS) · <b>Inferlupa</b> (BREAK) · Glacy · Turbo</td>
+              <td class="hide-mobile">Sát thương Lửa từ Infergon (Băng ×1.6) là trọng tâm càn quét; Inferlupa lo Fire BREAK; Glacy hồi máu và Turbo hỗ trợ buff.</td>
             </tr>
             <tr>
               <td><strong>⚡ Điện</strong></td>
@@ -1028,7 +1497,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
 
       <!-- 3. Cách nuôi đỡ cày chay -->
       <section class="section">
-        <h2>3) Chiến Lược Phân Bổ Tài Nguyên — Tránh Cày Chay</h2>
+        <h2>5) Chiến Lược Phân Bổ Tài Nguyên — Tránh Cày Chay</h2>
         <p class="section-sub">Tuyệt đối không dồn tài nguyên chia đều cho cả 9 con. Hãy phân bổ theo từng bậc ưu tiên sau:</p>
         <table>
           <thead>
@@ -1041,7 +1510,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
           <tbody>
             <tr>
               <td><span class="star">★★★★★</span> <strong style="color:var(--ok)">Nòng Cốt</strong></td>
-              <td><b>Helion · Glacy · Panpanta · Inferlupa</b></td>
+              <td><b>Helion · Glacy · Panpanta · Infergon · Inferlupa</b></td>
               <td>Giữ sát level câu chuyện (Story). Đây là bộ tứ mặc định vượt map khi chưa rõ hệ của đối thủ.</td>
             </tr>
             <tr>
@@ -1063,7 +1532,7 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
 
       <!-- 4. Form nên nhắm -->
       <section class="section">
-        <h2>4) Dạng Form Tối Ưu Nên Nhắm Đến</h2>
+        <h2>6) Dạng Form Tối Ưu Nên Nhắm Đến</h2>
         <div class="legend">
           <div class="box">
             <b>Glacy → Prismana</b>
@@ -1072,6 +1541,10 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
           <div class="box">
             <b>Panpanta → Prismana</b>
             <span class="small">Không bắt buộc về mặt chỉ số; bản Basic vẫn làm nhiệm vụ Water BREAK cực kỳ xuất sắc.</span>
+          </div>
+          <div class="box" style="border-color: rgba(239, 68, 68, 0.4); background: rgba(35, 18, 25, 0.7);">
+            <b style="color: #fca5a5;">Infergon → Basic Perfect ★</b>
+            <span class="small">User hiện đã có <b>Jawling Perfect từ trứng</b>, nên ưu tiên nuôi con đó để lên Infergon. Bản Basic Perfect đã đủ làm Fire DPS chính; không cần ép Prismana chỉ vì stat.</span>
           </div>
           <div class="box">
             <b>Inferlupa → Prismana</b>
@@ -1116,34 +1589,84 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
       <div class="matchup-sidebar" id="matchupSidebar">
         <div class="sidebar-head">
           <div>
-            <h2 class="sidebar-title">⚔️ Hệ Trainer</h2>
-            <p class="sidebar-subtitle">Bấm để highlight 4 con tối ưu</p>
+            <h2 class="sidebar-title">⚔️ Counter Picker</h2>
+            <p class="sidebar-subtitle">Tính điểm yếu đơn hệ & song hệ theo GameWith</p>
           </div>
-          <button class="type-btn btn-reset" id="resetTeam" type="button" title="Hiển thị toàn bộ 9 con">🔄 Tất cả</button>
+          <button class="type-btn btn-reset" id="resetTeam" type="button" title="Hiển thị toàn bộ roster">🔄 Tất cả</button>
         </div>
 
-        <div class="sidebar-type-picker" id="typePicker">
-          <button class="type-btn active" data-matchup="default" type="button">🌐 Không rõ</button>
-          <button class="type-btn" data-matchup="water" type="button">💧 Nước</button>
-          <button class="type-btn" data-matchup="fire" type="button">🔥 Lửa</button>
-          <button class="type-btn" data-matchup="grass" type="button">🌿 Cỏ</button>
-          <button class="type-btn" data-matchup="ice" type="button">❄️ Băng</button>
-          <button class="type-btn" data-matchup="electric" type="button">⚡ Điện</button>
-          <button class="type-btn" data-matchup="earth" type="button">🪨 Đất</button>
-          <button class="type-btn" data-matchup="wind" type="button">🌪️ Gió</button>
-          <button class="type-btn" data-matchup="dark" type="button">🌑 Bóng tối</button>
-          <button class="type-btn" data-matchup="holy" type="button">✨ Thánh</button>
-          <button class="type-btn btn-boss" data-matchup="boss" type="button">👑 Boss / Trận dài</button>
+        <!-- Dual Type Picker Controls -->
+        <div style="margin: 12px 0 10px;">
+          <!-- Type 1 -->
+          <div class="picker-label">
+            <span>1️⃣ Nguyên tố 1 (Chính):</span>
+            <b id="selType1Text">🌿 Cỏ</b>
+          </div>
+          <div class="type-buttons-grid" id="pickerType1">
+            <button class="type-btn type-btn-sub" data-t1="Cỏ" type="button">🌿 Cỏ</button>
+            <button class="type-btn type-btn-sub" data-t1="Lửa" type="button">🔥 Lửa</button>
+            <button class="type-btn type-btn-sub" data-t1="Điện" type="button">⚡ Điện</button>
+            <button class="type-btn type-btn-sub" data-t1="Đá" type="button">🪨 Đá</button>
+            <button class="type-btn type-btn-sub" data-t1="Gió" type="button">🌪️ Gió</button>
+            <button class="type-btn type-btn-sub" data-t1="Nước" type="button">💧 Nước</button>
+            <button class="type-btn type-btn-sub" data-t1="Thánh" type="button">✨ Thánh</button>
+            <button class="type-btn type-btn-sub" data-t1="Bóng tối" type="button">🌑 Tối</button>
+            <button class="type-btn type-btn-sub" data-t1="Băng" type="button">❄️ Băng</button>
+          </div>
+
+          <!-- Type 2 -->
+          <div class="picker-label" style="margin-top: 8px;">
+            <span>2️⃣ Nguyên tố 2 (Song hệ):</span>
+            <b id="selType2Text">❌ Không có</b>
+          </div>
+          <div class="type-buttons-grid" id="pickerType2">
+            <button class="type-btn type-btn-sub active" data-t2="none" type="button">❌ Đơn hệ</button>
+            <button class="type-btn type-btn-sub" data-t2="Cỏ" type="button">🌿 Cỏ</button>
+            <button class="type-btn type-btn-sub" data-t2="Lửa" type="button">🔥 Lửa</button>
+            <button class="type-btn type-btn-sub" data-t2="Điện" type="button">⚡ Điện</button>
+            <button class="type-btn type-btn-sub" data-t2="Đá" type="button">🪨 Đá</button>
+            <button class="type-btn type-btn-sub" data-t2="Gió" type="button">🌪️ Gió</button>
+            <button class="type-btn type-btn-sub" data-t2="Nước" type="button">💧 Nước</button>
+            <button class="type-btn type-btn-sub" data-t2="Thánh" type="button">✨ Thánh</button>
+            <button class="type-btn type-btn-sub" data-t2="Bóng tối" type="button">🌑 Tối</button>
+            <button class="type-btn type-btn-sub" data-t2="Băng" type="button">❄️ Băng</button>
+          </div>
+
+          <!-- Quick Presets -->
+          <div style="display: flex; gap: 6px; margin-top: 6px;">
+            <button class="type-btn btn-boss" id="btnBossPreset" type="button" style="flex:1;">👑 Boss / Trận dài</button>
+            <button class="type-btn" id="btnDefaultPreset" type="button" style="flex:1;">🌐 Đi Map (Chuẩn)</button>
+          </div>
         </div>
 
         <div class="sidebar-result">
+          <!-- Target enemy badge -->
+          <div class="target-enemy-badge">
+            <span style="color: var(--muted);">Mục tiêu đối đầu:</span>
+            <b id="enemyTypesDisplay">🌿 Cỏ (Đơn hệ)</b>
+          </div>
+
+          <!-- Weakness Box (Bị bem tốt nhất) -->
+          <div class="weakness-box" id="weaknessBox">
+            <div class="result-label" style="color: #f87171; display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <span>💥 Bị khắc chế bởi:</span>
+              <span id="maxDamageBadge" class="badge-max-dmg">×1.6 DMG</span>
+            </div>
+            <div class="weakness-pills-row" id="weaknessPills"></div>
+            <div id="weaknessDesc" style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin-top: 4px;"></div>
+            <div class="resist-row" id="resistRow" style="display: none;"></div>
+          </div>
+
+          <!-- Team 4 con đề xuất -->
           <div class="sidebar-result-box">
             <div class="result-label">⭐ Đội 4 con đề xuất</div>
             <div class="team-pills" id="teamPills"></div>
             <div class="form-note" id="formNote"></div>
           </div>
+
+          <!-- Ý đồ chiến thuật -->
           <div class="sidebar-result-box" style="margin-top: 10px;">
-            <div class="result-label">💡 Cách đánh nhanh</div>
+            <div class="result-label">💡 Ý đồ chiến thuật</div>
             <div id="teamWhy"></div>
           </div>
         </div>
@@ -1154,78 +1677,76 @@ tr:hover td { background: rgba(255, 255, 255, 0.02); }
 </main>
 
 <script>
-const matchupData = {
-  default: {
-    team: ['helion', 'glacy', 'panpanta', 'inferlupa'],
-    why: 'Đội mặc định ít phải suy nghĩ nhất: Helion carry, Glacy hồi phục, Panpanta lo Water BREAK và Inferlupa gánh Fire/Dark BREAK.',
-    note: 'Giữ 4 con này sát level story nhất có thể để giảm thiểu cày cuốc.'
-  },
-  water: {
-    team: ['thornblade', 'helion', 'glacy', 'turbo'],
-    why: 'Thornblade Thunderstorm là mũi nhọn sát thương chính; Helion xử lý các mục tiêu trung tính, Turbo buff nhịp nổ sát thương / BREAK, Glacy giữ máu an toàn.',
-    note: 'Ưu tiên tối đa cho Thornblade dạng Thunderstorm (Cỏ + Điện).'
-  },
-  fire: {
-    team: ['panpanta', 'glacy', 'helion', 'geoclaw'],
-    why: 'Dồn toàn lực cho Water core Panpanta + Glacy. Helion giữ nhịp carry ổn định; Geoclaw phụ trách phá giáp & khống chế băng giá.',
-    note: 'Panpanta bản Basic hay Prismana đều thực hiện hoàn hảo nhiệm vụ.'
-  },
-  grass: {
-    team: ['inferlupa', 'helion', 'turbo', 'glacy'],
-    why: 'Inferlupa áp đảo bằng sát thương Lửa/Dark và dồn BREAK; Turbo đẩy cao tốc độ dứt điểm; Glacy hồi phục; Helion dọn dẹp phần còn lại.',
-    note: 'Không cần gượng ép lên Inferlupa Prismana nếu bản Basic đang out-level.'
-  },
-  ice: {
-    team: ['inferlupa', 'helion', 'glacy', 'turbo'],
-    why: 'Sát thương Lửa từ Inferlupa là trọng tâm càn quét. Helion làm carry phụ trợ; Turbo buff sát thương và Glacy bảo đảm lượng máu.',
-    note: 'Lựa chọn đội hình an toàn hàng đầu khi gặp chuỗi quái/Trainer hệ Băng.'
-  },
-  electric: {
-    team: ['grizbo', 'helion', 'glacy', 'inferlupa'],
-    why: 'Grizbo sở hữu đòn đánh Đất với ATK vượt trội để đè bẹp hệ Điện. 3 vị trí còn lại bảo đảm trọn vẹn carry / heal / BREAK.',
-    note: 'Grizbo bản Basic là hoàn toàn đủ lực; không cần mất công săn Prismana.'
-  },
-  earth: {
-    team: ['thornblade', 'panpanta', 'glacy', 'helion'],
-    why: 'Tận dụng hoàn hảo hai mũi nhọn Cỏ + Nước. Panpanta lo BREAK, Thornblade gây sát thương chính, Glacy giữ máu, Helion dọn dẹp tàn cuộc.',
-    note: 'Matchup thể hiện rõ nhất giá trị phối hợp của Thornblade + Panpanta.'
-  },
-  wind: {
-    team: ['helion', 'thornblade', 'glacy', 'panpanta'],
-    why: 'Helion và Glacy mang đến sát thương Thánh, Thornblade Thunderstorm bổ sung đòn Điện, Panpanta duy trì áp lực BREAK.',
-    note: 'Nếu gặp Trainer quá trâu, có thể hoán đổi Panpanta sang Turbo để buff.'
-  },
-  dark: {
-    team: ['helion', 'glacy', 'panpanta', 'turbo'],
-    why: 'Giữ vững trục Thánh Helion + Glacy gây sát thương vượt trội, Panpanta phá vỡ phòng ngự và Turbo gia tăng sức mạnh toàn đội.',
-    note: 'Nếu thấy thiếu sát thương dứt điểm, có thể đổi Turbo lấy Thornblade.'
-  },
-  holy: {
-    team: ['inferlupa', 'turbo', 'hexxin', 'glacy'],
-    why: 'Tập trung tối đa các vị trí mang hệ Bóng tối và tiện ích khoá chiêu, đồng thời giữ Glacy để đội hình không bị sụp đổ.',
-    note: 'Hexxin chỉ cần đủ lượng máu sinh tồn để quấy rối, không cần ngang level Core.'
-  },
-  boss: {
-    team: ['helion', 'glacy', 'panpanta', 'hexxin'],
-    why: 'Bộ khung cân bằng tuyệt đối: Carry + Healer + Breaker + Nạp EP hồi phục cho trận đấu kéo dài. Nếu boss cần dồn BREAK nhanh, đổi Hexxin sang Inferlupa.',
-    note: 'Đội hình dồn nổ sát thương Boss nhanh: Helion · Glacy · Panpanta · Inferlupa.'
-  }
+/**
+ * GameWith 9x9 Type Effectiveness Matrix
+ * Attacker -> Defender multiplier
+ */
+const typeMatrix = {
+  "Cỏ": { "Cỏ": 0.625, "Lửa": 0.625, "Điện": 1, "Đá": 1.6, "Gió": 1, "Nước": 1.6, "Thánh": 0.625, "Bóng tối": 1, "Băng": 1 },
+  "Lửa": { "Cỏ": 1.6, "Lửa": 0.625, "Điện": 1, "Đá": 0.625, "Gió": 1, "Nước": 0.625, "Thánh": 0.625, "Bóng tối": 1, "Băng": 1.6 },
+  "Điện": { "Cỏ": 1, "Lửa": 1, "Điện": 0.625, "Đá": 0.625, "Gió": 1.6, "Nước": 1.6, "Thánh": 1, "Bóng tối": 1, "Băng": 0.625 },
+  "Đá": { "Cỏ": 0.625, "Lửa": 1.6, "Điện": 1, "Đá": 0.625, "Gió": 1, "Nước": 0.625, "Thánh": 1, "Bóng tối": 0.625, "Băng": 1.6 },
+  "Gió": { "Cỏ": 1.6, "Lửa": 1, "Điện": 0.625, "Đá": 1, "Gió": 0.625, "Nước": 1, "Thánh": 1, "Bóng tối": 1.6, "Băng": 1 },
+  "Nước": { "Cỏ": 0.625, "Lửa": 1.6, "Điện": 1, "Đá": 1.6, "Gió": 1, "Nước": 0.625, "Thánh": 0.625, "Bóng tối": 1, "Băng": 0.625 },
+  "Thánh": { "Cỏ": 1, "Lửa": 1, "Điện": 0.625, "Đá": 1, "Gió": 1.6, "Nước": 1, "Thánh": 0.625, "Bóng tối": 1.6, "Băng": 1 },
+  "Bóng tối": { "Cỏ": 1.6, "Lửa": 1, "Điện": 1.6, "Đá": 1, "Gió": 0.625, "Nước": 0.625, "Thánh": 1.6, "Bóng tối": 1, "Băng": 1 },
+  "Băng": { "Cỏ": 1, "Lửa": 0.625, "Điện": 1.6, "Đá": 0.625, "Gió": 1, "Nước": 1.6, "Thánh": 1, "Bóng tối": 1, "Băng": 0.625 }
 };
+
+const elementIcons = {
+  "Cỏ": "🌿",
+  "Lửa": "🔥",
+  "Điện": "⚡",
+  "Đá": "🪨",
+  "Gió": "🌪️",
+  "Nước": "💧",
+  "Thánh": "✨",
+  "Bóng tối": "🌑",
+  "Băng": "❄️"
+};
+
+// Core DPS List as specified
+const coreDpsList = [
+  { id: 'infergon', name: 'Infergon', el: 'fire' },
+  { id: 'sherro', name: 'Sherro', el: 'water' },
+  { id: 'stellarys', name: 'Stellarys', el: 'dark' },
+  { id: 'fenmane', name: 'Fenmane', el: 'electric' },
+  { id: 'helion', name: 'Helion', el: 'holy' }
+];
 
 const displayNames = {
-  helion: 'Helion',
-  glacy: 'Glacy Prismana',
-  panpanta: 'Panpanta',
+  infergon: 'Infergon',
   inferlupa: 'Inferlupa',
+  turbo: 'Turbo',
+  gracewing: 'Gracewing',
+  sherro: 'Sherro',
+  panpanta: 'Panpanta',
+  piopiota: 'Piopiota',
+  glacy: 'Glacy',
+  stellarys: 'Stellarys',
+  rookey: 'Rookey',
+  fragrancier: 'Fragrancier',
+  fenmane: 'Fenmane',
+  blazen: 'Blazen',
+  luminelle: 'Luminelle Prismana',
+  helion: 'Helion',
+  tubster: 'Tubster',
   thornblade: 'Thornblade Thunderstorm',
-  turbo: 'Turbo Prismana',
+  pomawk: 'Pomawk',
+  melloblum: 'Melloblum',
+  grizbo: 'Grizbo',
   geoclaw: 'Geoclaw',
-  hexxin: 'Hexxin Mountain',
-  grizbo: 'Grizbo'
+  hexxin: 'Hexxin'
 };
 
-const cards = [...document.querySelectorAll('.card[data-aniimo]')];
-const buttons = [...document.querySelectorAll('[data-matchup]')];
+const cards = [...document.querySelectorAll('.card[data-aniimo], .card[data-id]')];
+const selType1Text = document.getElementById('selType1Text');
+const selType2Text = document.getElementById('selType2Text');
+const enemyTypesDisplay = document.getElementById('enemyTypesDisplay');
+const maxDamageBadge = document.getElementById('maxDamageBadge');
+const weaknessPills = document.getElementById('weaknessPills');
+const weaknessDesc = document.getElementById('weaknessDesc');
+const resistRow = document.getElementById('resistRow');
 const pills = document.getElementById('teamPills');
 const why = document.getElementById('teamWhy');
 const note = document.getElementById('formNote');
@@ -1233,36 +1754,276 @@ const mobileChoiceLabel = document.getElementById('mobileChoiceLabel');
 const mobileToggleBtn = document.getElementById('mobileToggleBtn');
 const matchupSidebar = document.getElementById('matchupSidebar');
 
-function applyMatchup(key) {
-  const data = matchupData[key];
-  if (!data) return;
-  const chosen = new Set(data.team);
+let selectedType1 = 'Cỏ';
+let selectedType2 = 'none';
+let currentMode = 'dual'; // 'dual', 'boss', 'default'
+
+function calculateEffectiveness(def1, def2) {
+  const elements = Object.keys(typeMatrix);
+  const results = [];
   
+  for (const atk of elements) {
+    let mult = typeMatrix[atk][def1] || 1;
+    if (def2 && def2 !== 'none' && def2 !== def1) {
+      mult *= (typeMatrix[atk][def2] || 1);
+    }
+    // Round to 3 decimals
+    mult = Math.round(mult * 1000) / 1000;
+    results.push({ element: atk, mult });
+  }
+
+  return results.sort((a, b) => b.mult - a.mult);
+}
+
+function recommendTeam(def1, def2, effectiveness) {
+  // Preset special modes
+  if (currentMode === 'default') {
+    return {
+      team: ['helion', 'glacy', 'panpanta', 'inferlupa'],
+      why: 'Đội hình vượt map ổn định nhất: Helion carry trung tính (không bị khắc hệ), Glacy hồi phục, Panpanta lo Water BREAK và Inferlupa gánh Fire/Dark BREAK.',
+      note: 'Dùng khi chưa rõ đối thủ chơi hệ gì. Giữ 4 con này sát level story để tiết kiệm tài nguyên.'
+    };
+  }
+
+  if (currentMode === 'boss') {
+    return {
+      team: ['helion', 'glacy', 'panpanta', 'hexxin'],
+      why: 'Bộ khung sinh tồn & nạp EP lâu dài: Helion dồn damage, Glacy hồi phục, Panpanta lo BREAK, Hexxin khống chế và nạp EP liên tục. Nếu boss đòi hỏi burst BREAK nhanh, có thể hoán đổi Hexxin sang Inferlupa.',
+      note: 'Đội hình dồn nổ sát thương Boss nhanh: Helion · Glacy · Panpanta · Inferlupa.'
+    };
+  }
+
+  const isDual = def2 && def2 !== 'none' && def2 !== def1;
+  const bestMult = effectiveness[0] ? effectiveness[0].mult : 1;
+  const bestElements = effectiveness.filter(x => x.mult === bestMult).map(x => x.element);
+
+  // 1. Special Case: Rock + Water (Đá + Nước) -> Grass deals 2.56x SIÊU CHÍ MẠNG
+  if ((def1 === "Đá" && def2 === "Nước") || (def1 === "Nước" && def2 === "Đá")) {
+    return {
+      team: ['thornblade', 'pomawk', 'melloblum', 'gracewing'],
+      why: 'Kẻ địch song hệ [Đá + Nước] có tử huyệt kép trước hệ CỎ đạt mức SIÊU CHÍ MẠNG ×2.56! Kích hoạt 🌿 Grass Specialist Team: Thornblade Thunderstorm (DPS) + Pomawk (BREAK) + Melloblum (Heal/Utility) + Gracewing (Sustain/EP) để xóa sổ đối thủ.',
+      note: '💥 SIÊU CHÍ MẠNG (×2.56): Cả Đá và Nước đều bị Cỏ khắc chế (1.6 × 1.6 = 2.56). Đòn Cỏ của Thornblade thổi bay đối thủ ngay lập tức!'
+    };
+  }
+
+  // 2. Special Case: Water + Ice (Nước + Băng) -> Grass is 1.6x, Fire is 1.0x, Electric is 1.0x
+  if ((def1 === "Nước" && def2 === "Băng") || (def1 === "Băng" && def2 === "Nước")) {
+    return {
+      team: ['thornblade', 'pomawk', 'melloblum', 'gracewing'],
+      why: 'Kẻ địch song hệ [Nước + Băng] khiến Lửa và Điện đều bị hòa vốn (×1.0)! Kích hoạt 🌿 Grass Specialist Team: Thornblade Thunderstorm là cứu cánh số 1 với đòn Cỏ giữ vững mốc ×1.6; Pomawk dồn BREAK, Melloblum hỗ trợ và Gracewing bảo đảm lượng máu.',
+      note: '🌿 Khắc chế điểm mù: Khi 5 team chính không ăn thua trước Nước + Băng, Grass Specialist là lựa chọn duy nhất đạt chuẩn ×1.6!'
+    };
+  }
+
+  // 3. Helion Team vs Dark (hoặc khi Thánh là tốt nhất)
+  if (def1 === 'Bóng tối' || def2 === 'Bóng tối' || (bestElements.includes('Thánh') && bestElements.length === 1)) {
+    return {
+      team: ['helion', 'tubster', 'turbo', 'gracewing'],
+      why: 'Kích hoạt ✨ Helion Team khắc chế Bóng Tối: Helion (Holy Carry cận chiến) + Tubster (Hỗ trợ tank / phá giáp). Vì hệ Thánh chưa có support đặc hệ riêng, Turbo buff trực tiếp damage/BREAK + Gracewing gánh sustain (heal/cleanse/EP) là phương án gọn và mạnh nhất!',
+      note: 'Helion với Trait Ân Huệ Thái Dương kết hợp Turbo buff sát thương dứt điểm cực ngọt các quái hệ Bóng tối.'
+    };
+  }
+
+  // 4. Fire Synergy Team (Infergon + Inferlupa + Turbo + Gracewing)
+  if (bestElements.includes('Lửa')) {
+    return {
+      team: ['infergon', 'inferlupa', 'turbo', 'gracewing'],
+      why: 'Kích hoạt 🔥 Fire Synergy Team: Infergon (Fire DPS tầm xa) + Inferlupa (Fire BREAK). Turbo làm Universal Support dùng Nimbi Burst tăng tới 30% damage và BREAK efficiency cho đồng đội. Gracewing lo heal / cleanse debuff / nạp EP, không tranh vai trò với Fire core.',
+      note: bestMult >= 2.5 
+        ? `🔥 SIÊU CHÍ MẠNG (×${bestMult}): Địch có điểm yếu kép trước Lửa! Infergon bắn Lửa từ xa kết hợp Inferlupa phá giáp sẽ kết liễu trong chớp mắt.`
+        : 'Infergon Basic Perfect đã đủ làm Fire DPS chính. Tận dụng Trait Power of Fire khi địch có >5 stack Fire Debuff (+30% dmg)!'
+    };
+  }
+
+  // 5. Water Synergy Team (Sherro + Panpanta + Piopiota + Glacy)
+  if (bestElements.includes('Nước') && !bestElements.includes('Cỏ')) {
+    return {
+      team: ['sherro', 'panpanta', 'piopiota', 'glacy'],
+      why: 'Kích hoạt 💧 Water Synergy Team: Sherro (Water DPS) + Panpanta (Water BREAK). Piopiota buff cộng hưởng siêu khủng (+16% Water damage cho Aniimo khác giới, ulti tăng thêm 20% Water damage/30s, vừa tạo vũng nước vừa heal). Glacy khóa vị trí healer chính!',
+      note: 'Team Nước có synergy đồng bộ nguyên tố cao nhất: Sát thương Nước được nhân dồn liên tục qua buff của Piopiota và địa hình vũng nước.'
+    };
+  }
+
+  // 6. Grass Specialist Team (Thornblade + Pomawk + Melloblum + Gracewing/Turbo)
+  if (bestElements.includes('Cỏ')) {
+    return {
+      team: ['thornblade', 'pomawk', 'melloblum', 'gracewing'],
+      why: 'Kích hoạt 🌿 Grass Specialist Team: Thornblade Thunderstorm (DPS Cỏ) + Pomawk (BREAK) + Melloblum (Heal/Utility) + Gracewing (Sustain hồi EP & giải khống chế). Đội hình chuyên trách dập tắt hệ Nước và Đá triệt để!',
+      note: 'Thornblade Thunderstorm dùng kiếm khí Cỏ dồn dập, Pomawk phụ trách dồn BREAK phá vỡ giáp đối phương.'
+    };
+  }
+
+  // 7. Electric Synergy Team (Fenmane + Blazen + Luminelle Prismana + Glacy)
+  if (bestElements.includes('Điện')) {
+    return {
+      team: ['fenmane', 'blazen', 'luminelle', 'glacy'],
+      why: 'Kích hoạt ⚡ Electric Synergy Team: Fenmane (Electric DPS) + Blazen (Electric BREAK). Luminelle Prismana là support đặc hệ Điện đỉnh nhất: nội tại buff +12% Electric dmg cho đồng đội, ulti tăng 27% attack dmg + 16% BREAK efficiency cho đồng đội Điện, field tăng thêm +20% Electric dmg! Glacy hồi phục.',
+      note: 'Cặp đôi Fenmane + Luminelle Prismana tạo ra lượng sát thương Điện khuếch đại 3 tầng cực kỳ khủng khiếp.'
+    };
+  }
+
+  // 8. Dark Synergy Team (Stellarys + Rookey + Fragrancier + Turbo)
+  if (bestElements.includes('Bóng tối')) {
+    return {
+      team: ['stellarys', 'rookey', 'fragrancier', 'turbo'],
+      why: 'Kích hoạt 🌑 Dark Synergy Team: Stellarys (Dark DPS) + Rookey (Dark BREAK). Fragrancier sinh ra cho team Dark: skill giảm 12% kháng Bóng tối của địch, ulti tăng 20% Dark Elemental Boost, và gán ấn (mark) giúp đòn đánh thường hệ Dark tăng thêm +50% damage! Turbo gia tăng tốc độ burst/BREAK thần tốc.',
+      note: 'Nếu route đi map hoặc đánh boss đau, có thể linh hoạt đổi Turbo lấy Healer (Glacy/Gracewing) để bảo kê.'
+    };
+  }
+
+  // 9. Rock / Earth
+  if (bestElements.includes('Đá')) {
+    return {
+      team: ['grizbo', 'panpanta', 'helion', 'glacy'],
+      why: `Grizbo sở hữu đòn đánh Đá với ATK 124 vượt trội để trừng phạt hệ ${def1}; Panpanta lo BREAK và Glacy giữ nhịp sinh tồn.`,
+      note: 'Grizbo bản Basic là hoàn toàn đủ lực; không cần mất công săn Prismana.'
+    };
+  }
+
+  // Fallback default
+  return {
+    team: ['helion', 'glacy', 'panpanta', 'inferlupa'],
+    why: `Kẻ địch [${defText}] bị khắc chế bởi hệ [${bestElements.join(', ')}]. Đội hình ưu tiên Helion làm carry cân bằng, Panpanta và Inferlupa lo phá giáp, Glacy bảo đảm lượng máu.`,
+    note: 'Tận dụng đúng hệ tương khắc để dứt điểm trận đấu nhanh nhất.'
+  };
+}
+
+function updateView() {
+  const isDual = selectedType2 && selectedType2 !== 'none' && selectedType2 !== selectedType1;
+  const defText = isDual
+    ? `${elementIcons[selectedType1]} ${selectedType1} + ${elementIcons[selectedType2]} ${selectedType2}`
+    : `${elementIcons[selectedType1]} ${selectedType1} (Đơn hệ)`;
+
+  if (selType1Text) selType1Text.innerHTML = `${elementIcons[selectedType1]} ${selectedType1}`;
+  if (selType2Text) selType2Text.innerHTML = selectedType2 === 'none' ? '❌ Đơn hệ' : `${elementIcons[selectedType2]} ${selectedType2}`;
+  if (enemyTypesDisplay) enemyTypesDisplay.innerHTML = defText;
+  if (mobileChoiceLabel) mobileChoiceLabel.innerHTML = defText;
+
+  // Active state for type 1 buttons
+  document.querySelectorAll('#pickerType1 [data-t1]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.t1 === selectedType1 && currentMode === 'dual');
+  });
+
+  // Active state for type 2 buttons
+  document.querySelectorAll('#pickerType2 [data-t2]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.t2 === selectedType2 && currentMode === 'dual');
+  });
+
+  // Presets active state
+  document.getElementById('btnBossPreset').classList.toggle('active', currentMode === 'boss');
+  document.getElementById('btnDefaultPreset').classList.toggle('active', currentMode === 'default');
+
+  if (currentMode === 'default') {
+    if (enemyTypesDisplay) enemyTypesDisplay.innerHTML = '🌐 Không rõ / Đi Map (Mặc định)';
+    if (maxDamageBadge) { maxDamageBadge.textContent = 'Cân bằng'; maxDamageBadge.className = 'badge-max-dmg'; }
+    if (weaknessPills) weaknessPills.innerHTML = '<span class="weak-pill">⚔️ Helion (Sát thương trung tính)</span>';
+    if (weaknessDesc) weaknessDesc.textContent = 'Dùng bộ khung đa dụng nhất để càn quét map khi chưa rõ hệ của đối phương.';
+    if (resistRow) resistRow.style.display = 'none';
+  } else if (currentMode === 'boss') {
+    if (enemyTypesDisplay) enemyTypesDisplay.innerHTML = '👑 Boss / Trận Đánh Dài';
+    if (maxDamageBadge) { maxDamageBadge.textContent = 'Dồn BREAK'; maxDamageBadge.className = 'badge-max-dmg crit'; }
+    if (weaknessPills) weaknessPills.innerHTML = '<span class="weak-pill crit">💥 Phá Giáp BREAK (Ưu tiên)</span><span class="weak-pill">🔮 Nạp EP Lâu Dài</span>';
+    if (weaknessDesc) weaknessDesc.textContent = 'Boss có giáp rất dày và cơ chế kháng hiệu ứng. Đội hình cần nạp năng lượng EP và dồn burst BREAK nhanh.';
+    if (resistRow) resistRow.style.display = 'none';
+  } else {
+    // Dual / Single calculation
+    const eff = calculateEffectiveness(selectedType1, selectedType2);
+    const superWeak = eff.filter(x => x.mult >= 1.5);
+    const maxMult = eff[0] ? eff[0].mult : 1;
+    const resisted = eff.filter(x => x.mult < 1.0);
+
+    // Max damage badge
+    if (maxDamageBadge) {
+      maxDamageBadge.textContent = `×${maxMult} DMG`;
+      maxDamageBadge.className = maxMult >= 2.5 ? 'badge-max-dmg crit' : 'badge-max-dmg';
+    }
+
+    // Weakness pills
+    if (weaknessPills) {
+      if (superWeak.length > 0) {
+        weaknessPills.innerHTML = superWeak.map(item => {
+          const isCrit = item.mult >= 2.5;
+          return `<span class="weak-pill ${isCrit ? 'crit' : ''}">
+            ${elementIcons[item.element]} ${item.element} <b style="color:${isCrit ? '#fef08a' : '#fca5a5'}">(×${item.mult})</b>
+          </span>`;
+        }).join('');
+      } else {
+        weaknessPills.innerHTML = '<span class="small" style="color:var(--muted)">Không có hệ nào gây sát thương ×1.6 (Trung tính).</span>';
+      }
+    }
+
+    if (weaknessDesc) {
+      if (maxMult >= 2.5) {
+        weaknessDesc.innerHTML = `<span style="color:#f87171; font-weight:800;">⚡ CỰC KỲ NGUY HIỂM:</span> Kẻ địch song hệ nhận tới <b>×${maxMult} sát thương</b> từ đòn đánh trên! Hãy ưu tiên tuyệt đối mang DPS mang hệ này.`;
+      } else if (superWeak.length > 0) {
+        weaknessDesc.innerHTML = `Địch bị suy yếu trước các nguyên tố trên (gây <b>×${maxMult} sát thương</b>).`;
+      } else {
+        weaknessDesc.textContent = 'Mục tiêu có kháng tính cân bằng; hãy dùng Helion hoặc carry có ATK cơ bản cao nhất.';
+      }
+    }
+
+    // Resisted elements
+    if (resistRow) {
+      if (resisted.length > 0) {
+        resistRow.style.display = 'block';
+        resistRow.innerHTML = `<span>🛡️ Bị kháng (Tránh dùng): </span>` + resisted.map(r => 
+          `<span class="resist-tag">${elementIcons[r.element]} ${r.element} ×${r.mult}</span>`
+        ).join('');
+      } else {
+        resistRow.style.display = 'none';
+      }
+    }
+  }
+
+  // Recommendation
+  const eff = calculateEffectiveness(selectedType1, selectedType2);
+  const rec = recommendTeam(selectedType1, selectedType2, eff);
+  const chosenSet = new Set(rec.team);
+
+  // Highlight Cards
   cards.forEach(card => {
-    const on = chosen.has(card.dataset.aniimo);
+    const cid = card.dataset.id || card.dataset.aniimo;
+    const on = chosenSet.has(cid);
     card.classList.toggle('recommended', on);
     card.classList.toggle('dimmed', !on);
     const badge = card.querySelector('.pick-badge');
     if (badge && on) {
-      badge.textContent = `TOP ${data.team.indexOf(card.dataset.aniimo) + 1}`;
+      badge.textContent = `TOP ${rec.team.indexOf(cid) + 1}`;
     }
   });
 
-  buttons.forEach(btn => {
-    const isActive = btn.dataset.matchup === key;
-    btn.classList.toggle('active', isActive);
-    if (isActive && mobileChoiceLabel) {
-      mobileChoiceLabel.textContent = btn.textContent.trim();
-    }
-  });
-
-  pills.innerHTML = data.team.map(x => `<span class="team-pill">${displayNames[x]}</span>`).join('');
-  why.textContent = data.why;
-  note.innerHTML = `💡 <b>Ghi chú:</b> ${data.note}`;
+  if (pills) {
+    pills.innerHTML = rec.team.map(id => `<span class="team-pill">${displayNames[id] || id}</span>`).join('');
+  }
+  if (why) why.textContent = rec.why;
+  if (note) note.innerHTML = `💡 <b>Ghi chú:</b> ${rec.note}`;
 }
 
-buttons.forEach(btn => {
-  btn.addEventListener('click', () => applyMatchup(btn.dataset.matchup));
+// Bind Button Events
+document.querySelectorAll('#pickerType1 [data-t1]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    selectedType1 = btn.dataset.t1;
+    currentMode = 'dual';
+    updateView();
+  });
+});
+
+document.querySelectorAll('#pickerType2 [data-t2]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    selectedType2 = btn.dataset.t2;
+    currentMode = 'dual';
+    updateView();
+  });
+});
+
+document.getElementById('btnBossPreset').addEventListener('click', () => {
+  currentMode = 'boss';
+  updateView();
+});
+
+document.getElementById('btnDefaultPreset').addEventListener('click', () => {
+  currentMode = 'default';
+  updateView();
 });
 
 document.getElementById('resetTeam').addEventListener('click', () => {
@@ -1271,11 +2032,16 @@ document.getElementById('resetTeam').addEventListener('click', () => {
     const badge = card.querySelector('.pick-badge');
     if (badge) badge.textContent = 'NÊN MANG';
   });
-  buttons.forEach(btn => btn.classList.remove('active'));
-  pills.innerHTML = '<span class="small" style="color: #94a3b8;">Đang hiển thị toàn bộ 9 con. Hãy chọn một hệ để nhận đề xuất.</span>';
-  why.textContent = 'Chọn một hệ nguyên tố phía trên để xem ngay chiến thuật và đội hình 4 con tối ưu.';
+  document.querySelectorAll('#pickerType1 [data-t1], #pickerType2 [data-t2], #btnBossPreset, #btnDefaultPreset').forEach(b => b.classList.remove('active'));
+  pills.innerHTML = '<span class="small" style="color: #94a3b8;">Đang hiển thị toàn bộ roster. Hãy chọn 1 hoặc 2 hệ nguyên tố để nhận đề xuất counter.</span>';
+  why.textContent = 'Bấm chọn nguyên tố 1 và nguyên tố 2 của kẻ địch để máy tự động tính tổ hợp sát thương và đưa ra đội 4 con tối ưu.';
   note.innerHTML = '';
-  if (mobileChoiceLabel) mobileChoiceLabel.textContent = 'Toàn bộ 9 con';
+  if (mobileChoiceLabel) mobileChoiceLabel.textContent = 'Toàn bộ roster';
+  if (enemyTypesDisplay) enemyTypesDisplay.textContent = 'Chưa chọn';
+  if (weaknessPills) weaknessPills.innerHTML = '';
+  if (weaknessDesc) weaknessDesc.textContent = '';
+  if (resistRow) resistRow.style.display = 'none';
+  if (maxDamageBadge) { maxDamageBadge.textContent = 'Counter'; maxDamageBadge.className = 'badge-max-dmg'; }
 });
 
 if (mobileToggleBtn && matchupSidebar) {
@@ -1285,8 +2051,9 @@ if (mobileToggleBtn && matchupSidebar) {
   });
 }
 
-// Initial selection
-applyMatchup('default');
+// Initialize on Cỏ
+updateView();
 </script>
 </body>
 </html>
+)
