@@ -24,7 +24,7 @@ class WikiNavHud extends HTMLElement {
           top: 0;
           left: 0;
           right: 0;
-          z-index: 2147483640;
+          z-index: 1000;
           box-sizing: border-box;
         }
 
@@ -152,7 +152,7 @@ class WikiNavHud extends HTMLElement {
           position: fixed;
           top: 12px;
           right: 16px;
-          z-index: 2147483641;
+          z-index: 1001;
           background: rgba(15, 23, 42, 0.85);
           backdrop-filter: blur(10px);
           border: 1px solid rgba(56, 189, 248, 0.4);
