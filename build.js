@@ -161,6 +161,7 @@ function injectNavHud(content, metadata, relPath) {
   const upPrefix = depth > 0 ? '../'.repeat(depth) : './';
   const scriptPath = `${upPrefix}components/nav-hud.js`;
   const homeUrl = `${upPrefix}index.html`;
+  const logoUrl = `${upPrefix}assets/logo.png`;
 
   const safeTitle = metadata.title.replace(/"/g, '&quot;');
   const safeGame = metadata.game.replace(/"/g, '&quot;');
@@ -168,9 +169,17 @@ function injectNavHud(content, metadata, relPath) {
   const hudInjection = `
 <!-- WIKI_NAV_HUD_START -->
 <script src="${scriptPath}"></script>
-<wiki-nav-hud title="${safeTitle}" game="${safeGame}" home-url="${homeUrl}"></wiki-nav-hud>
+<wiki-nav-hud title="${safeTitle}" game="${safeGame}" home-url="${homeUrl}" logo-url="${logoUrl}"></wiki-nav-hud>
 <!-- WIKI_NAV_HUD_END -->
 `;
+
+  // Inject favicon into <head> if not already present
+  if (!content.includes('rel="icon"')) {
+    const faviconTags = `<link rel="icon" type="image/png" href="${logoUrl}">\n  <link rel="apple-touch-icon" href="${logoUrl}">`;
+    if (/<head[^>]*>/i.test(content)) {
+      content = content.replace(/(<head[^>]*>)/i, `$1\n  ${faviconTags}`);
+    }
+  }
 
   // Insert right after <body ...>
   if (/<body[^>]*>/i.test(content)) {
@@ -184,6 +193,8 @@ function injectNavHud(content, metadata, relPath) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${safeTitle}</title>
+  <link rel="icon" type="image/png" href="${logoUrl}">
+  <link rel="apple-touch-icon" href="${logoUrl}">
 </head>
 <body>
 ${hudInjection}
@@ -207,6 +218,18 @@ function build() {
   // 2. Copy static assets and components to dist
   copyDir(path.join(SRC_DIR, 'assets'), path.join(DIST_DIR, 'assets'));
   copyDir(path.join(SRC_DIR, 'components'), path.join(DIST_DIR, 'components'));
+
+  // Ensure logo and favicons exist in root and dist
+  const rootLogo = path.join(ROOT_DIR, 'logo.png');
+  const srcLogo = path.join(SRC_DIR, 'assets', 'logo.png');
+  const logoSource = fs.existsSync(rootLogo) ? rootLogo : (fs.existsSync(srcLogo) ? srcLogo : null);
+
+  if (logoSource) {
+    if (!fs.existsSync(srcLogo)) fs.copyFileSync(logoSource, srcLogo);
+    fs.copyFileSync(logoSource, path.join(DIST_DIR, 'assets', 'logo.png'));
+    fs.copyFileSync(logoSource, path.join(DIST_DIR, 'favicon.png'));
+    fs.copyFileSync(logoSource, path.join(DIST_DIR, 'favicon.ico'));
+  }
 
   // 3. Process all guide HTML files
   const htmlFiles = findHtmlFiles(GUIDES_DIR);

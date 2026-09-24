@@ -13,6 +13,7 @@ class WikiNavHud extends HTMLElement {
     const title = this.getAttribute('title') || document.title || 'Guide Game';
     const game = this.getAttribute('game') || 'Wiki Game';
     const homeUrl = this.getAttribute('home-url') || '../index.html';
+    const logoUrl = this.getAttribute('logo-url') || (homeUrl.replace(/index\.html$/, '') + 'assets/logo.png');
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -55,8 +56,28 @@ class WikiNavHud extends HTMLElement {
         .left-section {
           display: flex;
           align-items: center;
-          gap: 14px;
+          gap: 12px;
           min-width: 0;
+        }
+
+        .hud-brand-link {
+          display: inline-flex;
+          align-items: center;
+          text-decoration: none;
+          flex-shrink: 0;
+        }
+
+        .hud-logo-icon {
+          width: 32px;
+          height: 32px;
+          object-fit: contain;
+          filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5));
+          transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .hud-brand-link:hover .hud-logo-icon {
+          transform: scale(1.1);
+          filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.75));
         }
 
         .back-btn {
@@ -214,6 +235,10 @@ class WikiNavHud extends HTMLElement {
 
       <div class="hud-container" id="hudContainer">
         <div class="left-section">
+          <a href="${homeUrl}" class="hud-brand-link" title="Trở về Trang Chủ Gaming Wiki Hub">
+            <img src="${logoUrl}" alt="Gaming Wiki Logo" class="hud-logo-icon" />
+          </a>
+
           <a href="${homeUrl}" class="back-btn" title="Trở về danh sách Guide (Phím tắt: Esc)">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="19" y1="12" x2="5" y2="12"></line>
