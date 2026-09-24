@@ -65,12 +65,18 @@ class WikiNavHud extends HTMLElement {
           align-items: center;
           text-decoration: none;
           flex-shrink: 0;
+          width: 32px;
+          height: 32px;
+          overflow: hidden;
         }
 
         .hud-logo-icon {
-          width: 32px;
-          height: 32px;
+          width: 30px;
+          height: 30px;
+          max-width: 30px;
+          max-height: 30px;
           object-fit: contain;
+          display: block;
           filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5));
           transition: transform 0.2s ease, filter 0.2s ease;
         }
@@ -236,7 +242,7 @@ class WikiNavHud extends HTMLElement {
       <div class="hud-container" id="hudContainer">
         <div class="left-section">
           <a href="${homeUrl}" class="hud-brand-link" title="Trở về Trang Chủ Gaming Wiki Hub">
-            <img src="${logoUrl}" alt="Gaming Wiki Logo" class="hud-logo-icon" />
+            <img src="${logoUrl}" alt="Gaming Wiki Logo" class="hud-logo-icon" width="28" height="28" style="width: 28px; height: 28px; max-width: 28px; max-height: 28px; object-fit: contain; display: block;" />
           </a>
 
           <a href="${homeUrl}" class="back-btn" title="Trở về danh sách Guide (Phím tắt: Esc)">
